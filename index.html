@@ -5,18 +5,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>CSS Animation Game</title>
+    <title>Animation Academy</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;500;700" rel="stylesheet">
+
+    <!-- main.css issue: not compiling correctly, no CSS files are loading -->
     <link rel="stylesheet" href="./dist/main.css" />
+    
+    <!-- testing hard coded reset-temp.css, confirmed this loads correctly -->
+    <!-- <link rel="stylesheet" href="src/stylesheets/base/reset-temp.css" /> -->
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="./src/index.scss/"> -->
     <script src="./dist/main.js"></script>
 </head>
 
 <body>
     <header class="header">
-        <nav>
+        <nav class="header-nav">
             <div class="header-logo">
-                <!-- add a tag with png -->
+                <!-- <a href="#"><img src="imgs/animation-academy-logo@1x.png" alt="AnimationAcademy"></a> -->
+                <a href="#"><img src="imgs/animation-academy-logo@1x.png" alt="AnimationAcademy"></a>
             </div>
-            <ul class="header-nav-list">
+            <ul class="header-list">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Play</a></li>
                 <li><a href="#">Learn</a></li>

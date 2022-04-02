@@ -2,8 +2,9 @@
 @import "stylesheets/base/reset.scss";
 
 // import base scss files
-// @import "stylesheets/base/colors.scss";
-// @import "stylesheets/base/fonts.scss";
+// @import "stylesheets/base"; <- should load all files in dir
+@import "stylesheets/base/colors.scss";
+@import "stylesheets/base/fonts.scss";
 
 // import component scss files
-// @import "stylesheets/components/nav_bar.scs
+@import "stylesheets/components/nav_bar.scss"
