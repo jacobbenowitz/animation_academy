@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;500;700&display=swap');
+
+// font variables
+$prompt: 'Prompt', sans-serif;
+$source-code: 'Source Code Pro', monospace;
+
+// font size variables
+$h1: 72px;
+$h2: 60px;
+$h3: 36px;
+$h4: 24px;
+$text-large: 18px;
+$body: 16px;
+$label: 12px;
+$code: 15px;
+
+// font weight variables
+$header-default: 500;
+$bold: 700;
+$semi-bold: 500;
+$normal: 400;
+$light: 100;
+
+body {
+  font-family: $prompt;
+  font-weight: $normal;
+  font-size: $body;
+}
+
+header {
+  font-family: $prompt;
+  font-weight: $semi-bold;
+  font-size: $text-large;
+}
+
+.h1 {
+  font-family: $prompt;
+  font-size: $h1;
+  font-weight: $bold;
+  color: $white;
+}
+
+.h2 {
+  font-family: $prompt;
+  font-size: $h2;
+  font-weight: $bold;
+  color: $white;
+}
+
+.h3 {
+  font-family: $prompt;
+  font-size: $h3;
+  font-weight: $semi-bold;
+  color: $white;
+}
+
+.h4 {
+  font-family: $prompt;
+  font-size: $h4;
+  font-weight: $semi-bold;
+  color: $white;
+}
+
+.label {
+  font-family: $prompt;
+  font-size: $label;
+  font-weight: $bold;
+  color: $white;
+}
+
+.code {
+  font-family: $source-code;
+  font-size: $code;
+  font-weight: $normal;
+  color: $white;
+}
