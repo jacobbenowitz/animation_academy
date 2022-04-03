@@ -12,19 +12,21 @@ body {
 }
 
 .hero-content {
-  width: 80%;;
+  width: 80%;
 }
 
 .grid-2-col {
   display: grid;
   width: 100%;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 14px;
 }
 
 .grid-2-col-ide {
   display: grid;
   width: 100%;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: min-content 1fr;
+  column-gap: 14px;
 }
 
 .left-col, .right-col {
@@ -39,4 +41,8 @@ body {
 .hero {
   height: 400px;
   padding: 120px 50px 20px 50px;
+}
+
+.todo-left, .todo-right {
+  padding: 60px;
 }

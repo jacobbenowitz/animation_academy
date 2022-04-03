@@ -1,9 +1,9 @@
 // entry point, bundler will take required files here for use in main.js
-import Example from "./scripts/functionality.js"
 import NavLinkCreator from "./scripts/nav_bar"
 import Hero from "./scripts/hero"
 import PromptCreator from "./scripts/prompt"
 import IdeCreator from "./scripts/ide"
+import TodoCreator from "./scripts/todo"
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -19,5 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     new PromptCreator(interfaceContainer)
 
     new IdeCreator(interfaceContainer)
+
+    const todoSection = document.querySelector('.todo')
+    new TodoCreator(todoSection)
 
 })
