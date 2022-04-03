@@ -28,38 +28,39 @@ body {
   font-size: $body;
 }
 
-header {
-  font-family: $prompt;
-  font-weight: $semi-bold;
-  font-size: $text-large;
-}
-
-.h1 {
+h1 {
   font-family: $prompt;
   font-size: $h1;
   font-weight: $bold;
   color: $white;
 }
 
-.h2 {
+h2 {
   font-family: $prompt;
   font-size: $h2;
   font-weight: $bold;
   color: $white;
 }
 
-.h3 {
+h3 {
   font-family: $prompt;
   font-size: $h3;
   font-weight: $semi-bold;
   color: $white;
 }
 
-.h4 {
+h4 {
   font-family: $prompt;
   font-size: $h4;
   font-weight: $semi-bold;
   color: $white;
+}
+
+p {
+  color: $white;
+  font-family: $prompt;
+  font-weight: $normal;
+  font-size: $body;
 }
 
 .label {

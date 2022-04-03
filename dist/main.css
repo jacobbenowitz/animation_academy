@@ -79,38 +79,39 @@ body {
   font-size: 16px;
 }
 
-header {
-  font-family: "Prompt", sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.h1 {
+h1 {
   font-family: "Prompt", sans-serif;
   font-size: 72px;
   font-weight: 700;
   color: #DFDFDF;
 }
 
-.h2 {
+h2 {
   font-family: "Prompt", sans-serif;
   font-size: 60px;
   font-weight: 700;
   color: #DFDFDF;
 }
 
-.h3 {
+h3 {
   font-family: "Prompt", sans-serif;
   font-size: 36px;
   font-weight: 500;
   color: #DFDFDF;
 }
 
-.h4 {
+h4 {
   font-family: "Prompt", sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: #DFDFDF;
+}
+
+p {
+  color: #DFDFDF;
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .label {
@@ -125,6 +126,36 @@ header {
   font-size: 15px;
   font-weight: 400;
   color: #DFDFDF;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #131213;
+}
+
+.hero-content {
+  width: 80%;
+}
+
+.grid-2-col {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+}
+
+.left-col, .right-col {
+  height: max-content;
+}
+
+.right-col {
+  text-align: end;
+  padding-left: 120px;
+}
+
+.hero {
+  height: 700px;
+  padding: 20px 50px 20px 50px;
 }
 
 header {
@@ -169,41 +200,4 @@ header img {
 
 .header-list a:hover {
   background-color: black;
-}
-
-body {
-  background-color: #eee;
-}
-
-.badge {
-  display: inline-flex;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: black;
-}
-
-.dropdown {
-  position: absolute;
-  display: none;
-  background-color: white;
-}
-
-.dropdown a {
-  color: black;
-  border-bottom: 1px solid #ccc;
-  background-color: white;
-}
-
-.dropdown li:last-child a {
-  border-radius: 0 0 9px 9px;
-}
-
-.dropdown a:hover {
-  background-color: lightgray;
-}
-
-#header-notification:hover .dropdown {
-  display: block;
 }

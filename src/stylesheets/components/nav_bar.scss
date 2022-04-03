@@ -43,39 +43,34 @@ header img {
   background-color: black;
 }
 
-body {
-  background-color: #eee;
-}
+// .badge {
+//   display: inline-flex;
+//   justify-content: center;
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background-color: black;
+// }
 
+// .dropdown {
+//   position: absolute;
+//   display: none;
+//   background-color: white;
+// }
+// .dropdown a {
+//   color: black;
+//   border-bottom: 1px solid #ccc;
+//   background-color: white;
+// }
 
-.badge {
-  display: inline-flex;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: black;
-}
+// .dropdown li:last-child a {
+//   border-radius: 0 0 9px 9px;
+// }
 
-.dropdown {
-  position: absolute;
-  display: none;
-  background-color: white;
-}
-.dropdown a {
-  color: black;
-  border-bottom: 1px solid #ccc;
-  background-color: white;
-}
+// .dropdown a:hover {
+//   background-color: lightgray;
+// }
 
-.dropdown li:last-child a {
-  border-radius: 0 0 9px 9px;
-}
-
-.dropdown a:hover {
-  background-color: lightgray;
-}
-
-#header-notification:hover .dropdown {
-  display: block;
-}
+// #header-notification:hover .dropdown {
+//   display: block;
+// }
