@@ -1,0 +1,28 @@
+.ide {
+  max-width: 400px;
+  min-height: 100px;
+  height: fit-content;
+  margin-bottom: 10px;
+  background-color: $transparent-grey;
+  backdrop-filter: blur(12px);
+  margin: 5px;
+  padding: 10px 20px 10px 20px;
+}
+
+.ide pre {
+  font-family: $source-code;
+}
+
+.ide .code-input {
+  background-color: $white;
+  width: 100%;
+}
+
+.ide .button {
+  position: relative;
+  left: 280px;
+}
+
+.ide .left-col pre {
+  color: $primary;
+}

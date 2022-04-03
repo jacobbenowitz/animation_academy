@@ -70,9 +70,15 @@ p {
   color: $white;
 }
 
-.code {
+.code, .code-input {
   font-family: $source-code;
   font-size: $code;
   font-weight: $normal;
   color: $white;
+  line-height: 2rem;
+}
+
+
+.code-input {
+  color: $background;
 }

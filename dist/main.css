@@ -121,11 +121,20 @@ p {
   color: #DFDFDF;
 }
 
-.code {
+.code, .code-input {
   font-family: "Source Code Pro", monospace;
   font-size: 15px;
   font-weight: 400;
   color: #DFDFDF;
+  line-height: 2rem;
+}
+
+.code-input {
+  color: #131213;
+}
+
+.products {
+  height: 1000px;
 }
 
 body {
@@ -144,18 +153,24 @@ body {
   grid-template-columns: 50% 50%;
 }
 
+.grid-2-col-ide {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 10% 90%;
+}
+
 .left-col, .right-col {
   height: max-content;
 }
 
-.right-col {
+.hero .right-col {
   text-align: end;
   padding-left: 120px;
 }
 
 .hero {
-  height: 700px;
-  padding: 20px 50px 20px 50px;
+  height: 400px;
+  padding: 120px 50px 20px 50px;
 }
 
 .button {
@@ -223,16 +238,57 @@ header img {
 }
 
 .prompt {
-  display: block;
   max-width: 400px;
   min-height: 100px;
   height: fit-content;
-  margin: 5px;
-  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
   background-color: rgba(32, 31, 30, 0.35);
   backdrop-filter: blur(12px);
+  margin: 5px;
+  padding: 10px 20px 10px 20px;
 }
 
 .prompt-title {
   margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.ide {
+  max-width: 400px;
+  min-height: 100px;
+  height: fit-content;
+  margin-bottom: 10px;
+  background-color: rgba(32, 31, 30, 0.35);
+  backdrop-filter: blur(12px);
+  margin: 5px;
+  padding: 10px 20px 10px 20px;
+}
+
+.ide pre {
+  font-family: "Source Code Pro", monospace;
+}
+
+.ide .code-input {
+  background-color: #DFDFDF;
+  width: 100%;
+}
+
+.ide .button {
+  position: relative;
+  left: 280px;
+}
+
+.ide .left-col pre {
+  color: #03DAC6;
+}
+
+.interface {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+}
+
+.interface {
+  top: 175px;
+  left: 50px;
 }

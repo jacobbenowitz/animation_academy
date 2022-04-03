@@ -6,9 +6,6 @@ import PromptCreator from "./scripts/prompt"
 import IdeCreator from "./scripts/ide"
 
 document.addEventListener("DOMContentLoaded", () => {
-    // sample
-    const main = document.getElementById("main")
-    new Example(main)
 
     // create the nav bar links
     const headerList = document.querySelector('.header-list')
@@ -17,7 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // create the hero section
     const hero = document.querySelector('.hero')
     new Hero(hero)
+    
+    const interfaceContainer = document.querySelector('.interface')
+    new PromptCreator(interfaceContainer)
 
-    new PromptCreator(hero)
+    new IdeCreator(interfaceContainer)
 
 })

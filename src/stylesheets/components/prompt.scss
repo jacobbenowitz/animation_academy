@@ -1,14 +1,16 @@
 .prompt {
-  display: block;
   max-width: 400px;
   min-height: 100px;
   height: fit-content;
-  margin: 5px;
-  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
   background-color: $transparent-grey;
   backdrop-filter: blur(12px);
+  margin: 5px;
+  padding: 10px 20px 10px 20px;
 }
+
 
 .prompt-title {
   margin-bottom: 10px;
+  margin-top: 5px;
 }
