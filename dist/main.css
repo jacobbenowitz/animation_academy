@@ -171,7 +171,7 @@ body {
 }
 
 .hero {
-  height: 400px;
+  height: 450px;
   padding: 120px 50px 20px 50px;
 }
 
@@ -295,11 +295,45 @@ header img {
 }
 
 .interface {
-  top: 175px;
+  top: 115px;
   left: 50px;
 }
 
 .todo-list-container {
   padding: 40px 20px 20px 20px;
   background-color: #201F1E;
+}
+
+.todo-list > .default {
+  padding: 6px 8px 6px 8px;
+  border-radius: 3px;
+  margin: 4px 0 4px 0;
+  background-color: #BB86FC;
+}
+
+.todo-form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.todo-form button {
+  border: none;
+}
+
+.todo-form button:before {
+  content: "+";
+  margin-right: 8px;
+}
+
+.todo-form > #todo-input {
+  padding: 6px 8px 6px 8px;
+  border-radius: 3px;
+  margin: 24px 0 4px 0;
+  display: block;
+  color: #DFDFDF;
+  background-color: rgba(78, 76, 76, 0.42);
+}
+
+.products {
+  padding: 60px 20px 20px 60px;
 }

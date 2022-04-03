@@ -65,6 +65,7 @@ class TodoCreator {
 
     const sampleLi = document.createElement('li')
     sampleLi.innerHTML = "Sample todo item"
+    sampleLi.classList.add('todo-item', 'default')
     todoList.appendChild(sampleLi)
     // create form
     const todoForm = this.createTodoForm()
@@ -78,7 +79,8 @@ class TodoCreator {
     todoForm.classList.add('todo-form')
     // create input field
     const inputTodo = document.createElement('input')
-    inputTodo.name = "todo-input"
+    inputTodo.name = "todo"
+    inputTodo.id = "todo-input"
     inputTodo.placeholder = "Add a new Todo"
     inputTodo.required = true
     // create 'create new' button

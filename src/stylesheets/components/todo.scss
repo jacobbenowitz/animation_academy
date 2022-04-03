@@ -2,3 +2,33 @@
   padding: 40px 20px 20px 20px;
   background-color: $main-grey;
 }
+
+.todo-list > .default {
+  padding: 6px 8px 6px 8px;
+  border-radius: 3px;
+  margin: 4px 0 4px 0;
+  background-color: $secondary;
+}
+
+.todo-form {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.todo-form button {
+  border: none;
+}
+
+.todo-form button:before {
+  content: "+";
+  margin-right: 8px;
+}
+
+.todo-form > #todo-input {
+  padding: 6px 8px 6px 8px;
+  border-radius: 3px;
+  margin: 24px 0 4px 0;
+  display: block;
+  color: $white;
+  background-color: rgba($color: #4e4c4c, $alpha: .42);
+}
