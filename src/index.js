@@ -1,5 +1,4 @@
 // entry point, bundler will take required files here for use in main.js
-
 import Example from "./scripts/functionality.js"
 import NavLinkCreator from "./scripts/nav_bar"
 import Hero from "./scripts/hero"
@@ -18,5 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // create the hero section
     const hero = document.querySelector('.hero')
     new Hero(hero)
+
+    new PromptCreator(hero)
 
 })

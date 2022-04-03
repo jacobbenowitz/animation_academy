@@ -15,9 +15,11 @@ class Hero {
   // create col structure
   addInnerSections() {
     const heroContent = document.querySelector('.hero-content')
+    heroContent.classList.add("grid-2-col")
+
     const leftCol = document.createElement('div')
     const rightCol = document.createElement('div')
-    heroContent.classList.add("grid-2-col")
+
     heroContent.appendChild(leftCol).classList.add('left-col')
     heroContent.appendChild(rightCol).classList.add('right-col')
   }
@@ -29,10 +31,17 @@ class Hero {
   addContent() {
     const rightCol = document.querySelector('.hero-content > .right-col')
     const h1 = document.createElement('h1')
-      h1.innerHTML = "Learn CSS Animations"
+    h1.innerHTML = "Learn CSS Animations"
+    
     const heroText = document.createElement('p')
     heroText.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor urna, commodo penatibus porta a dolor. Sed mi consectetur morbi elit senectus egestas ut sed. Id pretium ultricies volutpat massa. Duis eu commodo malesuada enim, viverra in."
-    rightCol.append(h1, heroText)
+
+    const button = document.createElement('a')
+    button.classList.add('button')
+    button.innerHTML = "Play now"
+    button.href = "#"
+
+    rightCol.append(h1, heroText, button)
   }
 }
 export default Hero;

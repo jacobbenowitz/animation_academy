@@ -5,6 +5,9 @@
 @import "stylesheets/base/colors.scss";
 @import "stylesheets/base/fonts.scss";
 @import "stylesheets/base/layout.scss";
+@import "stylesheets/base/buttons.scss";
 
 // import component scss files
-@import "stylesheets/components/nav_bar.scss"
+@import "stylesheets/components/nav_bar.scss";
+@import "stylesheets/components/prompt.scss";
+@import "stylesheets/components/ide.scss";

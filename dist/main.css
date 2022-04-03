@@ -158,6 +158,26 @@ body {
   padding: 20px 50px 20px 50px;
 }
 
+.button {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  color: #DFDFDF;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  background: none;
+}
+
+.button:hover {
+  border: none;
+  background-color: #03DAC6;
+  color: #131213;
+  box-shadow: 0px 0px 10px #03DAC6;
+}
+
 header {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
@@ -200,4 +220,19 @@ header img {
 
 .header-list a:hover {
   background-color: black;
+}
+
+.prompt {
+  display: block;
+  max-width: 400px;
+  min-height: 100px;
+  height: fit-content;
+  margin: 5px;
+  padding: 10px 20px 10px 20px;
+  background-color: rgba(32, 31, 30, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.prompt-title {
+  margin-bottom: 10px;
 }
