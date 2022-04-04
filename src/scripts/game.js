@@ -1,20 +1,31 @@
-// import { levels } from './levels'
-// import prompt?
-// import ide?
+import PromptCreator from "./prompt";
+import IdeCreator from "./ide";
+import { LEVELS } from './levels'
+
+// create game interface
+    // const prompt = new PromptCreator(interfaceContainer);
+    // create ide for user input
+    // const ide = new IdeCreator(interfaceContainer);
+
 
 export default class Game {
-  constructor(prompt, ide) {
-    this.prompt = prompt;
-    this.ide = ide;
-    this.level = this.currentLevel() || levels[0];
+  constructor(interfaceContainer) {
+    this.hero = document.querySelector('.hero')
+    this.interfaceContainer = interfaceContainer;
+    this.currentLevel = this.currentLevel() || LEVELS[0];
+    this.promptContainer = new PromptCreator(this.currentLevel, this.interfaceContainer);
+    // this.ide = new IdeCreator;
+    // this.bind handlers
+    this.gameSetup
+    // this.addSubmissionListener
   }
 
   currentLevel() {
     // get level from localStorage, return undefined if none
-    const storedLevel = localStorage.getItem('level');
-    if (storedLevel) {
-      const currentLevel = JSON.parse(storedLevel);
-      return levels[currentLevel];
+    const lessonNumber = localStorage.getItem('lessonNumber');
+    if (lessonNumber) {
+      const currentLevel = JSON.parse(lessonNumber);
+      return LEVELS[currentLevel];
     }
     return undefined;
   }
@@ -24,6 +35,7 @@ export default class Game {
   gameSetup() {
     // render prompt instructions 
     // render ide with boiler code and form
+    // this.interface.appendChild(this.promptContainer)
   }
 
   levelNavListeners() {

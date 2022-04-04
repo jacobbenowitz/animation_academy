@@ -1,0 +1,10 @@
+lessonNumber,cssProperties,boilerCode,solution,lines,promptTitle,promptInstructions,syntaxHints
+1,transition-property,"[ ""#boiler {"", "" position: absolute;"", "" color: green;"", ""}"", ""#button {"" ]",transition: width 2s ease-in,8,Add a hover effect to buttons,Use the 'transition-property' and 'transition-duration' properties to make the buttons change color on hover,"#delay {
+font-size: 14px;
+transition-property: font-size;
+transition-duration: 4s;
+transition-delay: 2s;
+}
+#delay:hover {
+font-size: 36px;
+}"

@@ -32,7 +32,6 @@ export default class ProductsCreator {
   }
 
   buildProducts() {
-    debugger;
     for (let i = 0; i < Object.keys(PRODUCTS).length; i++) {
       // create div
       const div = document.createElement('div')

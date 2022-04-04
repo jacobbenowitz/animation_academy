@@ -1,25 +1,3 @@
-// obj format = { 
-//   lesson #: {
-//     code: boiler code,
-//     lines: num of lines for ide
-//   }
-// }
-
-const ideBoilerCode = {
-  1: {
-    code: [
-    "#boiler {",
-    "  position: absolute;",
-    "  color: green;",
-    "}",
-    "#button {"
-    ],
-    lines: 10
-  }
-}
-
-const tempLineNums = [1,2,3,4,5,6,7,8]
-
 export default class IdeCreator {
   constructor(interfaceContainer) {
     this.interfaceContainer = interfaceContainer
