@@ -1,5 +1,5 @@
 class TodoFunctionality {
-  constructor(todoListContainer, todoForm, todoItemsStorage) {
+  constructor(todoListContainer, todoForm) {
     this.todoListContainer = todoListContainer // ul
     this.todoForm = todoForm // form
     this.todoItemsStorage = JSON.parse(localStorage.getItem('todo-items')) || []
@@ -12,7 +12,10 @@ class TodoFunctionality {
 
   addNewTodo(e) {
     e.preventDefault()
+    // pull input text from form
     const todoText = document.querySelector('[name=todo]').value
+    debugger
+    // create POJO
     const todoObj = {
       todoText,
       done: false
