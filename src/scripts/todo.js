@@ -1,100 +1,71 @@
-class TodoCreator {
-  constructor(todoSection) {
-    this.section = this.styleTodoSection(todoSection)
-    this.leftCol = this.createLeftCol()
-    this.rightCol = this.createRightCol()
-    // this.todo = this.createTodo()
-    this.attachTodo()
+class TodoFunctionality {
+  constructor(todoListContainer, todoForm, todoItemsStorage) {
+    this.todoListContainer = todoListContainer // ul
+    this.todoForm = todoForm // form
+    this.todoItemsStorage = JSON.parse(localStorage.getItem('todo-items')) || []
+    // add event listener on submit button
+    this.todoForm.addEventListener('submit', this.addNewTodo)
+    // add event listener on list items - toggle done
+    this.todoListContainer.addEventListener('click', this.toggleDone)
+    this.populateList(this.todoItemsStorage, this.todoListContainer)
   }
 
-  styleTodoSection(todoSection) {
-    todoSection.classList.add('grid-2-col')
-    return todoSection
+  addNewTodo(e) {
+    e.preventDefault()
+    const todoText = document.querySelector('[name=todo]').value
+    const todoObj = {
+      todoText,
+      done: false
+    }
+    // add todo to our todoItemsStorage array and populate list of todo's
+    this.todoItemsStorage.push(todoObj)
+    populateList(this.todoItemsStorage, this.todoListContainer)
+    // save in user's local storage
+    localStorage.setItem('todo-items', JSON.stringify(this.todoItemsStorage))
+    // reset event listener 
+    e.currentTarget.reset()
   }
 
-  createLeftCol() {
-    const leftCol = document.createElement('div')
-    leftCol.classList.add('todo-left')
-    this.addContentLeft(leftCol)
-    return leftCol
+  // update user's list of todos rendered on the browser
+  populateList(todoItemsStorage = [], todoListContainer) {
+    // iterate through all todo items and map to todoListContainer
+    todoListContainer.innerHTML = todoItemsStorage.map((item, i) => {
+      // create list item and checkbox
+      const todoLi = document.createElement('li')
+      todoLi.classList.add('todo-item', 'default')
+      const checkBox = document.createElement('input')
+      checkBox.type = 'checkbox'
+      // preselect checkbox if it is done
+      if (item.done) checkBox.checked = true
+      // set checkbox data-index so label/todo-item can be matched
+      checkBox.dataset.index = `${i}`
+      
+      // create label for todo
+      const todoLabel = document.createElement('label')
+      todoLabel.setAttribute('for', `item${i}`)
+      todoLabel.innerHTML = `${item.text}`
+      
+      // construct todo list item with all elements
+      todoLi.append(checkBox, todoLabel)
+      
+      // debugger
+      return todoLi
+    }).join('')
+    
   }
 
-  createRightCol() {
-    const rightCol = document.createElement('div')
-    rightCol.classList.add('todo-right')
-    // create inner container for todo list
-    this.createTodoListContainer(rightCol)
-    return rightCol
+  toggleDone(e) {
+    // ensure click is on the checkbox, othersise skip
+    if (!e.target.matches('input')) return;
+    const todo = e.target
+    // find index to match checkbox with the todo item
+    const index = todo.dataset.index
+    this.todoItemsStorage[index].done = !this.todoItemsStorage[index].done // flip status
+    // save todo to storage, render on DOM
+    localStorage.setItem('todo-items', JSON.stringify(this.todoItemsStorage))
+    this.populateList(this.todoItemsStorage, this.todoListContainer)
   }
 
-  addContentLeft(leftCol) {
-    // create header
-    const h2 = document.createElement('h2')
-    h2.innerHTML = "Todo"
-    // create body text
-    const body = document.createElement('p')
-    body.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor urna, commodo penatibus porta a dolor. Sed mi consectetur morbi elit senectus egestas ut sed. Id pretium ultricies volutpat massa. Duis eu commodo malesuada enim, viverra in."
-    // create button
-    const button = document.createElement('a')
-    button.classList.add('button')
-    button.innerHTML = "Get productive"
-    button.href = "#"
-    // append all elements to left column, then add to section
-    leftCol.append(h2, body, button)
-  }
-
-  createTodoListContainer(rightCol) {
-    // create container
-    const todoListContainer = document.createElement('div')
-    todoListContainer.classList.add('todo-list-container')
-    // create header
-    const todoH4 = document.createElement('h4')
-    todoH4.innerHTML = "Todo List"
-    todoListContainer.appendChild(todoH4)
-    // pass container to createTodo
-    this.createTodo(todoListContainer)
-    // add to right col
-    rightCol.appendChild(todoListContainer)
-  }
-
-  // create todo list and form
-  createTodo(todoListContainer) {
-    // create todo list
-    const todoList = document.createElement('ul')
-    todoList.classList.add('todo-list')
-
-    const sampleLi = document.createElement('li')
-    sampleLi.innerHTML = "Sample todo item"
-    sampleLi.classList.add('todo-item', 'default')
-    todoList.appendChild(sampleLi)
-    // create form
-    const todoForm = this.createTodoForm()
-    todoListContainer.append(todoList,todoForm)
-  }
-
-  // create new todo form with input and button
-  createTodoForm() {
-    // create form
-    const todoForm = document.createElement('form')
-    todoForm.classList.add('todo-form')
-    // create input field
-    const inputTodo = document.createElement('input')
-    inputTodo.name = "todo"
-    inputTodo.id = "todo-input"
-    inputTodo.placeholder = "Add a new Todo"
-    inputTodo.required = true
-    // create 'create new' button
-    const button = document.createElement('button')
-    button.classList.add('button')
-    button.innerHTML = "create new todo"
-    // add input and button to form
-    todoForm.append(inputTodo, button)
-    return todoForm
-  }
-
-  attachTodo() {
-    this.section.append(this.leftCol, this.rightCol)
-  }
 }
 
-export default TodoCreator;
+export default TodoFunctionality
