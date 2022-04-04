@@ -16,15 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const hero = document.querySelector('.hero')
     new Hero(hero)
     // create game interface
-    const interfaceContainer = document.querySelector('.interface')
-    new PromptCreator(interfaceContainer)
+    const interfaceContainer = document.querySelector('.interface');
+    new PromptCreator(interfaceContainer);
     // create ide for user input
-    new IdeCreator(interfaceContainer)
+    new IdeCreator(interfaceContainer);
     // create todo section and form
-    const todoSection = document.querySelector('.todo')
-    new TodoCreator(todoSection)
+    const todoSection = document.querySelector('.todo');
+    new TodoCreator(todoSection);
     // add todo functionality
-    const todoForm = document.querySelector('.todo-form')
-    const todoListContainer = document.querySelector('.todo-list')
-    new TodoFunctionality(todoListContainer, todoForm)
+    const todoForm = document.querySelector('.todo-form');
+    const todoListContainer = document.querySelector('.todo-list');
+    const todoStorage = JSON.parse(localStorage.getItem('todo-items')) || [];
+    new TodoFunctionality(todoListContainer, todoForm, todoStorage);
 })

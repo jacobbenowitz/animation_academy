@@ -244,6 +244,7 @@ header img {
 }
 
 .prompt {
+  z-index: 100;
   max-width: 400px;
   min-height: 100px;
   height: fit-content;
@@ -289,6 +290,7 @@ header img {
 }
 
 .interface {
+  z-index: 100;
   display: flex;
   flex-direction: column;
   position: fixed;
