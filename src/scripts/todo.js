@@ -36,7 +36,7 @@ class TodoFunctionality {
     // iterate through all todo items and map to todoListContainer
     todoListContainer.innerHTML = todoStorage.map((todo, i) => {
       return `
-        <li class = "todo-item default" >
+        <li class = "todo-item ${todo.done ? 'done' : 'default'}" >
           <input type="checkbox" class = 'checkbox' data-index=${i} ${todo.done ? 'checked' : ''} />
           <label for="todo${i}">${todo.todoText}</label>
         </li>

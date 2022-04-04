@@ -10,6 +10,16 @@
   background-color: $secondary;
 }
 
+.todo-list > .done {
+  color: $background;
+  text-decoration: line-through;
+  opacity: 20%;
+  padding: 6px 8px 6px 8px;
+  border-radius: 3px;
+  margin: 4px 0 4px 0;
+  background-color: $primary;
+}
+
 .todo-form {
   display: flex;
   flex-flow: column wrap;

@@ -1,3 +1,29 @@
 .products {
-  padding: 60px 20px 20px 60px;
+  padding: 60px 20px 20px 20px;
+  background-color: $main-grey;
+}
+
+.product-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 16px;
+  height: 250px;
+  width: 250px;
+  background-color: $background;
+}
+
+.price, .status, .title {
+  padding: 1rem;
+}
+
+.status {
+  font-size: $label;
+  text-align: end;
+  font-weight: $light;
+}
+
+.title {
+  font-size: $h5;
+  align-self: flex-end;
+  margin-right: -130px;
 }

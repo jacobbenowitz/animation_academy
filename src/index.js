@@ -5,6 +5,7 @@ import PromptCreator from "./scripts/prompt"
 import IdeCreator from "./scripts/ide"
 import TodoCreator from "./scripts/todoCreator"
 import TodoFunctionality from "./scripts/todo"
+import ProductsCreator from "./scripts/products"
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -28,4 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const todoListContainer = document.querySelector('.todo-list');
     const todoStorage = JSON.parse(localStorage.getItem('todo-items')) || [];
     new TodoFunctionality(todoListContainer, todoForm, todoStorage);
+    // create products 
+    const productsContainer = document.querySelector('.products-grid')
+    new ProductsCreator(productsContainer);
 })

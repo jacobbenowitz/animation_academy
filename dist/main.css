@@ -133,10 +133,6 @@ p {
   color: #131213;
 }
 
-.products {
-  height: 1000px;
-}
-
 body {
   width: 100%;
   height: 100%;
@@ -145,6 +141,13 @@ body {
 
 .hero-content {
   width: 80%;
+}
+
+.grid-4-col {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 14px;
 }
 
 .grid-2-col {
@@ -313,6 +316,16 @@ header img {
   background-color: #BB86FC;
 }
 
+.todo-list > .done {
+  color: #131213;
+  text-decoration: line-through;
+  opacity: 20%;
+  padding: 6px 8px 6px 8px;
+  border-radius: 3px;
+  margin: 4px 0 4px 0;
+  background-color: #03DAC6;
+}
+
 .todo-form {
   display: flex;
   flex-flow: column wrap;
@@ -337,5 +350,31 @@ header img {
 }
 
 .products {
-  padding: 60px 20px 20px 60px;
+  padding: 60px 20px 20px 20px;
+  background-color: #201F1E;
+}
+
+.product-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 16px;
+  height: 250px;
+  width: 250px;
+  background-color: #131213;
+}
+
+.price, .status, .title {
+  padding: 1rem;
+}
+
+.status {
+  font-size: 12px;
+  text-align: end;
+  font-weight: 100;
+}
+
+.title {
+  font-size: 20px;
+  align-self: flex-end;
+  margin-right: -130px;
 }
