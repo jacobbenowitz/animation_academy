@@ -1,4 +1,5 @@
-const products = {
+
+const PRODUCTS = {
   0: {
     name: "Product Name 1",
     price: '$100',
@@ -20,8 +21,8 @@ const products = {
     status: 'SALE!'
   }
 }
-
-class ProductsCreator {
+  
+export default class ProductsCreator {
 
   constructor(productsContainer) {
     this.productsContainer = productsContainer;
@@ -31,21 +32,22 @@ class ProductsCreator {
   }
 
   buildProducts() {
-    for (let i = 0; i < Object.keys(products).length; i++) {
+    debugger;
+    for (let i = 0; i < Object.keys(PRODUCTS).length; i++) {
       // create div
       const div = document.createElement('div')
       div.classList.add('product-box')
       // build elements using product data from POJO
       const productPrice = document.createElement('p');
-      productPrice.innerHTML = products[i].price;
+      productPrice.innerHTML = PRODUCTS[i].price;
       productPrice.classList.add('price');
 
       const productStatus = document.createElement('p')
-      productStatus.innerHTML = products[i].status;
+      productStatus.innerHTML = PRODUCTS[i].status;
       productStatus.classList.add('status');
 
       const productTitle = document.createElement('h4');
-      productTitle.innerHTML = products[i].name;
+      productTitle.innerHTML = PRODUCTS[i].name;
       productTitle.classList.add('title');
 
       div.append(productPrice, productStatus, productTitle);
@@ -59,5 +61,3 @@ class ProductsCreator {
     })
   };
 }
-
-export default ProductsCreator

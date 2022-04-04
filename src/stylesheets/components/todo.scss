@@ -11,13 +11,13 @@
 }
 
 .todo-list > .done {
-  color: $background;
+  color: $white;
   text-decoration: line-through;
   opacity: 20%;
   padding: 6px 8px 6px 8px;
   border-radius: 3px;
   margin: 4px 0 4px 0;
-  background-color: $primary;
+  background-color: $background;
 }
 
 .todo-form {

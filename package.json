@@ -19,6 +19,7 @@
     "babel-loader": "^8.2.4",
     "core-js": "^3.21.1",
     "css-loader": "^6.7.1",
+    "csvtojson": "^2.0.10",
     "mini-css-extract-plugin": "^2.6.0",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.49.10",

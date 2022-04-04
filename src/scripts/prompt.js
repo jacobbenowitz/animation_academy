@@ -15,7 +15,7 @@ const lessonContent = {
 }
 
 
-class PromptCreator {
+export default class PromptCreator {
   constructor(hero) {
     this.hero = hero
     this.lessonContent = lessonContent
@@ -29,27 +29,34 @@ class PromptCreator {
     container.classList.add('prompt')
     return container
   }
-
-  // TODO: refactor to programatically add content
-  addPromptContent(container) {
-    // lesson nav **** TEMP ****
-    // TODO create dropdown lesson nav with forward/back buttons
+  
+  // TODO create dropdown lesson nav with forward/back buttons
+  createPromptNav() {
     const lessonNav = document.createElement('p')
     const lessonText = Object.keys(lessonContent)[0]
     lessonNav.innerHTML = "Lesson: " + lessonText
     container.appendChild(lessonNav)
-    // title
-    const title = document.createElement('h4')
-    const titleText = this.lessonContent[1].title
+  }
+
+  createPromptTitle(titleText, container) {
+    const title = document.createElement('h4');
     title.innerHTML = titleText
     title.classList.add('prompt-title')
     container.appendChild(title)
-    // instructions
+  }
+
+  createPromptInstructions(instructions, container) {
     const instruction = document.createElement('p')
-    const instructionText = this.lessonContent[1].instruction
-    instruction.innerHTML = instructionText
+    instruction.innerHTML = instructions
     instruction.classList.add('prompt-instruction')
     container.appendChild(instruction)
+  }
+
+  // TODO: refactor to programatically add content
+  addPromptContent(currentLevel) {
+    this.createPromptNav(currentLevel[lessonNumber])
+    this.createPromptTitle()
+    this.createPromptInstructions()
   }
   
   attachPrompt(container) {
@@ -57,5 +64,3 @@ class PromptCreator {
   }
 
 }
-
-export default PromptCreator

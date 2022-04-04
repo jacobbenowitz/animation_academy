@@ -1,4 +1,4 @@
-class TodoCreator {
+export default class TodoCreator {
   constructor(todoSection) {
     this.section = this.styleTodoSection(todoSection)
     this.leftCol = this.createLeftCol()
@@ -91,5 +91,3 @@ class TodoCreator {
     this.section.append(this.leftCol, this.rightCol)
   }
 }
-
-export default TodoCreator;

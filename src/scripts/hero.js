@@ -1,4 +1,4 @@
-class Hero {
+export default class Hero {
   constructor(hero) {
     this.hero = hero
     this.addOuterSection()
@@ -44,4 +44,3 @@ class Hero {
     rightCol.append(h1, heroText, button)
   }
 }
-export default Hero;

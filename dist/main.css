@@ -317,13 +317,13 @@ header img {
 }
 
 .todo-list > .done {
-  color: #131213;
+  color: #DFDFDF;
   text-decoration: line-through;
   opacity: 20%;
   padding: 6px 8px 6px 8px;
   border-radius: 3px;
   margin: 4px 0 4px 0;
-  background-color: #03DAC6;
+  background-color: #131213;
 }
 
 .todo-form {

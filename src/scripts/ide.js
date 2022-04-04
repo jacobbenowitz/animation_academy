@@ -20,7 +20,7 @@ const ideBoilerCode = {
 
 const tempLineNums = [1,2,3,4,5,6,7,8]
 
-class IdeCreator {
+export default class IdeCreator {
   constructor(interfaceContainer) {
     this.interfaceContainer = interfaceContainer
     this.ideBoilerCode = ideBoilerCode
@@ -85,5 +85,3 @@ class IdeCreator {
     this.interfaceContainer.append(this.ideContainer)
   }
 }
-
-export default IdeCreator

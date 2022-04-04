@@ -1,4 +1,4 @@
-class TodoFunctionality {
+export default class TodoFunctionality {
   constructor(todoListContainer, todoForm, todoStorage) {
     this.todoListContainer = todoListContainer; // ul
     this.todoForm = todoForm; // form
@@ -36,12 +36,15 @@ class TodoFunctionality {
     // iterate through all todo items and map to todoListContainer
     todoListContainer.innerHTML = todoStorage.map((todo, i) => {
       return `
-        <li class = "todo-item ${todo.done ? 'done' : 'default'}" >
-          <input type="checkbox" class = 'checkbox' data-index=${i} ${todo.done ? 'checked' : ''} />
-          <label for="todo${i}">${todo.todoText}</label>
-        </li>
+      <li class = "todo-item ${todo.done ? 'done' : 'default'}" >
+      <input type="checkbox" class = 'checkbox' data-index=${i} ${todo.done ? 'checked' : ''} />
+      <label for="todo${i}">${todo.todoText}</label>
+      </li>
       `;
-  }).join('');
+    }).join('');
+
+    // refactored - having issues with creating elements
+    // todoListContainer.innerHTML = todoStorage.map((todo, i) => {
     //   // create list item and checkbox
     //   const todoLi = document.createElement('li');
     //   todoLi.classList.add('todo-item', 'default');
@@ -79,5 +82,3 @@ class TodoFunctionality {
   }
 
 }
-
-export default TodoFunctionality

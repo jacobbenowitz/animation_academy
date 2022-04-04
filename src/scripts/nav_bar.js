@@ -1,4 +1,4 @@
-class NavLinkCreator {
+export default class NavLinkCreator {
     constructor(headerList) {
         this.headerList = headerList
         this.navLinks = [];
@@ -50,5 +50,3 @@ class NavLinkCreator {
     //     // change color based on link
     // }
 }
-
-export default NavLinkCreator;
