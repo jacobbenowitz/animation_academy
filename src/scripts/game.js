@@ -13,11 +13,13 @@ export default class Game {
     this.hero = document.querySelector('.hero')
     this.interfaceContainer = interfaceContainer;
     this.currentLevel = this.currentLevel() || LEVELS[0];
-    this.promptContainer = new PromptCreator(this.currentLevel, this.interfaceContainer);
-    // this.ide = new IdeCreator;
-    // this.bind handlers
-    this.gameSetup
-    // this.addSubmissionListener
+    this.promptContainer =
+      new PromptCreator(this.currentLevel, this.interfaceContainer);
+    this.ide =
+      new IdeCreator(this.currentLevel, this.interfaceContainer);
+    this.bindHandlers();
+    this.gameSetup()
+    // this.userSubmitListener()
   }
 
   currentLevel() {
@@ -30,12 +32,14 @@ export default class Game {
     return undefined;
   }
 
-  // bind handlers??
+  bindHandlers() {
+    // bind completionCheck, prev and next level fnc
+  }
 
   gameSetup() {
     // render prompt instructions 
     // render ide with boiler code and form
-    // this.interface.appendChild(this.promptContainer)
+
   }
 
   levelNavListeners() {
@@ -58,12 +62,16 @@ export default class Game {
     // load level
   }
 
-
   
   levelSuccess() {
-    // increment current level
-    // update this.level
-    // call this.loadLevel
+    const newLevel = this.currentLevel.lessonNumber += 1;
+    this.level = LEVELS[newLevel];
+    this.renderNewLevel();
+    localStorage.setItem("currentLevel", JSON.stringify(this.currentLevel.lessonNumber));
+  }
+
+  renderNewLevel() {
+
   }
 
   userSubmitListener() {

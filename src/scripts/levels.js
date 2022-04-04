@@ -13,5 +13,19 @@ export const LEVELS = [
     lines: 8,
     solution: "transition: width 2s ease-in",
     syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"
+  },
+  {
+    lessonNumber: 2,
+    promptTitle:
+      "Wow you made it",
+    promptInstructions:
+      "Instructions have changed",
+    cssProperties:
+      ["transition-property", "transition-duration"],
+    boilerCode:
+      ["#wowowooww {", " position: absolute;", " color: green;", "}", "#button {"],
+    lines: 8,
+    solution: "animate: width 2s ease-in",
+    syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"
   }
   ]
