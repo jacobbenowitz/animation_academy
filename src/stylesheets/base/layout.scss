@@ -13,6 +13,7 @@ body {
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 14px;
+  justify-content: center;
 }
 
 .grid-2-col {

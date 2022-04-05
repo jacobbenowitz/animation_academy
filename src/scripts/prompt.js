@@ -1,5 +1,5 @@
 export default class PromptCreator {
-  constructor(interfaceContainer) {
+  constructor() {
     this.promptContainer = this.createPromptContainer()
   }
   // create Prompt box and add content
@@ -8,8 +8,9 @@ export default class PromptCreator {
     container.classList.add('prompt')
     return container
   }
-
+  
   addPromptContent(currentLevel) {
+    console.log(currentLevel)
     this.createPromptNav(currentLevel.lessonNumber)
     this.createPromptTitle(currentLevel.promptTitle)
     this.createPromptInstructions(currentLevel.promptInstructions)

@@ -4,12 +4,13 @@
 }
 
 .product-box {
+  align-self: center;
   display: grid;
   margin-top: 40px;
   grid-template-columns: 1fr 1fr;
   border-radius: 16px;
   height: 250px;
-  width: 250px;
+  // width: 250px;
   background-color: $background;
 }
 

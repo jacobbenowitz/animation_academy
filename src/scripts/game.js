@@ -87,9 +87,9 @@ export default class Game {
   }
 
   renderNewLevel() {
-    this.gameSetup();
     localStorage.setItem("lessonNumber",
       JSON.stringify(this.currentLevel.lessonNumber));
+    this.gameSetup();
   }
 
   // reset() {

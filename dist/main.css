@@ -148,6 +148,7 @@ body {
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 14px;
+  justify-content: center;
 }
 
 .grid-2-col {
@@ -320,6 +321,10 @@ header img {
   left: 50px;
 }
 
+.todo {
+  padding: 50px 0 50px 0;
+}
+
 .todo-list-container {
   padding: 40px 20px 20px 20px;
   background-color: #201F1E;
@@ -371,12 +376,12 @@ header img {
 }
 
 .product-box {
+  align-self: center;
   display: grid;
   margin-top: 40px;
   grid-template-columns: 1fr 1fr;
   border-radius: 16px;
   height: 250px;
-  width: 250px;
   background-color: #131213;
 }
 
