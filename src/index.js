@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     new TodoCreator(todoSection);
     // add todo functionality
     const todoForm = document.querySelector('.todo-form');
-    const todoListContainer = document.querySelector('.todo-list');
+    const todoList = document.querySelector('.todo-list');
     const todoStorage = JSON.parse(localStorage.getItem('todo-items')) || [];
-    new TodoFunctionality(todoListContainer, todoForm, todoStorage);
+    new TodoFunctionality(todoList, todoForm, todoStorage);
     // create products 
     const productsContainer = document.querySelector('.products-grid')
     new ProductsCreator(productsContainer);

@@ -18,8 +18,8 @@ export default class IdeCreator {
   // create ide box and add content
   createIdeContainer() {
     const container = document.createElement('div');
-    container.classList.add('ide');
-    container.classList.add('grid-2-col-ide');
+    container.id = "ide"
+    container.classList.add('ide','grid-2-col-ide');
 
     const leftCol = document.createElement('div');
     const rightCol = document.createElement('div');
@@ -53,7 +53,7 @@ export default class IdeCreator {
   }
 
   addLineNums(leftCol, currentLevel) {
-    const levelLines = currentLevel.lines;
+    const levelLines = currentLevel.totalLines;
     const lineNums =
         this.buildNumsArray(levelLines).join('\n');
     const lineNumsText = document.createElement('pre');
@@ -63,7 +63,6 @@ export default class IdeCreator {
   }
 
   addBoilerCode(rightCol, currentLevel) {
-
     const boilerCodeText =
         currentLevel.boilerCode.join('\n');
     const innerCode = document.createElement('pre');
@@ -72,11 +71,16 @@ export default class IdeCreator {
     rightCol.append(innerCode)
   }
 
-  buildInput(rightCol) {
-    const codeInput = document.createElement("input");
-    codeInput.type = "text";
-    codeInput.className = "code-input";
-    rightCol.append(codeInput);
+  buildInput(rightCol, currentLevel) {
+    const inputs = [];
+    const numInputs = currentLevel.numInputLines;
+    for (let i = 0; i < numInputs; i++) {
+      let codeInput = document.createElement("input");
+      codeInput.type = "text";
+      codeInput.className = "code-input";
+      inputs.push(codeInput);
+    }
+    rightCol.append(...inputs)
   }
 
   addEndingBracket(rightCol) {

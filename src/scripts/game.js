@@ -2,12 +2,6 @@ import PromptCreator from "./prompt";
 import IdeCreator from "./ide";
 import { LEVELS } from './levels'
 
-// create game interface
-    // const prompt = new PromptCreator(interfaceContainer);
-    // create ide for user input
-    // const ide = new IdeCreator(interfaceContainer);
-
-
 export default class Game {
   constructor(interfaceContainer) {
     this.hero = document.querySelector('.hero')
@@ -19,7 +13,7 @@ export default class Game {
       new IdeCreator(this.interfaceContainer);
     this.bindHandlers();
     this.gameSetup();
-    this.userSubmitListener()
+    this.userSubmitListener();
   }
 
   // OK //
@@ -37,6 +31,7 @@ export default class Game {
     this.gameSetup = this.gameSetup.bind(this);
     this.nextLevel = this.nextLevel.bind(this);
     this.prevLevel = this.prevLevel.bind(this);
+    this.checkUserInput = this.checkUserInput.bind(this);
     // debounce & bind completionCheck
   }
 
@@ -46,64 +41,81 @@ export default class Game {
     this.promptContainer.attachPrompt(this.interfaceContainer);
     // render ide with boiler code and form
     this.ide.addIdeContent(this.currentLevel);
-    this.ide.attachIde
+    this.ide.attachIde();
   }
 
   levelNavListeners() {
     // select lesson nav buttons, add listeners
-    const back = document.querySelector('prev-lesson')
-    const next = document.querySelector('next-lesson')
-    // querySelect dropdown
-    // querySelect reset button
-    // add event listeners on all, add cb for each
+    const back = document.querySelector('.prev-lesson')
+    const next = document.querySelector('.next-lesson')
+    // TODO querySelect dropdown
+    // TODO querySelect reset button
+
     back.on('click', this.nextLevel)
     next.on('click', this.prevLevel)
   }
 
   nextLevel(e) {
     e.stopPropagation();
-    
-    // update this.level
-    // load level
+    console.log(e.target);
+    if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
+      return;
+    }
+    this.levelSuccess();
   }
 
   prevLevel(e) {
     e.stopPropagation();
+    console.log(e.target);
+    // go to prev unless this is level 0
     if (this.currentLevel === 0) {
       return;
     }
-    let prevLevel = this.currentLevel - 1
-    this.level = LEVELS[prevLevel]
-    // go to prev unless this is level 0
-    // update this.level
-    // load level
+    let prevLevel = this.currentLevel - 1;
+    this.currentLevel = LEVELS[prevLevel];
+    // load prev level
+    this.renderNewLevel()
   }
 
   
   levelSuccess() {
-    const newLevel = this.currentLevel.lessonNumber += 1;
-    this.level = LEVELS[newLevel];
-    this.renderNewLevel();
-    localStorage.setItem("currentLevel", JSON.stringify(this.currentLevel.lessonNumber));
+    const newLevel = this.currentLevel.lessonNumber + 1;
+    if (LEVELS[newLevel]) {
+      this.currentLevel = LEVELS[newLevel];
+      this.renderNewLevel();
+    }
   }
 
   renderNewLevel() {
-
+    this.gameSetup();
+    localStorage.setItem("lessonNumber",
+      JSON.stringify(this.currentLevel.lessonNumber));
   }
 
-  reset() {
-    //
-  }
+  // reset() {
+  //   this.gameSetup();
+  //   localStorage.setItem("lessonNumber",
+  //     JSON.stringify(this.currentLevel.lessonNumber))
+  // }
 
   userSubmitListener() {
-    // listen for click on ide button
+    const ideContainer = document.querySelector('#ide')
+    ideContainer.addEventListener(
+      'click', this.checkUserInput
+    );
   }
 
-  checkUserInput() {
+  checkUserInput(e) {
+    // console.log(e.target);
+    const button = document.querySelector('.ide-button');
+    const userInput = document.getElementsByClassName('code-input');
+    const inputText = userInput[0].value;
+    const solution = this.currentLevel.solution;
     // get user input
-    // compare to solution, if === then call levelSuccess
-    // else, render errors to user
+    if (e.target === button && inputText === solution) {
+      this.levelSuccess();
+    }
+    undefined;
   }
-
 
 }

@@ -1,16 +1,27 @@
 export default class TodoFunctionality {
-  constructor(todoListContainer, todoForm, todoStorage) {
-    this.todoListContainer = todoListContainer; // ul
+  constructor(todoList, todoForm, todoStorage) {
+    this.todoList = todoList; // ul
     this.todoForm = todoForm; // form
     this.todoStorage = todoStorage; // localStorage array
-    this.addNewTodo = this.addNewTodo.bind(this); // bind this to callback
+    this.todoContainer = document.querySelector('.todo-list-container')
+    this.bindHandler();
+    this.addEventListeners();
+    this.populateList(this.todoStorage, this.todoList);
+  }
+
+  bindHandler() {
+    this.addNewTodo = this.addNewTodo.bind(this);
+    this.populateList = this.populateList.bind(this); // bind this to callback
+    this.toggleDone = this.toggleDone.bind(this); // bind this to callback
+        this.reset = this.reset.bind(this);
+  }
+
+  addEventListeners() {
     // add event listener on submit button
     this.todoForm.addEventListener('submit', this.addNewTodo);
     // add event listener on list items - toggle done
-    this.toggleDone = this.toggleDone.bind(this); // bind this to callback
-    this.todoListContainer.addEventListener('click', this.toggleDone);
-    this.populateList = this.populateList.bind(this); // bind this to callback
-    this.populateList(this.todoStorage, this.todoListContainer);
+    this.todoContainer.addEventListener('click', this.reset)
+    this.todoList.addEventListener('click', this.toggleDone);
   }
 
   addNewTodo(e) {
@@ -24,7 +35,7 @@ export default class TodoFunctionality {
     };
     // add todo to our todoStorage array and populate list of todo's
     this.todoStorage.push(todoObj);
-    this.populateList(this.todoStorage, this.todoListContainer);
+    this.populateList(this.todoStorage, this.todoList);
     // save in user's local storage
     localStorage.setItem('todo-items', JSON.stringify(this.todoStorage));
     // reset event listener 
@@ -32,9 +43,9 @@ export default class TodoFunctionality {
   }
 
   // update user's list of todos rendered on the browser
-  populateList(todoStorage = [], todoListContainer) {
-    // iterate through all todo items and map to todoListContainer
-    todoListContainer.innerHTML = todoStorage.map((todo, i) => {
+  populateList(todoStorage = [], todoList) {
+    // iterate through all todo items and map to todoList
+    todoList.innerHTML = todoStorage.map((todo, i) => {
       return `
       <li class = "todo-item ${todo.done ? 'done' : 'default'}" >
       <input type="checkbox" class = 'checkbox' data-index=${i} ${todo.done ? 'checked' : ''} />
@@ -42,31 +53,6 @@ export default class TodoFunctionality {
       </li>
       `;
     }).join('');
-
-    // refactored - having issues with creating elements
-    // todoListContainer.innerHTML = todoStorage.map((todo, i) => {
-    //   // create list item and checkbox
-    //   const todoLi = document.createElement('li');
-    //   todoLi.classList.add('todo-item', 'default');
-    //   const checkBox = document.createElement('input');
-    //   checkBox.type = 'checkbox';
-    //   // preselect checkbox if it is done
-    //   if (item.done) checkBox.checked = true;
-    //   // set checkbox data-index so label/todo-item can be matched
-    //   checkBox.dataset.index = `${i}`;
-      
-    //   // create label for todo
-    //   const todoLabel = document.createElement('label');
-    //   todoLabel.setAttribute('for', `item${i}`);
-    //   todoLabel.innerHTML = `${item.text}`;
-      
-    //   // construct todo list item with all elements
-    //   todoLi.append(checkBox, todoLabel);
-      
-    //   // debugger
-    //   return todoLi;
-    // }).join('');
-    
   }
 
   toggleDone(e) {
@@ -78,7 +64,16 @@ export default class TodoFunctionality {
     this.todoStorage[index].done = !this.todoStorage[index].done; // flip status
     // save todo to storage, render on DOM
     localStorage.setItem('todo-items', JSON.stringify(this.todoStorage));
-    this.populateList(this.todoStorage, this.todoListContainer);
+    this.populateList(this.todoStorage, this.todoList);
+  }
+
+  reset(e) {
+    const resetButton = document.querySelector('.todo-reset');
+    if (e.target === resetButton) {
+      localStorage.removeItem('todo-items');
+      this.todoStorage = [];
+    }
+    this.populateList(this.todoStorage, this.todoList);
   }
 
 }

@@ -59,11 +59,12 @@ export default class TodoCreator {
   // create todo list and form
   createTodo(todoListContainer) {
     // create todo list
-    const todoList = document.createElement('ul')
-    todoList.classList.add('todo-list')
+    const todoList = document.createElement('ul');
+    todoList.classList.add('todo-list');
     // create form
-    const todoForm = this.createTodoForm()
-    todoListContainer.append(todoList,todoForm)
+    const todoForm = this.createTodoForm();
+    const resetButton = this.createResetButton();
+    todoListContainer.append(todoList, todoForm, resetButton);
   }
 
   // create new todo form with input and button
@@ -85,6 +86,14 @@ export default class TodoCreator {
     // add input and button to form
     todoForm.append(inputTodo, button)
     return todoForm
+  }
+
+  createResetButton() {
+    const resetButton = document.createElement('a');
+    resetButton.innerHTML = "reset"
+    resetButton.href = "#"
+    resetButton.classList.add('button', 'todo-reset');
+    return resetButton;
   }
 
   attachTodo() {
