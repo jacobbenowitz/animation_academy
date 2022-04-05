@@ -54,14 +54,14 @@ export default class IdeCreator {
   }
   
   updateIdeContent(currentLevel) {
-    const leftCol = this.ideContainer.childNodes[0];
-    const lineNums = leftCol.childNodes[0];
-    this.updateLineNums(currentLevel, lineNums);
+    this.updateLineNums(currentLevel);
     this.updateBoilerCode(currentLevel);
     this.updateInput(currentLevel);
     }
     
-  updateLineNums(currentLevel, lineNums) {
+  updateLineNums(currentLevel) {
+    const leftCol = this.ideContainer.childNodes[0];
+    const lineNums = leftCol.childNodes[0];
     const nums = this.buildNumsArray(
       currentLevel.totalLines).join('\n');
     lineNums.innerHTML = nums;
@@ -77,8 +77,10 @@ export default class IdeCreator {
 
   updateInput(currentLevel) {
     const input = document.querySelector('.code-input');
-    input.innerHTML = "";
-    input.rows = currentLevel.numInputLines;
+    const rows = currentLevel.numInputLines;
+    const inputTemplate = currentLevel.inputTemplateCode;
+    input.innerHTML = inputTemplate.join('\n');
+    input.rows = rows;
   }
 
   buildNumsArray(numLines) {
@@ -117,12 +119,12 @@ export default class IdeCreator {
 
   buildInput(rightCol, currentLevel) {
     const rows = currentLevel.numInputLines;
-    const inputTemplate = currentLevel.inputTemplateCode.join('\n');
+    const inputTemplate = currentLevel.inputTemplateCode;
     const input = document.createElement('textarea');
+    input.innerHTML = inputTemplate.join('\n');
     input.name = "user[code]";
     input.classList.add('code-input');
     input.rows = rows;
-    if (inputTemplate) input.innerHTML = inputTemplate;
     rightCol.append(input);
   }
 

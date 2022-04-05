@@ -10,7 +10,6 @@ export default class PromptCreator {
   }
   
   addPromptContent(currentLevel) {
-    console.log(currentLevel)
     this.createPromptNav(currentLevel.lessonNumber)
     this.createPromptTitle(currentLevel.promptTitle)
     this.createPromptInstructions(currentLevel.promptInstructions)

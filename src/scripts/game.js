@@ -18,7 +18,6 @@ export default class Game {
   // get level from localStorage, return undefined if none
   currentLevel() {
     const lessonNumber = localStorage.getItem('lessonNumber');
-    console.log(lessonNumber)
     if (lessonNumber) {
       // const currentLevel = JSON.parse(LEVELS[this.lessonIndex]);
       return LEVELS[lessonNumber];
@@ -66,7 +65,6 @@ export default class Game {
   
   prevLevel(e) {
     e.stopPropagation();
-    
     // go to prev unless this is level 0
     if (this.currentLevel === 0) return;
     const prevLevel = this.currentLevel.lessonNumber - 1;
@@ -83,21 +81,38 @@ export default class Game {
   }
 
   checkUserInput(e) {
+    e.stopPropagation();
     const button = document.querySelector('.ide-button');
     const userInput = document.querySelector('.code-input');
-    const inputText = userInput.value;
+    const inputTextArr = userInput.value.split(' ');
     const solution = this.currentLevel.solution;
-
-    /// SOLUTION IS SHORTHAND, UPDATE TO LONGHAND!!
-
-
-    console.log(solution);
-    // get user input
-    if (e.target === button && inputText === solution) {
+    if (e.target === button &&
+        this.regexCheck(inputTextArr, solution)) {
       console.log('SUCCESS: Render new level pls')
       this.levelSuccess();
+    } else console.log('Input does not match solution')
+  }
+
+  regexCheck(inputTextArr, solution) {
+    const regexMatchers = [];
+    for (let i = 0; i < solution.length; i++) {
+      const regex = new RegExp(solution[i]);
+      regexMatchers.push(regex);
     }
-    undefined;
+    let numMatches = 0;
+    // match every input with regexMatchers
+    for (let i = 0; i < inputTextArr.length; i++) {
+      const input = inputTextArr[i];
+      for (let j = 0; j < regexMatchers.length; j++) {
+        if (input.match(regexMatchers[j]) !== null) {
+          console.log(input.match(regexMatchers[j]));
+          numMatches += 1;
+        }
+      }
+    }
+    // check if all solutions are matched
+    if (numMatches >= solution.length) return true;
+    return false;
   }
 
   levelSuccess() {
@@ -114,7 +129,6 @@ export default class Game {
     console.log('in renderNewLevel');
     localStorage.setItem("lessonNumber",
       JSON.stringify(this.currentLevel.lessonNumber));
-    console.log(localStorage)
     this.gameUpdate();
   }
   // update prompt and ide content
