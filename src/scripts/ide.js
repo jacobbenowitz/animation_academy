@@ -1,6 +1,5 @@
 export default class IdeCreator {
-  constructor(interfaceContainer) {
-    this.interfaceContainer = interfaceContainer;
+  constructor() {
     this.ideContainer = this.createIdeContainer();
     this.ideContainer.addEventListener('click', this.checkInput)
   }
@@ -22,12 +21,11 @@ export default class IdeCreator {
     container.classList.add('ide','grid-2-col-ide');
 
     const leftCol = document.createElement('div');
+    leftCol.classList.add('left-col');
     const rightCol = document.createElement('div');
+    rightCol.classList.add('right-col');
 
-    container.appendChild(leftCol)
-      .classList.add('left-col');
-    container.appendChild(rightCol)
-      .classList.add('right-col');
+    container.append(leftCol, rightCol);
 
     return container;
   }
@@ -40,8 +38,6 @@ export default class IdeCreator {
     this.buildInput(rightCol, currentLevel);
     this.addEndingBracket(rightCol);
     this.buildButton(rightCol);
-
-    this.attachIde(this.ideContainer);
   }
 
   buildNumsArray(numLines) {
@@ -98,7 +94,7 @@ export default class IdeCreator {
     rightCol.append(button);
   }
 
-  attachIde() {
-    this.interfaceContainer.append(this.ideContainer);
+  attachIde(interfaceContainer) {
+    interfaceContainer.append(this.ideContainer);
   }
 }
