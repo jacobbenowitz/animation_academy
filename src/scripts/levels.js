@@ -6,6 +6,7 @@ export const LEVELS = [
       "Add a hover transition to buttons",
     promptInstructions:
       "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
+    syntaxHints: ["Hint! Use these properties:", "transition-property: background-color;", "transition-duration: 1s;"],
     boilerCode:
       [".hero-button-hover {", "  background-color: none;"],
     inputTemplateCode:
@@ -14,8 +15,7 @@ export const LEVELS = [
       [" ",".hero-button-hover:hover {", "  background-color: $primary;", "}"],
     numInputLines: 2,
     totalLines: 8,
-    solution: ["(background-color)", "(1s)"],
-    syntaxHints: "transition-property: background-color; transition-duration: 1s;"
+    solution: ["(background-color)", "(1s)"]
   },
   {
     lessonNumber: 1,
@@ -23,6 +23,7 @@ export const LEVELS = [
       "1 testin one property on the button",
     promptInstructions:
       "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
+    syntaxHints: ["Hint! Use these properties:", "transition-property: background-color;", "transition-duration: 1s;"],
     boilerCode:
       [".level1 test {", "  background-color: none;"],
     inputTemplateCode:
@@ -31,8 +32,7 @@ export const LEVELS = [
       [" ",".hero-button-hover:hover {", "  background-color: $primary;", "}"],
     numInputLines: 4,
     totalLines: 10,
-    solution: ["(background-color)", "(1s)"],
-    syntaxHints: "transition-property: background-color; transition-duration: 1s;"
+    solution: ["(background-color)", "(1s)"]
   },
   {
     lessonNumber: 2,
@@ -40,6 +40,7 @@ export const LEVELS = [
       "2 test! to buttons",
     promptInstructions:
       "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
+    syntaxHints: ["Hint! Use these properties:", "transition-property: background-color;", "transition-duration: 1s;"],
     boilerCode:
       [".level 2 test {", "  background-color: none;"],
     inputTemplateCode:
@@ -48,7 +49,6 @@ export const LEVELS = [
       [" ",".hero-button-hover:hover {", "  background-color: $primary;", "}"],
     numInputLines: 6,
     totalLines: 12,
-    solution: ["(background-color)", "(1s)"],
-    syntaxHints: "transition-property: background-color; transition-duration: 1s;"
+    solution: ["(background-color)", "(1s)"]
   }
   ]

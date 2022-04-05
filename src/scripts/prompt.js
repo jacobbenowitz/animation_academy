@@ -10,9 +10,10 @@ export default class PromptCreator {
   }
   
   addPromptContent(currentLevel) {
-    this.createPromptNav(currentLevel.lessonNumber)
-    this.createPromptTitle(currentLevel.promptTitle)
-    this.createPromptInstructions(currentLevel.promptInstructions)
+    this.createPromptNav(currentLevel.lessonNumber);
+    this.createPromptTitle(currentLevel.promptTitle);
+    this.createPromptInstructions(currentLevel.promptInstructions);
+    this.createPromptHints(currentLevel.syntaxHints);
   }
 
   updatePromptContent(currentLevel) {
@@ -63,6 +64,17 @@ export default class PromptCreator {
     instruction.innerHTML = instructions;
     instruction.classList.add('prompt-instruction');
     this.promptContainer.appendChild(instruction);
+  }
+
+  createPromptHints(syntaxHints) {
+    const hints = document.createElement('ul');
+    syntaxHints.forEach(hint => {
+      let li = document.createElement('li');
+      li.innerHTML = hint;
+      li.classList.add('hint')
+      hints.appendChild(li)
+    })
+    this.promptContainer.appendChild(hints)
   }
 
   attachPrompt(interfaceContainer) {

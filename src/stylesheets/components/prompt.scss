@@ -10,6 +10,28 @@
   padding: 10px 20px 10px 20px;
 }
 
+.prompt ul {
+  padding-top: 1rem;
+}
+
+.prompt li {
+  width: fit-content;
+  font-family: $source-code;
+  color: $primary;
+  background-color: $code-bg;
+  border-radius: 4px;
+  margin: 4px 0 4px 0;
+  padding: 4px 8px 4px 8px;
+  font-size: small;
+}
+
+.prompt ul li:first-child {
+  padding-left: 0px;
+  font-family: $prompt;
+  color: $white;
+  background: none;
+}
+
 .prompt a {
   color: $primary;
 }
@@ -24,6 +46,7 @@
 .lesson-id {
   margin: 0 10px 0 10px;
 }
+
 .prompt-title {
   margin-bottom: 10px;
   margin-top: 5px;

@@ -281,6 +281,28 @@ header img {
   padding: 10px 20px 10px 20px;
 }
 
+.prompt ul {
+  padding-top: 1rem;
+}
+
+.prompt li {
+  width: fit-content;
+  font-family: "Source Code Pro", monospace;
+  color: #03DAC6;
+  background-color: rgba(19, 18, 19, 0.7450980392);
+  border-radius: 4px;
+  margin: 4px 0 4px 0;
+  padding: 4px 8px 4px 8px;
+  font-size: small;
+}
+
+.prompt ul li:first-child {
+  padding-left: 0px;
+  font-family: "Prompt", sans-serif;
+  color: #DFDFDF;
+  background: none;
+}
+
 .prompt a {
   color: #03DAC6;
 }
