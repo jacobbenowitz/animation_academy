@@ -1,7 +1,7 @@
 // TODO: import from CSV and programatically create obj
 export const LEVELS = [
   {
-    lessonNumber: 1,
+    lessonNumber: 0,
     promptTitle:
       "Add a hover effect to buttons",
     promptInstructions:
@@ -16,7 +16,7 @@ export const LEVELS = [
     syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"
   },
   {
-    lessonNumber: 2,
+    lessonNumber: 1,
     promptTitle:
       "Wow you made it",
     promptInstructions:

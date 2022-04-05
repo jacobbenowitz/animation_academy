@@ -1,12 +1,11 @@
 // entry point, bundler will take required files here for use in main.js
 import NavLinkCreator from "./scripts/nav_bar";
 import Hero from "./scripts/hero";
-// import PromptCreator from "./scripts/prompt";
-// import IdeCreator from "./scripts/ide";
 import TodoCreator from "./scripts/todoCreator";
 import TodoFunctionality from "./scripts/todo";
 import ProductsCreator from "./scripts/products";
 import Game from "./scripts/game";
+import { LEVELS } from "./scripts/levels"
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -30,5 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // create new game
     const interfaceContainer = document.querySelector('.interface');
-    new Game(interfaceContainer);
+    const game = new Game(interfaceContainer);
+
+    // TODO: Load without ide, wait for play button click
+    // const playButton = document.querySelector('.play-now')
+    // playButton.addEventListener('click', startGame)
+
+    // function startGame () {
+    //     game.currentLevel = LEVELS[0];
+    //     game.gameSetup();
+    // }
+
 })

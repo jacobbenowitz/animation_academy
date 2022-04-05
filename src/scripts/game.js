@@ -7,6 +7,7 @@ export default class Game {
     this.hero = document.querySelector('.hero')
     this.interfaceContainer = interfaceContainer;
     this.currentLevel = this.currentLevel() || LEVELS[0];
+    this.lessonIndex = 0;
     this.promptContainer = new PromptCreator();
     this.ide = new IdeCreator();
     this.bindHandlers();
@@ -14,11 +15,13 @@ export default class Game {
     this.userSubmitListener();
   }
 
+  // TODO: Refactor lessonNumbr to use lessonIdex (game and ide/prompt)
   // get level from localStorage, return undefined if none
   currentLevel() {
     const lessonNumber = localStorage.getItem('lessonNumber');
     if (lessonNumber) {
-      const currentLevel = JSON.parse(lessonNumber);
+      this.lessonIndex = lessonNumber;
+      const currentLevel = JSON.parse(LEVELS[lessonNumber]);
       return LEVELS[currentLevel];
     }
     return undefined;
@@ -52,12 +55,23 @@ export default class Game {
   }
 
   nextLevel(e) {
-    e.stopPropagation();
     console.log(e.target); // NOT LOGGING
+    e.stopPropagation();
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
       return;
     }
     this.levelSuccess();
+  }
+  
+  prevLevel(e) {
+    console.log(e.target); // NOT LOGGING
+    e.stopPropagation();
+    // go to prev unless this is level 0
+    if (this.currentLevel === 0) return;
+    let prevLevel = this.currentLevel - 1;
+    this.currentLevel = LEVELS[prevLevel];
+    // load prev level
+    this.renderNewLevel()
   }
 
   userSubmitListener() {
@@ -75,32 +89,25 @@ export default class Game {
     const solution = this.currentLevel.solution;
     // get user input
     if (e.target === button && inputText === solution) {
+      console.log('SUCCESS: Render new level pls')
       this.levelSuccess();
     }
     undefined;
   }
 
-  prevLevel(e) {
-    e.stopPropagation();
-    console.log(e.target); // NOT LOGGING
-    // go to prev unless this is level 0
-    if (this.currentLevel === 0) return;
-    let prevLevel = this.currentLevel - 1;
-    this.currentLevel = LEVELS[prevLevel];
-    // load prev level
-    this.renderNewLevel()
-  }
-  
   renderNewLevel() {
+    console.log('in renderNewLevel');
     localStorage.setItem("lessonNumber",
       JSON.stringify(this.currentLevel.lessonNumber));
     this.gameSetup();
   }
 
   levelSuccess() {
-    const newLevel = this.currentLevel.lessonNumber + 1;
-    if (LEVELS[newLevel]) {
-      this.currentLevel = LEVELS[newLevel];
+    this.lessonIndex = this.lessonIndex + 1;
+    console.log(`new level: ${this.lessonIndex}`)
+    debugger
+    if (LEVELS[this.lessonIndex]) {
+      this.currentLevel = LEVELS[this.lessonIndex];
       this.renderNewLevel();
     }
     undefined;
