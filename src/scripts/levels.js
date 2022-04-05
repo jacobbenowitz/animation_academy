@@ -11,7 +11,7 @@ export const LEVELS = [
     boilerCode:
       ["#boiler {", " position: absolute;", " color: green;", "}", "#button {"],
     numInputLines: 1,
-    totalLines: 8,
+    totalLines: 6,
     solution: "transition: width 2s ease-in",
     syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"
   },
@@ -25,7 +25,7 @@ export const LEVELS = [
       ["transition-property", "transition-duration"],
     boilerCode:
       ["#wowowooww {", " position: absolute;", " color: green;", "}", "#button {"],
-    numInputLines: 2,
+    numInputLines: 3,
     totalLines: 8,
     solution: "animate: width 2s ease-in",
     syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"

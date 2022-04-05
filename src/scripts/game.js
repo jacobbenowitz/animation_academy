@@ -55,23 +55,24 @@ export default class Game {
 
   nextLevel(e) {
     e.stopPropagation();
-    console.log(e.target); // NOT LOGGING
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
       console.log('END OF GAME')
       return;
     }
-    this.levelSuccess();
+    const nextLevel = this.currentLevel.lessonNumber + 1;
+    this.currentLevel = LEVELS[nextLevel];
+    this.renderNewLevel();
   }
   
   prevLevel(e) {
     e.stopPropagation();
-    console.log(e.target); // NOT LOGGING
+    
     // go to prev unless this is level 0
     if (this.currentLevel === 0) return;
     const prevLevel = this.currentLevel.lessonNumber - 1;
     this.currentLevel = LEVELS[prevLevel];
     // load prev level
-    this.renderNewLevel()
+    this.renderNewLevel();
   }
 
   userSubmitListener() {
@@ -109,7 +110,13 @@ export default class Game {
     console.log('in renderNewLevel');
     localStorage.setItem("lessonNumber",
       JSON.stringify(this.currentLevel.lessonNumber));
-    this.gameSetup();
+    console.log(localStorage)
+    this.gameUpdate();
+  }
+  // update prompt and ide content
+  gameUpdate() {
+    this.promptContainer.updatePromptContent(this.currentLevel);
+    this.ide.updateIdeContent(this.currentLevel);
   }
 
 }

@@ -15,6 +15,18 @@ export default class PromptCreator {
     this.createPromptTitle(currentLevel.promptTitle)
     this.createPromptInstructions(currentLevel.promptInstructions)
   }
+
+  updatePromptContent(currentLevel) {
+    // lesson id
+    const lessonId = document.querySelector('.lesson-id')
+    lessonId.innerHTML = "Lesson: " + `${currentLevel.lessonNumber}`;
+    // lesson title
+    const title = document.querySelector('.prompt-title')
+    title.innerHTML = `${currentLevel.promptTitle}`
+    // lesson instructions
+    const instructions = document.querySelector('.prompt-instruction')
+    instructions.innerHTML = `${currentLevel.promptInstructions}`
+  }
   
   // TODO create dropdown lesson nav with forward/back buttons
   createPromptNav(lessonNumber) {
@@ -23,7 +35,7 @@ export default class PromptCreator {
 
     const lessonId = document.createElement('p');
     lessonId.innerHTML = "Lesson: " + `${lessonNumber}`;
-    lessonId.classList.add('prompt-nav');
+    lessonId.classList.add('lesson-id');
 
     // remove innerHTML replace with SVG icons
     const backwardsButton = document.createElement('a')
