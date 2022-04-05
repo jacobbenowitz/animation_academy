@@ -1,8 +1,6 @@
 export default class PromptCreator {
-  constructor(currentLevel, interfaceContainer) {
+  constructor(interfaceContainer) {
     this.promptContainer = this.createPromptContainer()
-    this.addPromptContent(currentLevel)
-    this.attachPrompt(interfaceContainer)
   }
   // create Prompt box and add content
   createPromptContainer() {
@@ -19,10 +17,31 @@ export default class PromptCreator {
   
   // TODO create dropdown lesson nav with forward/back buttons
   createPromptNav(lessonNumber) {
-    const lessonNav = document.createElement('p')
-    lessonNav.innerHTML = "Lesson: " + `${lessonNumber}`
-    lessonNav.classList.add('prompt-nav')
-    this.promptContainer.appendChild(lessonNav)
+    const nav = document.createElement('div')
+    nav.classList.add('lesson-nav')
+
+    const lessonId = document.createElement('p')
+    lessonId.innerHTML = "Lesson: " + `${lessonNumber}`
+    lessonId.classList.add('prompt-nav')
+
+    // remove innerHTML replace with SVG icons
+    const backwardsButton = document.createElement('a')
+    backwardsButton.href = "#"
+    backwardsButton.innerHTML = 'Back'
+    backwardsButton.classList.add('prev-lesson')
+    
+    const forwardsButton = document.createElement('a')
+    forwardsButton.href = "#"
+    forwardsButton.innerHTML = 'Next'
+    forwardsButton.classList.add('next-lesson')
+    
+    // const backwardsIcon = document.createElement('i')
+    //   backwardsIcon.innerHTML = '< i class="fa-solid fa-backward" ></i >'
+    // const forwardsIcon = document.createElement('i')
+    //   forwardsIcon.innerHTML = '< i class="fa-solid fa-forward" ></i >'
+
+    nav.append(backwardsButton, lessonId, forwardsButton)
+    this.promptContainer.appendChild(nav)
   }
 
   createPromptTitle(titleText) {

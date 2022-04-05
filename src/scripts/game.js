@@ -14,14 +14,15 @@ export default class Game {
     this.interfaceContainer = interfaceContainer;
     this.currentLevel = this.currentLevel() || LEVELS[0];
     this.promptContainer =
-      new PromptCreator(this.currentLevel, this.interfaceContainer);
+      new PromptCreator(this.interfaceContainer);
     this.ide =
-      new IdeCreator(this.currentLevel, this.interfaceContainer);
+      new IdeCreator(this.interfaceContainer);
     this.bindHandlers();
-    this.gameSetup()
-    // this.userSubmitListener()
+    this.gameSetup();
+    this.userSubmitListener()
   }
 
+  // OK //
   currentLevel() {
     // get level from localStorage, return undefined if none
     const lessonNumber = localStorage.getItem('lessonNumber');
@@ -33,30 +34,46 @@ export default class Game {
   }
 
   bindHandlers() {
-    // bind completionCheck, prev and next level fnc
+    this.gameSetup = this.gameSetup.bind(this);
+    this.nextLevel = this.nextLevel.bind(this);
+    this.prevLevel = this.prevLevel.bind(this);
+    // debounce & bind completionCheck
   }
 
   gameSetup() {
     // render prompt instructions 
+    this.promptContainer.addPromptContent(this.currentLevel);
+    this.promptContainer.attachPrompt(this.interfaceContainer);
     // render ide with boiler code and form
-
+    this.ide.addIdeContent(this.currentLevel);
+    this.ide.attachIde
   }
 
   levelNavListeners() {
-    // querySelect back button and forward buttons, dropdown
+    // select lesson nav buttons, add listeners
+    const back = document.querySelector('prev-lesson')
+    const next = document.querySelector('next-lesson')
     // querySelect dropdown
     // querySelect reset button
     // add event listeners on all, add cb for each
+    back.on('click', this.nextLevel)
+    next.on('click', this.prevLevel)
   }
 
   nextLevel(e) {
     e.stopPropagation();
+    
     // update this.level
     // load level
   }
 
   prevLevel(e) {
     e.stopPropagation();
+    if (this.currentLevel === 0) {
+      return;
+    }
+    let prevLevel = this.currentLevel - 1
+    this.level = LEVELS[prevLevel]
     // go to prev unless this is level 0
     // update this.level
     // load level
@@ -72,6 +89,10 @@ export default class Game {
 
   renderNewLevel() {
 
+  }
+
+  reset() {
+    //
   }
 
   userSubmitListener() {

@@ -182,7 +182,7 @@ body {
   padding: 60px;
 }
 
-.button {
+.button, .ide-button {
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -195,7 +195,7 @@ body {
   background: none;
 }
 
-.button:hover {
+.ide-button:hover, .button:hover {
   border: none;
   background-color: #03DAC6;
   color: #131213;
@@ -258,6 +258,22 @@ header img {
   padding: 10px 20px 10px 20px;
 }
 
+.prompt a {
+  color: #03DAC6;
+}
+
+.prompt a:hover {
+  color: #BB86FC;
+}
+
+.lesson-nav {
+  display: flex;
+}
+
+.prompt-nav {
+  margin: 0 10px 0 10px;
+}
+
 .prompt-title {
   margin-bottom: 10px;
   margin-top: 5px;
@@ -283,9 +299,9 @@ header img {
   width: 100%;
 }
 
-.ide .button {
+.ide-button {
   position: relative;
-  left: 280px;
+  left: 320px;
 }
 
 .ide .left-col pre {
@@ -350,12 +366,13 @@ header img {
 }
 
 .products {
-  padding: 60px 20px 20px 20px;
+  padding: 60px;
   background-color: #201F1E;
 }
 
 .product-box {
   display: grid;
+  margin-top: 40px;
   grid-template-columns: 1fr 1fr;
   border-radius: 16px;
   height: 250px;

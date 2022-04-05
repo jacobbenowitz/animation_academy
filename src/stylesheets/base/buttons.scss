@@ -1,4 +1,4 @@
-.button {
+.button, .ide-button {
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -11,7 +11,7 @@
   background: none;
 }
 
-.button:hover {
+.ide-button:hover, .button:hover {
   border: none;
   background-color: $primary;
   color: $background;

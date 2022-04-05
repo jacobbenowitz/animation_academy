@@ -1,10 +1,20 @@
 export default class IdeCreator {
-  constructor(currentLevel, interfaceContainer) {
+  constructor(interfaceContainer) {
     this.interfaceContainer = interfaceContainer;
-    this.currentLevel = currentLevel;
     this.ideContainer = this.createIdeContainer();
-    this.addIdeContent(this.ideContainer);
+    this.ideContainer.addEventListener('click', this.checkInput)
   }
+
+  checkInput(e) {
+    const button = document.querySelector('ide-button')
+    if (e.target === button) {
+      const solution = this.currentLevel.solution;
+      if (e === solution) return true;
+      return false;
+    }
+    undefined;
+  }
+
   // create ide box and add content
   createIdeContainer() {
     const container = document.createElement('div');
@@ -22,26 +32,40 @@ export default class IdeCreator {
     return container;
   }
 
+  addIdeContent(currentLevel) {
+    const leftCol = this.ideContainer.childNodes[0];
+    const rightCol = this.ideContainer.childNodes[1];
+    this.addLineNums(leftCol, currentLevel);
+    this.addBoilerCode(rightCol, currentLevel);
+    this.buildInput(rightCol, currentLevel);
+    this.addEndingBracket(rightCol);
+    this.buildButton(rightCol);
+
+    this.attachIde(this.ideContainer);
+  }
+
   buildNumsArray(numLines) {
     const nums = [];
-    for (let i = 0; i < numLines.length; i++) {
-      nums.push(numLines[i])
+    for (let i = 0; i < numLines + 1; i++) {
+      nums.push(i)
     }
     return nums;
   }
 
-  addLineNums(leftCol) {
-    const levelLines = this.currentLevel.lines;
-    const lineNums = this.buildNumsArray(levelLines).join('\n');
+  addLineNums(leftCol, currentLevel) {
+    const levelLines = currentLevel.lines;
+    const lineNums =
+        this.buildNumsArray(levelLines).join('\n');
     const lineNumsText = document.createElement('pre');
     lineNumsText.innerHTML = lineNums;
     lineNumsText.classList.add('code');
     leftCol.appendChild(lineNumsText);
   }
 
-  addBoilerCode(rightCol) {
+  addBoilerCode(rightCol, currentLevel) {
 
-    const boilerCodeText = this.currentLevel.boilerCode.join('\n');
+    const boilerCodeText =
+        currentLevel.boilerCode.join('\n');
     const innerCode = document.createElement('pre');
     innerCode.innerHTML = boilerCodeText;
     innerCode.classList.add('code');
@@ -66,24 +90,11 @@ export default class IdeCreator {
     const button = document.createElement('a');
     button.innerHTML = "Next";
     button.href = "#";
-    button.classList.add('button');
+    button.classList.add('ide-button');
     rightCol.append(button);
   }
 
-  addIdeContent(ide) {
-    const leftCol = ide.childNodes[0];
-    const rightCol = ide.childNodes[1];
-
-    this.addLineNums(leftCol);
-    this.addBoilerCode(rightCol);
-    this.buildInput(rightCol);
-    this.addEndingBracket(rightCol);
-    this.buildButton(rightCol);
-
-    this.attachIde(ide);
-  }
-
-  attachIde(ide) {
-    this.interfaceContainer.append(ide);
+  attachIde() {
+    this.interfaceContainer.append(this.ideContainer);
   }
 }

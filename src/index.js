@@ -7,21 +7,8 @@ import TodoCreator from "./scripts/todoCreator";
 import TodoFunctionality from "./scripts/todo";
 import ProductsCreator from "./scripts/products";
 import Game from "./scripts/game";
-// import * as fs from 'fs';
-// const csv = require('csvtojson')
-// const csvFilePath = "src/scripts/animation-academy-levels-main.csv"
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    // csv()
-    // .fromFile(csvFilePath)
-    // .then((jsonObj)=>{
-    //     console.log(jsonObj);
-    //     });
-
-    // const jsonArray = await csv().fromFile(csvFilePath);
-    // console.log(jsonArray)
-
 
     // create the nav bar links
     const headerList = document.querySelector('.header-list');
