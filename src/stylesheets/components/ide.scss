@@ -9,13 +9,22 @@
   padding: 10px 20px 10px 20px;
 }
 
-.ide pre {
+
+.right-col textarea {
+  resize: none;
+  width: 100%;
   font-family: $source-code;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .ide .code-input {
-  background-color: $white;
-  width: 100%;
+  background-color: #dadada69;
+  border-radius: 4px;
+  padding-left: 10px;
+  margin: -7px 0 -7px 0;
 }
 
 .ide-button {
@@ -23,6 +32,13 @@
   left: 320px;
 }
 
-.ide .left-col pre {
+.ide .left-col {
+  height: fit-content;
+  height: 100%;
+}
+
+.ide .left-col textarea{
   color: $primary;
+  resize: none;
+  height: 100%;
 }

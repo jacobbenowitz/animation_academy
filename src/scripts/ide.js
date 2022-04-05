@@ -43,40 +43,30 @@ export default class IdeCreator {
   
   updateIdeContent(currentLevel) {
     const leftCol = this.ideContainer.childNodes[0];
-    const rightCol = this.ideContainer.childNodes[1];
-    const lineNumsPre = leftCol.childNodes[0];
-    this.updateLineNums(currentLevel, lineNumsPre);
+    const lineNums = leftCol.childNodes[0];
+    this.updateLineNums(currentLevel, lineNums);
     this.updateBoilerCode(currentLevel);
-    this.updateInput(currentLevel, rightCol);
-      
+    this.updateInput(currentLevel);
     }
     
-  updateLineNums(currentLevel, lineNumsPre) {
-    const lineNums = this.buildNumsArray(
+  updateLineNums(currentLevel, lineNums) {
+    const nums = this.buildNumsArray(
       currentLevel.totalLines).join('\n');
-    lineNumsPre.innerHTML = lineNums
+    lineNums.innerHTML = nums;
   }
 
   updateBoilerCode(currentLevel) {
     const boiler = document.querySelector('#boiler')
     const boilerCodeText =
       currentLevel.boilerCode.join('\n');
+    boiler.rows = currentLevel.boilerCode.length;
     boiler.innerHTML = boilerCodeText;
   }
 
-  updateInput(currentLevel, rightCol) {
-    const currentInputs = rightCol.querySelectorAll('.code-input');
-    currentInputs.forEach(input => rightCol.removeChild(input))
-    
-    const inputs = [];
-    const numInputs = currentLevel.numInputLines;
-    for (let i = 0; i < numInputs; i++) {
-      let codeInput = document.createElement("input");
-      codeInput.type = "text";
-      codeInput.className = "code-input";
-      inputs.push(codeInput);
-    }
-    rightCol.append(...inputs)
+  updateInput(currentLevel) {
+    const input = document.querySelector('.code-input');
+    input.innerHTML = "";
+    input.rows = currentLevel.numInputLines;
   }
 
   buildNumsArray(numLines) {
@@ -91,38 +81,39 @@ export default class IdeCreator {
     const levelLines = currentLevel.totalLines;
     const lineNums =
         this.buildNumsArray(levelLines).join('\n');
-    const lineNumsText = document.createElement('pre');
+    const lineNumsText = document.createElement('textarea');
     lineNumsText.innerHTML = lineNums;
     lineNumsText.classList.add('code');
+    lineNumsText.rows = levelLines;
+    lineNumsText.cols = 1;
     leftCol.appendChild(lineNumsText);
   }
 
   addBoilerCode(rightCol, currentLevel) {
     const boilerCodeText =
-        currentLevel.boilerCode.join('\n');
-    const innerCode = document.createElement('pre');
-    innerCode.innerHTML = boilerCodeText;
-    innerCode.classList.add('code');
-    innerCode.id = 'boiler';
-    rightCol.append(innerCode)
+      currentLevel.boilerCode.join('\n');
+    const boilerCode = document.createElement('textarea');
+    boilerCode.innerHTML = boilerCodeText;
+    boilerCode.classList.add('code', 'boiler');
+    boilerCode.id = 'boiler';
+    boilerCode.rows = currentLevel.totalLines - currentLevel.numInputLines;
+    rightCol.append(boilerCode)
   }
 
   buildInput(rightCol, currentLevel) {
-    const inputs = [];
-    const numInputs = currentLevel.numInputLines;
-    for (let i = 0; i < numInputs; i++) {
-      let codeInput = document.createElement("input");
-      codeInput.type = "text";
-      codeInput.className = "code-input";
-      inputs.push(codeInput);
-    }
-    rightCol.append(...inputs)
+    const rows = currentLevel.numInputLines;
+    const input = document.createElement('textarea')
+    input.name = "user[code]"
+    input.classList.add('code-input')
+    input.rows = rows;
+    rightCol.append(input)
   }
 
   addEndingBracket(rightCol) {
-    const endingEle = document.createElement('pre');
+    const endingEle = document.createElement('textarea');
     endingEle.innerHTML = "}";
-    endingEle.classList.add('code');
+    endingEle.classList.add('code', 'boiler');
+    endingEle.rows = 1;
     rightCol.append(endingEle)
   }
 

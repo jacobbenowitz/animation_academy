@@ -291,13 +291,21 @@ header img {
   padding: 10px 20px 10px 20px;
 }
 
-.ide pre {
+.right-col textarea {
+  resize: none;
+  width: 100%;
   font-family: "Source Code Pro", monospace;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .ide .code-input {
-  background-color: #DFDFDF;
-  width: 100%;
+  background-color: rgba(218, 218, 218, 0.4117647059);
+  border-radius: 4px;
+  padding-left: 10px;
+  margin: -7px 0 -7px 0;
 }
 
 .ide-button {
@@ -305,8 +313,15 @@ header img {
   left: 320px;
 }
 
-.ide .left-col pre {
+.ide .left-col {
+  height: fit-content;
+  height: 100%;
+}
+
+.ide .left-col textarea {
   color: #03DAC6;
+  resize: none;
+  height: 100%;
 }
 
 .interface {
