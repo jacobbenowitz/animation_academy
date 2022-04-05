@@ -6,23 +6,22 @@ export default class Game {
   constructor(interfaceContainer) {
     this.hero = document.querySelector('.hero')
     this.interfaceContainer = interfaceContainer;
-    this.currentLevel = this.currentLevel() || LEVELS[0];
-    this.lessonIndex = 0;
+    this.currentLevel = this.currentLevel() || LEVELS[0]; // lessonNumber = idx
     this.promptContainer = new PromptCreator();
     this.ide = new IdeCreator();
     this.bindHandlers();
     this.gameSetup();
+    this.levelNavListeners();
     this.userSubmitListener();
   }
 
-  // TODO: Refactor lessonNumbr to use lessonIdex (game and ide/prompt)
   // get level from localStorage, return undefined if none
   currentLevel() {
     const lessonNumber = localStorage.getItem('lessonNumber');
+    console.log(lessonNumber)
     if (lessonNumber) {
-      this.lessonIndex = lessonNumber;
-      const currentLevel = JSON.parse(LEVELS[lessonNumber]);
-      return LEVELS[currentLevel];
+      // const currentLevel = JSON.parse(LEVELS[this.lessonIndex]);
+      return LEVELS[lessonNumber];
     }
     return undefined;
   }
@@ -50,25 +49,26 @@ export default class Game {
     const next = document.querySelector('.next-lesson')
     // TODO querySelect dropdown
     // TODO querySelect reset button
-    back.addEventListener('click', this.nextLevel)
-    next.addEventListener('click', this.prevLevel)
+    back.addEventListener('click', this.prevLevel)
+    next.addEventListener('click', this.nextLevel)
   }
 
   nextLevel(e) {
-    console.log(e.target); // NOT LOGGING
     e.stopPropagation();
+    console.log(e.target); // NOT LOGGING
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
+      console.log('END OF GAME')
       return;
     }
     this.levelSuccess();
   }
   
   prevLevel(e) {
-    console.log(e.target); // NOT LOGGING
     e.stopPropagation();
+    console.log(e.target); // NOT LOGGING
     // go to prev unless this is level 0
     if (this.currentLevel === 0) return;
-    let prevLevel = this.currentLevel - 1;
+    const prevLevel = this.currentLevel.lessonNumber - 1;
     this.currentLevel = LEVELS[prevLevel];
     // load prev level
     this.renderNewLevel()
@@ -95,22 +95,21 @@ export default class Game {
     undefined;
   }
 
+  levelSuccess() {
+    const nextLevel = this.currentLevel.lessonNumber + 1;
+    console.log(`next level: ${nextLevel}`)
+    if (LEVELS[nextLevel]) {
+      this.currentLevel = LEVELS[nextLevel];
+      this.renderNewLevel();
+    }
+    undefined;
+  }
+
   renderNewLevel() {
     console.log('in renderNewLevel');
     localStorage.setItem("lessonNumber",
       JSON.stringify(this.currentLevel.lessonNumber));
     this.gameSetup();
-  }
-
-  levelSuccess() {
-    this.lessonIndex = this.lessonIndex + 1;
-    console.log(`new level: ${this.lessonIndex}`)
-    debugger
-    if (LEVELS[this.lessonIndex]) {
-      this.currentLevel = LEVELS[this.lessonIndex];
-      this.renderNewLevel();
-    }
-    undefined;
   }
 
 }
