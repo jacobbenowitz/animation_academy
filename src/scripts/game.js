@@ -33,6 +33,7 @@ export default class Game {
     this.levelNavListeners = this.levelNavListeners.bind(this);
     this.userSubmitListener = this.userSubmitListener.bind(this);
     this.renderNewLevel = this.renderNewLevel.bind(this);
+    this.gameUpdate = this.gameUpdate.bind(this);
     // TODO: debounce & throttle bind method to check if solution?
   }
 
@@ -71,7 +72,7 @@ export default class Game {
     // go to prev unless this is level 0
     if (this.currentLevel === 0) {
       console.log("already at 0");
-      this.currentLevel === 0;
+      return;
     } else {
         const prevLevel = this.currentLevel.lessonNumber - 1;
         this.currentLevel = LEVELS[prevLevel];
@@ -134,9 +135,8 @@ export default class Game {
   }
 
   renderNewLevel() {
-    console.log('in renderNewLevel');
-    debugger
-    localStorage.setItem("lessonNumber", JSON.stringify(this.currentLevel.lessonNumber));
+    localStorage.setItem("lessonNumber",
+      JSON.stringify(this.currentLevel.lessonNumber));
     this.gameUpdate();
   }
   // update prompt and ide content

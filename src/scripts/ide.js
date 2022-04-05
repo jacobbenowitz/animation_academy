@@ -55,8 +55,8 @@ export default class IdeCreator {
   
   updateIdeContent(currentLevel) {
     this.updateLineNums(currentLevel);
-    this.updateBoilerCode(currentLevel);
     this.updateInput(currentLevel);
+    this.updateBoilerCode(currentLevel);
     }
     
   updateLineNums(currentLevel) {
@@ -79,7 +79,7 @@ export default class IdeCreator {
     const input = document.querySelector('.code-input');
     const rows = currentLevel.numInputLines;
     const inputTemplate = currentLevel.inputTemplateCode;
-    input.innerHTML = inputTemplate.join('\n');
+    input.value = inputTemplate.join('\n');
     input.rows = rows;
   }
 
