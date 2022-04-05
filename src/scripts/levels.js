@@ -20,11 +20,11 @@ export const LEVELS = [
   {
     lessonNumber: 1,
     promptTitle:
-      "Transition more than one property on the button",
+      "1 testin one property on the button",
     promptInstructions:
       "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
     boilerCode:
-      [".hero-button-hover {", "  background-color: none;"],
+      [".level1 test {", "  background-color: none;"],
     inputTemplateCode:
       [" transition-property: ", " transition-duration: "],
     endingBoilerCode:
@@ -37,11 +37,11 @@ export const LEVELS = [
   {
     lessonNumber: 2,
     promptTitle:
-      "Add a hover transition to buttons",
+      "2 test! to buttons",
     promptInstructions:
       "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
     boilerCode:
-      [".hero-button-hover {", "  background-color: none;"],
+      [".level 2 test {", "  background-color: none;"],
     inputTemplateCode:
       [" transition-property: ", " transition-duration: "],
     endingBoilerCode:
