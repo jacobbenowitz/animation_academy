@@ -1,18 +1,30 @@
 export default class IdeCreator {
   constructor() {
     this.ideContainer = this.createIdeContainer();
-    this.ideContainer.addEventListener('click', this.checkInput)
+    // this.bindHandlers();
+    // this.addEventListeners();
   }
 
-  checkInput(e) {
-    const button = document.querySelector('ide-button')
-    if (e.target === button) {
-      const solution = this.currentLevel.solution;
-      if (e === solution) return true;
-      return false;
-    }
-    undefined;
-  }
+  // bindHandlers() {
+  //   this.checkInput = this.checkInput.bind(this);
+  // }
+
+  // addEventListeners() {
+  //   this.ideContainer.addEventListener('click', this.checkInput)
+  // }
+
+  // checkInput(e) {
+  //   e.stopPropagation();
+  //   const ideButton = document.querySelector('ide-button')
+  //   if (e === ideButton) {
+  //     console.log('in check input')
+  //     const solution = this.game.currentLevel.solution;
+  //     if (userInpit === solution) {
+  //       this.game.levelSuccess();
+  //     }
+  //   }
+  //   undefined;
+  // }
 
   // create ide box and add content
   createIdeContainer() {
@@ -36,7 +48,7 @@ export default class IdeCreator {
     this.addLineNums(leftCol, currentLevel);
     this.addBoilerCode(rightCol, currentLevel);
     this.buildInput(rightCol, currentLevel);
-    this.addEndingBracket(rightCol);
+    this.addEndingBoiler(rightCol, currentLevel);
     this.buildButton(rightCol);
     
   }
@@ -85,35 +97,44 @@ export default class IdeCreator {
     lineNumsText.innerHTML = lineNums;
     lineNumsText.classList.add('code');
     lineNumsText.rows = levelLines;
-    lineNumsText.cols = 1;
+    lineNumsText.cols = 2;
+    lineNumsText.disabled = true;
     leftCol.appendChild(lineNumsText);
   }
 
   addBoilerCode(rightCol, currentLevel) {
+    const rows = currentLevel.boilerCode.length
     const boilerCodeText =
       currentLevel.boilerCode.join('\n');
     const boilerCode = document.createElement('textarea');
     boilerCode.innerHTML = boilerCodeText;
     boilerCode.classList.add('code', 'boiler');
     boilerCode.id = 'boiler';
-    boilerCode.rows = currentLevel.totalLines - currentLevel.numInputLines;
+    boilerCode.disabled = true;
+    boilerCode.rows = rows;
     rightCol.append(boilerCode)
   }
 
   buildInput(rightCol, currentLevel) {
     const rows = currentLevel.numInputLines;
-    const input = document.createElement('textarea')
-    input.name = "user[code]"
-    input.classList.add('code-input')
+    const inputTemplate = currentLevel.inputTemplateCode.join('\n');
+    const input = document.createElement('textarea');
+    input.name = "user[code]";
+    input.classList.add('code-input');
     input.rows = rows;
-    rightCol.append(input)
+    if (inputTemplate) input.innerHTML = inputTemplate;
+    rightCol.append(input);
   }
 
-  addEndingBracket(rightCol) {
+  addEndingBoiler(rightCol, currentLevel) {
+    const rows = currentLevel.endingBoilerCode.length;
+    const endingBoilerCodeText =
+      currentLevel.endingBoilerCode.join('\n');
     const endingEle = document.createElement('textarea');
-    endingEle.innerHTML = "}";
+    endingEle.innerHTML = endingBoilerCodeText;
     endingEle.classList.add('code', 'boiler');
-    endingEle.rows = 1;
+    endingEle.rows = rows;
+    endingEle.disabled = true;
     rightCol.append(endingEle)
   }
 

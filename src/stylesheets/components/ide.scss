@@ -11,9 +11,9 @@
 
 
 .right-col textarea {
+  font-family: $source-code;
   resize: none;
   width: 100%;
-  font-family: $source-code;
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 0;
@@ -27,10 +27,9 @@
   margin: -7px 0 -7px 0;
 }
 
-.ide-button {
-  position: relative;
-  left: 320px;
-}
+// .ide-button {
+
+// }
 
 .ide .left-col {
   height: fit-content;

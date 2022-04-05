@@ -8,7 +8,7 @@ export default class Game {
     this.interfaceContainer = interfaceContainer;
     this.currentLevel = this.currentLevel() || LEVELS[0]; // lessonNumber = idx
     this.promptContainer = new PromptCreator();
-    this.ide = new IdeCreator();
+    this.ide = new IdeCreator(this);
     this.bindHandlers();
     this.gameSetup();
     this.levelNavListeners();
@@ -83,11 +83,15 @@ export default class Game {
   }
 
   checkUserInput(e) {
-    console.log(e.target);
     const button = document.querySelector('.ide-button');
-    const userInput = document.getElementsByClassName('code-input');
-    const inputText = userInput[0].value;
+    const userInput = document.querySelector('.code-input');
+    const inputText = userInput.value;
     const solution = this.currentLevel.solution;
+
+    /// SOLUTION IS SHORTHAND, UPDATE TO LONGHAND!!
+
+
+    console.log(solution);
     // get user input
     if (e.target === button && inputText === solution) {
       console.log('SUCCESS: Render new level pls')
@@ -97,13 +101,13 @@ export default class Game {
   }
 
   levelSuccess() {
-    const nextLevel = this.currentLevel.lessonNumber + 1;
-    console.log(`next level: ${nextLevel}`)
-    if (LEVELS[nextLevel]) {
-      this.currentLevel = LEVELS[nextLevel];
-      this.renderNewLevel();
+    if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
+      console.log('END OF GAME')
+      return;
     }
-    undefined;
+    const nextLevel = this.currentLevel.lessonNumber + 1;
+    this.currentLevel = LEVELS[nextLevel];
+    this.renderNewLevel();
   }
 
   renderNewLevel() {

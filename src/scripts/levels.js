@@ -3,31 +3,33 @@ export const LEVELS = [
   {
     lessonNumber: 0,
     promptTitle:
-      "Add a hover effect to buttons",
+      "Add a hover transition to buttons",
     promptInstructions:
-      "Use the 'transition-property' and 'transition-duration' properties to make the buttons change color on hover",
-    cssProperties:
-      ["transition-property", "transition-duration"],
+      "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
     boilerCode:
-      ["#boiler {", " position: absolute;", " color: green;", "}", "#button {"],
-    numInputLines: 1,
-    totalLines: 6,
-    solution: "transition: width 2s ease-in",
-    syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"
+      [".hero-button-hover {", "  background-color: none;"],
+    inputTemplateCode:
+      [" transition-property: ", " transition-duration: "],
+    endingBoilerCode:
+      [" ",".hero-button-hover:hover {", "  background-color: $primary;", "}"],
+    numInputLines: 2,
+    totalLines: 8,
+    solution: "transition: background-color 1s",
+    syntaxHints: "transition-property: background-color; transition-duration: 1s;"
   },
   {
     lessonNumber: 1,
     promptTitle:
-      "Wow you made it",
+      "Add multiple transition properties to buttons on hover",
     promptInstructions:
-      "Instructions have changed",
-    cssProperties:
-      ["transition-property", "transition-duration"],
+      "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color.",
     boilerCode:
-      ["#wowowooww {", " position: absolute;", " color: green;", "}", "#button {"],
+      [".hero-button-hover {", "  color: $white;", "  background-color: none;"],
+    endingBoilerCode:
+      [" ",".hero-button-hover:hover {", "  background-color: $primary;", "}"],
     numInputLines: 3,
-    totalLines: 8,
-    solution: "animate: width 2s ease-in",
-    syntaxHints: "transition-property: font-size; transition-duration: 4s; transition-delay: 2s;"
+    totalLines: 10,
+    solution: "transition: background-color 1s",
+    syntaxHints: "transition-property: background-color; transition-duration: 1s;"
   }
   ]

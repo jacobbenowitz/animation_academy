@@ -1,7 +1,7 @@
 // entry point, bundler will take required files here for use in main.js
 import NavLinkCreator from "./scripts/nav_bar";
 import Hero from "./scripts/hero";
-import TodoCreator from "./scripts/todoCreator";
+import TodoCreator from "./scripts/todo_creator";
 import TodoFunctionality from "./scripts/todo";
 import ProductsCreator from "./scripts/products";
 import Game from "./scripts/game";
