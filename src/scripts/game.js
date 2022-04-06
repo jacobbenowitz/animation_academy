@@ -43,6 +43,7 @@ export default class Game {
   }
 
   gameSetup() {
+    // localStorage.clear(); // TEMP
     // render prompt instructions 
     this.promptContainer.addPromptContent(this.currentLevel);
     this.promptContainer.attachPrompt(this.interfaceContainer);
@@ -168,7 +169,7 @@ export default class Game {
     this.levelFunctionality.addButtonTransitions();
     const body = document.querySelector('body');
     this.levelFunctionality.createSampleSection(body);
-    const section = document.querySelector('.levelSection');
+    const section = document.querySelector('.level-section');
     this.levelFunctionality.createRainbowBox(section)
   }
 

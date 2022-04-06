@@ -143,6 +143,21 @@ body {
   width: 80%;
 }
 
+.center-simple {
+  display: grid;
+  place-items: center;
+}
+
+.grid-12-col {
+  height: 60rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.center-span-5 {
+  grid-column: 5/span 4;
+}
+
 .grid-4-col {
   display: grid;
   width: 100%;
@@ -480,24 +495,12 @@ textarea.code-input {
   margin-right: -130px;
 }
 
-.grid-12-col {
-  height: 60rem;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+.level-section {
+  min-height: 400px;
 }
 
-.center-span-5 {
-  grid-column: 5/span 4;
-}
-
-.backgroundBox {
-  display: grid;
-  place-items: center;
-}
-
-.foregroundBox {
+.foreground-box {
   border-radius: 1rem;
-  position: absolute;
   border: 1px solid #DFDFDF;
   height: 250px;
   width: 250px;
@@ -506,25 +509,14 @@ textarea.code-input {
   overflow: hidden;
 }
 
-.foregroundBox::before {
+.foreground-box::before {
   content: "";
   height: 150%;
   width: 150%;
-  position: absolute;
+  border: none;
   left: -25%;
   bottom: -25%;
   background: conic-gradient(#fd004c, #fe9000, #fff020, #3edf4b, #3363ff, #b102b7, #fd004c);
-}
-
-.foregroundBox::after {
-  content: "";
-  height: 94%;
-  width: 94%;
-  top: 3.5%;
-  left: 3.5%;
-  border-radius: 12px;
-  position: absolute;
-  background-color: #131213;
 }
 
 .levelSection .span-2-5-col {
@@ -576,18 +568,19 @@ input:focus {
   border: 2px solid rgba(0, 0, 0, 0);
   border-radius: 4px;
   padding-left: 10px;
-  margin: -7px 0 -7px 0;
-  transition: background-color, 0.25s ease-in;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .code-input:hover {
   background-color: rgba(218, 218, 218, 0.6784313725);
   border: 2px solid #03DAC6;
+  transition: border 0.5s ease-in;
 }
 
 textarea:focus {
   background-color: rgba(218, 218, 218, 0.6784313725);
   border: 2px solid #BB86FC;
+  transition: border 0.5s ease-in;
 }
 
 header {

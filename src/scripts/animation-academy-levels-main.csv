@@ -1,10 +1,8 @@
-lessonNumber,cssProperties,boilerCode,solution,lines,promptTitle,promptInstructions,syntaxHints
-1,transition-property,"[ ""#boiler {"", "" position: absolute;"", "" color: green;"", ""}"", ""#button {"" ]",transition: width 2s ease-in,8,Add a hover effect to buttons,Use the 'transition-property' and 'transition-duration' properties to make the buttons change color on hover,"#delay {
-font-size: 14px;
-transition-property: font-size;
-transition-duration: 4s;
-transition-delay: 2s;
-}
-#delay:hover {
-font-size: 36px;
-}"
+lessonNumber,promptTitle,promptInstructions,cssProperties,syntaxHints,boilerCode,inputTemplateCode,endingBoilerCode,numInputLines,totalLines,solution,animationClass
+0,Smooth out the hover effect on all buttons,Currently the buttons on this site have a clunky hover effect. Enter CSS below to smoothly transition the background color over 1 second.,"[""transition-property"", ""transition-duration""]","[""Use these properties:"", ""transition-property: (property)"", ""transition-duration: (time)"", ""Example of time: 2s""]","["".button {"", ""  background-color: none;""]","["" transition-property: "", "" transition-duration: ""]","["" "","".button:hover {"", ""  background-color: $primary;"", ""}""]",2,8,"[""(background-color)"", ""(1s)""]","""button-hover"""
+1,Catch the user's attention when they hover over input fields,Add a 0.5s transition to the background color using the shorthand transition syntax. Use the ease-in-out timing function.,"[""transition-property"", ""transition-duration""]","[""Transition shorthand syntax is nice and simple:"", ""transition: (property) (time) (timing function)"", """"]",".code-input {
+  background-color: #dadada54;
+  border: 2px solid $transparent;
+  border-radius: 4px;
+  padding-left: 10px;","transition:
+","[""}"", "".code-input:hover {"", ""background-color: #dadadaad;"", ""border: 2px solid $primary;"", ""transition: border 0.5s ease-in;"",""}""]",1,13,"[""(transition:)"", ""(background-color)"", ""(.5s)"", ""(ease-in-out)""]","""input-hover"""

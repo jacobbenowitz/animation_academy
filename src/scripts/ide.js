@@ -1,30 +1,25 @@
 export default class IdeCreator {
   constructor() {
     this.ideContainer = this.createIdeContainer();
-    // this.bindHandlers();
+    this.bindHandlers();
     // this.addEventListeners();
   }
 
-  // bindHandlers() {
-  //   this.checkInput = this.checkInput.bind(this);
-  // }
+  bindHandlers() {
+    this.preventEnter = this.preventEnter.bind(this);
+  }
 
-  // addEventListeners() {
-  //   this.ideContainer.addEventListener('click', this.checkInput)
-  // }
-
-  // checkInput(e) {
-  //   e.stopPropagation();
-  //   const ideButton = document.querySelector('ide-button')
-  //   if (e === ideButton) {
-  //     console.log('in check input')
-  //     const solution = this.game.currentLevel.solution;
-  //     if (userInpit === solution) {
-  //       this.game.levelSuccess();
-  //     }
-  //   }
-  //   undefined;
-  // }
+  addEventListeners() {
+    const textarea = document.querySelector('textarea')
+    textarea.addEventListener('keyup', this.preventEnter)
+  }
+  // not working, 
+  preventEnter(e) {
+    console.log(e.keycode)
+    if (e.keycode == 13) {
+      e.preventDefault();
+    }
+  }
 
   // create ide box and add content
   createIdeContainer() {
@@ -105,6 +100,7 @@ export default class IdeCreator {
   }
 
   addBoilerCode(rightCol, currentLevel) {
+    // debugger
     const rows = currentLevel.boilerCode.length
     const boilerCodeText =
       currentLevel.boilerCode.join('\n');

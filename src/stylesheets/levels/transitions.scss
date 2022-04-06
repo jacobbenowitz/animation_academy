@@ -1,19 +1,10 @@
-.grid-12-col {
-  height: min(60rem);
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+.level-section {
+  min-height: 400px;
 }
 
-.center-span-5 {
-  grid-column: 5 / span 4;
-}
-.backgroundBox {
-  display: grid;
-  place-items: center;
-}
-.foregroundBox {
+.foreground-box {
   border-radius: 1rem;
-  position: absolute;
+  // position: absolute;
   border: 1px solid $white;
   height: 250px;
   width: 250px;
@@ -22,11 +13,11 @@
   overflow: hidden;
 }
 
-.foregroundBox::before {
+.foreground-box::before {
   content: "";
   height: 150%;
   width: 150%;
-  position: absolute;
+  border: none;
   left: -25%;
   bottom: -25%;
   background: conic-gradient(
@@ -39,17 +30,12 @@
     #fd004c
   );
 }
-// REFACTOR WITH 
-.foregroundBox::after {
-  content: "";
-  height: 94%;
-  width: 94%;
-  top: 3.5%;
-  left: 3.5%;
-  border-radius: 12px;
-  position: absolute;
-  background-color: $background;
-}
+// REFACTOR 
+// .foreground-box::after {
+//   content: "";
+//   border-radius: 12px;
+//   background-color: $background;
+// }
 
 .levelSection .span-2-5-col {
   padding-top: 40px;
@@ -101,18 +87,19 @@ input:focus {
   border: 2px solid $transparent;
   border-radius: 4px;
   padding-left: 10px;
-  margin: -7px 0 -7px 0;
-  transition: background-color,  .25s ease-in;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .code-input:hover {
   background-color: #dadadaad;
   border: 2px solid $primary;
+  transition: border 0.5s ease-in;
 }
 
 textarea:focus {
   background-color: #dadadaad;
   border: 2px solid $secondary;
+  transition: border 0.5s ease-in;
 }
 
 header {
