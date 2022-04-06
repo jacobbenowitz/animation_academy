@@ -4,6 +4,7 @@ import { LEVELS } from './levels'
 import LevelFunctionality from "./level_functionality";
 
 export default class Game {
+  
   constructor(interfaceContainer) {
     this.hero = document.querySelector('.hero')
     this.interfaceContainer = interfaceContainer;
@@ -16,7 +17,13 @@ export default class Game {
     this.userSubmitListener();
     // testing levelProgression //
     this.levelFunctionality = new LevelFunctionality();
-    this.levelTest();
+    this.animationKey = [
+      this.levelFunctionality.addButtonTransitions,
+      this.levelFunctionality.addButtonGrow,
+      this.levelFunctionality.addFieldTranstions,
+      this.levelFunctionality.addProductsHover,
+      this.levelFunctionality.addHeaderAnimation
+    ]
   }
 
   // get level from localStorage, return undefined if none
@@ -111,8 +118,6 @@ export default class Game {
     const solution = this.currentLevel.solution;
     if (e.target === button &&
       this.regexCheck(inputTextArr, solution)) {
-        console.log('SUCCESS: Overlay and show result of current level');
-        this.levelFunctionality.levelSuccessAnimation(this.currentLevel);
         console.log('SUCCESS: Render new level pls')
         this.levelSuccess();
     } else {
@@ -148,10 +153,30 @@ export default class Game {
       console.log('END OF GAME')
       return;
     } else {
+      this.levelAnimation(this.currentLevel);
       const nextLevel = this.currentLevel.lessonNumber + 1;
       this.currentLevel = LEVELS[nextLevel];
-      this.renderNewLevel();
     }
+  }
+  levelAnimation() {
+    console.log('Show overlay + run level_func method');
+    const levelAnimation =
+      this.animationKey[this.currentLevel.lessonNumber]
+    const successMessage = this.checkUserInput.successMessage;
+    setTimeout(() => {
+      levelAnimation();
+      this.levelFunctionality.levelSuccessAnimation(successMessage)
+    }, 5000)
+    this.renderNewLevel()
+    // const levelEvent = new Promise((cb) => {
+    //   setTimeout(() => {
+    //     cb();
+    //   }, 5000)
+    // });
+
+    // levelEvent(cb)
+    //   .then(this.renderNewLevel())
+    //   .catch(err => console.log(err));
   }
 
   renderNewLevel() {
@@ -164,10 +189,11 @@ export default class Game {
     this.promptContainer.updatePromptContent(this.currentLevel);
     this.ide.updateIdeContent(this.currentLevel);
   }
-
+  
+  // testing only, add to animationKey
   levelTest() {
     // on levelSuccess invoke appropriate function to enable that level's transitions/animations site wide
-    this.levelFunctionality.addButtonTransitions();
+    ;
     const body = document.querySelector('body');
     this.levelFunctionality.createSampleSection(body);
     const section = document.querySelector('.level-section');

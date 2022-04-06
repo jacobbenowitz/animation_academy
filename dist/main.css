@@ -495,6 +495,77 @@ textarea.code-input {
   margin-right: -130px;
 }
 
+.levels-button-hover {
+  color: #DFDFDF;
+  border: 1px solid #DFDFDF;
+  background-color: none;
+  box-shadow: 0px 0px 0px #03DAC6;
+  transition: background-color 1s, color 0.5s, box-shadow 1s, border 1s;
+}
+
+.levels-button-hover:hover {
+  background-color: #03DAC6;
+  color: #131213;
+  box-shadow: 0px 0px 10px #03DAC6;
+  border: 1px solid #03DAC6;
+}
+
+.levels-button-grow {
+  padding: 5px 10px 5px 10px;
+  transition: padding 250ms ease-in;
+}
+
+.code-input.input-level, #todo-input.input-level {
+  background-color: rgba(218, 218, 218, 0.3294117647);
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 4px;
+  padding-left: 10px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.code-input.input-level:hover,
+#todo-input.input-level:focus {
+  background-color: rgba(218, 218, 218, 0.6784313725);
+  border: 2px solid #03DAC6;
+  transition: border 0.5s ease-in;
+}
+
+textarea.input-level:focus {
+  background-color: rgba(218, 218, 218, 0.6784313725);
+  border: 2px solid #BB86FC;
+  transition: border 0.5s ease-in;
+}
+
+.levels-button-grow:hover {
+  padding: 8px 13px 8px 13px;
+}
+
+.rise-up-level {
+  will-change: transform;
+  transition: transform 450ms;
+}
+
+.rise-up-level:hover {
+  transition: transform 125ms;
+  transform: translateY(-10px);
+}
+
+header.slide-in-level {
+  animation: slideIn 500ms ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    margin-left: -50rem;
+    opacity: 0%;
+    filter: blur(1.5rem);
+  }
+  100% {
+    margin-left: 0rem;
+    opacity: 100%;
+    filter: blur(0);
+  }
+}
 .level-section {
   min-height: 400px;
 }
@@ -529,28 +600,6 @@ textarea.code-input {
   text-align: end;
 }
 
-.levels-button-hover {
-  position: relative;
-  z-index: 15;
-  display: inline-block;
-  margin: 10px 0px 10px 0px;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-  color: #DFDFDF;
-  border: 1px solid #DFDFDF;
-  border-radius: 4px;
-  background-color: none;
-  box-shadow: 0px 0px 0px #03DAC6;
-  transition: background-color 1s, color 0.5s, box-shadow 1s, border 1s;
-}
-
-.levels-button-hover:hover {
-  background-color: #03DAC6;
-  color: #131213;
-  box-shadow: 0px 0px 10px #03DAC6;
-  border: 1px solid #03DAC6;
-}
-
 input {
   border: 2px solid rgba(0, 0, 0, 0);
 }
@@ -563,28 +612,21 @@ input:focus {
   border: 2px solid #03DAC6;
 }
 
-.code-input {
+.code-input, #todo-input {
   background-color: rgba(218, 218, 218, 0.3294117647);
   border: 2px solid rgba(0, 0, 0, 0);
   border-radius: 4px;
   padding-left: 10px;
-  transition: background-color 0.5s ease-in-out;
 }
 
 .code-input:hover {
   background-color: rgba(218, 218, 218, 0.6784313725);
   border: 2px solid #03DAC6;
-  transition: border 0.5s ease-in;
 }
 
 textarea:focus {
   background-color: rgba(218, 218, 218, 0.6784313725);
   border: 2px solid #BB86FC;
-  transition: border 0.5s ease-in;
-}
-
-header {
-  animation: fadeIn 2s ease-in;
 }
 
 @keyframes fadeIn {
@@ -596,10 +638,10 @@ header {
   }
 }
 .interface {
-  animation: slideIn 1.2s ease-out;
+  animation: slideInInterface 1.2s ease-out;
 }
 
-@keyframes slideIn {
+@keyframes slideInInterface {
   0% {
     margin-left: -50rem;
     opacity: 0%;
@@ -610,4 +652,19 @@ header {
     opacity: 100%;
     filter: blur(0);
   }
+}
+@keyframes todoSlideIn {
+  0% {
+    width: 0%;
+    opacity: 0%;
+    filter: blur(1.5rem);
+  }
+  100% {
+    width: 100%;
+    opacity: 100%;
+    filter: blur(0);
+  }
+}
+#todo-input {
+  animation: todoSlideIn 1s ease-in-out;
 }

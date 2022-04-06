@@ -59,4 +59,5 @@ export default class ProductsCreator {
       this.productsContainer.appendChild(product)
     })
   };
+
 }

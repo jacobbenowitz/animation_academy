@@ -16,7 +16,8 @@ export const LEVELS = [
     numInputLines: 2,
     totalLines: 8,
     solution: ["(background-color)", "(1s)"],
-    animation: "buttonHover"
+    animation: "buttonHover",
+    successMessage: "Try it out, now the buttons transition smoothly!"
   },
   { lessonNumber: 1,
     promptTitle:

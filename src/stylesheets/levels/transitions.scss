@@ -1,3 +1,84 @@
+// 00: button styling and transition
+.levels-button-hover {
+  color: $white;
+  border: 1px solid $white;
+  background-color: none;
+  box-shadow: 0px 0px 0px $primary;
+  transition: background-color 1s, color .5s, box-shadow 1s, border 1s;
+}
+
+.levels-button-hover:hover {
+  background-color: $primary;
+  color: $background;
+  box-shadow: 0px 0px 10px $primary;
+  border: 1px solid $primary;
+}
+
+// 01: grow and shrink
+.levels-button-grow {
+  padding: 5px 10px 5px 10px;
+  transition: padding 250ms ease-in;
+}
+
+// 02: transitions for input level
+.code-input.input-level ,#todo-input.input-level {
+  background-color: #dadada54;
+  border: 2px solid $transparent;
+  border-radius: 4px;
+  padding-left: 10px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.code-input.input-level:hover, 
+#todo-input.input-level:focus{
+  background-color: #dadadaad;
+  border: 2px solid $primary;
+  transition: border 0.5s ease-in;
+}
+
+textarea.input-level:focus {
+  background-color: #dadadaad;
+  border: 2px solid $secondary;
+  transition: border 0.5s ease-in;
+}
+
+.levels-button-grow:hover {
+  padding: 8px 13px 8px 13px;
+}
+
+// 03 rise up
+.rise-up-level {
+  will-change: transform;
+  transition: transform 450ms;
+}
+  
+.rise-up-level:hover {
+  transition: transform 125ms;
+  transform: translateY(-10px);
+}
+
+// 04 header
+header.slide-in-level {
+  animation: slideIn 500ms ease-in-out;
+  // animation-duration: 3s;
+  // animation-name: fadeIn;
+}
+@keyframes slideIn {
+  0% {
+    margin-left: -50rem;
+    opacity: 0%;
+    filter: blur(1.5rem);
+  }
+  100% { 
+    margin-left: 0rem;
+    opacity: 100%;
+    filter: blur(0);
+  }
+}
+
+
+/////////////////
+
 .level-section {
   min-height: 400px;
 }
@@ -30,12 +111,6 @@
     #fd004c
   );
 }
-// REFACTOR 
-// .foreground-box::after {
-//   content: "";
-//   border-radius: 12px;
-//   background-color: $background;
-// }
 
 .levelSection .span-2-5-col {
   padding-top: 40px;
@@ -45,28 +120,6 @@
 .success-message {
   margin: 0 auto;
   text-align: end;
-}
-
-.levels-button-hover {
-  position: relative;
-  z-index: 15;
-  display: inline-block;
-  margin: 10px 0px 10px 0px;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-  color: $white;
-  border: 1px solid $white;
-  border-radius: 4px;
-  background-color: none;
-  box-shadow: 0px 0px 0px $primary;
-  transition: background-color 1s, color .5s, box-shadow 1s, border 1s;
-}
-
-.levels-button-hover:hover {
-  background-color: $primary;
-  color: $background;
-  box-shadow: 0px 0px 10px $primary;
-  border: 1px solid $primary;
 }
 
 // textare and input
@@ -82,31 +135,26 @@ input:focus {
   border: 2px solid $primary;
 }
 
-.code-input {
+// defauly styling for inputs
+.code-input, #todo-input {
   background-color: #dadada54;
   border: 2px solid $transparent;
   border-radius: 4px;
   padding-left: 10px;
-  transition: background-color 0.5s ease-in-out;
 }
 
 .code-input:hover {
   background-color: #dadadaad;
   border: 2px solid $primary;
-  transition: border 0.5s ease-in;
 }
 
 textarea:focus {
   background-color: #dadadaad;
   border: 2px solid $secondary;
-  transition: border 0.5s ease-in;
 }
 
-header {
-  animation: fadeIn 2s ease-in;
-  // animation-duration: 3s;
-  // animation-name: fadeIn;
-}
+
+
 
 @keyframes fadeIn {
   0% {
@@ -118,11 +166,11 @@ header {
 }
 
 .interface {
-  animation: slideIn 1.2s ease-out;
+  animation: slideInInterface 1.2s ease-out;
   // -webkit-animation: slideIn 1.2s forwards;
 }
 
-@keyframes slideIn {
+@keyframes slideInInterface {
   0% {
     margin-left: -50rem;
     opacity: 0%;
@@ -134,3 +182,21 @@ header {
     filter: blur(0);
   }
 }
+
+@keyframes todoSlideIn {
+  0% {
+    width: 0%;
+    opacity: 0%;
+    filter: blur(1.5rem);
+  }
+  100% { 
+    width: 100%;
+    opacity: 100%;
+    filter: blur(0);
+  }
+}
+
+#todo-input {
+  animation: todoSlideIn 1s ease-in-out;
+}
+

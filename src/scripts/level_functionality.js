@@ -1,31 +1,21 @@
 export default class LevelFunctionality {
   constructor() {
     this.bindHandlers();
-    // this.eventListeners();
   }
   
   bindHandlers() {
-    this.animation = this.animation.bind(this);
-    this.removeOverlay = this.removeOverlay.bind(this);
+    this.levelSuccessAnimation =
+      this.levelSuccessAnimation.bind(this);
   }
 
-  eventListeners() {
-    // levelSuccessAnimation()
+  levelSuccessAnimation(successMessage) {
+    this.overlayAnimation(successMessage);
   }
 
-  levelSuccessAnimation() {
-    // use current level to check animation sequence
-    // let animation = currentLevel.animation; < call programatically
-    // setTimeout(this.animation, 5000)
-    this.animation();
-  }
-
-  animation() {
-    this.addButtonTransitions()
-    this.toogleOverlay();
+  overlayAnimation(successMessage) {
+    this.renderOverlay(successMessage);
     setTimeout(this.removeOverlay, 5000)
   }
-
 
   createOverlay() {
     const overlay = document.createElement('div');
@@ -38,24 +28,13 @@ export default class LevelFunctionality {
     overlay.remove();
   }
 
-  toogleOverlay() {
-    const body = document.querySelector('body');
+  renderOverlay(successMessage) {
     const overlay = this.createOverlay();
-    // pull from levels object
-    const successMessage = "Try it out, now the buttons transition smoothly!"
     const message = document.createElement('h3')
     message.innerHTML = successMessage;
     message.classList.add('success-message');
     overlay.append(message);
-    // debugger
-    document.body.append(overlay)
-    // let overlay = body.querySelector('#overlay')
-    // if (overlay) {
-    //   overlay.remove();
-    // } else {
-    //   overlay = this.createOverlay();
-    //   body.append(overlay)
-    // }
+    document.body.append(overlay);
   }
 
   createSampleSection(body) {
@@ -73,18 +52,48 @@ export default class LevelFunctionality {
     const backgroundBox = document.createElement('div');
     const foregroundBox = document.createElement('div');
     backgroundBox.classList.add('center-simple', 'background-box');
-    foregroundBox.classList.add('center-simple', 'foreground-box');
+    foregroundBox.classList.add('center-simple', 'foreground-box', 'rise-up-level');
     container.append(backgroundBox, foregroundBox);
   }
 
+  // 00 smooth fill
   addButtonTransitions() {
-    document.querySelectorAll('.button').forEach(button => {
+    document.querySelectorAll('button').forEach(button => {
       button.classList.add('levels-button-hover');
     });
   }
+  // 01 grow/shrink
+  addButtonGrow() {
+    document.querySelectorAll('.button', 'button').forEach(button => {
+      button.classList.add('levels-button-grow');
+    });
+  }
+  // 02 inputs
+    addFieldTranstions() {
+      const codeInput = document.querySelector('.code-input');
+      const todoInput = document.querySelector('#todo-input')
+      codeInput.classList.add('input-level')
+      todoInput.classList.add('input-level')
+    }
 
-  // focusFieldTranstion() {
-    // texaarea and inputs
-  // }
+  // 03 rise up
+  addProductsHover() {
+    const products = querySelectorAll('.product-box')
+    products.forEach(product => {
+      product.classList.add('rise-up-level')
+    })
+  }
+
+  // 04 header animation
+  addHeaderAnimation() {
+    const header = document.querySelector('header');
+    header.classList.add('slide-in-level')
+  }
+
+  // add event listener on .create-todo button mouseOver, then call this fnc
+  addTodoInputAnimationIn() {
+    const todoInput = document.querySelector('#todo-input');
+    todoInput.classList.add('animateIn')
+  }
 
 }
