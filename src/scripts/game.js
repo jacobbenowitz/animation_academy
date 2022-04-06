@@ -84,7 +84,6 @@ export default class Game {
   
   prevLevel(e) {
     e.stopPropagation();
-    debugger
     // go to prev unless this is level 0
     if (this.currentLevel.lessonNumber === 0) {
       throw new Error ("already at 0");
@@ -97,6 +96,7 @@ export default class Game {
   }
 
   resetLevel(e) {
+    e.stopPropagation();
     console.log('need to truly reset by creating new instances of game and interface, currently transitions elements on DOM do not reset')
     localStorage.clear();
     this.currentLevel = LEVELS[0];
@@ -122,6 +122,7 @@ export default class Game {
         this.levelSuccess();
     } else {
       console.log('Input does not match solution')
+      throw new Error ('Incorrect input')
     }
   }
 
@@ -154,32 +155,37 @@ export default class Game {
       return;
     } else {
       this.levelAnimation(this.currentLevel);
-      const nextLevel = this.currentLevel.lessonNumber + 1;
-      this.currentLevel = LEVELS[nextLevel];
+      // move to render new
+      // const nextLevel = this.currentLevel.lessonNumber + 1;
+      // this.currentLevel = LEVELS[nextLevel];
     }
   }
-  levelAnimation() {
+
+  // levelAnimation = new Promise () {
+  levelAnimation () {
     console.log('Show overlay + run level_func method');
-    const levelAnimation =
+    debugger
+    const animation =
       this.animationKey[this.currentLevel.lessonNumber]
-    const successMessage = this.checkUserInput.successMessage;
-    setTimeout(() => {
-      levelAnimation();
-      this.levelFunctionality.levelSuccessAnimation(successMessage)
-    }, 5000)
+    const successMessage = this.currentLevel.successMessage;
+    // set timeout?
+    animation();
+    this.levelFunctionality.levelSuccessAnimation(successMessage)
     this.renderNewLevel()
+
     // const levelEvent = new Promise((cb) => {
     //   setTimeout(() => {
     //     cb();
     //   }, 5000)
     // });
-
     // levelEvent(cb)
     //   .then(this.renderNewLevel())
     //   .catch(err => console.log(err));
   }
 
   renderNewLevel() {
+    const nextLevel = this.currentLevel.lessonNumber + 1;
+    this.currentLevel = LEVELS[nextLevel];
     localStorage.setItem("lessonNumber",
       JSON.stringify(this.currentLevel.lessonNumber));
     this.gameUpdate();

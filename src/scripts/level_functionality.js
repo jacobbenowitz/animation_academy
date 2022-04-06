@@ -58,13 +58,13 @@ export default class LevelFunctionality {
 
   // 00 smooth fill
   addButtonTransitions() {
-    document.querySelectorAll('button').forEach(button => {
+    document.querySelectorAll('.button').forEach(button => {
       button.classList.add('levels-button-hover');
     });
   }
   // 01 grow/shrink
   addButtonGrow() {
-    document.querySelectorAll('.button', 'button').forEach(button => {
+    document.querySelectorAll('.button').forEach(button => {
       button.classList.add('levels-button-grow');
     });
   }
