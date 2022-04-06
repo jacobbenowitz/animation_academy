@@ -15,7 +15,6 @@ export default class Game {
     this.gameSetup();
     this.levelNavListeners();
     this.userSubmitListener();
-    // testing levelProgression //
     this.levelFunctionality = new LevelFunctionality();
     this.animationKey = [
       this.levelFunctionality.addButtonTransitions,
@@ -50,8 +49,6 @@ export default class Game {
   }
 
   gameSetup() {
-    // localStorage.clear(); // TEMP
-    // render prompt instructions 
     this.promptContainer.addPromptContent(this.currentLevel);
     this.promptContainer.attachPrompt(this.interfaceContainer);
     // render ide with boiler code and form
@@ -85,7 +82,7 @@ export default class Game {
   prevLevel(e) {
     e.stopPropagation();
     // go to prev unless this is level 0
-    if (this.currentLevel.lessonNumber === 0) {
+    if (this.currentLevel.lessonNumber < 1) {
       throw new Error ("already at 0");
     } else {
         const prevLevel = this.currentLevel.lessonNumber - 1;
@@ -161,7 +158,6 @@ export default class Game {
   // levelAnimation = new Promise () {
   levelAnimation () {
     console.log('Show overlay + run level_func method');
-    debugger
     const animation =
       this.animationKey[this.currentLevel.lessonNumber]
     const successMessage = this.currentLevel.successMessage;
@@ -170,7 +166,7 @@ export default class Game {
     this.levelFunctionality.levelSuccessAnimation(successMessage)
     this.renderNextLevel()
   }
-  
+
   renderNextLevel() {
     const nextLevel = this.currentLevel.lessonNumber + 1;
     this.currentLevel = LEVELS[nextLevel];
@@ -182,6 +178,7 @@ export default class Game {
       JSON.stringify(this.currentLevel.lessonNumber));
     this.gameUpdate();
   }
+
   // update prompt and ide content
   gameUpdate() {
     this.promptContainer.updatePromptContent(this.currentLevel);

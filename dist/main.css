@@ -272,7 +272,7 @@ header img {
   max-width: 450px;
   min-height: 100px;
   height: fit-content;
-  margin-bottom: 10px;
+  border-radius: 8px;
   background-color: rgba(32, 31, 30, 0.35);
   backdrop-filter: blur(12px);
   margin: 5px;
@@ -333,6 +333,7 @@ header img {
   background-color: rgba(32, 31, 30, 0.35);
   backdrop-filter: blur(12px);
   margin: 5px;
+  border-radius: 8px;
   padding: 10px 20px 10px 20px;
 }
 
@@ -381,25 +382,26 @@ textarea.code-input {
 
 #overlay {
   position: fixed;
-  /* Sit on top of the page content */
   display: block;
-  /* Hidden by default */
   width: 100%;
-  /* Full width (cover the whole page) */
   height: 100%;
-  /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  /* Black background with opacity */
   z-index: 2;
-  /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer;
-  /* Add a pointer on hover */
+  animation: fadeIn 500ms ease-in-out;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
 .todo {
   padding: 50px 0 50px 0;
 }
@@ -629,14 +631,6 @@ textarea:focus {
   border: 2px solid #BB86FC;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
 .interface {
   animation: slideInInterface 1.2s ease-out;
 }

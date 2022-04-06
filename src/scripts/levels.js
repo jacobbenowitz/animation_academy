@@ -48,7 +48,7 @@ export const LEVELS = [
     solution:
     ["(transition)", "(padding)", "(250ms)", "(ease-in)"],
     animationClass: "levels-button-grow",
-    successMessage: ""
+    successMessage: "Nice! Test the buttons out and watch them grow!"
   },
 
   { lessonNumber: 2,
@@ -110,8 +110,8 @@ export const LEVELS = [
     ],
     endingBoilerCode:
     [ ".rise-up-level {",
-      "will-change: transform;",
-      "transition: transform 450ms;"
+      "  will-change: transform;",
+      "  transition: transform 450ms;"
     ],
     numInputLines: 2,
     totalLines: 8,
@@ -132,7 +132,7 @@ export const LEVELS = [
     cssProperties: ["animation", "ease-out", "@keyframes"],
     syntaxHints:
     [ "Hints and syntax:",
-      "animation sytanx: 'animation: @keyframes name | duration | easing-function'", 
+      "animation: @keyframes name | duration | easing-function", 
       "ex. animation: slideIn 5s linear", 
       "use a duration of 1.2s, and ease-out"],
     boilerCode:

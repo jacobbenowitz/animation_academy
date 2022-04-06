@@ -52,7 +52,8 @@ export default class IdeCreator {
     this.updateLineNums(currentLevel);
     this.updateInput(currentLevel);
     this.updateBoilerCode(currentLevel);
-    }
+  }
+  
     
   updateLineNums(currentLevel) {
     const leftCol = this.ideContainer.childNodes[0];
@@ -63,11 +64,18 @@ export default class IdeCreator {
   }
 
   updateBoilerCode(currentLevel) {
-    const boiler = document.querySelector('#boiler')
-    const boilerCodeText =
+    const topBoiler = document.querySelector('#boiler');
+    const botBoiler = document.querySelector('#boiler-bottom');
+
+    const boilerTopText =
       currentLevel.boilerCode.join('\n');
-    boiler.rows = currentLevel.boilerCode.length;
-    boiler.innerHTML = boilerCodeText;
+    const boilerBotText =
+      currentLevel.endingBoilerCode.join('\n');
+    
+    topBoiler.rows = currentLevel.boilerCode.length;
+    topBoiler.innerHTML = boilerTopText;
+    botBoiler.innerHTML = boilerBotText;
+    botBoiler.rows = currentLevel.endingBoilerCode.length;
   }
 
   updateInput(currentLevel) {
@@ -130,6 +138,7 @@ export default class IdeCreator {
       currentLevel.endingBoilerCode.join('\n');
     const endingEle = document.createElement('textarea');
     endingEle.innerHTML = endingBoilerCodeText;
+    endingEle.id = "boiler-bottom"
     endingEle.classList.add('code', 'boiler');
     endingEle.rows = rows;
     endingEle.disabled = true;

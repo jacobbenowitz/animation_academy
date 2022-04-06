@@ -154,18 +154,6 @@ textarea:focus {
   border: 2px solid $secondary;
 }
 
-
-
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0%
-  }
-  100% { 
-    opacity: 100%
-  }
-}
-
 .interface {
   animation: slideInInterface 1.2s ease-out;
   // -webkit-animation: slideIn 1.2s forwards;

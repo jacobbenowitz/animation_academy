@@ -18,14 +18,17 @@ export default class PromptCreator {
 
   updatePromptContent(currentLevel) {
     // lesson id
-    const lessonId = document.querySelector('.lesson-id')
+    const lessonId = document.querySelector('.lesson-id');
     lessonId.innerHTML = "Lesson: " + `${currentLevel.lessonNumber}`;
     // lesson title
-    const title = document.querySelector('.prompt-title')
-    title.innerHTML = `${currentLevel.promptTitle}`
+    const title = document.querySelector('.prompt-title');
+    title.innerHTML = `${currentLevel.promptTitle}`;
     // lesson instructions
-    const instructions = document.querySelector('.prompt-instruction')
-    instructions.innerHTML = `${currentLevel.promptInstructions}`
+    const instructions = document.querySelector('.prompt-instruction');
+    instructions.innerHTML = `${currentLevel.promptInstructions}`;
+
+    const hintsList = document.querySelector('#prompt-hint-list');
+    this.updateHints(hintsList, currentLevel);
   }
   
   // TODO create dropdown lesson nav with forward/back buttons
@@ -73,6 +76,7 @@ export default class PromptCreator {
 
   createPromptHints(syntaxHints) {
     const hints = document.createElement('ul');
+    hints.id = "prompt-hint-list"
     // debugger
     syntaxHints.forEach(hint => {
       let li = document.createElement('li');
@@ -81,6 +85,20 @@ export default class PromptCreator {
       hints.appendChild(li)
     })
     this.promptContainer.appendChild(hints)
+  }
+
+  updateHints(hintsList, currentLevel) {
+    while (hintsList.firstChild) {
+      hintsList.removeChild(hintsList.firstChild)
+    }
+
+    const newHints = currentLevel.syntaxHints;
+    newHints.forEach(hint => {
+      let li = document.createElement('li');
+      li.innerHTML = hint;
+      li.classList.add('hint')
+      hintsList.appendChild(li)
+    })
   }
 
   attachPrompt(interfaceContainer) {
