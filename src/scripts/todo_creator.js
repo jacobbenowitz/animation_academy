@@ -80,7 +80,7 @@ export default class TodoCreator {
     inputTodo.required = true
     // create 'create new' button
     const button = document.createElement('input')
-    button.classList.add('button')
+    button.classList.add('create-todo')
     button.type = "submit"
     button.value = "+ create new todo"
     // add input and button to form

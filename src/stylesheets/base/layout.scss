@@ -18,20 +18,25 @@ body {
 
 .grid-2-col {
   display: grid;
-  width: 100%;
+  width: fit-content;
   grid-template-columns: 1fr 1fr;
-  column-gap: 14px;
+  column-gap: 0px;
 }
 
 .grid-2-col-ide {
   display: grid;
-  width: 100%;
+  width: 500px;
   grid-template-columns: min-content 1fr;
-  column-gap: 14px;
+  column-gap: 0px;
 }
 
 .left-col, .right-col {
   height: max-content;
+}
+
+.ide .right-col {
+  display: grid;
+  width: fit-content;
 }
 
 .hero .right-col {

@@ -1,5 +1,5 @@
 .ide {
-  max-width: 400px;
+  max-width: 450px;
   min-height: 100px;
   height: fit-content;
   margin-bottom: 10px;
@@ -9,27 +9,19 @@
   padding: 10px 20px 10px 20px;
 }
 
-
 .right-col textarea {
   font-family: $source-code;
+  font-weight: $normal;
   resize: none;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+  width: 1fr;
+  padding: 0;
+  margin: 0;
 }
 
-.ide .code-input {
-  background-color: #dadada69;
-  border-radius: 4px;
-  padding-left: 10px;
-  margin: -7px 0 -7px 0;
+.ide-button {
+  margin-left: auto;
+  width: fit-content;
 }
-
-// .ide-button {
-
-// }
 
 .ide .left-col {
   height: fit-content;
@@ -40,4 +32,8 @@
   color: $primary;
   resize: none;
   height: 100%;
+}
+
+textarea.code-input {
+  width: 45ch;
 }

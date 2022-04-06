@@ -1,6 +1,6 @@
 .prompt {
-  z-index: 100;
-  max-width: 400px;
+  z-index: 2;
+  max-width: 450px;
   min-height: 100px;
   height: fit-content;
   margin-bottom: 10px;
@@ -34,6 +34,10 @@
 
 .prompt a {
   color: $primary;
+}
+
+.prompt a:last-child{
+  margin-left: auto;
 }
 .prompt a:hover  {
   color: $secondary;

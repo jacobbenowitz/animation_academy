@@ -1,0 +1,149 @@
+.grid-12-col {
+  height: min(60rem);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.center-span-5 {
+  grid-column: 5 / span 4;
+}
+.backgroundBox {
+  display: grid;
+  place-items: center;
+}
+.foregroundBox {
+  border-radius: 1rem;
+  position: absolute;
+  border: 1px solid $white;
+  height: 250px;
+  width: 250px;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+  background-color: $transparent;
+  overflow: hidden;
+}
+
+.foregroundBox::before {
+  content: "";
+  height: 150%;
+  width: 150%;
+  position: absolute;
+  left: -25%;
+  bottom: -25%;
+  background: conic-gradient(
+    #fd004c,
+    #fe9000,
+    #fff020,
+    #3edf4b,
+    #3363ff,
+    #b102b7,
+    #fd004c
+  );
+}
+// REFACTOR WITH 
+.foregroundBox::after {
+  content: "";
+  height: 94%;
+  width: 94%;
+  top: 3.5%;
+  left: 3.5%;
+  border-radius: 12px;
+  position: absolute;
+  background-color: $background;
+}
+
+.levelSection .span-2-5-col {
+  padding-top: 40px;
+  grid-column: 2 / span 5;
+}
+
+.success-message {
+  margin: 0 auto;
+  text-align: end;
+}
+
+.levels-button-hover {
+  position: relative;
+  z-index: 15;
+  display: inline-block;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  color: $white;
+  border: 1px solid $white;
+  border-radius: 4px;
+  background-color: none;
+  box-shadow: 0px 0px 0px $primary;
+  transition: background-color 1s, color .5s, box-shadow 1s, border 1s;
+}
+
+.levels-button-hover:hover {
+  background-color: $primary;
+  color: $background;
+  box-shadow: 0px 0px 10px $primary;
+  border: 1px solid $primary;
+}
+
+// textare and input
+
+
+input {
+  border: 2px solid $transparent;
+}
+input:focus {
+  border: 2px solid $secondary;
+}
+#todo-input:hover {
+  border: 2px solid $primary;
+}
+
+.code-input {
+  background-color: #dadada54;
+  border: 2px solid $transparent;
+  border-radius: 4px;
+  padding-left: 10px;
+  margin: -7px 0 -7px 0;
+  transition: background-color,  .25s ease-in;
+}
+
+.code-input:hover {
+  background-color: #dadadaad;
+  border: 2px solid $primary;
+}
+
+textarea:focus {
+  background-color: #dadadaad;
+  border: 2px solid $secondary;
+}
+
+header {
+  animation: fadeIn 2s ease-in;
+  // animation-duration: 3s;
+  // animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0%
+  }
+  100% { 
+    opacity: 100%
+  }
+}
+
+.interface {
+  animation: slideIn 1.2s ease-out;
+  // -webkit-animation: slideIn 1.2s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    margin-left: -50rem;
+    opacity: 0%;
+    filter: blur(1.5rem);
+  }
+  100% { 
+    margin-left: 0rem;
+    opacity: 100%;
+    filter: blur(0);
+  }
+}

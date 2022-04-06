@@ -14,3 +14,7 @@
 @import "stylesheets/components/interface.scss";
 @import "stylesheets/components/todo.scss";
 @import "stylesheets/components/products.scss";
+
+// import levels scss files
+@import "stylesheets/levels/transitions.scss";
+@import "stylesheets/levels/animations.scss";

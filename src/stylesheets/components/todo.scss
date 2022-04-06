@@ -24,6 +24,21 @@
   background-color: $background;
 }
 
+.create-todo {
+  border: 2px solid $transparent;
+  margin: 10px 0px 10px 0px;
+  padding: 8px;
+  text-decoration: none;
+  color: $white;
+  background-color: $transparent;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.create-todo:hover {
+  background-color: $background;
+}
+
 .todo-form {
   display: flex;
   flex-flow: column wrap;

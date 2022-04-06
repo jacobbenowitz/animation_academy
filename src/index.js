@@ -6,6 +6,7 @@ import TodoFunctionality from "./scripts/todo";
 import ProductsCreator from "./scripts/products";
 import Game from "./scripts/game";
 import { LEVELS } from "./scripts/levels"
+import LevelFunctionality from "./scripts/level_functionality";
 
 document.addEventListener("DOMContentLoaded", () => {
 

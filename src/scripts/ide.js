@@ -144,7 +144,7 @@ export default class IdeCreator {
     const button = document.createElement('a');
     button.innerHTML = "Next";
     button.href = "#";
-    button.classList.add('ide-button');
+    button.classList.add('ide-button', 'button');
     rightCol.append(button);
   }
 

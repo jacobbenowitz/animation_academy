@@ -47,8 +47,13 @@ export default class PromptCreator {
     forwardsButton.href = "#";
     forwardsButton.innerHTML = 'Next';
     forwardsButton.classList.add('next-lesson');
+    
+    const resetButton = document.createElement('a')
+    resetButton.href = "#"
+    resetButton.innerHTML = 'Reset'
+    resetButton.classList.add('reset')
 
-    nav.append(backwardsButton, lessonId, forwardsButton);
+    nav.append(backwardsButton, lessonId, forwardsButton, resetButton);
     this.promptContainer.appendChild(nav);
   }
 
@@ -68,6 +73,7 @@ export default class PromptCreator {
 
   createPromptHints(syntaxHints) {
     const hints = document.createElement('ul');
+    // debugger
     syntaxHints.forEach(hint => {
       let li = document.createElement('li');
       li.innerHTML = hint;

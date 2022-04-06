@@ -153,20 +153,25 @@ body {
 
 .grid-2-col {
   display: grid;
-  width: 100%;
+  width: fit-content;
   grid-template-columns: 1fr 1fr;
-  column-gap: 14px;
+  column-gap: 0px;
 }
 
 .grid-2-col-ide {
   display: grid;
-  width: 100%;
+  width: 500px;
   grid-template-columns: min-content 1fr;
-  column-gap: 14px;
+  column-gap: 0px;
 }
 
 .left-col, .right-col {
   height: max-content;
+}
+
+.ide .right-col {
+  display: grid;
+  width: fit-content;
 }
 
 .hero .right-col {
@@ -185,7 +190,7 @@ body {
 
 .button, .ide-button {
   position: relative;
-  z-index: 1;
+  z-index: 15;
   display: inline-block;
   margin: 10px 0px 10px 0px;
   padding: 5px 10px 5px 10px;
@@ -194,28 +199,6 @@ body {
   border: 1px solid #DFDFDF;
   border-radius: 4px;
   background: none;
-}
-
-.hero-button-hover {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  margin: 10px 0px 10px 0px;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-  color: #DFDFDF;
-  border: 1px solid #DFDFDF;
-  border-radius: 4px;
-  background-color: none;
-  box-shadow: 0px 0px 0px #03DAC6;
-  transition: background-color 1s, color 0.5s, box-shadow 1s, border 1s;
-}
-
-.hero-button-hover:hover {
-  background-color: #03DAC6;
-  color: #131213;
-  box-shadow: 0px 0px 10px #03DAC6;
-  border: 1px solid #03DAC6;
 }
 
 .ide-button:hover, .button:hover {
@@ -270,8 +253,8 @@ header img {
 }
 
 .prompt {
-  z-index: 100;
-  max-width: 400px;
+  z-index: 2;
+  max-width: 450px;
   min-height: 100px;
   height: fit-content;
   margin-bottom: 10px;
@@ -307,6 +290,10 @@ header img {
   color: #03DAC6;
 }
 
+.prompt a:last-child {
+  margin-left: auto;
+}
+
 .prompt a:hover {
   color: #BB86FC;
 }
@@ -325,7 +312,7 @@ header img {
 }
 
 .ide {
-  max-width: 400px;
+  max-width: 450px;
   min-height: 100px;
   height: fit-content;
   margin-bottom: 10px;
@@ -337,19 +324,16 @@ header img {
 
 .right-col textarea {
   font-family: "Source Code Pro", monospace;
+  font-weight: 400;
   resize: none;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+  width: 1fr;
+  padding: 0;
+  margin: 0;
 }
 
-.ide .code-input {
-  background-color: rgba(218, 218, 218, 0.4117647059);
-  border-radius: 4px;
-  padding-left: 10px;
-  margin: -7px 0 -7px 0;
+.ide-button {
+  margin-left: auto;
+  width: fit-content;
 }
 
 .ide .left-col {
@@ -363,16 +347,42 @@ header img {
   height: 100%;
 }
 
+textarea.code-input {
+  width: 45ch;
+}
+
 .interface {
   z-index: 100;
   display: flex;
   flex-direction: column;
   position: fixed;
+  width: fit-content;
 }
 
 .interface {
   top: 115px;
   left: 50px;
+}
+
+#overlay {
+  position: fixed;
+  /* Sit on top of the page content */
+  display: block;
+  /* Hidden by default */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black background with opacity */
+  z-index: 2;
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer;
+  /* Add a pointer on hover */
 }
 
 .todo {
@@ -398,6 +408,21 @@ header img {
   padding: 6px 8px 6px 8px;
   border-radius: 3px;
   margin: 4px 0 4px 0;
+  background-color: #131213;
+}
+
+.create-todo {
+  border: 2px solid rgba(0, 0, 0, 0);
+  margin: 10px 0px 10px 0px;
+  padding: 8px;
+  text-decoration: none;
+  color: #DFDFDF;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.create-todo:hover {
   background-color: #131213;
 }
 
@@ -453,4 +478,143 @@ header img {
   font-size: 20px;
   align-self: flex-end;
   margin-right: -130px;
+}
+
+.grid-12-col {
+  height: 60rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.center-span-5 {
+  grid-column: 5/span 4;
+}
+
+.backgroundBox {
+  display: grid;
+  place-items: center;
+}
+
+.foregroundBox {
+  border-radius: 1rem;
+  position: absolute;
+  border: 1px solid #DFDFDF;
+  height: 250px;
+  width: 250px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.foregroundBox::before {
+  content: "";
+  height: 150%;
+  width: 150%;
+  position: absolute;
+  left: -25%;
+  bottom: -25%;
+  background: conic-gradient(#fd004c, #fe9000, #fff020, #3edf4b, #3363ff, #b102b7, #fd004c);
+}
+
+.foregroundBox::after {
+  content: "";
+  height: 94%;
+  width: 94%;
+  top: 3.5%;
+  left: 3.5%;
+  border-radius: 12px;
+  position: absolute;
+  background-color: #131213;
+}
+
+.levelSection .span-2-5-col {
+  padding-top: 40px;
+  grid-column: 2/span 5;
+}
+
+.success-message {
+  margin: 0 auto;
+  text-align: end;
+}
+
+.levels-button-hover {
+  position: relative;
+  z-index: 15;
+  display: inline-block;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  color: #DFDFDF;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  background-color: none;
+  box-shadow: 0px 0px 0px #03DAC6;
+  transition: background-color 1s, color 0.5s, box-shadow 1s, border 1s;
+}
+
+.levels-button-hover:hover {
+  background-color: #03DAC6;
+  color: #131213;
+  box-shadow: 0px 0px 10px #03DAC6;
+  border: 1px solid #03DAC6;
+}
+
+input {
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+
+input:focus {
+  border: 2px solid #BB86FC;
+}
+
+#todo-input:hover {
+  border: 2px solid #03DAC6;
+}
+
+.code-input {
+  background-color: rgba(218, 218, 218, 0.3294117647);
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 4px;
+  padding-left: 10px;
+  margin: -7px 0 -7px 0;
+  transition: background-color, 0.25s ease-in;
+}
+
+.code-input:hover {
+  background-color: rgba(218, 218, 218, 0.6784313725);
+  border: 2px solid #03DAC6;
+}
+
+textarea:focus {
+  background-color: rgba(218, 218, 218, 0.6784313725);
+  border: 2px solid #BB86FC;
+}
+
+header {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.interface {
+  animation: slideIn 1.2s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    margin-left: -50rem;
+    opacity: 0%;
+    filter: blur(1.5rem);
+  }
+  100% {
+    margin-left: 0rem;
+    opacity: 100%;
+    filter: blur(0);
+  }
 }

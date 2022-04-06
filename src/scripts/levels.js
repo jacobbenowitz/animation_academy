@@ -3,19 +3,20 @@ export const LEVELS = [
   {
     lessonNumber: 0,
     promptTitle:
-      "Add a hover transition to buttons",
+      "Smooth out the hover effect on all buttons",
     promptInstructions:
-      "Use the 'transition-property' and 'transition-duration' to smoothly transition the background color over 1 second.",
-    syntaxHints: ["Hint! Use these properties:", "transition-property: background-color;", "transition-duration: 1s;"],
+      "Currently the buttons on this site have a clunky hover effect. Enter CSS below to smoothly transition the background color over 1 second.",
+    syntaxHints: ["Use these properties:", "transition-property: (property)", "transition-duration: (time)"],
     boilerCode:
-      [".hero-button-hover {", "  background-color: none;"],
+      [".button {", "  background-color: none;"],
     inputTemplateCode:
       [" transition-property: ", " transition-duration: "],
     endingBoilerCode:
-      [" ",".hero-button-hover:hover {", "  background-color: $primary;", "}"],
+      [" ",".button:hover {", "  background-color: $primary;", "}"],
     numInputLines: 2,
     totalLines: 8,
-    solution: ["(background-color)", "(1s)"]
+    solution: ["(background-color)", "(1s)"],
+    animation: "buttonHover"
   },
   {
     lessonNumber: 1,

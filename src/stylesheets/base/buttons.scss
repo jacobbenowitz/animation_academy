@@ -1,6 +1,6 @@
 .button, .ide-button {
   position: relative;
-  z-index: 1;
+  z-index: 15;
   display: inline-block;
   margin: 10px 0px 10px 0px;
   padding: 5px 10px 5px 10px;
@@ -9,28 +9,6 @@
   border: 1px solid $white;
   border-radius: 4px;
   background: none;
-}
-
-.hero-button-hover {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  margin: 10px 0px 10px 0px;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-  color: $white;
-  border: 1px solid $white;
-  border-radius: 4px;
-  background-color: none;
-  box-shadow: 0px 0px 0px $primary;
-  transition: background-color 1s, color .5s, box-shadow 1s, border 1s;
-}
-
-.hero-button-hover:hover {
-  background-color: $primary;
-  color: $background;
-  box-shadow: 0px 0px 10px $primary;
-  border: 1px solid $primary;
 }
 
 .ide-button:hover, .button:hover {

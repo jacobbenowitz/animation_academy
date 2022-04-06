@@ -1,6 +1,7 @@
 import PromptCreator from "./prompt";
 import IdeCreator from "./ide";
 import { LEVELS } from './levels'
+import LevelFunctionality from "./level_functionality";
 
 export default class Game {
   constructor(interfaceContainer) {
@@ -13,6 +14,9 @@ export default class Game {
     this.gameSetup();
     this.levelNavListeners();
     this.userSubmitListener();
+    // testing levelProgression //
+    this.levelFunctionality = new LevelFunctionality();
+    this.levelTest();
   }
 
   // get level from localStorage, return undefined if none
@@ -29,6 +33,7 @@ export default class Game {
     this.gameSetup = this.gameSetup.bind(this);
     this.nextLevel = this.nextLevel.bind(this);
     this.prevLevel = this.prevLevel.bind(this);
+    this.resetLevel = this.resetLevel.bind(this);
     this.checkUserInput = this.checkUserInput.bind(this);
     this.levelNavListeners = this.levelNavListeners.bind(this);
     this.userSubmitListener = this.userSubmitListener.bind(this);
@@ -50,10 +55,12 @@ export default class Game {
     // select lesson nav buttons, add listeners
     const back = document.querySelector('.prev-lesson')
     const next = document.querySelector('.next-lesson')
+    const reset = document.querySelector('.reset')
     // TODO querySelect dropdown
     // TODO querySelect reset button
     back.addEventListener('click', this.prevLevel)
     next.addEventListener('click', this.nextLevel)
+    reset.addEventListener('click', this.resetLevel)
   }
 
   nextLevel(e) {
@@ -71,14 +78,20 @@ export default class Game {
     e.stopPropagation();
     // go to prev unless this is level 0
     if (this.currentLevel === 0) {
-      console.log("already at 0");
-      return;
+      throw error ("already at 0");
     } else {
         const prevLevel = this.currentLevel.lessonNumber - 1;
         this.currentLevel = LEVELS[prevLevel];
         // load prev level
         this.renderNewLevel();
     }
+  }
+
+  resetLevel(e) {
+    console.log('need to truly reset by creating new instances of game and interface, currently transitions elements on DOM do not reset')
+    localStorage.clear();
+    this.currentLevel = LEVELS[0];
+    this.renderNewLevel();
   }
 
   userSubmitListener() {
@@ -95,10 +108,14 @@ export default class Game {
     const inputTextArr = userInput.value.split(' ');
     const solution = this.currentLevel.solution;
     if (e.target === button &&
-        this.regexCheck(inputTextArr, solution)) {
-      console.log('SUCCESS: Render new level pls')
-      this.levelSuccess();
-    } else console.log('Input does not match solution')
+      this.regexCheck(inputTextArr, solution)) {
+        console.log('SUCCESS: Overlay and show result of current level');
+        this.levelFunctionality.levelSuccessAnimation(this.currentLevel);
+        console.log('SUCCESS: Render new level pls')
+        this.levelSuccess();
+    } else {
+      console.log('Input does not match solution')
+    }
   }
 
   regexCheck(inputTextArr, solution) {
@@ -112,8 +129,9 @@ export default class Game {
     for (let i = 0; i < inputTextArr.length; i++) {
       const input = inputTextArr[i];
       for (let j = 0; j < regexMatchers.length; j++) {
-        if (input.match(regexMatchers[j]) !== null) {
-          console.log(input.match(regexMatchers[j]));
+        const regex = regexMatchers[j];
+        if (input.match(regex) !== null) {
+          console.log(input.match(regex));
           numMatches += 1;
         }
       }
@@ -143,6 +161,15 @@ export default class Game {
   gameUpdate() {
     this.promptContainer.updatePromptContent(this.currentLevel);
     this.ide.updateIdeContent(this.currentLevel);
+  }
+
+  levelTest() {
+    // on levelSuccess invoke appropriate function to enable that level's transitions/animations site wide
+    this.levelFunctionality.addButtonTransitions();
+    const body = document.querySelector('body');
+    this.levelFunctionality.createSampleSection(body);
+    const section = document.querySelector('.levelSection');
+    this.levelFunctionality.createRainbowBox(section)
   }
 
 }
