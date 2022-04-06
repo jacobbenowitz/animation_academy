@@ -1,7 +1,6 @@
 .ide {
   max-width: 450px;
   min-height: 100px;
-  height: fit-content;
   margin-bottom: 10px;
   background-color: $transparent-grey;
   backdrop-filter: blur(12px);
@@ -24,14 +23,15 @@
 }
 
 .ide .left-col {
-  height: fit-content;
-  height: 100%;
+  height: 100%
 }
 
 .ide .left-col textarea{
   color: $primary;
   resize: none;
   height: 100%;
+  width: fit-content;
+  overflow: hidden;
 }
 
 textarea.code-input {

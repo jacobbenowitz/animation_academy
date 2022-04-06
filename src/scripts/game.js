@@ -22,7 +22,7 @@ export default class Game {
   // get level from localStorage, return undefined if none
   currentLevel() {
     const lessonNumber = localStorage.getItem('lessonNumber');
-    if (lessonNumber) {
+    if (lessonNumber >= 0) {
       // const currentLevel = JSON.parse(LEVELS[this.lessonIndex]);
       return LEVELS[lessonNumber];
     }
@@ -77,9 +77,10 @@ export default class Game {
   
   prevLevel(e) {
     e.stopPropagation();
+    debugger
     // go to prev unless this is level 0
-    if (this.currentLevel === 0) {
-      throw error ("already at 0");
+    if (this.currentLevel.lessonNumber === 0) {
+      throw new Error ("already at 0");
     } else {
         const prevLevel = this.currentLevel.lessonNumber - 1;
         this.currentLevel = LEVELS[prevLevel];

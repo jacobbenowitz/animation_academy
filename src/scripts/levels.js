@@ -25,7 +25,7 @@ export const LEVELS = [
     'Add a 0.5s transition to the background color using the shorthand transition syntax. Use the ease-in-out timing function.',
     cssProperties: ["transition-property", "transition-duration"],
     syntaxHints:
-    ["Transition shorthand syntax is nice and simple:", "transition: (property) (time) (timing function)", ""],
+    ["Transition shorthand syntax is nice and simple:", "transition: (property) (time) (timing function)"],
     boilerCode:
     [".code-input {","background-color: #dadada54;","border: 2px solid $transparent;","border-radius: 4px;","padding-left: 10px;"],
     inputTemplateCode: ['transition:'],

@@ -329,7 +329,6 @@ header img {
 .ide {
   max-width: 450px;
   min-height: 100px;
-  height: fit-content;
   margin-bottom: 10px;
   background-color: rgba(32, 31, 30, 0.35);
   backdrop-filter: blur(12px);
@@ -352,7 +351,6 @@ header img {
 }
 
 .ide .left-col {
-  height: fit-content;
   height: 100%;
 }
 
@@ -360,6 +358,8 @@ header img {
   color: #03DAC6;
   resize: none;
   height: 100%;
+  width: fit-content;
+  overflow: hidden;
 }
 
 textarea.code-input {
