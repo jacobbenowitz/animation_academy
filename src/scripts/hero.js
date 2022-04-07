@@ -3,7 +3,7 @@ export default class Hero {
     this.hero = hero;
     this.addOuterSection();
     this.addInnerSections();
-    this.styleHeroSection();
+    // this.styleHeroSection();
     this.addContent();
   }
 
@@ -24,9 +24,9 @@ export default class Hero {
     heroContent.appendChild(rightCol).classList.add('right-col')
   }
   // add styling
-  styleHeroSection() {
-    this.hero.style.backgroundImage = "url('imgs/homeHero_optimized.jpg')"
-  }
+  // styleHeroSection() {
+  //   this.hero.style.backgroundImage = "url('imgs/homeHero_optimized.jpg')"
+  // }
 
   addContent() {
     const rightCol = document.querySelector('.hero-content > .right-col')

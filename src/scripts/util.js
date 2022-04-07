@@ -8,5 +8,5 @@ const fs = require('fs');
     .pipe(csv({}))
     .on('data', (data) => results.push(data))
     .on('end', () => {
-      console.log(results)
+      // console.log(results)
     });

@@ -71,7 +71,7 @@ export default class Game {
   nextLevel(e) {
     e.stopPropagation();
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
-      console.log('END OF GAME')
+      // console.log('END OF GAME')
       this.levelFunctionality.overlayAnimation("CONGRATS! That's all we have for now, check back soon!")
       return;
     }
@@ -85,7 +85,8 @@ export default class Game {
     // go to prev unless this is level 0
     try {
       if (this.currentLevel.lessonNumber < 1) {
-        throw new Error("already at 0");
+        return;
+        // throw new Error("already at 0");
       } else {
         const prevLevel = this.currentLevel.lessonNumber - 1;
         this.currentLevel = LEVELS[prevLevel];
@@ -93,12 +94,13 @@ export default class Game {
         this.renderLevel();
       }
     }
-    catch { e => console.log(e) } 
+    catch { return; } 
+    // catch { e => console.log(e) } 
   }
 
   resetLevel(e) {
     e.stopPropagation();
-    console.log('need to truly reset by creating new instances of game and interface, currently transitions elements on DOM do not reset')
+    // console.log('need to truly reset by creating new instances of game and interface, currently transitions elements on DOM do not reset')
     localStorage.clear();
     this.currentLevel = LEVELS[0];
     this.renderLevel();
@@ -123,13 +125,14 @@ export default class Game {
           this.levelSuccess();
       }
       else if (e.target === button) {
+        //   userInput.classList.add('error')
         // throw new Error ('Input does not match solution')
-        console.log('Input does not match solution')
+        // console.log('Input does not match solution')
+        return;
         }
       // }
       // catch {error => {
       //   console.log(error)
-      //   userInput.classList.add('error')
       //   } 
       // }
     }  

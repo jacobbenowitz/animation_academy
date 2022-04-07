@@ -57,9 +57,17 @@ body {
 }
 
 .hero {
+  background-color: $transparent;
   height: min-content;
   padding-top: 3em;
   padding-bottom: 4em;
+  background-image: url('/imgs/homeHero_optimized.jpg');
+  background-size: cover;
+}
+
+.hero::before {
+  content: "";
+  background-color: rgba(0,0,0,0.34);
 }
 
 .hero-content {

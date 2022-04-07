@@ -90,7 +90,6 @@ export default class PromptCreator {
   createPromptHints(syntaxHints) {
     const hints = document.createElement('ul');
     hints.id = "prompt-hint-list"
-    // debugger
     syntaxHints.forEach(hint => {
       let li = document.createElement('li');
       li.innerHTML = hint;

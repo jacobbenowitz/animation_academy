@@ -38,7 +38,6 @@ export default class LevelFunctionality {
     messageDiv.append(message);
     overlay.append(messageDiv);
     document.body.append(overlay);
-    debugger
   }
 
   createSampleSection(body) {

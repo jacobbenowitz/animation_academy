@@ -15,7 +15,7 @@ export default class IdeCreator {
   }
   // not working, 
   preventEnter(e) {
-    console.log(e.keycode)
+    // console.log(e.keycode)
     if (e.keycode == 13) {
       e.preventDefault();
     }
@@ -108,7 +108,6 @@ export default class IdeCreator {
   }
 
   addBoilerCode(rightCol, currentLevel) {
-    // debugger
     const rows = currentLevel.boilerCode.length
     const boilerCodeText =
       currentLevel.boilerCode.join('\n');
