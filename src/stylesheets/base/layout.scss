@@ -51,7 +51,7 @@ body {
 }
 
 .hero .right-col {
-  grid-column: 4 / span 7 ;
+  grid-column: 6 / span 5 ;
   text-align: end;
   padding-left: 120px;
 }
@@ -90,8 +90,17 @@ footer {
   grid-column: 7 / span 4;
 }
 
+.personal-site {
+  margin-top: 3em;
+}
+
 .product-box .h4 {
   width: max-content;
+}
+
+.footer-logo {
+  padding-bottom: 10px;
+  max-width: 400px;
 }
 
 footer a {
