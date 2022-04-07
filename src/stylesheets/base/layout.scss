@@ -51,11 +51,52 @@ body {
 }
 
 .hero .right-col {
-  grid-column: 7 / span 4 ;
+  grid-column: 4 / span 7 ;
   text-align: end;
   padding-left: 120px;
 }
 
 .hero {
-  height: 450px;
+  height: min-content;
+  padding-top: 3em;
+  padding-bottom: 4em;
+}
+
+.hero-content {
+  grid-column: 1 / span 12  ;
+}
+
+footer {
+  height: 300px;
+  padding: 4em 0 4em 0;
+  font-family: $prompt;
+  font-weight: $semi-bold;
+  color: $white;
+  background-color: $background;
+}
+
+.footer-left {
+  grid-column: 3 / span 4;
+}
+.footer-right {
+  grid-column: 7 / span 4;
+}
+
+.product-box .h4 {
+  width: max-content;
+}
+
+footer a {
+  position: relative;
+  width: fit-content;
+  z-index: 1;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  background-color: $primary;
 }

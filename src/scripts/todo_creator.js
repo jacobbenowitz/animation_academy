@@ -32,7 +32,7 @@ export default class TodoCreator {
     h2.innerHTML = "Todo"
     // create body text
     const body = document.createElement('p')
-    body.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor urna, commodo penatibus porta a dolor. Sed mi consectetur morbi elit senectus egestas ut sed. Id pretium ultricies volutpat massa. Duis eu commodo malesuada enim, viverra in."
+    body.innerHTML = "This todo list starts off fully functional, but it’ll be up to you to add transitions and animations that smooth out the experience. Minor adjustments to how items render on the DOM can make a large impact on the user experience. Especially if you are seeking to delight your customer, and keep them engaged."
     // create button
     const button = document.createElement('a')
     button.classList.add('button')

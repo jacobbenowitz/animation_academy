@@ -2,22 +2,22 @@ document.querySelector('.products-grid');
 
 const PRODUCTS = {
   0: {
-    name: "Product Name 1",
+    name: "Product 1",
     price: '$100',
     status: 'IN-STOCK'
   },
   1: {
-    name: "Product Name 2",
+    name: "Product 2",
     price: '$100',
     status: 'NEW'
   },
   2: {
-    name: "Product Name 3",
+    name: "Product 3",
     price: '$100',
     status: 'OUT OF STOCK'
   },
   3: {
-    name: "Product Name 4",
+    name: "Product 4",
     price: '$100',
     status: 'SALE!'
   }

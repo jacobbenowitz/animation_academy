@@ -185,7 +185,20 @@ textarea:focus {
   }
 }
 
+@keyframes smoothFade {
+  0% {
+    opacity: 0%;
+  }
+  100% { 
+    opacity: 100%;
+  }
+}
+
+.todoSlideIn {
+  animation: todoSlideIn 400ms ease-in-out;
+}
+
 #todo-input {
-  animation: todoSlideIn 1s ease-in-out;
+  animation: smoothFade 500ms ease-out;
 }
 

@@ -186,13 +186,55 @@ body {
 }
 
 .hero .right-col {
-  grid-column: 7/span 4;
+  grid-column: 4/span 7;
   text-align: end;
   padding-left: 120px;
 }
 
 .hero {
-  height: 450px;
+  height: min-content;
+  padding-top: 3em;
+  padding-bottom: 4em;
+}
+
+.hero-content {
+  grid-column: 1/span 12;
+}
+
+footer {
+  height: 300px;
+  padding: 4em 0 4em 0;
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  color: #DFDFDF;
+  background-color: #131213;
+}
+
+.footer-left {
+  grid-column: 3/span 4;
+}
+
+.footer-right {
+  grid-column: 7/span 4;
+}
+
+.product-box .h4 {
+  width: max-content;
+}
+
+footer a {
+  position: relative;
+  width: fit-content;
+  z-index: 1;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  background-color: #03DAC6;
 }
 
 .button, .ide-button {
@@ -224,7 +266,6 @@ header {
   font-weight: 500;
   color: #DFDFDF;
   background-color: #201F1E;
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -260,7 +301,7 @@ header img {
   position: relative;
   z-index: 1;
   display: block;
-  padding: 10px 20px;
+  padding: 1rem;
   border-radius: 24px;
   text-decoration: none;
   color: white;
@@ -699,6 +740,18 @@ textarea:focus {
     filter: blur(0);
   }
 }
+@keyframes smoothFade {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.todoSlideIn {
+  animation: todoSlideIn 400ms ease-in-out;
+}
+
 #todo-input {
-  animation: todoSlideIn 1s ease-in-out;
+  animation: smoothFade 500ms ease-out;
 }

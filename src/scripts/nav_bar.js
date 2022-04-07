@@ -6,7 +6,7 @@ export default class NavLinkCreator {
             'Home': '#',
             'Play': '#',
             'Learn': '#',
-            'Contact':'#'
+            'Contact': '#contact-info'
         }
         this.createNavLinks()
         // TODO //
