@@ -31,9 +31,8 @@ export default class IdeCreator {
     leftCol.classList.add('left-col');
     const rightCol = document.createElement('div');
     rightCol.classList.add('right-col');
-
+    
     container.append(leftCol, rightCol);
-
     return container;
   }
 
@@ -45,12 +44,14 @@ export default class IdeCreator {
     this.buildInput(rightCol, currentLevel);
     this.addEndingBoiler(rightCol, currentLevel);
     this.buildButton(rightCol);
-    
   }
   
   updateIdeContent(currentLevel) {
+    // generate correct amount of line numbers
     this.updateLineNums(currentLevel);
+    // update textarea for size of solution
     this.updateInput(currentLevel);
+    // update boiler code before & after user input
     this.updateBoilerCode(currentLevel);
   }
   

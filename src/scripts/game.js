@@ -169,15 +169,16 @@ export default class Game {
     }
   }
 
-  // levelAnimation = new Promise () {
-  levelAnimation () {
+  levelAnimation() {
+    // dynamically grab this level's animations to apply to DOM
     const animation =
       this.animationKey[this.currentLevel.lessonNumber]
+    animation(); // invoke the animations
+    // pull the correct success message for this level
     const successMessage = this.currentLevel.successMessage;
-    // set timeout?
-    animation();
+    // invoke the level success overlay with the message
     this.levelFunctionality.levelSuccessAnimation(successMessage)
-    this.renderNextLevel()
+    this.renderNextLevel() // render next level (update prompt & ide)
   }
 
   renderNextLevel() {

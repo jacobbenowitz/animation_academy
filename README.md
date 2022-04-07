@@ -29,6 +29,37 @@ User's are able to:
 
 ## Feature Highlights
 
+### Dynamically Create & Update the Prompt & Ide
+**Prompt: **
+```javascript
+updatePromptContent(currentLevel) {
+    // lesson id
+    const lessonId = document.querySelector('.lesson-id');
+    lessonId.innerHTML = "Lesson: " + `${currentLevel.lessonNumber}`;
+    // lesson title
+    const title = document.querySelector('.prompt-title');
+    title.innerHTML = `${currentLevel.promptTitle}`;
+    // lesson instructions
+    const instructions = document.querySelector('.prompt-instruction');
+    instructions.innerHTML = `${currentLevel.promptInstructions}`;
+    /// lesson hints
+    const hintsList = document.querySelector('#prompt-hint-list');
+    this.updateHints(hintsList, currentLevel);
+  }
+```
+
+**Ide:**
+```javascript
+updateIdeContent(currentLevel) {
+    // generate correct amount of line numbers
+    this.updateLineNums(currentLevel);
+    // update textarea for size of solution
+    this.updateInput(currentLevel);
+    // update boiler code before & after user input
+    this.updateBoilerCode(currentLevel);
+  }
+```
+
 ### RegEx Solution Matcher
 ```javascript
     regexCheck(inputTextArr, solution) {
@@ -54,6 +85,20 @@ User's are able to:
       if (numMatches >= solution.length) return true;
       return false; // if input not matched, it was wrong
     }
+```
+**On level success, level specific animations added to DOM and overlay event triggered**
+```javascript
+  levelAnimation() {
+    // dynamically grab this level's animations to apply to DOM
+    const animation =
+      this.animationKey[this.currentLevel.lessonNumber]
+    animation(); // invoke the animations
+    // pull the correct success message for this level
+    const successMessage = this.currentLevel.successMessage;
+    // invoke the level success overlay with the message
+    this.levelFunctionality.levelSuccessAnimation(successMessage)
+    this.renderNextLevel() // render next level (update prompt & ide)
+  }
 ```
 
 ## Wireframes
