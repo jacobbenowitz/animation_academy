@@ -15,7 +15,7 @@ export default class Hero {
   // create col structure
   addInnerSections() {
     const heroContent = document.querySelector('.hero-content')
-    heroContent.classList.add("grid-2-col")
+    heroContent.classList.add("grid-12-col")
 
     const leftCol = document.createElement('div')
     const rightCol = document.createElement('div')
@@ -37,7 +37,7 @@ export default class Hero {
     heroText.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor urna, commodo penatibus porta a dolor. Sed mi consectetur morbi elit senectus egestas ut sed. Id pretium ultricies volutpat massa. Duis eu commodo malesuada enim, viverra in."
 
     const button = document.createElement('a')
-    button.classList.add('button')
+    button.classList.add('button', 'play-now')
     button.innerHTML = "Play now"
     button.href = "#"
 

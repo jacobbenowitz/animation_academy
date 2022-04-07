@@ -2,7 +2,17 @@
   padding: 50px 0 50px 0;
 }
 
+.todo-left {
+  grid-column: 3 / span 4;
+  padding: 0 7em 0 0;
+}
+.todo-right {
+  padding-left: 4em;
+  grid-column: 7 / span 4;
+}
+
 .todo-list-container {
+  z-index: 50;
   padding: 40px 20px 20px 20px;
   background-color: $main-grey;
 }

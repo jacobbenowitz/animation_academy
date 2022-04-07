@@ -31,14 +31,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // create new game
     const interfaceContainer = document.querySelector('.interface');
     const game = new Game(interfaceContainer);
-
+    
     // TODO: Load without ide, wait for play button click
-    // const playButton = document.querySelector('.play-now')
-    // playButton.addEventListener('click', startGame)
-
-    // function startGame () {
-    //     game.currentLevel = LEVELS[0];
-    //     game.gameSetup();
+    const playButton = document.querySelector('.play-now')
+    // const endGameButton = document.querySelector('.end-game')
+    playButton.addEventListener('click', startGame)
+    // endGameButton.addEventListener('click', endGame)
+    
+    function startGame() {
+        // playButton.classList.add('end-game')
+        // playButton.classList.remove('start-game')
+        // playButton.innerHTML = "End game"
+        game.currentLevel = LEVELS[0];
+        game.gameSetup();
+        game.levelNavListeners();
+        game.userSubmitListener();
+    }
+    // function endGame() {
+    //     localStorage.clear();
+    //     game.resetLevel();
     // }
+
+    function lessonNavButtons() {
+        const back = document.querySelector('prev-lesson');
+        const next = document.querySelector('next-lesson');
+    }
 
 })

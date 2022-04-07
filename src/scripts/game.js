@@ -1,20 +1,20 @@
 import PromptCreator from "./prompt";
 import IdeCreator from "./ide";
-import { LEVELS } from './levels'
+import { LEVELS } from './levels';
 import LevelFunctionality from "./level_functionality";
 
 export default class Game {
   
-  constructor(interfaceContainer) {
+  constructor() {
     this.hero = document.querySelector('.hero')
-    this.interfaceContainer = interfaceContainer;
+    this.interfaceContainer = document.querySelector('.interface');
     this.currentLevel = this.currentLevel() || LEVELS[0]; // lessonNumber = idx
     this.promptContainer = new PromptCreator();
     this.ide = new IdeCreator(this);
     this.bindHandlers();
-    this.gameSetup();
-    this.levelNavListeners();
-    this.userSubmitListener();
+    // this.gameSetup();
+    // this.levelNavListeners();
+    // this.userSubmitListener();
     this.levelFunctionality = new LevelFunctionality();
     this.animationKey = [
       this.levelFunctionality.addButtonTransitions,
@@ -72,6 +72,7 @@ export default class Game {
     e.stopPropagation();
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
       console.log('END OF GAME')
+      this.levelFunctionality.overlayAnimation("CONGRATS! That's all we have for now, check back soon!")
       return;
     }
     const nextLevel = this.currentLevel.lessonNumber + 1;
@@ -82,14 +83,17 @@ export default class Game {
   prevLevel(e) {
     e.stopPropagation();
     // go to prev unless this is level 0
-    if (this.currentLevel.lessonNumber < 1) {
-      throw new Error ("already at 0");
-    } else {
+    try {
+      if (this.currentLevel.lessonNumber < 1) {
+        throw new Error("already at 0");
+      } else {
         const prevLevel = this.currentLevel.lessonNumber - 1;
         this.currentLevel = LEVELS[prevLevel];
         // load prev level
         this.renderLevel();
+      }
     }
+    catch { e => console.log(e) } 
   }
 
   resetLevel(e) {
@@ -109,42 +113,48 @@ export default class Game {
 
   checkUserInput(e) {
     e.stopPropagation();
-    const button = document.querySelector('.ide-button');
-    const userInput = document.querySelector('.code-input');
-    const inputTextArr = userInput.value.split(' ');
-    const solution = this.currentLevel.solution;
-    if (e.target === button &&
-      this.regexCheck(inputTextArr, solution)) {
-        console.log('SUCCESS: Render new level pls')
-        this.levelSuccess();
-    } else {
-      console.log('Input does not match solution')
-      throw new Error ('Incorrect input')
-    }
-  }
-
-  regexCheck(inputTextArr, solution) {
-    const regexMatchers = [];
-    for (let i = 0; i < solution.length; i++) {
-      const regex = new RegExp(solution[i]);
-      regexMatchers.push(regex);
-    }
-    let numMatches = 0;
-    // match every input with regexMatchers
-    for (let i = 0; i < inputTextArr.length; i++) {
-      const input = inputTextArr[i];
-      for (let j = 0; j < regexMatchers.length; j++) {
-        const regex = regexMatchers[j];
-        if (input.match(regex) !== null) {
-          console.log(input.match(regex));
-          numMatches += 1;
+    // try {
+      const button = document.querySelector('.ide-button');
+      const userInput = document.querySelector('.code-input');
+      const inputTextArr = userInput.value.split(' ');
+      const solution = this.currentLevel.solution;
+      if (e.target === button &&
+        this.regexCheck(inputTextArr, solution)) {
+          this.levelSuccess();
+      }
+      else if (e.target === button) {
+        // throw new Error ('Input does not match solution')
+        console.log('Input does not match solution')
+        }
+      // }
+      // catch {error => {
+      //   console.log(error)
+      //   userInput.classList.add('error')
+      //   } 
+      // }
+    }  
+    
+    regexCheck(inputTextArr, solution) {
+      const regexMatchers = [];
+      for (let i = 0; i < solution.length; i++) {
+        const regex = new RegExp(solution[i]);
+        regexMatchers.push(regex);
+      }
+      let numMatches = 0;
+      // match every input with regexMatchers
+      for (let i = 0; i < inputTextArr.length; i++) {
+        const input = inputTextArr[i];
+        for (let j = 0; j < regexMatchers.length; j++) {
+          const regex = regexMatchers[j];
+          if (input.match(regex) !== null) {
+            numMatches += 1;
+          }
         }
       }
+      // check if all solutions are matched
+      if (numMatches >= solution.length) return true;
+      return false;
     }
-    // check if all solutions are matched
-    if (numMatches >= solution.length) return true;
-    return false;
-  }
 
   levelSuccess() {
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {

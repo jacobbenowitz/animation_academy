@@ -1,6 +1,6 @@
 export default class NavLinkCreator {
     constructor(headerList) {
-        this.headerList = headerList
+        this.headerList = document.querySelector('.header-list')
         this.navLinks = [];
         this.navLinksBase = {
             'Home': '#',

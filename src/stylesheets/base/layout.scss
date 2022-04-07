@@ -4,17 +4,13 @@ body {
   background-color: $background;
 }
 
-.hero-content {
-  width: 80%;
-}
-
 .center-simple {
   display: grid;
   place-items: center;
 }
 
 .grid-12-col {
-  height: min(60rem);
+  height: inherit;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -55,15 +51,11 @@ body {
 }
 
 .hero .right-col {
+  grid-column: 7 / span 4 ;
   text-align: end;
   padding-left: 120px;
 }
 
 .hero {
   height: 450px;
-  padding: 120px 50px 20px 50px;
-}
-
-.todo-left, .todo-right {
-  padding: 60px;
 }

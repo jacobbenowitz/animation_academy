@@ -25,6 +25,19 @@
   animation: fadeIn 500ms ease-in-out;
 }
 
+.overlay-text {
+  z-index: 50;
+  grid-column: 2;
+}
+.overlay-inner {
+  z-index: 50;
+  display: grid;
+  height: 70%;
+  grid-template-columns: minmax(25%, 40%) 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0%

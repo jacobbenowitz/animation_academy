@@ -1,11 +1,14 @@
+import { LEVELS } from './levels';
+
 export default class PromptCreator {
   constructor() {
-    this.promptContainer = this.createPromptContainer()
+    this.promptContainer = this.createPromptContainer();
+    this.maxLevels = LEVELS.length - 1;
   }
   // create Prompt box and add content
   createPromptContainer() {
-    const container = document.createElement('div')
-    container.classList.add('prompt')
+    const container = document.createElement('div');
+    container.classList.add('prompt');
     return container
   }
   
@@ -39,25 +42,35 @@ export default class PromptCreator {
     const lessonId = document.createElement('p');
     lessonId.innerHTML = "Lesson: " + `${lessonNumber}`;
     lessonId.classList.add('lesson-id');
-
-    // remove innerHTML replace with SVG icons
-    const backwardsButton = document.createElement('a')
-    backwardsButton.href = "#"
-    backwardsButton.innerHTML = 'Back'
-    backwardsButton.classList.add('prev-lesson')
     
+    const forwardsButton = this.createNextButton(); 
+    const backwardsButton = this.createBackButton();
+    const resetButton = this.createResetButton();
+
+    nav.append(backwardsButton, lessonId, forwardsButton, resetButton);
+    this.promptContainer.appendChild(nav);
+  }
+
+  createBackButton() {
+    const backwardsButton = document.createElement('a');
+    backwardsButton.href = "#";
+    backwardsButton.innerHTML = 'Back';
+    backwardsButton.classList.add('prev-lesson');
+    return backwardsButton;
+  }
+  createNextButton() {
     const forwardsButton = document.createElement('a');
     forwardsButton.href = "#";
     forwardsButton.innerHTML = 'Next';
     forwardsButton.classList.add('next-lesson');
-    
-    const resetButton = document.createElement('a')
-    resetButton.href = "#"
-    resetButton.innerHTML = 'Reset'
-    resetButton.classList.add('reset')
-
-    nav.append(backwardsButton, lessonId, forwardsButton, resetButton);
-    this.promptContainer.appendChild(nav);
+    return forwardsButton;
+  }
+  createResetButton() {
+    const resetButton = document.createElement('a');
+    resetButton.href = "#";
+    resetButton.innerHTML = 'Reset';
+    resetButton.classList.add('reset');
+    return resetButton;
   }
 
   createPromptTitle(titleText) {

@@ -1,3 +1,4 @@
+document.querySelector('.products-grid');
 
 const PRODUCTS = {
   0: {
@@ -21,11 +22,9 @@ const PRODUCTS = {
     status: 'SALE!'
   }
 }
-  
 export default class ProductsCreator {
-
   constructor(productsContainer) {
-    this.productsContainer = productsContainer;
+    this.productsContainer = document.querySelector('.products-grid');
     this.products = [];
     this.buildProducts();
     this.attachProducts();

@@ -139,17 +139,13 @@ body {
   background-color: #131213;
 }
 
-.hero-content {
-  width: 80%;
-}
-
 .center-simple {
   display: grid;
   place-items: center;
 }
 
 .grid-12-col {
-  height: 60rem;
+  height: inherit;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -190,17 +186,13 @@ body {
 }
 
 .hero .right-col {
+  grid-column: 7/span 4;
   text-align: end;
   padding-left: 120px;
 }
 
 .hero {
   height: 450px;
-  padding: 120px 50px 20px 50px;
-}
-
-.todo-left, .todo-right {
-  padding: 60px;
 }
 
 .button, .ide-button {
@@ -214,6 +206,10 @@ body {
   border: 1px solid #DFDFDF;
   border-radius: 4px;
   background: none;
+}
+
+.end-game {
+  background: rgba(87, 0, 0, 0.6941176471);
 }
 
 .ide-button:hover, .button:hover {
@@ -235,22 +231,29 @@ header {
 }
 
 header img {
+  display: inline-block;
   width: 300px;
   height: 50px;
 }
 
+.header-logo {
+  width: max-content;
+}
+
 /* todo: add column layout and replace widths */
 .header-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  grid-column: 3/span 8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  width: 80%;
+  column-gap: 0px;
 }
 
 .header-list {
+  justify-self: end;
   display: flex;
   flex-direction: row;
+  width: max-content;
 }
 
 .header a {
@@ -394,6 +397,20 @@ textarea.code-input {
   animation: fadeIn 500ms ease-in-out;
 }
 
+.overlay-text {
+  z-index: 50;
+  grid-column: 2;
+}
+
+.overlay-inner {
+  z-index: 50;
+  display: grid;
+  height: 70%;
+  grid-template-columns: minmax(25%, 40%) 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0%;
@@ -406,7 +423,18 @@ textarea.code-input {
   padding: 50px 0 50px 0;
 }
 
+.todo-left {
+  grid-column: 3/span 4;
+  padding: 0 7em 0 0;
+}
+
+.todo-right {
+  padding-left: 4em;
+  grid-column: 7/span 4;
+}
+
 .todo-list-container {
+  z-index: 50;
   padding: 40px 20px 20px 20px;
   background-color: #201F1E;
 }
@@ -467,12 +495,14 @@ textarea.code-input {
 }
 
 .products {
-  padding: 60px;
   background-color: #201F1E;
+  padding-top: 4em;
+  padding-bottom: 4em;
 }
 
 .product-box {
   align-self: center;
+  z-index: 50;
   display: grid;
   margin-top: 40px;
   grid-template-columns: 1fr 1fr;
@@ -495,6 +525,16 @@ textarea.code-input {
   font-size: 20px;
   align-self: flex-end;
   margin-right: -130px;
+}
+
+.products h2 {
+  display: block;
+  height: max-content;
+  grid-column: 3/span 8;
+}
+
+.products-grid {
+  grid-column: 3/span 8;
 }
 
 .levels-button-hover {
@@ -631,7 +671,7 @@ textarea:focus {
   border: 2px solid #BB86FC;
 }
 
-.interface {
+.slideIn {
   animation: slideInInterface 1.2s ease-out;
 }
 

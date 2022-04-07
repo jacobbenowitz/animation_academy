@@ -7,7 +7,7 @@ export default class TodoCreator {
   }
 
   styleTodoSection(todoSection) {
-    todoSection.classList.add('grid-2-col')
+    todoSection.classList.add('grid-12-col')
     return todoSection
   }
 

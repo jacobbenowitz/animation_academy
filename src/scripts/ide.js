@@ -154,6 +154,7 @@ export default class IdeCreator {
   }
 
   attachIde(interfaceContainer) {
+    interfaceContainer.classList.add('slideIn')
     interfaceContainer.append(this.ideContainer);
   }
 }

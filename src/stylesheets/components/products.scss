@@ -1,10 +1,12 @@
 .products {
-  padding: 60px;
   background-color: $main-grey;
+  padding-top: 4em;
+  padding-bottom: 4em;
 }
 
 .product-box {
   align-self: center;
+  z-index: 50;
   display: grid;
   margin-top: 40px;
   grid-template-columns: 1fr 1fr;
@@ -28,4 +30,14 @@
   font-size: $h5;
   align-self: flex-end;
   margin-right: -130px;
+}
+
+.products h2 {
+  display: block;
+  height: max-content;
+  grid-column: 3 / span 8;
+}
+
+.products-grid {
+  grid-column: 3 / span 8;
 }

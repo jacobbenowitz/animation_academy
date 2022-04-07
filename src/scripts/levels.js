@@ -6,13 +6,24 @@ export const LEVELS = [
       "Smooth out the hover effect on all buttons",
     promptInstructions:
       "Currently the buttons on this site have a clunky hover effect. Enter CSS below to smoothly transition the background color over 1 second.",
-    syntaxHints: ["Use these properties:", "transition-property: (property)", "transition-duration: (time)"],
+    syntaxHints: [
+      "Use these properties:",
+      "transition-property: (property)",
+      "transition-duration: (time)"
+      ],
     boilerCode:
-      [".button {", "  background-color: none;"],
+      [ ".button {",
+        "  background-color: none;"
+      ],
     inputTemplateCode:
-      [" transition-property: ", " transition-duration: "],
+      [ " transition-property: ",
+        " transition-duration: "],
     endingBoilerCode:
-      [" ",".button:hover {", "  background-color: $primary;", "}"],
+      [ " ",
+        ".button:hover {",
+        "  background-color: $primary;",
+        "}"
+      ],
     numInputLines: 2,
     totalLines: 8,
     solution: ["(background-color)", "(1s)"],
@@ -41,12 +52,16 @@ export const LEVELS = [
     endingBoilerCode:
       [
         ".levels-button-grow:hover {",
-        "  padding: 8px 13px 8px 13px;"
+        "  padding: 8px 13px 8px 13px;", "}"
       ],
     numInputLines: 1,
     totalLines: 8,
     solution:
-    ["(transition)", "(padding)", "(250ms)", "(ease-in)"],
+      [ "(transition)",
+        "(padding)",
+        "(250ms)",
+        "(ease-in)"
+      ],
     animationClass: "levels-button-grow",
     successMessage: "Nice! Test the buttons out and watch them grow!"
   },
@@ -55,20 +70,20 @@ export const LEVELS = [
     promptTitle:
     "Catch the user's attention when they hover over input fields",
     promptInstructions:
-    "Add a 0.5s transition to the background color and the border color, this time using the shorthand transition syntax. Use the ease-in-out timing function.",
+    "Add a 500ms transition to the background color, this time using the shorthand transition syntax. Use the ease-in-out timing function.",
     cssProperties: ["transition"],
     syntaxHints:
       ["Use these properties again:",
-        "transition-property: (property)",
-        "transition-duration: (time)",
-        "Example of time: 250ms",
-        "Example of property: margin"],
+        "transition: (property) (time) (timing function)",
+        "ex: transition: font-size 500ms linear"
+      ],
     boilerCode:
       [ ".input {",
         "  background-color: #dadada54;",
         "  border: 2px solid $transparent;",
         "  border-radius: 4px;",
-        "  padding-left: 10px;"
+        "  padding-left: 10px;",
+        "}"
       ],
     inputTemplateCode: ["transition: "],
     endingBoilerCode:
@@ -76,14 +91,14 @@ export const LEVELS = [
         "}", ".input:hover {", 
         "  background-color: #dadadaad;", 
         "  border: 2px solid $primary;",
-        "  transition: border 0.5s ease-in;",
+        "  transition: border 0.5s ease-in;", "}"
         ],
     numInputLines: 1,
     totalLines: 13,
     solution:
       ["(transition:)",
         "(background-color)",
-        "(.5s)",
+        "(500ms)",
         "(ease-in-out)"
       ],
     animationClass: "input-level",
@@ -99,7 +114,7 @@ export const LEVELS = [
     syntaxHints:
       [ "Hints and syntax:",
         "translate sytanx: translateX or translateY(amount)", 
-        "ex. transform: translateX(5em)", 
+        "ex. transform: translateX(5px)", 
         "Negative values move upwards on the Y asis"
       ],
     boilerCode:
@@ -109,16 +124,15 @@ export const LEVELS = [
       "  transform: "
     ],
     endingBoilerCode:
-    [ ".rise-up-level {",
+    [ "}", " ", ".rise-up-level {",
       "  will-change: transform;",
-      "  transition: transform 450ms;"
+      "  transition: transform 450ms;", "}"
     ],
     numInputLines: 2,
     totalLines: 8,
     solution:
-      [ "(transition)",
-        "(transform 125ms)",
-        "(transform: translateY(-10px))"
+      [ "(transition)", "(transform)", "(125ms)",
+        "(transform)", "(translateY)", "(-10px)"
       ],
     animationClass: "rise-up-level",
     successMessage: "Sweet! Hover over the products now to see the animation."
@@ -139,16 +153,18 @@ export const LEVELS = [
     ["header {"],
     inputTemplateCode: [" animation:"],
     endingBoilerCode:
-    [ "@keyframes slideIn {",
-      "0% {",
-      "  margin-left: -50rem;",
-      "  opacity: 0%;",
-      "  filter: blur(1.5rem);",
-      "}",
-      "100% { ",
-      "  margin-left: 0rem;",
-      "  opacity: 100%;",
-      "  filter: blur(0);"
+      [ "}",
+        "@keyframes slideIn {",
+        "0% {",
+        "  margin-left: -50rem;",
+        "  opacity: 0%;",
+        "  filter: blur(1.5rem);",
+        "}",
+        "100% { ",
+        "  margin-left: 0rem;",
+        "  opacity: 100%;",
+        "  filter: blur(0);",
+        "}"
     ],
     numInputLines: 1,
     totalLines: 13,

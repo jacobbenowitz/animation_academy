@@ -30,11 +30,15 @@ export default class LevelFunctionality {
 
   renderOverlay(successMessage) {
     const overlay = this.createOverlay();
-    const message = document.createElement('h3')
+    const messageDiv = document.createElement('div');
+    const message = document.createElement('h4')
     message.innerHTML = successMessage;
-    message.classList.add('success-message');
-    overlay.append(message);
+    message.classList.add('overlay-text');
+    messageDiv.classList.add('overlay-inner');
+    messageDiv.append(message);
+    overlay.append(messageDiv);
     document.body.append(overlay);
+    debugger
   }
 
   createSampleSection(body) {
@@ -71,23 +75,23 @@ export default class LevelFunctionality {
   // 02 inputs
     addFieldTranstions() {
       const codeInput = document.querySelector('.code-input');
-      const todoInput = document.querySelector('#todo-input')
-      codeInput.classList.add('input-level')
-      todoInput.classList.add('input-level')
+      const todoInput = document.querySelector('#todo-input');
+      codeInput.classList.add('input-level');
+      todoInput.classList.add('input-level');
     }
 
   // 03 rise up
   addProductsHover() {
-    const products = querySelectorAll('.product-box')
+    const products = document.querySelectorAll('.product-box');
     products.forEach(product => {
-      product.classList.add('rise-up-level')
-    })
+      product.classList.add('rise-up-level');
+    });
   }
 
   // 04 header animation
   addHeaderAnimation() {
     const header = document.querySelector('header');
-    header.classList.add('slide-in-level')
+    header.classList.add('slide-in-level');
   }
 
   // add event listener on .create-todo button mouseOver, then call this fnc

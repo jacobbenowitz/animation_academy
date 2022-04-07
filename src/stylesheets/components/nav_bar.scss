@@ -10,23 +10,29 @@ header {
 }
 
 header img {
+  display: inline-block;
   width: 300px;
   height: 50px;
+}
+.header-logo {
+  width: max-content;
 }
 
 /* todo: add column layout and replace widths */
 
 .header-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  grid-column: 3 / span 8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  width: 80%;
+  column-gap: 0px;
 }
 
 .header-list {
+  justify-self: end;
   display: flex;
   flex-direction: row;
+  width: max-content;
 }
 
 .header a {
