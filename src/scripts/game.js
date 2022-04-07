@@ -12,9 +12,6 @@ export default class Game {
     this.promptContainer = new PromptCreator();
     this.ide = new IdeCreator(this);
     this.bindHandlers();
-    // this.gameSetup();
-    // this.levelNavListeners();
-    // this.userSubmitListener();
     this.levelFunctionality = new LevelFunctionality();
     this.animationKey = [
       this.levelFunctionality.addButtonTransitions,

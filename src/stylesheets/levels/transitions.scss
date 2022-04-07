@@ -159,6 +159,19 @@ textarea:focus {
   // -webkit-animation: slideIn 1.2s forwards;
 }
 
+.todoFadeUp {
+  animation: todoFadeUp 800ms ease-out;
+}
+
+@keyframes todoFadeUp {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
 @keyframes slideInInterface {
   0% {
     margin-left: -50rem;

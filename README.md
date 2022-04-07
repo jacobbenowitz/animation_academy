@@ -1,15 +1,31 @@
-![AnimationAcademy](imgs/animation-academy-logo@1x.png)
 # Animation Academy
 
+![AnimationAcademy](imgs/animation-academy-logo@1x.png)  
+[Open Animation Academy >](https://jacobbenowitz.github.io/animation_academy/)  
+
+## Contents
+
+- [Background](#background)
+- [Built With](#built-with)
+- [Functionality](#Functionality)
+- [Feature Highlights](#Feature-Highlights)
+- [Wireframes](#Wireframes)
+- [Features In Development](Features-In-Development)
+
+___
+
 ## **Background**
+
 Welcome to Animation Academy! Learn how to make a webpage interactive using the `transition` and `animation` CSS properties. Your goal is to make this webpage interactive, just follow the prompts to polish this site up!
 
 CSS Animations make a web experiences engaging by selecting static HTML elements and changing their properties for a period of time. This can be in response to user actions, or an event such as a scroll or page load.
 
 The game will start with `transitions`. The prompt provides instructions on the level objective as well as syntax hints. The advanced section, `animations`, will teach users how to animate elements with percentage states, `@keyframes`, and further polish animations by smoothing them out.
+___
+### **Built With**
 
-### Built With
 This website was built without external API's or dependencies.
+
 - Node.js
 - HTML
 - SCSS
@@ -17,20 +33,24 @@ This website was built without external API's or dependencies.
 - Vanilla DOM manipulation
 
 *In addition, this project will include:*
+
 - a production README.md file
-  
-## **Functionality**
+___
+### **Functionality**
+
 User's are able to:
+
 - type CSS into a pseudo IDE
 - once the level is completed successfully the CSS from that is applied to the DOM
 - a temporary overlay will notify them of level success
 - reset to level 0
-- navigate forwards and backwards between levels 
+- navigate forwards and backwards between levels
 
 ## Feature Highlights
 
 ### Dynamically Create & Update the Prompt & Ide
-**Prompt: **
+**Prompt:**
+
 ```javascript
 updatePromptContent(currentLevel) {
     // lesson id
@@ -49,6 +69,7 @@ updatePromptContent(currentLevel) {
 ```
 
 **Ide:**
+
 ```javascript
 updateIdeContent(currentLevel) {
     // generate correct amount of line numbers
@@ -61,6 +82,7 @@ updateIdeContent(currentLevel) {
 ```
 
 ### RegEx Solution Matcher
+
 ```javascript
     regexCheck(inputTextArr, solution) {
       const regexMatchers = [];
@@ -86,7 +108,9 @@ updateIdeContent(currentLevel) {
       return false; // if input not matched, it was wrong
     }
 ```
+
 **On level success, level specific animations added to DOM and overlay event triggered**
+
 ```javascript
   levelAnimation() {
     // dynamically grab this level's animations to apply to DOM
@@ -101,6 +125,8 @@ updateIdeContent(currentLevel) {
   }
 ```
 
+___
+
 ## Wireframes
 
 [CSS Animation Game Wireframe - Figma](https://www.figma.com/file/bje4NnMpHhoA5q3TrHcK4v/CSS-Animation-Game?node-id=0%3A1)
@@ -108,9 +134,13 @@ updateIdeContent(currentLevel) {
 ![Wireframe](imgs/desktopLayout.png)
 
 ## **Implementation Timeline**
+
 ### **Thursday**
+
 - Project scope, features, wireframes, tech stack
+
 ### **Fri - Sun**
+
 - Solidify the levels for each section
 - Design style, color themes
 - List of all game assets needed
@@ -118,20 +148,31 @@ updateIdeContent(currentLevel) {
 - HTML/CSS skeleton of all elements needed for MVP
 - CSS Reset
 - CSS grid system
+
 ### **Mon**
+
 - Complete UI for base game
 - Finalize all game assets
 - Section #1: transforms
+
 ### **Tue**
+
 - Game logic, event loops, and check user input logic
 - Section #2: animations and keyframes
+
 ### **Wed**
+
 - Refine instructions, prompts, and hints
 - Bug testing and refactoring
+
 ### **Thu**
+
 - Deployment to GitHub
 
+___
+
 ## Features In Development
+
 - Generating levels from a csv file, parsing in real time
 - Checking user input on the fly using throttle/debounce (versus only on button click)
 - Clearly notifying user if input is incorrect
@@ -143,15 +184,11 @@ updateIdeContent(currentLevel) {
 - Disable level navigation levels unless user has completed the level
 - User hints if they are lost
   - use localStorage to save all levels completed, not just current level
-- Products levels: 
+- Products levels:
   - Reveal text via animation on hover
   - Scrollable interface with transitions
 - CSS Timeline levels
   - animate in on scroll events
 - Refine game for all screen types and inputs (mobile, tablet, laptop, desktop)
-
-### **Fonts**
-- Source Code Pro - IDE
-    - https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap
-- Prompt - Headings and Body
-    - https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;500;700
+  
+____
