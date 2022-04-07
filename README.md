@@ -1,69 +1,74 @@
 ![AnimationAcademy](imgs/animation-academy-logo@1x.png)
+# Animation Academy
 
-# **Background**
-Welcome to Animation Academy! Learn about how to make a webpage interactive using the transition and animation CSS properties. CSS Animations make a web experiences engaging by selecting static HTML elements and changing their properties over a time, often in response to user input or actions. Your goal is to make this webpage interactive, just follow the prompts to polish this site up!
+## **Background**
+Welcome to Animation Academy! Learn how to make a webpage interactive using the `transition` and `animation` CSS properties. Your goal is to make this webpage interactive, just follow the prompts to polish this site up!
 
-This demo is divided into 3 sections where each level will prompt you to type CSS code in order to progress to the bext level. The 3 sections are:
+CSS Animations make a web experiences engaging by selecting static HTML elements and changing their properties for a period of time. This can be in response to user actions, or an event such as a scroll or page load.
 
-2. **transitions**
-2. **animations**
-3. **@keyframes**
+The game will start with `transitions`. The prompt provides instructions on the level objective as well as syntax hints. The advanced section, `animations`, will teach users how to animate elements with percentage states, `@keyframes`, and further polish animations by smoothing them out.
 
-The game will start nice and easy with `transitions`, assuming the user has no knowledge of CSS animation properties. It will start by teaching users how to transition an element’s state based on events like hover. The advanced section, `animations`, will teach users how to animate elements with percentage states, `@keyframes`, and further polish animations by smoothing them out.
+### Built With
+This website was built without external API's or dependencies.
+- Node.js
+- HTML
+- SCSS
+- webpack
+- Vanilla DOM manipulation
 
-This game will use Node.js, vanilla DOM manipulation, and webpack as the module bundler for the project. 
-
-# **Functionality & MVPs**
-
-**In the Animation Academy demo, users will be able to:**
-
-- type CSS into an IDE that is applied to the DOM
-- progress to the next level if the level prompt was completed successfully
-- get a visual indicator that the prompt was not met
-- click a button to get a hint if they are stuck
-- code up animations to be used directly on the web page
-    - **[transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)**
-        - [`transition-property`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property)
-        - [`transition-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration)
-        - [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)
-        - [`transition-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay)
-    - **[animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)**
-        - `color`, `scale`, `background-color`, `border`
-        - `[animation-name](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name)`
-        - `[animation-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction)`
-        - `[animation-duration](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration)`
-        - `[animation-fill-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode)`
-    - **[@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)**
-        - `from`
-        - `to`
-        - `<percentage>`
-
-**In addition, this project will include:**
-
-- a splash page that provides:
-    - context about CSS animations
-    - resources to learn more from the documentation
-    - information about the developer
+*In addition, this project will include:*
 - a production README.md file
+  
+## **Functionality**
+User's are able to:
+- type CSS into a pseudo IDE
+- once the level is completed successfully the CSS from that is applied to the DOM
+- a temporary overlay will notify them of level success
+- reset to level 0
+- navigate forwards and backwards between levels 
 
-# **Wireframes**
+## Feature Highlights
+
+### RegEx Solution Matcher
+```javascript
+    regexCheck(inputTextArr, solution) {
+      const regexMatchers = [];
+      // build regex array containing solutions
+      for (let i = 0; i < solution.length; i++) {
+        const regex = new RegExp(solution[i]);
+        regexMatchers.push(regex);
+      }
+      let numMatches = 0;
+      // match every input with regexMatchers
+      for (let i = 0; i < inputTextArr.length; i++) {
+        const input = inputTextArr[i];
+        for (let j = 0; j < regexMatchers.length; j++) {
+          const regex = regexMatchers[j];
+          if (input.match(regex) !== null) {
+            // increment numMatches if match found
+            numMatches += 1;
+          }
+        }
+      }
+      // check if all solutions are matched
+      if (numMatches >= solution.length) return true;
+      return false; // if input not matched, it was wrong
+    }
+```
+
+## Wireframes
 
 [CSS Animation Game Wireframe - Figma](https://www.figma.com/file/bje4NnMpHhoA5q3TrHcK4v/CSS-Animation-Game?node-id=0%3A1)
 
 ![Wireframe](imgs/desktopLayout.png)
 
-# **Technologies, Libraries, APIs**
-
-- Node.js
-- webpack
-
-# **Implementation Timeline**
+## **Implementation Timeline**
 ### **Thursday**
 - Project scope, features, wireframes, tech stack
 ### **Fri - Sun**
 - Solidify the levels for each section
 - Design style, color themes
-- List of all game assets needed, start creating
+- List of all game assets needed
 - Fonts
 - HTML/CSS skeleton of all elements needed for MVP
 - CSS Reset
@@ -71,24 +76,36 @@ This game will use Node.js, vanilla DOM manipulation, and webpack as the module 
 ### **Mon**
 - Complete UI for base game
 - Finalize all game assets
-- Splash page
 - Section #1: transforms
 ### **Tue**
-- Section #2: transitions
-- Section #3: @keyframes
+- Game logic, event loops, and check user input logic
+- Section #2: animations and keyframes
 ### **Wed**
-- Section #3: @keyframes
-- Game polish: refine instructions, prompts, and hints
-- Splash page, dev links, documentation links
-- Bug testing
+- Refine instructions, prompts, and hints
+- Bug testing and refactoring
 ### **Thu**
-- Deployment to Heroku / GitHub
+- Deployment to GitHub
 
-# **Bonus Features**
-- CSS Animation showcase of interesting animations along with the code for those interested
+## Features In Development
+- Generating levels from a csv file, parsing in real time
+- Checking user input on the fly using throttle/debounce (versus only on button click)
+- Clearly notifying user if input is incorrect
+- Additional levels covering
+  - More basic transition levels to teach the fundamentals
+  - Loading animations using multiple svgs
+  - Placeholder animations on page load (before content is ready)
+  - Advanced @keyframe animations
+- Disable level navigation levels unless user has completed the level
+- User hints if they are lost
+  - use localStorage to save all levels completed, not just current level
+- Products levels: 
+  - Reveal text via animation on hover
+  - Scrollable interface with transitions
+- CSS Timeline levels
+  - animate in on scroll events
 - Refine game for all screen types and inputs (mobile, tablet, laptop, desktop)
 
-# **Fonts**
+### **Fonts**
 - Source Code Pro - IDE
     - https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap
 - Prompt - Headings and Body

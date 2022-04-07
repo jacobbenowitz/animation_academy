@@ -139,6 +139,7 @@ export default class Game {
     
     regexCheck(inputTextArr, solution) {
       const regexMatchers = [];
+      // build regex array containing solutions
       for (let i = 0; i < solution.length; i++) {
         const regex = new RegExp(solution[i]);
         regexMatchers.push(regex);
@@ -150,18 +151,18 @@ export default class Game {
         for (let j = 0; j < regexMatchers.length; j++) {
           const regex = regexMatchers[j];
           if (input.match(regex) !== null) {
+            // increment numMatches if match found
             numMatches += 1;
           }
         }
       }
       // check if all solutions are matched
       if (numMatches >= solution.length) return true;
-      return false;
+      return false; // if input not matched, it was wrong
     }
 
   levelSuccess() {
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
-      console.log('END OF GAME')
       return;
     } else {
       this.levelAnimation(this.currentLevel);
@@ -170,7 +171,6 @@ export default class Game {
 
   // levelAnimation = new Promise () {
   levelAnimation () {
-    console.log('Show overlay + run level_func method');
     const animation =
       this.animationKey[this.currentLevel.lessonNumber]
     const successMessage = this.currentLevel.successMessage;
