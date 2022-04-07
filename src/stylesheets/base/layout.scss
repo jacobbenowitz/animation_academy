@@ -27,6 +27,12 @@ body {
   justify-content: center;
 }
 
+.grid-2-row {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: end;
+}
+
 .grid-2-col {
   display: grid;
   width: fit-content;
@@ -82,11 +88,25 @@ footer {
   background-color: $background;
 }
 
+.footer-links {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
 .footer-left {
   grid-column: 3 / span 4;
+  display: flex;
+  align-items: end;
 }
+
 .footer-right {
   grid-column: 7 / span 4;
+}
+
+#contact-info {
+  display: flex;
+  align-items: stretch;
 }
 
 .personal-site {
@@ -98,8 +118,10 @@ footer {
 }
 
 .footer-logo {
-  padding-bottom: 10px;
+  display: flex;
   max-width: 400px;
+  align-self: baseline;
+  padding-bottom: 5em;
 }
 
 footer a {
@@ -114,5 +136,6 @@ footer a {
 }
 
 footer a:hover {
-  background-color: $primary;
+  color: $primary;
+  text-decoration: underline;
 }
