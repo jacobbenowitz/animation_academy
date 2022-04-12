@@ -4,7 +4,7 @@ import { LEVELS } from './levels';
 import LevelFunctionality from "./level_functionality";
 
 export default class Game {
-  
+
   constructor() {
     this.hero = document.querySelector('.hero')
     this.interfaceContainer = document.querySelector('.interface');
@@ -76,7 +76,7 @@ export default class Game {
     this.currentLevel = LEVELS[nextLevel];
     this.renderLevel();
   }
-  
+
   prevLevel(e) {
     e.stopPropagation();
     // go to prev unless this is level 0
@@ -91,7 +91,7 @@ export default class Game {
         this.renderLevel();
       }
     }
-    catch { return; } 
+    catch { return; }
     // catch { e => console.log(e) } 
   }
 
@@ -113,50 +113,50 @@ export default class Game {
   checkUserInput(e) {
     e.stopPropagation();
     // try {
-      const button = document.querySelector('.ide-button');
-      const userInput = document.querySelector('.code-input');
-      const inputTextArr = userInput.value.split(' ');
-      const solution = this.currentLevel.solution;
-      if (e.target === button &&
-        this.regexCheck(inputTextArr, solution)) {
-          this.levelSuccess();
-      }
-      else if (e.target === button) {
-        //   userInput.classList.add('error')
-        // throw new Error ('Input does not match solution')
-        // console.log('Input does not match solution')
-        return;
-        }
-      // }
-      // catch {error => {
-      //   console.log(error)
-      //   } 
-      // }
-    }  
-    
-    regexCheck(inputTextArr, solution) {
-      const regexMatchers = [];
-      // build regex array containing solutions
-      for (let i = 0; i < solution.length; i++) {
-        const regex = new RegExp(solution[i]);
-        regexMatchers.push(regex);
-      }
-      let numMatches = 0;
-      // match every input with regexMatchers
-      for (let i = 0; i < inputTextArr.length; i++) {
-        const input = inputTextArr[i];
-        for (let j = 0; j < regexMatchers.length; j++) {
-          const regex = regexMatchers[j];
-          if (input.match(regex) !== null) {
-            // increment numMatches if match found
-            numMatches += 1;
-          }
-        }
-      }
-      // check if all solutions are matched
-      if (numMatches >= solution.length) return true;
-      return false; // if input not matched, it was wrong
+    const button = document.querySelector('.ide-button');
+    const userInput = document.querySelector('.code-input');
+    const inputTextArr = userInput.value.split(' ');
+    const solution = this.currentLevel.solution;
+    if (e.target === button &&
+      this.regexCheck(inputTextArr, solution)) {
+      this.levelSuccess();
     }
+    else if (e.target === button) {
+      //   userInput.classList.add('error')
+      // throw new Error ('Input does not match solution')
+      // console.log('Input does not match solution')
+      return;
+    }
+    // }
+    // catch {error => {
+    //   console.log(error)
+    //   } 
+    // }
+  }
+
+  regexCheck(inputTextArr, solution) {
+    const regexMatchers = [];
+    // build regex array containing solutions
+    for (let i = 0; i < solution.length; i++) {
+      const regex = new RegExp(solution[i]);
+      regexMatchers.push(regex);
+    }
+    let numMatches = 0;
+    // match every input with regexMatchers
+    for (let i = 0; i < inputTextArr.length; i++) {
+      const input = inputTextArr[i];
+      for (let j = 0; j < regexMatchers.length; j++) {
+        const regex = regexMatchers[j];
+        if (input.match(regex) !== null) {
+          // increment numMatches if match found
+          numMatches += 1;
+        }
+      }
+    }
+    // check if all solutions are matched
+    if (numMatches >= solution.length) return true;
+    return false; // if input not matched, it was wrong
+  }
 
   levelSuccess() {
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
@@ -195,7 +195,7 @@ export default class Game {
     this.promptContainer.updatePromptContent(this.currentLevel);
     this.ide.updateIdeContent(this.currentLevel);
   }
-  
+
   // testing only, add to animationKey
   levelTest() {
     // on levelSuccess invoke appropriate function to enable that level's transitions/animations site wide

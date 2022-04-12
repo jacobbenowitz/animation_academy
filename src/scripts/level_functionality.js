@@ -2,7 +2,7 @@ export default class LevelFunctionality {
   constructor() {
     this.bindHandlers();
   }
-  
+
   bindHandlers() {
     this.levelSuccessAnimation =
       this.levelSuccessAnimation.bind(this);
@@ -42,7 +42,7 @@ export default class LevelFunctionality {
 
   createSampleSection(body) {
     const section = document.createElement('section');
-    section.classList.add('level-section','center-simple');
+    section.classList.add('level-section', 'center-simple');
     const h2 = document.createElement('h2')
     h2.innerHTML = "Level Assets";
     // h2.classList.add('');
@@ -72,12 +72,12 @@ export default class LevelFunctionality {
     });
   }
   // 02 inputs
-    addFieldTranstions() {
-      const codeInput = document.querySelector('.code-input');
-      const todoInput = document.querySelector('#todo-input');
-      codeInput.classList.add('input-level');
-      todoInput.classList.add('input-level');
-    }
+  addFieldTranstions() {
+    const codeInput = document.querySelector('.code-input');
+    const todoInput = document.querySelector('#todo-input');
+    codeInput.classList.add('input-level');
+    todoInput.classList.add('input-level');
+  }
 
   // 03 rise up
   addProductsHover() {

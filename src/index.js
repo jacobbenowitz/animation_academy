@@ -6,7 +6,6 @@ import TodoFunctionality from "./scripts/todo";
 import ProductsCreator from "./scripts/products";
 import Game from "./scripts/game";
 import { LEVELS } from "./scripts/levels"
-import LevelFunctionality from "./scripts/level_functionality";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -40,15 +39,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // endGameButton.addEventListener('click', endGame)
 
     function startGame() {
-        // playButton.classList.add('end-game')
-        // playButton.classList.remove('start-game')
-        // playButton.innerHTML = "End game"
         game.currentLevel = LEVELS[0];
         game.gameSetup();
         game.levelNavListeners();
         game.userSubmitListener();
-        playButton.forEach(button => button.style.display = 'none');
+        // addResetButtons(); // review
     }
+
+    // NOT working
+    // function addResetButtons() {
+    //     // create reset buttons
+    //     playButton.forEach(button => button.style.display = 'none');
+    //     const resetButtonHero = document.createElement('a');
+    //     resetButtonHero.innerHTML = 'Reset Game'
+    //     resetButtonHero.href = '#'
+    //     resetButtonHero.classList.add('reset', 'button');
+    //     const resetButtonNav = document.createElement('a');
+    //     resetButtonNav.classList.add('reset', 'main-nav-link');
+    //     resetButtonNav.innerHTML = 'Reset Game'
+    //     resetButtonNav.href = '#'
+    //     // add to page
+    //     hero.appendChild(resetButtonHero);
+    //     headerList.appendChild(resetButtonNav);
+    //     game.levelNavListeners(); // add the listeners for new reset buttons
+    // }
     // function endGame() {
     //     localStorage.clear();
     //     game.resetLevel();
