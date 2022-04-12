@@ -31,13 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // create new game
     const interfaceContainer = document.querySelector('.interface');
     const game = new Game(interfaceContainer);
-    
+
     // TODO: Load without ide, wait for play button click
-    const playButton = document.querySelector('.play-now')
+    const playButton = document.querySelectorAll('.play-now')
     // const endGameButton = document.querySelector('.end-game')
-    playButton.addEventListener('click', startGame)
+    playButton.forEach(button => button.addEventListener('click', startGame))
+    // TODO add endGame buttons!
     // endGameButton.addEventListener('click', endGame)
-    
+
     function startGame() {
         // playButton.classList.add('end-game')
         // playButton.classList.remove('start-game')
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         game.gameSetup();
         game.levelNavListeners();
         game.userSubmitListener();
+        playButton.forEach(button => button.style.display = 'none');
     }
     // function endGame() {
     //     localStorage.clear();

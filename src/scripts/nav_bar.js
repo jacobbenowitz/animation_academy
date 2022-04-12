@@ -5,7 +5,7 @@ export default class NavLinkCreator {
         this.navLinksBase = {
             'Home': '#',
             'Play': '#',
-            'Learn': '#',
+            // 'Learn': '#',
             'Contact': '#contact-info'
         }
         this.createNavLinks()
@@ -13,7 +13,7 @@ export default class NavLinkCreator {
         // this.mouseOver = this.mouseOver.bind(this)
         // this.headerList.addEventListener("mouseover", this.mouseOver)
     }
-    
+
     // create all of our nav links
     createNavLinks() {
         // extract nav link titles in an array
@@ -30,7 +30,9 @@ export default class NavLinkCreator {
 
             // add a class for styling and interactivity
             outerLi.classList.add('main-nav-link')
-
+            if (innerLink.innerHTML === 'Play') {
+                outerLi.classList.add('play-now')
+            }
             // put the 'a' tag inside of the 'li'
             outerLi.appendChild(innerLink);
 
@@ -43,6 +45,7 @@ export default class NavLinkCreator {
     // add our nav links to the header
     attachNavLinks() {
         this.navLinks.forEach(link => this.headerList.appendChild(link))
+        //temp
     }
 
 
