@@ -5,11 +5,11 @@ export const LEVELS = [
     promptTitle:
       "Smooth out the hover effect on all buttons",
     promptInstructions:
-      "Currently the buttons on this site have a clunky hover effect. Enter CSS below to smoothly transition the background color over 1 second.",
+      "Currently the buttons on this site have a clunky hover effect. Enter CSS below to smoothly transition the <code>background-color</code> over <code>1 second</code>",
     syntaxHints: [
-      "Use these properties:",
-      "transition-property: (property)",
-      "transition-duration: (time)"
+      "Example transition:",
+      "transition-property: <strong>font-size</strong>",
+      "transition-duration: <strong>2s</strong>"
       ],
     boilerCode:
       [ ".button {",

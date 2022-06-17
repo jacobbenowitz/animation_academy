@@ -6,8 +6,9 @@ import LevelFunctionality from "./level_functionality";
 export default class Game {
 
   constructor() {
+    localStorage.setItem('gameState', 'idle')
     this.hero = document.querySelector('.hero')
-    this.interfaceContainer = document.querySelector('.interface');
+    this.interfaceContainer = document.getElementById('interface');
     this.currentLevel = this.currentLevel() || LEVELS[0]; // lessonNumber = idx
     this.promptContainer = new PromptCreator();
     this.ide = new IdeCreator(this);
@@ -31,6 +32,8 @@ export default class Game {
     }
     return undefined;
   }
+  
+  // TODO: debounce & throttle method to check if correct solution
 
   bindHandlers() {
     this.gameSetup = this.gameSetup.bind(this);
@@ -42,10 +45,12 @@ export default class Game {
     this.userSubmitListener = this.userSubmitListener.bind(this);
     this.renderLevel = this.renderLevel.bind(this);
     this.gameUpdate = this.gameUpdate.bind(this);
-    // TODO: debounce & throttle bind method to check if solution?
+    this.hideGame = this.hideGame.bind(this);
+    this.showGame = this.showGame.bind(this)
   }
 
   gameSetup() {
+    localStorage.setItem('gameState', 'active')
     this.promptContainer.addPromptContent(this.currentLevel);
     this.promptContainer.attachPrompt(this.interfaceContainer);
     // render ide with boiler code and form
@@ -57,12 +62,13 @@ export default class Game {
     // select lesson nav buttons, add listeners
     const back = document.querySelector('.prev-lesson')
     const next = document.querySelector('.next-lesson')
-    const reset = document.querySelector('.reset')
+    // const reset = document.querySelector('.reset')
+    const hide = document.querySelector('.hide-interface')
     // TODO querySelect dropdown
-    // TODO querySelect reset button
     back.addEventListener('click', this.prevLevel)
     next.addEventListener('click', this.nextLevel)
-    reset.addEventListener('click', this.resetLevel)
+    // reset.addEventListener('click', this.resetLevel)
+    hide.addEventListener('click', this.hideGame)
   }
 
   nextLevel(e) {
@@ -91,16 +97,45 @@ export default class Game {
         this.renderLevel();
       }
     }
-    catch { return; }
+    catch { return }
     // catch { e => console.log(e) } 
   }
 
   resetLevel(e) {
     e.stopPropagation();
     // console.log('need to truly reset by creating new instances of game and interface, currently transitions elements on DOM do not reset')
-    localStorage.clear();
+    localStorage.setItem('gameState', 'active');
     this.currentLevel = LEVELS[0];
     this.renderLevel();
+  }
+
+  hideGame(e) {
+    e.stopPropagation();
+    // remove prompt and ide from DOM
+    const interfaceContainer = document.getElementById('interface');
+    interfaceContainer.classList.remove('slideIn')
+    interfaceContainer.classList.add('slideOut')
+    localStorage.setItem('gameState', 'paused')
+    const playButtons = document.querySelectorAll('.play-now')
+    playButtons.forEach(button => {
+      button.removeEventListener('click', this.hideGame)
+      button.addEventListener('click', this.showGame)
+      button.innerHTML = 'Resume'
+    })
+  }
+
+  showGame(e) {
+    e.stopPropagation()
+    const interfaceContainer = document.getElementById('interface');
+    interfaceContainer.classList.remove('slideOut');
+    interfaceContainer.classList.add('slideIn');
+    localStorage.setItem('gameState', 'active');
+    const playButtons = document.querySelectorAll('.play-now')
+    playButtons.forEach(button => {
+      button.removeEventListener('click', this.showGame)
+      button.addEventListener('click', this.hideGame)
+      button.innerHTML = 'Pause'
+    });
   }
 
   userSubmitListener() {
@@ -199,7 +234,6 @@ export default class Game {
   // testing only, add to animationKey
   levelTest() {
     // on levelSuccess invoke appropriate function to enable that level's transitions/animations site wide
-    ;
     const body = document.querySelector('body');
     this.levelFunctionality.createSampleSection(body);
     const section = document.querySelector('.level-section');

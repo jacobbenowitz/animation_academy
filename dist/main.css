@@ -107,6 +107,11 @@ h4 {
   color: #DFDFDF;
 }
 
+strong {
+  font-weight: 900;
+  color: #BB86FC;
+}
+
 p {
   color: #DFDFDF;
   font-family: "Prompt", sans-serif;
@@ -411,6 +416,21 @@ header img {
 .prompt-title {
   margin-bottom: 10px;
   margin-top: 5px;
+}
+
+.prompt-instruction {
+  color: white;
+}
+
+code {
+  width: fit-content;
+  font-family: "Source Code Pro", monospace;
+  color: #03DAC6;
+  background-color: rgba(19, 18, 19, 0.7450980392);
+  border-radius: 4px;
+  margin: 4px 0 4px 0;
+  padding: 4px 8px 4px 8px;
+  font-size: small;
 }
 
 .ide {
@@ -759,6 +779,11 @@ textarea:focus {
 
 .slideIn {
   animation: slideInInterface 1.2s ease-out;
+  visibility: visible;
+}
+.slideOut {
+  animation: slideOutInterface 1.2s ease-out;
+  visibility: hidden;
 }
 
 .todoFadeUp {
@@ -773,11 +798,12 @@ textarea:focus {
     opacity: 100%;
   }
 }
+
 @keyframes slideInInterface {
   0% {
     margin-left: -50rem;
     opacity: 0%;
-    filter: blur(1.5rem);
+    filter: blur(15px);
   }
   100% {
     margin-left: 0rem;
@@ -785,6 +811,22 @@ textarea:focus {
     filter: blur(0);
   }
 }
+@keyframes slideOutInterface {
+  0% {
+    margin-left: 0rem;
+    opacity: 100%;
+    filter: blur(0);
+    visibility: visible;
+  }
+  100% {
+    margin-left: -50rem;
+    opacity: 0%;
+    filter: blur(15px);
+    visibility: visible;
+  }
+}
+
+
 @keyframes todoSlideIn {
   0% {
     width: 0%;

@@ -28,49 +28,36 @@ document.addEventListener("DOMContentLoaded", () => {
     new ProductsCreator(productsContainer);
 
     // create new game
-    const interfaceContainer = document.querySelector('.interface');
-    const game = new Game(interfaceContainer);
+    const game = new Game();
 
-    // TODO: Load without ide, wait for play button click
-    const playButton = document.querySelectorAll('.play-now')
-    // const endGameButton = document.querySelector('.end-game')
-    playButton.forEach(button => button.addEventListener('click', startGame))
+    const playButtons = document.querySelectorAll('.play-now')
+    playButtons.forEach(button => button.addEventListener('click', startGame))
     // TODO add endGame buttons!
+    // const endGameButton = document.querySelector('.end-game')
     // endGameButton.addEventListener('click', endGame)
 
     function startGame() {
-        game.currentLevel = LEVELS[0];
-        game.gameSetup();
-        game.levelNavListeners();
-        game.userSubmitListener();
+        const interfaceContainer = document.getElementById('interface');
+        if (localStorage.getItem('gameState') === 'idle') {
+            game.currentLevel = LEVELS[0];
+            togglePlayButtons()
+            game.gameSetup();
+            game.levelNavListeners();
+            game.userSubmitListener();
+        } else {
+            interfaceContainer.classList.remove('slideOut')
+            interfaceContainer.classList.add('slideIn')
+        }
         // addResetButtons(); // review
     }
 
-    // NOT working
-    // function addResetButtons() {
-    //     // create reset buttons
-    //     playButton.forEach(button => button.style.display = 'none');
-    //     const resetButtonHero = document.createElement('a');
-    //     resetButtonHero.innerHTML = 'Reset Game'
-    //     resetButtonHero.href = '#'
-    //     resetButtonHero.classList.add('reset', 'button');
-    //     const resetButtonNav = document.createElement('a');
-    //     resetButtonNav.classList.add('reset', 'main-nav-link');
-    //     resetButtonNav.innerHTML = 'Reset Game'
-    //     resetButtonNav.href = '#'
-    //     // add to page
-    //     hero.appendChild(resetButtonHero);
-    //     headerList.appendChild(resetButtonNav);
-    //     game.levelNavListeners(); // add the listeners for new reset buttons
-    // }
-    // function endGame() {
-    //     localStorage.clear();
-    //     game.resetLevel();
-    // }
-
-    function lessonNavButtons() {
-        const back = document.querySelector('prev-lesson');
-        const next = document.querySelector('next-lesson');
+    function togglePlayButtons() {
+        const playButtons = document.querySelectorAll('.play-now')
+        playButtons.forEach(button => {
+            button.removeEventListener('click', startGame)
+            button.addEventListener('click', game.hideGame)
+            button.innerHTML = 'Pause'
+        })
     }
 
 })

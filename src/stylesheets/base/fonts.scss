@@ -18,6 +18,7 @@ $code: 15px;
 
 // font weight variables
 $header-default: 500;
+$extra-bold: 900;
 $bold: 700;
 $semi-bold: 500;
 $normal: 400;
@@ -55,6 +56,11 @@ h4 {
   font-size: $h4;
   font-weight: $semi-bold;
   color: $white;
+}
+
+strong {
+  font-weight: $extra-bold;
+  color: $secondary;
 }
 
 p {

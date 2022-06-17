@@ -34,7 +34,7 @@ export default class Hero {
     h1.innerHTML = "Learn CSS Animations"
     
     const heroText = document.createElement('p')
-    heroText.innerHTML = "Ready to start learning how to use transitions and animations in CSS? Click the button below to start playing. This game is a work in progress, so stay tuned for new levels being released weekly! "
+    heroText.innerHTML = "Ready to start learning how to use transitions and animations in CSS? Click the button below to start. "
 
     const button = document.createElement('a')
     button.classList.add('button', 'play-now')

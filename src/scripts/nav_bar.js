@@ -5,7 +5,6 @@ export default class NavLinkCreator {
         this.navLinksBase = {
             'Home': '#',
             'Play': '#',
-            // 'Learn': '#',
             'Contact': '#contact-info'
         }
         this.createNavLinks()
@@ -31,7 +30,7 @@ export default class NavLinkCreator {
             // add a class for styling and interactivity
             outerLi.classList.add('main-nav-link')
             if (innerLink.innerHTML === 'Play') {
-                outerLi.classList.add('play-now')
+                innerLink.classList.add('play-now')
             }
             // put the 'a' tag inside of the 'li'
             outerLi.appendChild(innerLink);

@@ -45,9 +45,11 @@ export default class PromptCreator {
     
     const forwardsButton = this.createNextButton(); 
     const backwardsButton = this.createBackButton();
-    const resetButton = this.createResetButton();
+    // const resetButton = this.createResetButton();
+    const hideButton = this.createHideButton();
 
-    nav.append(backwardsButton, lessonId, forwardsButton, resetButton);
+    nav.append(backwardsButton, lessonId,
+      forwardsButton, hideButton);
     this.promptContainer.appendChild(nav);
   }
 
@@ -65,12 +67,19 @@ export default class PromptCreator {
     forwardsButton.classList.add('next-lesson');
     return forwardsButton;
   }
-  createResetButton() {
-    const resetButton = document.createElement('a');
-    resetButton.href = "#";
-    resetButton.innerHTML = 'Reset';
-    resetButton.classList.add('reset');
-    return resetButton;
+  // createResetButton() {
+  //   const resetButton = document.createElement('a');
+  //   resetButton.href = "#";
+  //   resetButton.innerHTML = 'Reset';
+  //   resetButton.classList.add('reset');
+  //   return resetButton;
+  // }
+  createHideButton() {
+    const hideButton = document.createElement('a');
+    hideButton.href = "#";
+    hideButton.innerHTML = 'Hide';
+    hideButton.classList.add('hide-interface');
+    return hideButton;
   }
 
   createPromptTitle(titleText) {
@@ -81,7 +90,7 @@ export default class PromptCreator {
   }
 
   createPromptInstructions(instructions) {
-    const instruction = document.createElement('p');
+    const instruction = document.createElement('span');
     instruction.innerHTML = instructions;
     instruction.classList.add('prompt-instruction');
     this.promptContainer.appendChild(instruction);
