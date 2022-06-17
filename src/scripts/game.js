@@ -2,6 +2,7 @@ import PromptCreator from "./prompt";
 import IdeCreator from "./ide";
 import { LEVELS } from './levels';
 import LevelFunctionality from "./level_functionality";
+// import { throttle } from './throttle_util'
 
 export default class Game {
 
@@ -42,7 +43,7 @@ export default class Game {
     this.resetLevel = this.resetLevel.bind(this);
     this.checkUserInput = this.checkUserInput.bind(this);
     this.levelNavListeners = this.levelNavListeners.bind(this);
-    this.userSubmitListener = this.userSubmitListener.bind(this);
+    this.userInputListener = this.userInputListener.bind(this);
     this.renderLevel = this.renderLevel.bind(this);
     this.gameUpdate = this.gameUpdate.bind(this);
     this.hideGame = this.hideGame.bind(this);
@@ -138,37 +139,78 @@ export default class Game {
     });
   }
 
-  userSubmitListener() {
-    const ideContainer = document.querySelector('#ide')
-    ideContainer.addEventListener(
-      'click', this.checkUserInput
-    );
+  throttle(callback, delay = 1000) {
+    let isWaiting = false
+    // save new args received while waiting so we can call callback once done waiting
+    let waitingArgs
+    const timeoutFunc = () => {
+      if (waitingArgs == null) {
+        isWaiting = false // start waiting again if no changes
+      } else {
+        // if there are changes, invoke callback with waiting args and restart timeout
+        callback(...waitingArgs)
+        waitingArgs = null
+        setTimeout(timeoutFunc, delay)
+      }
+    }
+    return (...args) => {
+      if (isWaiting) {
+        waitingArgs = args
+        return
+      }
+      callback(...args)
+      isWaiting = true
+      setTimeout(timeoutFunc, delay)
+    }
   }
 
-  checkUserInput(e) {
-    e.stopPropagation();
-    // try {
-    const button = document.querySelector('.ide-button');
-    const userInput = document.querySelector('.code-input');
-    const inputTextArr = userInput.value.split(' ');
+  userInputListener() {
+    const userInput = document.getElementById('user-code-input')
+    userInput.addEventListener('input', e => {
+      this.checkUserInput(e.target.value)
+    })
+  }
+
+  checkUserInput = this.throttle(userInput => {
+    const inputTextArr = userInput.split(' ');
     const solution = this.currentLevel.solution;
-    if (e.target === button &&
-      this.regexCheck(inputTextArr, solution)) {
+    console.log(`arr: ${inputTextArr}`)
+    if (this.regexCheck(inputTextArr, solution)) {
       this.levelSuccess();
     }
-    else if (e.target === button) {
-      //   userInput.classList.add('error')
-      // throw new Error ('Input does not match solution')
-      // console.log('Input does not match solution')
-      return;
-    }
+    // else {
+    //   add error message and classes here
     // }
-    // catch {error => {
-    //   console.log(error)
-    //   } 
-    // }
-  }
+  })
+  
+  // checkUserInput(e) {
+  //   e.stopPropagation();
+  //   // try {
+  //   const button = document.querySelector('.ide-button');
+  //   const userInput = document.querySelector('.code-input');
+  //   const inputTextArr = userInput.value.split(' ');
+  //   const solution = this.currentLevel.solution;
+  //   debugger
+  //   if (e.target === button &&
+  //     this.regexCheck(inputTextArr, solution)) {
+  //     this.levelSuccess();
+  //   }
+  //   else if (e.target === button) {
+  //     //   userInput.classList.add('error')
+  //     // throw new Error ('Input does not match solution')
+  //     // console.log('Input does not match solution')
+  //     return;
+  //   }
+  //   // }
+  //   // catch {error => {
+  //   //   console.log(error)
+  //   //   } 
+  //   // }
+  // }
 
+
+  // todo: change logic here to work with new throttle func
+  // todo: add multiple solutions for different syntax (1s & 1000ms)
   regexCheck(inputTextArr, solution) {
     const regexMatchers = [];
     // build regex array containing solutions
@@ -201,6 +243,17 @@ export default class Game {
     }
   }
 
+  toggleInterface() {
+    const interfaceContainer = document.getElementById('interface');
+    if (interfaceContainer.classList.contains('slideIn')) {
+      interfaceContainer.classList.remove('slideIn')
+      interfaceContainer.classList.add('slideOut')
+    } else {
+      interfaceContainer.classList.remove('slideOut')
+      interfaceContainer.classList.add('slideIn')
+    }
+  }
+
   levelAnimation() {
     // dynamically grab this level's animations to apply to DOM
     const animation =
@@ -208,9 +261,14 @@ export default class Game {
     animation(); // invoke the animations
     // pull the correct success message for this level
     const successMessage = this.currentLevel.successMessage;
-    // invoke the level success overlay with the message
+    // show level success overlay with the message
     this.levelFunctionality.levelSuccessAnimation(successMessage)
-    this.renderNextLevel() // render next level (update prompt & ide)
+    this.toggleInterface()
+    setTimeout(() => {
+      // render next level (update prompt & ide) after 5s
+      this.renderNextLevel() 
+      this.toggleInterface()
+    }, 5000)
   }
 
   renderNextLevel() {

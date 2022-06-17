@@ -149,14 +149,15 @@ input:focus {
   border: 2px solid $primary;
 }
 
-textarea:focus {
-  background-color: #dadadaad;
-  border: 2px solid $secondary;
-}
-
 .slideIn {
   animation: slideInInterface 1.2s ease-out;
   // -webkit-animation: slideIn 1.2s forwards;
+  visibility: visible;
+}
+.slideOut {
+  animation: slideOutInterface 1.2s ease-out;
+  // -webkit-animation: slideIn 1.2s forwards;
+  visibility: hidden;
 }
 
 .todoFadeUp {
@@ -176,12 +177,29 @@ textarea:focus {
   0% {
     margin-left: -50rem;
     opacity: 0%;
-    filter: blur(1.5rem);
+    filter: blur(20px);
+    visibility: visible;
   }
   100% { 
     margin-left: 0rem;
     opacity: 100%;
     filter: blur(0);
+    visibility: visible;
+  }
+}
+
+@keyframes slideOutInterface {
+  100% { 
+    margin-left: 0rem;
+    opacity: 100%;
+    filter: blur(0);
+    visibility: visible;
+  }
+  100% {
+    margin-left: -50rem;
+    opacity: 0%;
+    filter: blur(20px);
+    visibility: visible;
   }
 }
 

@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             togglePlayButtons()
             game.gameSetup();
             game.levelNavListeners();
-            game.userSubmitListener();
+            game.userInputListener();
         } else {
             interfaceContainer.classList.remove('slideOut')
             interfaceContainer.classList.add('slideIn')

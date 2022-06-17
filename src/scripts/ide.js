@@ -80,10 +80,13 @@ export default class IdeCreator {
   }
 
   updateInput(currentLevel) {
-    const input = document.querySelector('.code-input');
+    const input = document.getElementById('user-code-input')
+    const template = document.getElementById('template-code')
     const rows = currentLevel.numInputLines;
     const inputTemplate = currentLevel.inputTemplateCode;
-    input.value = inputTemplate.join('\n');
+    template.value = inputTemplate.join('\n');
+    input.value = ""
+    template.rows = rows;
     input.rows = rows;
   }
 
@@ -124,12 +127,25 @@ export default class IdeCreator {
   buildInput(rightCol, currentLevel) {
     const rows = currentLevel.numInputLines;
     const inputTemplate = currentLevel.inputTemplateCode;
-    const input = document.createElement('textarea');
-    input.innerHTML = inputTemplate.join('\n');
-    input.name = "user[code]";
-    input.classList.add('code-input');
-    input.rows = rows;
-    rightCol.append(input);
+
+    const inputContainer = document.createElement('div')
+    inputContainer.id = 'input-container';
+    inputContainer.classList.add('code-input')
+    
+    const template = document.createElement('textarea');
+    template.textContent = inputTemplate.join('\n');
+    template.id = "template-code";
+    template.name = "template[code]";
+    template.classList.add('template');
+    template.readOnly = true;
+    template.rows = rows;
+    
+    const userInput = document.createElement('textarea')
+    userInput.id = "user-code-input";
+    userInput.name = "user[code]";
+    userInput.rows = rows;
+    inputContainer.append(template, userInput)
+    rightCol.append(inputContainer);
   }
 
   addEndingBoiler(rightCol, currentLevel) {
@@ -156,5 +172,7 @@ export default class IdeCreator {
   attachIde(interfaceContainer) {
     interfaceContainer.classList.add('slideIn')
     interfaceContainer.append(this.ideContainer);
+    const userInput = document.getElementById('user-code-input')
+    userInput.focus()
   }
 }

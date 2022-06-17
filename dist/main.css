@@ -772,15 +772,11 @@ input:focus {
   border: 2px solid #03DAC6;
 }
 
-textarea:focus {
-  background-color: rgba(218, 218, 218, 0.6784313725);
-  border: 2px solid #BB86FC;
-}
-
 .slideIn {
   animation: slideInInterface 1.2s ease-out;
   visibility: visible;
 }
+
 .slideOut {
   animation: slideOutInterface 1.2s ease-out;
   visibility: hidden;
@@ -798,21 +794,22 @@ textarea:focus {
     opacity: 100%;
   }
 }
-
 @keyframes slideInInterface {
   0% {
     margin-left: -50rem;
     opacity: 0%;
-    filter: blur(15px);
+    filter: blur(20px);
+    visibility: visible;
   }
   100% {
     margin-left: 0rem;
     opacity: 100%;
     filter: blur(0);
+    visibility: visible;
   }
 }
 @keyframes slideOutInterface {
-  0% {
+  100% {
     margin-left: 0rem;
     opacity: 100%;
     filter: blur(0);
@@ -821,12 +818,10 @@ textarea:focus {
   100% {
     margin-left: -50rem;
     opacity: 0%;
-    filter: blur(15px);
+    filter: blur(20px);
     visibility: visible;
   }
 }
-
-
 @keyframes todoSlideIn {
   0% {
     width: 0%;
