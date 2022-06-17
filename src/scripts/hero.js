@@ -34,10 +34,11 @@ export default class Hero {
     h1.innerHTML = "Learn CSS Animations"
     
     const heroText = document.createElement('p')
-    heroText.innerHTML = "Ready to start learning how to use transitions and animations in CSS? Click the button below to start. "
+    heroText.innerHTML = "Ready to start learning how to use transitions and animations in CSS? Click the button below to get started.";
+    heroText.classList.add('subheading')
 
     const button = document.createElement('a')
-    button.classList.add('button', 'play-now')
+    button.classList.add('button', 'play-now', 'hero')
     button.innerHTML = "Play now"
     button.href = "#"
 

@@ -33,6 +33,9 @@ body {
 h1 {
   font-family: $prompt;
   font-size: $h1;
+  line-height: $h1;
+  margin-bottom: 2rem;
+  margin-top: 1.7rem;
   font-weight: $bold;
   color: $white;
 }
@@ -61,6 +64,13 @@ h4 {
 strong {
   font-weight: $extra-bold;
   color: $secondary;
+}
+
+.subheading {
+  font-family: $prompt;
+  font-size: 1.3rem;
+  font-weight: $semi-bold;
+  color: $white;
 }
 
 p {

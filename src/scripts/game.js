@@ -33,7 +33,7 @@ export default class Game {
     }
     return undefined;
   }
-  
+
   // TODO: debounce & throttle method to check if correct solution
 
   bindHandlers() {
@@ -182,7 +182,7 @@ export default class Game {
     //   add error message and classes here
     // }
   })
-  
+
   // checkUserInput(e) {
   //   e.stopPropagation();
   //   // try {
@@ -266,7 +266,7 @@ export default class Game {
     this.toggleInterface()
     setTimeout(() => {
       // render next level (update prompt & ide) after 5s
-      this.renderNextLevel() 
+      this.renderNextLevel()
       this.toggleInterface()
     }, 5000)
   }

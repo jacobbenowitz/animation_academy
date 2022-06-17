@@ -28,18 +28,18 @@ export default class TodoCreator {
 
   addContentLeft(leftCol) {
     // create header
-    const h2 = document.createElement('h2')
+    const h2 = document.createElement('h3')
     h2.innerHTML = "Todo"
     // create body text
     const body = document.createElement('p')
-    body.innerHTML = "This todo list starts off fully functional, but it’ll be up to you to add transitions and animations that smooth out the experience. Minor adjustments to how items render on the DOM can make a large impact on the user experience. Especially if you are seeking to delight your customer, and keep them engaged."
+    body.innerHTML = "This todo list starts off fully functional, but it’ll be up to you to add transitions and animations that smooth out the experience. Minor adjustments to how items render on the DOM can make a large impact on the user experience."
     // create button
-    const button = document.createElement('a')
-    button.classList.add('button')
-    button.innerHTML = "Get productive"
-    button.href = "#"
+    // const button = document.createElement('a')
+    // button.classList.add('button')
+    // button.innerHTML = "Get productive"
+    // button.href = "#"
     // append all elements to left column, then add to section
-    leftCol.append(h2, body, button)
+    leftCol.append(h2, body)
   }
 
   createTodoListContainer(rightCol) {

@@ -82,6 +82,9 @@ body {
 h1 {
   font-family: "Prompt", sans-serif;
   font-size: 72px;
+  line-height: 72px;
+  margin-bottom: 2rem;
+  margin-top: 1.7rem;
   font-weight: 700;
   color: #DFDFDF;
 }
@@ -110,6 +113,13 @@ h4 {
 strong {
   font-weight: 900;
   color: #BB86FC;
+}
+
+.subheading {
+  font-family: "Prompt", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #DFDFDF;
 }
 
 p {
@@ -302,7 +312,23 @@ footer a:hover {
 }
 
 .ide-button:hover, .button:hover {
-  border: none;
+  border: 1px solid transparent;
+  background-color: #03DAC6;
+  color: #131213;
+  box-shadow: 0px 0px 10px #03DAC6;
+}
+
+.button.hero {
+  font-size: 18px;
+  letter-spacing: 1pt;
+  font-weight: 700;
+  background-color: rgba(32, 31, 30, 0.35);
+  margin-top: 2rem;
+  transition: all 200ms ease-in;
+}
+
+.button.hero:hover {
+  border: 1px solid transparent;
   background-color: #03DAC6;
   color: #131213;
   box-shadow: 0px 0px 10px #03DAC6;
@@ -530,13 +556,13 @@ textarea.code-input {
 }
 
 .todo-left {
-  grid-column: 3/span 4;
-  padding: 0 7em 0 0;
+  grid-column: 2/span 5;
+  padding: 0 3em 0 0;
 }
 
 .todo-right {
   padding-left: 1em;
-  grid-column: 7/span 4;
+  grid-column: 7/span 5;
 }
 
 .todo-list-container {
