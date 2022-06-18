@@ -10,7 +10,7 @@
 export function throttle(callback, delay = 1000) {
   let isWaiting = false
   // save new args received while waiting so we can call callback once done waiting
-  let waitingArgs 
+  let waitingArgs
 
   const timeoutFunc = () => {
     if (waitingArgs == null) {
@@ -31,7 +31,7 @@ export function throttle(callback, delay = 1000) {
 
     callback(...args)
     isWaiting = true
-    
+
     setTimeout(timeoutFunc, delay)
   }
 }

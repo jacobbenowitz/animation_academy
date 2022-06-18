@@ -32,23 +32,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const playButtons = document.querySelectorAll('.play-now')
     playButtons.forEach(button => button.addEventListener('click', startGame))
-    // TODO add endGame buttons!
+
     // const endGameButton = document.querySelector('.end-game')
     // endGameButton.addEventListener('click', endGame)
 
     function startGame() {
         const interfaceContainer = document.getElementById('interface');
-        if (localStorage.getItem('gameState') === 'idle') {
-            game.currentLevel = LEVELS[0];
-            togglePlayButtons()
-            game.gameSetup();
-            game.levelNavListeners();
-            game.userInputListener();
+        const currentLevel = localStorage.getItem('lessonNumber')
+        if (parseInt(currentLevel) > 0) {
+            game.currentLevel = LEVELS[parseInt(currentLevel)]
         } else {
-            interfaceContainer.classList.remove('slideOut')
-            interfaceContainer.classList.add('slideIn')
+            game.currentLevel = LEVELS[0]
         }
-        // addResetButtons(); // review
+        togglePlayButtons()
+        game.gameSetup();
+        game.levelNavListeners();
+        game.userInputListener();
+        
+    //     // else {
+    //         // interfaceContainer.classList.remove('slideOut')
+    //         // interfaceContainer.classList.add('slideIn')
+    //     // }
+    //     // addResetButtons(); // review
     }
 
     function togglePlayButtons() {

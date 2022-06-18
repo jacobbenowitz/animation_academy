@@ -36,15 +36,27 @@
   color: $primary;
 }
 
-.prompt a:last-child{
-  margin-left: auto;
-}
 .prompt a:hover  {
   color: $secondary;
 }
 
 .lesson-nav {
   display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  align-items: center;
+  height: 3rem;
+}
+
+.level-control-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  align-items: center;
 }
 
 .lesson-id {

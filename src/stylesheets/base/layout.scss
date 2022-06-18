@@ -51,13 +51,16 @@ body {
   height: max-content;
 }
 
-.ide .right-col {
+.ide > .right-col {
   display: grid;
   width: fit-content;
+  justify-content: start;
+  justify-items: start;
+  text-align: left;
 }
 
-.hero .right-col {
-  grid-column: 6 / span 5 ;
+.right-col {
+  grid-column: 6 / span 6 ;
   text-align: end;
 }
 

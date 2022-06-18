@@ -37,7 +37,9 @@ export default class PromptCreator {
   // TODO create dropdown lesson nav with forward/back buttons
   createPromptNav(lessonNumber) {
     const nav = document.createElement('div');
+    const levelRow = document.createElement('div')
     nav.classList.add('lesson-nav');
+    levelRow.classList.add('level-control-wrapper')
 
     const lessonId = document.createElement('p');
     lessonId.innerHTML = "Lesson: " + `${lessonNumber}`;
@@ -45,35 +47,38 @@ export default class PromptCreator {
     
     const forwardsButton = this.createNextButton(); 
     const backwardsButton = this.createBackButton();
-    // const resetButton = this.createResetButton();
+    const resetButton = this.createResetButton();
     const hideButton = this.createHideButton();
-
-    nav.append(backwardsButton, lessonId,
-      forwardsButton, hideButton);
+    levelRow.append(backwardsButton, lessonId,
+      forwardsButton)
+    nav.append(resetButton, levelRow, hideButton);
     this.promptContainer.appendChild(nav);
   }
 
   createBackButton() {
-    const backwardsButton = document.createElement('a');
-    backwardsButton.href = "#";
-    backwardsButton.innerHTML = 'Back';
-    backwardsButton.classList.add('prev-lesson');
-    return backwardsButton;
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.className = 'icon-button'
+    const backwardsIcon = document.createElement('i');
+    backwardsIcon.classList.add('fa-solid', 'fa-chevron-left', 'prev-lesson');
+    buttonWrapper.append(backwardsIcon)
+    return buttonWrapper;
   }
+
   createNextButton() {
-    const forwardsButton = document.createElement('a');
-    forwardsButton.href = "#";
-    forwardsButton.innerHTML = 'Next';
-    forwardsButton.classList.add('next-lesson');
-    return forwardsButton;
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.className = 'icon-button'
+    const forwardsIcon = document.createElement('i');
+    forwardsIcon.classList.add('fa-solid', 'fa-chevron-right', 'next-lesson');
+    buttonWrapper.append(forwardsIcon)
+    return buttonWrapper;
   }
-  // createResetButton() {
-  //   const resetButton = document.createElement('a');
-  //   resetButton.href = "#";
-  //   resetButton.innerHTML = 'Reset';
-  //   resetButton.classList.add('reset');
-  //   return resetButton;
-  // }
+  createResetButton() {
+    const resetButton = document.createElement('a');
+    resetButton.href = "#";
+    resetButton.innerHTML = 'Reset';
+    resetButton.classList.add('reset');
+    return resetButton;
+  }
   createHideButton() {
     const hideButton = document.createElement('a');
     hideButton.href = "#";

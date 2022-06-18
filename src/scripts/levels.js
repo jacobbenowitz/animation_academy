@@ -36,7 +36,6 @@ export const LEVELS = [
     "Shrink & grow all buttons on hover using a transition",
     promptInstructions:
     "Below you'll see the :hover state has a larger padding than the default.  Using the transition shorthand syntax, add a 250ms transtion for the padding property to achieve this effect, and use ease-in for the timing function.",
-    cssProperties: ['transition'],
     syntaxHints:
       ["Transition shorthand syntax is nice and simple:",
         "transition: (property) (time) (timing function)",
@@ -57,8 +56,7 @@ export const LEVELS = [
     numInputLines: 1,
     totalLines: 8,
     solution:
-      [ "(transition)",
-        "(padding)",
+      ["(padding)",
         "(250ms)",
         "(ease-in)"
       ],
@@ -71,7 +69,6 @@ export const LEVELS = [
     "Catch the user's attention when they hover over input fields",
     promptInstructions:
     "Add a 500ms transition to the background color, this time using the shorthand transition syntax. Use the ease-in-out timing function.",
-    cssProperties: ["transition"],
     syntaxHints:
       ["Use these properties again:",
         "transition: (property) (time) (timing function)",
@@ -110,7 +107,6 @@ export const LEVELS = [
     "Animate the product elements so they move up when hovering",
     promptInstructions:
     "Transition the transform property, which will translate the Y cordinates of the element up 10px. The transition should be quick, let's use 125ms.",
-    cssProperties: ["transition", "transform", "translateY"],
     syntaxHints:
       [ "Hints and syntax:",
         "translate sytanx: translateX or translateY(amount)", 
@@ -143,7 +139,6 @@ export const LEVELS = [
     "Animation time! Animate the header to fade-in when the page is loaded",
     promptInstructions:
     "The boiler code already includes an animation called slideIn. Apply the slideIn animation, use 1.2s for your interval, and ease-out for your timing function.",
-    cssProperties: ["animation", "ease-out", "@keyframes"],
     syntaxHints:
     [ "Hints and syntax:",
       "animation: @keyframes name | duration | easing-function", 

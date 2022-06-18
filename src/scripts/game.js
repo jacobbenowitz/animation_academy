@@ -26,7 +26,7 @@ export default class Game {
 
   // get level from localStorage, return undefined if none
   currentLevel() {
-    const lessonNumber = localStorage.getItem('lessonNumber');
+    const lessonNumber = parseInt(localStorage.getItem('lessonNumber'));
     if (lessonNumber >= 0) {
       // const currentLevel = JSON.parse(LEVELS[this.lessonIndex]);
       return LEVELS[lessonNumber];
@@ -63,12 +63,12 @@ export default class Game {
     // select lesson nav buttons, add listeners
     const back = document.querySelector('.prev-lesson')
     const next = document.querySelector('.next-lesson')
-    // const reset = document.querySelector('.reset')
+    const reset = document.querySelector('.reset')
     const hide = document.querySelector('.hide-interface')
     // TODO querySelect dropdown
     back.addEventListener('click', this.prevLevel)
     next.addEventListener('click', this.nextLevel)
-    // reset.addEventListener('click', this.resetLevel)
+    reset.addEventListener('click', this.resetLevel)
     hide.addEventListener('click', this.hideGame)
   }
 
@@ -231,8 +231,9 @@ export default class Game {
       }
     }
     // check if all solutions are matched
-    if (numMatches >= solution.length) return true;
-    return false; // if input not matched, it was wrong
+    if (numMatches >= solution.length) {
+      return true
+    } else return false
   }
 
   levelSuccess() {
