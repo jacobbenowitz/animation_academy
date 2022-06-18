@@ -3,30 +3,34 @@ export const LEVELS = [
   {
     lessonNumber: 0,
     promptTitle:
-      "Warm-up with the basics",
+      "Smooth out the hover effect on all buttons",
     promptInstructions:
-      "Let's get our bearings by chaging the <code>background-color</code> of the box. New to CSS? Every level will have hints for you below these instructions.",
+      "Currently the buttons on this site have a clunky hover effect. Enter CSS below to smoothly transition the <code>background-color</code> over <code>1 second</code>",
     syntaxHints: [
-      "Syntax hints:",
-      "General CSS pattern: <strong>property-name: {value to change};</strong>",
-      "For this level use: <strong>background-color:</strong>",
-      "And for the color use: <strong>$blue</strong>"
+      "Example transition:",
+      "transition-property: <strong>font-size</strong>",
+      "transition-duration: <strong>2s</strong>"
       ],
     boilerCode:
-      [
-        ".box {"
+      [ ".button {",
+        "  background-color: none;"
       ],
-    inputTemplateCode: "",
+    inputTemplateCode:
+      [ " transition-property: ",
+        " transition-duration: "],
     endingBoilerCode:
-      [
+      [ " ",
+        ".button:hover {",
+        "  background-color: $primary;",
         "}"
       ],
-    numInputLines: 1,
-    totalLines: 2,
-    solution: ["(background-color)", "(blue)"],
+    numInputLines: 2,
+    totalLines: 8,
+    solution: ["(background-color)", "(1s)"],
     animationClass: "buttonHover",
-    successMessage: "Light work 🥇 Nice job!"
+    successMessage: "Try it out, now the buttons transition smoothly!"
   },
+
   { lessonNumber: 1,
     promptTitle:
     "Shrink & grow all buttons on hover using a transition",

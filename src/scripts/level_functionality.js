@@ -51,6 +51,11 @@ export default class LevelFunctionality {
     body.append(section);
   }
 
+  level_1() {
+    const boxStart = document.getElementById('game-box-start')
+    boxStart.classList.add('level-1')
+  }
+
   createRainbowBox(container) {
     const backgroundBox = document.createElement('div');
     const foregroundBox = document.createElement('div');

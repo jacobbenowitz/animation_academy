@@ -1,13 +1,10 @@
 .interface {
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   position: fixed;
   width: fit-content;
   height: fit-content;
-}
-
-.interface {
   top: 40px;
   left: 50px;
 }

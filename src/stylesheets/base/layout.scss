@@ -41,7 +41,7 @@ body {
 }
 
 .grid-2-col-ide {
-  display: grid;
+  display: flex;
   width: 500px;
   grid-template-columns: min-content 1fr;
   column-gap: 0px;
@@ -52,8 +52,9 @@ body {
 }
 
 .ide > .right-col {
-  display: grid;
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   justify-content: start;
   justify-items: start;
   text-align: left;
@@ -64,6 +65,14 @@ body {
   text-align: end;
 }
 
+#hero-content > .right-col {
+  position: relative;
+}
+
+#hero-content .right-col > h1 {
+  padding-top: 3rem;
+}
+
 .hero {
   background-color: $transparent;
   height: min-content;
@@ -71,6 +80,8 @@ body {
   padding-bottom: 4em;
   background-image: url('../imgs/homeHero_optimized.jpg');
   background-size: cover;
+  z-index: 200;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
 }
 
 .hero::before {
@@ -78,8 +89,16 @@ body {
   background-color: rgba(0,0,0,0.34);
 }
 
-.hero-content {
+#hero-content {
   grid-column: 1 / span 12  ;
+  z-index: 100;
+  position: absolute;
+  height: calc(65vh + 65px);
+  width: 100vw;
+  top: 0;
+  right: 0;
+  z-index: 250;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
 }
 
 footer {

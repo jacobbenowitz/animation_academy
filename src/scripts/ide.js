@@ -132,19 +132,22 @@ export default class IdeCreator {
     inputContainer.id = 'input-container';
     inputContainer.classList.add('code-input')
     
-    const template = document.createElement('textarea');
-    template.textContent = inputTemplate.join('\n');
-    template.id = "template-code";
-    template.name = "template[code]";
-    template.classList.add('template');
-    template.readOnly = true;
-    template.rows = rows;
+    if (inputTemplate.length > 0) {
+      const template = document.createElement('textarea');
+      template.textContent = inputTemplate.join('\n');
+      template.id = "template-code";
+      template.name = "template[code]";
+      template.classList.add('template');
+      template.readOnly = true;
+      template.rows = rows;
+      inputContainer.append(template)
+    }
     
     const userInput = document.createElement('textarea')
     userInput.id = "user-code-input";
     userInput.name = "user[code]";
     userInput.rows = rows;
-    inputContainer.append(template, userInput)
+    inputContainer.append(userInput)
     rightCol.append(inputContainer);
   }
 

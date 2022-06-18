@@ -12,10 +12,16 @@ export default class Game {
     this.interfaceContainer = document.getElementById('interface');
     this.currentLevel = this.currentLevel() || LEVELS[0]; // lessonNumber = idx
     this.promptContainer = new PromptCreator();
-    this.ide = new IdeCreator(this);
+    this.ide = new IdeCreator();
     this.bindHandlers();
     this.levelFunctionality = new LevelFunctionality();
     this.animationKey = [
+      this.levelFunctionality.level_1,
+      this.levelFunctionality.level_2,
+      this.levelFunctionality.level_3,
+      this.levelFunctionality.level_4,
+      this.levelFunctionality.level_5,
+      this.levelFunctionality.level_6,
       this.levelFunctionality.addButtonTransitions,
       this.levelFunctionality.addButtonGrow,
       this.levelFunctionality.addFieldTranstions,
@@ -178,9 +184,9 @@ export default class Game {
     if (this.regexCheck(inputTextArr, solution)) {
       this.levelSuccess();
     }
-    // else {
-    //   add error message and classes here
-    // }
+    else {
+      console.log(solution)
+    }
   })
 
   // checkUserInput(e) {
@@ -226,7 +232,10 @@ export default class Game {
         const regex = regexMatchers[j];
         if (input.match(regex) !== null) {
           // increment numMatches if match found
+          console.log(`Matched! input: ${input}, match: ${regex}`)
           numMatches += 1;
+        } else {
+          console.log(`NOT Matched: input: ${input}, match: ${regex}`)
         }
       }
     }

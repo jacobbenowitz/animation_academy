@@ -1,0 +1,69 @@
+// #hero-2 {
+//   background-color: rgba(0, 0, 0, 0);
+//   height: min-content;
+//   padding-top: 3em;
+//   padding-bottom: 4em;
+//   background-size: cover;
+// }
+#hero-2 {
+  height: calc(65vh + 65px);
+  top: 0;
+  right: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  z-index: 200;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+  pointer-events: none;
+  background-color: $background;
+}
+
+.bubble-curve-shape {
+  width: 400px;
+}
+.bubble-curve-shape svg {
+  position: absolute;
+  width: 400px;
+  top: -200px
+}
+
+.bubble-mask {
+  -webkit-mask-image: url(../imgs/shapes/shape-1-test.svg);
+  mask-image: url(../imgs/shapes/shape-1-test.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: -200px -200px;
+  mask-position: -200px -200px;
+  top: 0;
+  position: absolute;
+  z-index: 10;
+  width: 150vw;
+  height: 100%;
+  animation: maskSlow 12s ease infinite alternate-reverse;
+}
+
+@keyframes maskSlow {
+  0% {
+    -webkit-mask-position: -200px -200px;
+    mask-position: -200px -200px;
+    mask-size: 100% auto;
+  }
+  // 50% {
+  //   -webkit-mask-position: 0px 500px;
+  //   mask-position: 0px 500px;
+  //   mask-size: 50% auto;
+  // }
+  100% {
+    -webkit-mask-position: 240px 400px;
+    mask-position: 240px 400px;
+    mask-size: 50% auto;
+  }
+}
+
+
+#hero-2.hide-hero, 
+#hero-content.hide-hero {
+  right: -100vw;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+}

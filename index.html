@@ -16,14 +16,12 @@
 </head>
 
 <body>
-    <header class="header grid-12-col">
+    <header id='top-nav' class="header grid-12-col">
         <nav class="header-nav">
             <div class="header-logo">
-                <a href="#">
-                    <img 
-                    src="imgs/animation-academy-logo@1x.png"  alt="AnimationAcademy"
-                    >
-                </a>
+                <img 
+                src="imgs/Logo_Animation_Academy.svg"  alt="AnimationAcademy"
+                >
             </div>
             <ul class="header-list"></ul>
         </nav>
@@ -31,42 +29,14 @@
 
     
     <div id="interface" class="interface"></div>
-    <section class="hero grid-12-col"></section>
-    <div id="game-zone" class="grid-12-col">
-        <div id="level-zone">
-            <div id="level-header">
-            </div>
-            <div id="level-game-assets">
-                <!-- start -->
-                <div id="game-box-level-1"></div>
-                <!-- level 1 -->
-                <div id="box-start-2" classname="level-4-circle"></div>
-                <div id="box-start-3" classname="level-4-circle"></div>
-                <!-- level 2 -->
-                <div id="box-start-4"></div>
-                <div id="box-start-5"></div>
-                <!-- <div id="game-box-level-2"></div> -->
-                <!-- level 3 -->
-                <div id="game-circle-level-3"></div>
-                <div id="game-box-level-6-circle"></div>
-
-                <!-- level 4 -->
-                <div id="box-start-6"></div>
-                <div id="box-start-7"></div>
-                <div id="box-start-8"></div>
-                <div id="box-start-9"></div>
-                <div id="game-box-level-4"></div
-                <!-- level 5 -->
-                <div id="game-box-level-5"></div>
-                <div class="circle-start-1"></div>
-                <div class="circle-start-2"></div>
-                <div class="circle-start-3"></div>
-            </div>
-        </div>
+    <div id="hero-content"></div>
+    <div id="hero-2">
+        <img class="bubble-mask" src="../imgs/homeHero_optimized.jpg">
     </div>
-    <!-- <div id="game-zone" class="grid-12-col">
-        <div id="level-zone">
-            <div id="level-header">
+    <!-- level 1 -->
+    <div class="game-zone grid-12-col">
+        <div class="level-zone">
+            <div class="level-header">
                 <div class="level-header-top">
                     <div class="lesson-group-header">
                         <span>Introduction</span>
@@ -77,9 +47,83 @@
                 </div>
                 <h3 class="lesson-title">
                     Change the <span class="title-code"
-                    >background-color</span> of the box</h3>
+                    >background-color</span> of the box
+                </h3>
             </div>
-            <div id="level-game-assets">
+            <div class="level-game-assets">
+                <div id="game-box-start"></div>
+            </div>
+        </div>
+    </div>
+    <!-- level 2 -->
+    <!-- <div class="game-zone grid-12-col">
+        <div class="level-zone">
+            <div class="level-header">
+            </div>
+            <div class="level-game-assets">
+                <div id="box-start-2" classname="level-4-circle"></div>
+                <div id="box-start-3" classname="level-4-circle"></div>
+                <div id="game-box-level-2"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- level 3 -->
+    <!-- <div class="game-zone grid-12-col">
+        <div class="level-zone">
+            <div class="level-header">
+            </div>
+            <div class="level-game-assets">
+                <div id="box-start-4"></div>
+                <div id="box-start-5"></div>
+                <div id="game-circle-level-3"></div>
+                <div id="game-box-level-6-circle"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- level 4 -->
+    <!-- <div class="game-zone grid-12-col">
+        <div class="level-zone">
+            <div class="level-header">
+            </div>
+            <div class="level-game-assets">
+                <div id="box-start-6"></div>
+                <div id="box-start-7"></div>
+                <div id="box-start-8"></div>
+                <div id="box-start-9"></div>
+                <div id="game-box-level-4"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- level 5 -->
+    <!-- <div class="game-zone grid-12-col">
+        <div class="level-zone">
+            <div class="level-header">
+            </div>
+            <div class="level-game-assets">
+                <div id="game-box-level-5"></div>
+                <div class="circle-start-1"></div>
+                <div class="circle-start-2"></div>
+                <div class="circle-start-3"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div id="game-zone" class="grid-12-col">
+        <div class="level-zone">
+            <div class="level-header">
+                <div class="level-header-top">
+                    <div class="lesson-group-header">
+                        <span>Introduction</span>
+                    </div>
+                    <div class="lesson-number-large">
+                        <span>Level 1</span>
+                    </div>
+                </div>
+                <h3 class="lesson-title">
+                    Change the <span class="title-code"
+                    >background-color</span> of the box
+                </h3>
+            </div>
+            <div class="level-game-assets">
                 <div id="game-circle-2-start"></div>
                 <div id="game-circle-start"></div>
                 <div id="game-box-start"></div>

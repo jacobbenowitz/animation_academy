@@ -1,7 +1,7 @@
 export default class Hero {
-  constructor(hero) {
-    this.hero = hero;
-    this.addOuterSection();
+  constructor() {
+    this.hero = document.querySelector('.hero');
+    // this.addOuterSection();
     this.addInnerSections();
     // this.styleHeroSection();
     this.addContent();
@@ -9,12 +9,12 @@ export default class Hero {
 
   addOuterSection() {
     const heroContent = document.createElement('div')
-    this.hero.appendChild(heroContent).classList.add('hero-content')
+    this.hero.appendChild(heroContent)
   }
   
   // create col structure
   addInnerSections() {
-    const heroContent = document.querySelector('.hero-content')
+    const heroContent = document.querySelector('#hero-content')
     heroContent.classList.add("grid-12-col")
 
     const leftCol = document.createElement('div')
@@ -23,13 +23,9 @@ export default class Hero {
     heroContent.appendChild(leftCol).classList.add('left-col')
     heroContent.appendChild(rightCol).classList.add('right-col')
   }
-  // add styling
-  // styleHeroSection() {
-  //   this.hero.style.backgroundImage = "url('imgs/homeHero_optimized.jpg')"
-  // }
 
   addContent() {
-    const rightCol = document.querySelector('.hero-content > .right-col')
+    const rightCol = document.querySelector('#hero-content > .right-col')
     const h1 = document.createElement('h1')
     h1.innerHTML = "Learn CSS Animations"
     
@@ -43,5 +39,12 @@ export default class Hero {
     button.href = "#"
 
     rightCol.append(h1, heroText, button)
+  }
+
+  toggleHero() {
+    const heroBg = document.getElementById('hero-2')
+    const heroContent = document.getElementById('hero-content')
+    heroContent.classList.add('hide-hero')
+    heroBg.classList.add('hide-hero')
   }
 }

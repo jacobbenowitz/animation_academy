@@ -2,11 +2,13 @@ header {
   font-family: $prompt;
   font-weight: $semi-bold;
   color: $white;
-  background-color: $main-grey;
   justify-content: center;
   align-items: center;
-  padding-top: 1em;
   width: 100%;
+}
+
+#top-nav {
+  height: 65px;
 }
 
 header img {
@@ -15,6 +17,8 @@ header img {
   height: 50px;
 }
 .header-logo {
+  display: flex;
+  align-items: end;
   width: max-content;
 }
 
@@ -24,8 +28,9 @@ header img {
   grid-column: 2 / span 10;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
   column-gap: 0px;
+  align-items: center;
+  z-index: 400;
 }
 
 .header-list {
@@ -48,35 +53,3 @@ header img {
 .header-list a:hover {
   background-color: black;
 }
-
-// .badge {
-//   display: inline-flex;
-//   justify-content: center;
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   background-color: black;
-// }
-
-// .dropdown {
-//   position: absolute;
-//   display: none;
-//   background-color: white;
-// }
-// .dropdown a {
-//   color: black;
-//   border-bottom: 1px solid #ccc;
-//   background-color: white;
-// }
-
-// .dropdown li:last-child a {
-//   border-radius: 0 0 9px 9px;
-// }
-
-// .dropdown a:hover {
-//   background-color: lightgray;
-// }
-
-// #header-notification:hover .dropdown {
-//   display: block;
-// }

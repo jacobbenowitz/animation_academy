@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const headerList = document.querySelector('.header-list');
     new NavLinkCreator(headerList);
     // create the hero section
-    const hero = document.querySelector('.hero');
-    new Hero(hero);
+    const hero = new Hero();
     // create todo section and form
     const todoSection = document.querySelector('.todo');
     new TodoCreator(todoSection);
@@ -37,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // endGameButton.addEventListener('click', endGame)
 
     function startGame() {
-        const interfaceContainer = document.getElementById('interface');
         const currentLevel = localStorage.getItem('lessonNumber')
         if (parseInt(currentLevel) > 0) {
             game.currentLevel = LEVELS[parseInt(currentLevel)]
         } else {
             game.currentLevel = LEVELS[0]
         }
+        hero.toggleHero()
         togglePlayButtons()
         game.gameSetup();
         game.levelNavListeners();

@@ -1,13 +1,16 @@
 
-#game-zone {
-  height: 200vh;
+.game-zone {
+  height: 100vh;
   width: 100%;
   display: grid;
   grid-column: 1 / span 12;
   background-color: #201F1E;
+  position: absolute;
+  top: 0;
+  z-index: 100;
 }
 
-#level-zone {
+.level-zone {
   grid-column: 4 / span 8;
   display: flex;
   flex-direction: column;
@@ -19,7 +22,7 @@
   gap: 0.8rem;
 }
 
-#level-header {
+.level-header {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -28,6 +31,7 @@
   flex-wrap: wrap;
   position: relative;
   width: 100%;
+  padding-top: 80px;
 }
 
 .level-header-top {
@@ -41,14 +45,14 @@
   gap: 1rem;
 }
 
-#level-game-assets {
+.level-game-assets {
   display: flex;
   width: 100%;
   flex: 1 1;
   position: relative;
 }
 
-#game-box-level-1 {
+#game-box-start {
   position: absolute;
   width: 300px;
   height: 300px;
@@ -60,6 +64,12 @@
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
+  transition: background-color 300ms cubic-bezier( 0.71, 0.07, 0.68, 0.53 );
+}
+
+#game-box-start.level-1 {
+  transition: background-color 300ms cubic-bezier( 0.71, 0.07, 0.68, 0.53 );
+  background-color: $primary;
 }
 
 #game-box-level-2 {
@@ -354,5 +364,6 @@
 .lesson-title {
   text-align: right;
   line-break: strict;
-  width: 80%;
+  width: 60%;
+  font-size: 30px;
 }
