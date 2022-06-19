@@ -82,15 +82,15 @@ export default class Ide {
   updateInput(currentLevel) {
     const input = document.getElementById('user-code-input')
     const rows = currentLevel.numInputLines;
-    const templateCode = currentLevel.inputTemplateCode;
-    let template = document.getElementById('template-code')
-    if (template === null) {
-      let rightCol = document.querySelector('#ide > .right-col')
-      template = this.buildTemplate(templateCode, rows)
-      rightCol.append(template)
-    }
+    // const templateCode = currentLevel.inputTemplateCode;
+    // let template = document.getElementById('template-code')
+    // if (template === null) {
+    //   let rightCol = document.querySelector('#ide > .right-col')
+    //   template = this.buildTemplate(templateCode, rows)
+    //   rightCol.append(template)
+    // }
     input.value = ""
-    template.rows = rows;
+    // template.rows = rows;
     input.rows = rows;
   }
 
@@ -130,7 +130,7 @@ export default class Ide {
 
   buildInput(rightCol, currentLevel) {
     const rows = currentLevel.numInputLines;
-    const templateCode = currentLevel.inputTemplateCode;
+    // const templateCode = currentLevel.inputTemplateCode;
 
     const inputContainer = document.createElement('div')
     inputContainer.id = 'input-container';
@@ -149,17 +149,17 @@ export default class Ide {
     rightCol.append(inputContainer);
   }
 
-  buildTemplate(templateCode, rows) {
-    const template = document.createElement('textarea');
-    template.innerHTML = templateCode.join('\n');
-    template.id = "template-code";
-    template.name = "template[code]";
-    template.classList.add('template');
-    template.value = templateCode.join('\n');
-    template.readOnly = true;
-    template.rows = rows;
-    return template;
-  }
+  // buildTemplate(templateCode, rows) {
+  //   const template = document.createElement('textarea');
+  //   template.innerHTML = templateCode.join('\n');
+  //   template.id = "template-code";
+  //   template.name = "template[code]";
+  //   template.classList.add('template');
+  //   template.value = templateCode.join('\n');
+  //   template.readOnly = true;
+  //   template.rows = rows;
+  //   return template;
+  // }
 
   addEndingBoiler(rightCol, currentLevel) {
     const rows = currentLevel.endingBoilerCode.length;

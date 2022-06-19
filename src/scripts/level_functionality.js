@@ -8,13 +8,24 @@ export default class LevelFunctionality {
       this.levelSuccessAnimation.bind(this);
   }
 
-  levelSuccessAnimation(successMessage) {
-    this.overlayAnimation(successMessage);
-  }
-
-  overlayAnimation(successMessage) {
-    this.renderOverlay(successMessage);
-    setTimeout(this.removeOverlay, 5000)
+  levelSuccessAnimation(successMessage, renderNextLevel) {
+    const overlay = this.createOverlay();
+    const messageDiv = document.createElement('div');
+    const nextDiv = document.createElement('div');
+    const nextButton = document.createElement('span');
+    const gameZone = document.getElementsByClassName('game-zone')[0]
+    nextButton.classList.add('next', 'button')
+    nextButton.innerText = "Next Level"
+    nextButton.addEventListener('click', () => renderNextLevel())
+    nextDiv.append(nextButton)
+    const message = document.createElement('h4')
+    message.innerHTML = successMessage;
+    message.classList.add('overlay-text');
+    messageDiv.classList.add('overlay-inner');
+    messageDiv.append(message);
+    overlay.append(message, nextDiv);
+    gameZone.append(overlay);
+    localStorage.setItem("overlay", "active")
   }
 
   createOverlay() {
@@ -25,20 +36,11 @@ export default class LevelFunctionality {
 
   removeOverlay() {
     const overlay = document.querySelector('#overlay');
-    overlay.remove();
+    if (overlay.parentNode) {
+      overlay.parentNode.removeChild(overlay);
+    }
   }
 
-  renderOverlay(successMessage) {
-    const overlay = this.createOverlay();
-    const messageDiv = document.createElement('div');
-    const message = document.createElement('h4')
-    message.innerHTML = successMessage;
-    message.classList.add('overlay-text');
-    messageDiv.classList.add('overlay-inner');
-    messageDiv.append(message);
-    overlay.append(messageDiv);
-    document.body.append(overlay);
-  }
 
   createSampleSection(body) {
     const section = document.createElement('section');

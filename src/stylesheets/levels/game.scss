@@ -50,6 +50,7 @@
   width: 100%;
   flex: 1 1;
   position: relative;
+  z-index: 1000;
 }
 
 #game-box-start {
@@ -324,12 +325,10 @@
   from {
     filter: blur(14px);
     opacity: 0%;
-    transform: scale(110%);
   }
   to {
     filter: blur(0px);
     opacity: 100%;
-    transform: scale(100%);
   }
 }
 

@@ -57,6 +57,7 @@ export default class Game {
     this.levelNavListeners = this.levelNavListeners.bind(this);
     this.userInputListener = this.userInputListener.bind(this);
     this.renderLevel = this.renderLevel.bind(this);
+    this.renderNextLevel = this.renderNextLevel.bind(this);
     this.gameUpdate = this.gameUpdate.bind(this);
     this.hideGame = this.hideGame.bind(this);
     this.showGame = this.showGame.bind(this)
@@ -249,21 +250,21 @@ export default class Game {
       this.levelAnimations[this.currentLevel.lessonNumber]
     levelUpdate(); // invoke the animations
     // pull the correct success message for this level
-    // const successMessage = this.currentLevel.successMessage;
+    const successMessage = this.currentLevel.successMessage;
     // show level success overlay with the message
-    // this.levelFunctionality.levelSuccessAnimation(successMessage)
+    this.levelFunctionality.levelSuccessAnimation(successMessage, this.renderNextLevel)
     this.toggleInterface()
-    setTimeout(() => {
-      // render next level (update prompt & ide) after 5s
-      this.renderNextLevel()
-      this.toggleInterface()
-    }, 3000)
   }
-
+  
   renderNextLevel() {
+    this.toggleInterface()
     const nextLevel = this.currentLevel.lessonNumber + 1;
     this.currentLevel = LEVELS[nextLevel];
     this.renderLevel();
+    if (localStorage.getItem("overlay") == "active") {
+      this.levelFunctionality.removeOverlay()
+      localStorage.setItem("overlay", "inactive")
+    }
   }
 
   renderLevel() {
