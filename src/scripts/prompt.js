@@ -1,6 +1,6 @@
 import { LEVELS } from './levels';
 
-export default class PromptCreator {
+export default class prompt {
   constructor() {
     this.promptContainer = this.createPromptContainer();
     this.maxLevels = LEVELS.length - 1;
@@ -11,10 +11,9 @@ export default class PromptCreator {
     container.classList.add('prompt');
     return container
   }
-  
+
   addPromptContent(currentLevel) {
     this.createPromptNav(currentLevel.lessonNumber);
-    this.createPromptTitle(currentLevel.promptTitle);
     this.createPromptInstructions(currentLevel.promptInstructions);
     this.createPromptHints(currentLevel.syntaxHints);
   }
@@ -23,17 +22,13 @@ export default class PromptCreator {
     // lesson id
     const lessonId = document.querySelector('.lesson-id');
     lessonId.innerHTML = "Lesson: " + `${currentLevel.lessonNumber}`;
-    // lesson title
-    const title = document.querySelector('.prompt-title');
-    title.innerHTML = `${currentLevel.promptTitle}`;
-    // lesson instructions
     const instructions = document.querySelector('.prompt-instruction');
     instructions.innerHTML = `${currentLevel.promptInstructions}`;
 
     const hintsList = document.querySelector('#prompt-hint-list');
     this.updateHints(hintsList, currentLevel);
   }
-  
+
   // TODO create dropdown lesson nav with forward/back buttons
   createPromptNav(lessonNumber) {
     const nav = document.createElement('div');
@@ -44,8 +39,8 @@ export default class PromptCreator {
     const lessonId = document.createElement('p');
     lessonId.innerHTML = "Lesson: " + `${lessonNumber}`;
     lessonId.classList.add('lesson-id');
-    
-    const forwardsButton = this.createNextButton(); 
+
+    const forwardsButton = this.createNextButton();
     const backwardsButton = this.createBackButton();
     const resetButton = this.createResetButton();
     const hideButton = this.createHideButton();
@@ -85,13 +80,6 @@ export default class PromptCreator {
     hideButton.innerHTML = 'Hide';
     hideButton.classList.add('hide-interface');
     return hideButton;
-  }
-
-  createPromptTitle(titleText) {
-    const title = document.createElement('h4');
-    title.innerHTML = titleText;
-    title.classList.add('prompt-title');
-    this.promptContainer.appendChild(title);
   }
 
   createPromptInstructions(instructions) {

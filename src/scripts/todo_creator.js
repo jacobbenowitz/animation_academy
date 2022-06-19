@@ -29,14 +29,14 @@ export default class TodoCreator {
   addContentLeft(leftCol) {
     // create header
     const h2 = document.createElement('h3')
-    h2.innerHTML = "Todo"
+    h2.textContent = "Todo"
     // create body text
     const body = document.createElement('p')
-    body.innerHTML = "This todo list starts off fully functional, but it’ll be up to you to add transitions and animations that smooth out the experience. Minor adjustments to how items render on the DOM can make a large impact on the user experience."
+    body.textContent = "This todo list starts off fully functional, but it’ll be up to you to add transitions and animations that smooth out the experience. Minor adjustments to how items render on the DOM can make a large impact on the user experience."
     // create button
     // const button = document.createElement('a')
     // button.classList.add('button')
-    // button.innerHTML = "Get productive"
+    // button.textContent = "Get productive"
     // button.href = "#"
     // append all elements to left column, then add to section
     leftCol.append(h2, body)
@@ -48,7 +48,7 @@ export default class TodoCreator {
     todoListContainer.classList.add('todo-list-container')
     // create header
     const todoH4 = document.createElement('h4')
-    todoH4.innerHTML = "Todo List"
+    todoH4.textContent = "Todo List"
     todoListContainer.appendChild(todoH4)
     // pass container to createTodo
     this.createTodo(todoListContainer)
@@ -90,7 +90,7 @@ export default class TodoCreator {
 
   createResetButton() {
     const resetButton = document.createElement('a');
-    resetButton.innerHTML = "reset"
+    resetButton.textContent = "reset"
     resetButton.href = "#"
     resetButton.classList.add('button', 'todo-reset');
     return resetButton;

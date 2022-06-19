@@ -29,73 +29,73 @@ export const LEVELS = [
   },
   { lessonNumber: 1,
     promptTitle:
-    "Shrink & grow all buttons on hover using a transition",
+    "Now let's add a 1 second transition the <code>background-color</code> on <code>hover</code>",
     promptInstructions:
-    "Below you'll see the :hover state has a larger padding than the default.  Using the transition shorthand syntax, add a 250ms transtion for the padding property to achieve this effect, and use ease-in for the timing function.",
+      "Transitions in CSS allow you to change properties of an element smoothly over time. A transition requires two CSS selectors, one defining the initial state, and the other defining the new state. The initial state will specify the <code>transition-property</code>, which in this case is <code>background-color</code>, and the <code>transition-duration</code> which in our case is <strong>1 second<strong>. Let's transition this box from <code>$blue</code> to <code>$pink</code>.",
     syntaxHints:
-      ["Transition shorthand syntax is nice and simple:",
-        "transition: (property) (time) (timing function)",
-        "ex: transition: font-size 500ms linear"
+      [
+        "Use the properties below in your CSS transition:",
+        "<strong>transition-property:</strong> {property to change};",
+        "Example: <strong>transition-property: font-size</strong>",
+        "<strong>transition-duration:</strong> {amount of seconds/milliseconds}", "Example: <strong>transition-duration: 2s</strong>"
       ],
     boilerCode:
       [
-        ".button {",
-        "  padding: 5px 10px 5px 10px;",
-        "  height: 100%;"
+        ".box {",
+          "background-color: $blue"
       ],
-    inputTemplateCode: [" transition: "],
+    inputTemplateCode: [
+    ],
     endingBoilerCode:
       [
-        ".levels-button-grow:hover {",
-        "  padding: 8px 13px 8px 13px;", "}"
+        "}",
+        ".box:hover {",
+        "  background-color: $purple",
+        "}"
       ],
-    numInputLines: 1,
+    numInputLines: 2,
     totalLines: 8,
     solution:
-      ["(padding)",
-        "(250ms)",
-        "(ease-in)"
+      [
+        "(background-color)",
+        "(1s)"
       ],
-    animationClass: "levels-button-grow",
-    successMessage: "Nice! Test the buttons out and watch them grow!"
+    successMessage: "That's it! Hover over the box to experience your transition."
   },
 
   { lessonNumber: 2,
     promptTitle:
-    "Catch the user's attention when they hover over input fields",
+    "Use shorthand transition syntax to also grow the shape on hover",
     promptInstructions:
-    "Add a 500ms transition to the background color, this time using the shorthand transition syntax. Use the ease-in-out timing function.",
+    "Let's use the shorthand transition syntax to transition the <code>scale()</code> of the box to 110% over <strong>1 second</strong> when we hover. Pro-tip: you can transition <code>all</code> as a property, which will transition any properties that change.",
     syntaxHints:
-      ["Use these properties again:",
-        "transition: (property) (time) (timing function)",
-        "ex: transition: font-size 500ms linear"
+      [
+        "Use the properties below in your CSS transition:",
+        "Shorthand: <strong>transition: (property) (time)</strong>",
+        "Property to use: <strong>all</strong>",
+        "Example: <strong>transition: font-size 0.5s</strong>",
       ],
     boilerCode:
-      [ ".input {",
-        "  background-color: #dadada54;",
-        "  border: 2px solid $transparent;",
-        "  border-radius: 4px;",
-        "  padding-left: 10px;",
-        "}"
+      [ ".box {",
+        "  transform: scale(100%);",
+        "  background-color: $blue;", 
       ],
-    inputTemplateCode: ["transition: "],
     endingBoilerCode:
       [
-        "}", ".input:hover {", 
-        "  background-color: #dadadaad;", 
-        "  border: 2px solid $primary;",
-        "  transition: border 0.5s ease-in;", "}"
+        "}",
+        ".box:hover {", 
+        "  transform: scale(110%);", 
+        "  background-color: $purple;", 
+        "}"
         ],
     numInputLines: 1,
-    totalLines: 13,
+    totalLines: 9,
     solution:
       ["(transition:)",
-        "(background-color)",
-        "(500ms)",
-        "(ease-in-out)"
+        "(all)",
+        "(1s)"
       ],
-    animationClass: "input-level",
-    successMessage: "Hover over the input fields to test it out!"
+    successMessage: "Hover over the box again to see the new transition!"
   },
 
   { lessonNumber: 3,

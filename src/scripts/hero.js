@@ -11,7 +11,7 @@ export default class Hero {
     const heroContent = document.createElement('div')
     this.hero.appendChild(heroContent)
   }
-  
+
   // create col structure
   addInnerSections() {
     const heroContent = document.querySelector('#hero-content')
@@ -28,13 +28,13 @@ export default class Hero {
     const rightCol = document.querySelector('#hero-content > .right-col')
     const h1 = document.createElement('h1')
     h1.innerHTML = "Learn CSS Animations"
-    
+
     const heroText = document.createElement('p')
     heroText.innerHTML = "Ready to start learning how to use transitions and animations in CSS? Click the button below to get started.";
     heroText.classList.add('subheading')
 
     const button = document.createElement('a')
-    button.classList.add('button', 'play-now', 'hero')
+    button.classList.add('button', 'play-now', 'primary')
     button.innerHTML = "Play now"
     button.href = "#"
 

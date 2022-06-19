@@ -15,7 +15,7 @@
 }
 
 .prompt li {
-  width: fit-content;
+  width: max-content;
   font-family: $source-code;
   color: $primary;
   background-color: $code-bg;

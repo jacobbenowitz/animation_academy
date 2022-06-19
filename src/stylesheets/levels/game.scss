@@ -45,7 +45,7 @@
   gap: 1rem;
 }
 
-.level-game-assets {
+#level-game-assets {
   display: flex;
   width: 100%;
   flex: 1 1;
@@ -68,11 +68,11 @@
 }
 
 #game-box-start.level-1 {
-  transition: background-color 300ms cubic-bezier( 0.71, 0.07, 0.68, 0.53 );
   background-color: $primary;
+  animation: boxIn 400ms ease-in;
 }
 
-#game-box-level-2 {
+#game-box-level-1 {
   position: absolute;
   width: 300px;
   height: 300px;
@@ -85,25 +85,32 @@
   border-radius: 14px;
   box-sizing: border-box;
   transition: background-color 300ms cubic-bezier( 0.71, 0.07, 0.68, 0.53 );
+  animation: boxIn 400ms ease-in;
+}
+
+#game-box-level-1:hover {
+  background-color: $primary;
 }
 
 #box-start-2 {
   position: absolute;
   width: 300px;
   height: 300px;
-  right: 300px;
+  right: 0px;
   top: 40px;
 
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
+  animation: boxIn 400ms ease-in;
 }
+
 #box-start-3 {
   position: absolute;
   width: 300px;
   height: 300px;
-  right: 300px;
+  right: 0px;
   top: 40px;
 
   background-color: $primary;
@@ -112,6 +119,7 @@
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
+    animation: boxIn 400ms ease-in;
 }
 
 #box-start-4 {
@@ -141,10 +149,6 @@
   box-sizing: border-box;
 }
 
-#game-box-level-2:hover {
-  background-color: $primary;
-}
-
 #game-box-level-6-circle {
   position: absolute;
   width: 300px;
@@ -156,12 +160,12 @@
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  transform: scale(95%);
+  transform: scale(100%);
   transition: all 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 #game-box-level-6-circle:hover {
-  transform: scale(105%);
+  transform: scale(110%);
   background-color: $primary;
 }
 
@@ -316,8 +320,21 @@
 //   }
 // }
 
+@keyframes boxIn {
+  from {
+    filter: blur(14px);
+    opacity: 0%;
+    transform: scale(110%);
+  }
+  to {
+    filter: blur(0px);
+    opacity: 100%;
+    transform: scale(100%);
+  }
+}
 
-.lesson-group-header {
+
+#level-group-header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -333,7 +350,7 @@
   color: #FFFFFF;
 }
 
-.lesson-number-large {
+#level-number-large {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -352,16 +369,17 @@
   color: #FFFFFF;
 }
 
-.title-code {
+h3 > code {
   font-family: "Source Code Pro", monospace;
   color: #03DAC6;
   background-color: rgba(19, 18, 19, 0.7450980392);
   border-radius: 4px;
   margin: 4px 0 4px 0;
   padding: 4px 8px 4px 8px;
+  font-size: inherit;
 }
 
-.lesson-title {
+#level-title {
   text-align: right;
   line-break: strict;
   width: 60%;

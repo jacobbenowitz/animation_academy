@@ -1,4 +1,4 @@
-export default class IdeCreator {
+export default class Ide {
   constructor() {
     this.ideContainer = this.createIdeContainer();
     this.bindHandlers();
@@ -25,13 +25,13 @@ export default class IdeCreator {
   createIdeContainer() {
     const container = document.createElement('div');
     container.id = "ide"
-    container.classList.add('ide','grid-2-col-ide');
+    container.classList.add('ide', 'grid-2-col-ide');
 
     const leftCol = document.createElement('div');
     leftCol.classList.add('left-col');
     const rightCol = document.createElement('div');
     rightCol.classList.add('right-col');
-    
+
     container.append(leftCol, rightCol);
     return container;
   }
@@ -45,7 +45,7 @@ export default class IdeCreator {
     this.addEndingBoiler(rightCol, currentLevel);
     this.buildButton(rightCol);
   }
-  
+
   updateIdeContent(currentLevel) {
     // generate correct amount of line numbers
     this.updateLineNums(currentLevel);
@@ -54,8 +54,8 @@ export default class IdeCreator {
     // update boiler code before & after user input
     this.updateBoilerCode(currentLevel);
   }
-  
-    
+
+
   updateLineNums(currentLevel) {
     const leftCol = this.ideContainer.childNodes[0];
     const lineNums = leftCol.childNodes[0];
@@ -72,7 +72,7 @@ export default class IdeCreator {
       currentLevel.boilerCode.join('\n');
     const boilerBotText =
       currentLevel.endingBoilerCode.join('\n');
-    
+
     topBoiler.rows = currentLevel.boilerCode.length;
     topBoiler.innerHTML = boilerTopText;
     botBoiler.innerHTML = boilerBotText;
@@ -81,10 +81,14 @@ export default class IdeCreator {
 
   updateInput(currentLevel) {
     const input = document.getElementById('user-code-input')
-    const template = document.getElementById('template-code')
     const rows = currentLevel.numInputLines;
-    const inputTemplate = currentLevel.inputTemplateCode;
-    template.value = inputTemplate.join('\n');
+    const templateCode = currentLevel.inputTemplateCode;
+    let template = document.getElementById('template-code')
+    if (template === null) {
+      let rightCol = document.querySelector('#ide > .right-col')
+      template = this.buildTemplate(templateCode, rows)
+      rightCol.append(template)
+    }
     input.value = ""
     template.rows = rows;
     input.rows = rows;
@@ -101,7 +105,7 @@ export default class IdeCreator {
   addLineNums(leftCol, currentLevel) {
     const levelLines = currentLevel.totalLines;
     const lineNums =
-        this.buildNumsArray(levelLines).join('\n');
+      this.buildNumsArray(levelLines).join('\n');
     const lineNumsText = document.createElement('textarea');
     lineNumsText.innerHTML = lineNums;
     lineNumsText.classList.add('code');
@@ -126,29 +130,35 @@ export default class IdeCreator {
 
   buildInput(rightCol, currentLevel) {
     const rows = currentLevel.numInputLines;
-    const inputTemplate = currentLevel.inputTemplateCode;
+    const templateCode = currentLevel.inputTemplateCode;
 
     const inputContainer = document.createElement('div')
     inputContainer.id = 'input-container';
     inputContainer.classList.add('code-input')
-    
-    if (inputTemplate.length > 0) {
-      const template = document.createElement('textarea');
-      template.textContent = inputTemplate.join('\n');
-      template.id = "template-code";
-      template.name = "template[code]";
-      template.classList.add('template');
-      template.readOnly = true;
-      template.rows = rows;
-      inputContainer.append(template)
-    }
-    
+
+    // if (templateCode.length > 0) {
+    //   let template = this.buildTemplate(templateCode, rows)
+    //   rightCol.append(template)
+    // }
+
     const userInput = document.createElement('textarea')
     userInput.id = "user-code-input";
     userInput.name = "user[code]";
     userInput.rows = rows;
     inputContainer.append(userInput)
     rightCol.append(inputContainer);
+  }
+
+  buildTemplate(templateCode, rows) {
+    const template = document.createElement('textarea');
+    template.innerHTML = templateCode.join('\n');
+    template.id = "template-code";
+    template.name = "template[code]";
+    template.classList.add('template');
+    template.value = templateCode.join('\n');
+    template.readOnly = true;
+    template.rows = rows;
+    return template;
   }
 
   addEndingBoiler(rightCol, currentLevel) {

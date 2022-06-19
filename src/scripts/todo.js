@@ -13,7 +13,7 @@ export default class TodoFunctionality {
     this.addNewTodo = this.addNewTodo.bind(this);
     this.populateList = this.populateList.bind(this); // bind this to callback
     this.toggleDone = this.toggleDone.bind(this); // bind this to callback
-        this.reset = this.reset.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   addEventListeners() {
@@ -45,7 +45,7 @@ export default class TodoFunctionality {
   // update user's list of todos rendered on the browser
   populateList(todoStorage = [], todoList) {
     // iterate through all todo items and map to todoList
-    todoList.innerHTML = todoStorage.map((todo, i) => {
+    todoList.textContent = todoStorage.map((todo, i) => {
       return `
       <li class = "todo-item ${todo.done ? 'done' : 'default'}" >
       <input type="checkbox" class = 'checkbox' data-index=${i} ${todo.done ? 'checked' : ''} />

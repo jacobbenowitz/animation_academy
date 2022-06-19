@@ -51,10 +51,63 @@ export default class LevelFunctionality {
     body.append(section);
   }
 
-  level_1() {
-    const boxStart = document.getElementById('game-box-start')
-    boxStart.classList.add('level-1')
+  warm_up_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const boxStart = document.createElement('div')
+    boxStart.id = 'game-box-start'
+    levelGameAssets.append(boxStart)
   }
+  warm_up_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    levelGameAssets.firstChild.classList.add('level-1')
+  }
+
+  level_one_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    const box2 = document.createElement('div');
+    const box3 = document.createElement('div');
+    box2.id = "box-start-2";
+    box3.id = "box-start-3";
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    levelGameAssets.append(box2, box3)
+  }
+
+  level_one_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    const levelOneBox = document.createElement('div')
+    levelOneBox.id = ('game-box-level-1')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    levelGameAssets.append(levelOneBox)
+  }
+
+  level_two_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const box4 = document.createElement('div')
+    const box5 = document.createElement('div')
+    box4.id = "box-start-4"
+    box5.id = "box-start-5"
+  }
+  level_two_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const box4 = document.createElement('div')
+    const box5 = document.createElement('div')
+    box4.id = "box-start-2"
+    box5.id = "box-start-3"
+  }
+
 
   createRainbowBox(container) {
     const backgroundBox = document.createElement('div');

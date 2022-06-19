@@ -1,5 +1,5 @@
-import PromptCreator from "./prompt";
-import IdeCreator from "./ide";
+import Prompt from "./prompt";
+import Ide from "./ide";
 import { LEVELS } from './levels';
 import LevelFunctionality from "./level_functionality";
 // import { throttle } from './throttle_util'
@@ -10,24 +10,30 @@ export default class Game {
     localStorage.setItem('gameState', 'idle')
     this.hero = document.querySelector('.hero')
     this.interfaceContainer = document.getElementById('interface');
-    this.currentLevel = this.currentLevel() || LEVELS[0]; // lessonNumber = idx
-    this.promptContainer = new PromptCreator();
-    this.ide = new IdeCreator();
-    this.bindHandlers();
+    this.currentLevel = this.currentLevel() || LEVELS[0];
     this.levelFunctionality = new LevelFunctionality();
-    this.animationKey = [
-      this.levelFunctionality.level_1,
-      this.levelFunctionality.level_2,
-      this.levelFunctionality.level_3,
-      this.levelFunctionality.level_4,
-      this.levelFunctionality.level_5,
-      this.levelFunctionality.level_6,
-      this.levelFunctionality.addButtonTransitions,
-      this.levelFunctionality.addButtonGrow,
-      this.levelFunctionality.addFieldTranstions,
-      this.levelFunctionality.addProductsHover,
-      this.levelFunctionality.addHeaderAnimation
-    ]
+    this.promptContainer = new Prompt();
+    this.ide = new Ide();
+    this.bindHandlers();
+    this.levelAnimations = {
+      0: this.levelFunctionality.warm_up_animation,
+      1: this.levelFunctionality.level_one_animation,
+      2: this.levelFunctionality.level_two_animation,
+      // 3: this.levelFunctionality.level_three,
+      // 4: this.levelFunctionality.level_four,
+      // 5: this.levelFunctionality.level_five,
+      // 6: this.levelFunctionality.level_six,
+      7: this.levelFunctionality.addButtonTransitions,
+      8: this.levelFunctionality.addButtonGrow,
+      9: this.levelFunctionality.addFieldTranstions,
+      10: this.levelFunctionality.addProductsHover,
+      11: this.levelFunctionality.addHeaderAnimation
+    }
+    this.levelAssets = {
+      0: this.levelFunctionality.warm_up_assets,
+      1: this.levelFunctionality.level_one_assets,
+      2: this.levelFunctionality.level_two_assets,
+    }
   }
 
   // get level from localStorage, return undefined if none
@@ -60,9 +66,9 @@ export default class Game {
     localStorage.setItem('gameState', 'active')
     this.promptContainer.addPromptContent(this.currentLevel);
     this.promptContainer.attachPrompt(this.interfaceContainer);
-    // render ide with boiler code and form
     this.ide.addIdeContent(this.currentLevel);
     this.ide.attachIde(this.interfaceContainer);
+    this.updateGameAssets()
   }
 
   levelNavListeners() {
@@ -137,6 +143,7 @@ export default class Game {
     interfaceContainer.classList.remove('slideOut');
     interfaceContainer.classList.add('slideIn');
     localStorage.setItem('gameState', 'active');
+    this.gameUpdate()
     const playButtons = document.querySelectorAll('.play-now')
     playButtons.forEach(button => {
       button.removeEventListener('click', this.showGame)
@@ -180,7 +187,6 @@ export default class Game {
   checkUserInput = this.throttle(userInput => {
     const inputTextArr = userInput.split(' ');
     const solution = this.currentLevel.solution;
-    console.log(`arr: ${inputTextArr}`)
     if (this.regexCheck(inputTextArr, solution)) {
       this.levelSuccess();
     }
@@ -189,33 +195,6 @@ export default class Game {
     }
   })
 
-  // checkUserInput(e) {
-  //   e.stopPropagation();
-  //   // try {
-  //   const button = document.querySelector('.ide-button');
-  //   const userInput = document.querySelector('.code-input');
-  //   const inputTextArr = userInput.value.split(' ');
-  //   const solution = this.currentLevel.solution;
-  //   debugger
-  //   if (e.target === button &&
-  //     this.regexCheck(inputTextArr, solution)) {
-  //     this.levelSuccess();
-  //   }
-  //   else if (e.target === button) {
-  //     //   userInput.classList.add('error')
-  //     // throw new Error ('Input does not match solution')
-  //     // console.log('Input does not match solution')
-  //     return;
-  //   }
-  //   // }
-  //   // catch {error => {
-  //   //   console.log(error)
-  //   //   } 
-  //   // }
-  // }
-
-
-  // todo: change logic here to work with new throttle func
   // todo: add multiple solutions for different syntax (1s & 1000ms)
   regexCheck(inputTextArr, solution) {
     const regexMatchers = [];
@@ -266,19 +245,19 @@ export default class Game {
 
   levelAnimation() {
     // dynamically grab this level's animations to apply to DOM
-    const animation =
-      this.animationKey[this.currentLevel.lessonNumber]
-    animation(); // invoke the animations
+    const levelUpdate =
+      this.levelAnimations[this.currentLevel.lessonNumber]
+    levelUpdate(); // invoke the animations
     // pull the correct success message for this level
-    const successMessage = this.currentLevel.successMessage;
+    // const successMessage = this.currentLevel.successMessage;
     // show level success overlay with the message
-    this.levelFunctionality.levelSuccessAnimation(successMessage)
+    // this.levelFunctionality.levelSuccessAnimation(successMessage)
     this.toggleInterface()
     setTimeout(() => {
       // render next level (update prompt & ide) after 5s
       this.renderNextLevel()
       this.toggleInterface()
-    }, 5000)
+    }, 3000)
   }
 
   renderNextLevel() {
@@ -297,9 +276,22 @@ export default class Game {
   gameUpdate() {
     this.promptContainer.updatePromptContent(this.currentLevel);
     this.ide.updateIdeContent(this.currentLevel);
+    this.updateGameAssets();
   }
 
-  // testing only, add to animationKey
+  updateGameAssets() {
+    const levelNumber = document.getElementById('level-number')
+    const levelTitle = document.getElementById('level-title')
+    debugger
+    levelTitle.innerHTML = this.currentLevel.promptTitle;
+    levelNumber.textContent = this.currentLevel.lessonNumber;
+    const levelUpdate =
+      this.levelAssets[this.currentLevel.lessonNumber];
+    debugger
+    levelUpdate();
+  }
+
+  // testing only, add to levelAnimations
   levelTest() {
     // on levelSuccess invoke appropriate function to enable that level's transitions/animations site wide
     const body = document.querySelector('body');

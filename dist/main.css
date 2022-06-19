@@ -152,6 +152,9 @@ body {
   width: 100%;
   height: 100%;
   background-color: #131213;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .center-simple {
@@ -213,42 +216,6 @@ body {
 .right-col {
   grid-column: 6/span 6;
   text-align: end;
-}
-
-#hero-content > .right-col {
-  position: relative;
-}
-
-#hero-content .right-col > h1 {
-  padding-top: 3rem;
-}
-
-.hero {
-  background-color: rgba(0, 0, 0, 0);
-  height: min-content;
-  padding-top: 3em;
-  padding-bottom: 4em;
-  background-image: url("../imgs/homeHero_optimized.jpg");
-  background-size: cover;
-  z-index: 200;
-  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
-}
-
-.hero::before {
-  content: "";
-  background-color: rgba(0, 0, 0, 0.34);
-}
-
-#hero-content {
-  grid-column: 1/span 12;
-  z-index: 100;
-  position: absolute;
-  height: calc(65vh + 65px);
-  width: 100vw;
-  top: 0;
-  right: 0;
-  z-index: 250;
-  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
 }
 
 footer {
@@ -340,11 +307,11 @@ footer a:hover {
   box-shadow: 0px 0px 10px #03DAC6;
 }
 
-.button.hero {
+.button.primary {
   font-size: 18px;
   letter-spacing: 1pt;
   font-weight: 700;
-  background-color: rgba(32, 31, 30, 0.35);
+  background-color: gba(21, 20, 20, 0.5);
   margin-top: 2rem;
   position: absolute;
   width: fit-content;
@@ -352,7 +319,7 @@ footer a:hover {
   right: 0;
 }
 
-.button.play-now.hero:hover {
+.button.play-now.primary:hover {
   border: 1px solid transparent;
   background-color: #03DAC6;
   color: #131213;
@@ -360,8 +327,8 @@ footer a:hover {
   box-shadow: 0px 0px 10px #03DAC6;
 }
 
-.button.play-now.hero:active,
-.button.play-now.hero:focus {
+.button.play-now.primary:active,
+.button.play-now.primary:focus {
   border: 1px solid transparent;
   background-color: #BB86FC;
   color: #131213;
@@ -450,7 +417,7 @@ header img {
   min-height: 100px;
   height: fit-content;
   border-radius: 8px;
-  background-color: rgba(32, 31, 30, 0.35);
+  background-color: gba(21, 20, 20, 0.5);
   backdrop-filter: blur(12px);
   margin: 5px;
   padding: 10px 20px 10px 20px;
@@ -461,7 +428,7 @@ header img {
 }
 
 .prompt li {
-  width: fit-content;
+  width: max-content;
   font-family: "Source Code Pro", monospace;
   color: #03DAC6;
   background-color: rgba(19, 18, 19, 0.7450980392);
@@ -533,7 +500,7 @@ code {
   max-width: 450px;
   min-height: 100px;
   margin-bottom: 10px;
-  background-color: rgba(32, 31, 30, 0.35);
+  background-color: gba(21, 20, 20, 0.5);
   backdrop-filter: blur(12px);
   margin: 5px;
   border-radius: 8px;
@@ -577,7 +544,7 @@ textarea.code-input {
   position: fixed;
   width: fit-content;
   height: fit-content;
-  top: 40px;
+  top: 80px;
   left: 50px;
 }
 
@@ -775,7 +742,7 @@ textarea.code-input {
   transition: border 0.5s ease-in;
 }
 
-textarea.input-level:focus {
+#input-container:focus-within {
   background-color: rgba(218, 218, 218, 0.6784313725);
   border: 2px solid #BB86FC;
   transition: border 0.5s ease-in;
@@ -989,7 +956,7 @@ input:focus {
   gap: 1rem;
 }
 
-.level-game-assets {
+#level-game-assets {
   display: flex;
   width: 100%;
   flex: 1 1;
@@ -1010,11 +977,11 @@ input:focus {
 }
 
 #game-box-start.level-1 {
-  transition: background-color 300ms cubic-bezier(0.71, 0.07, 0.68, 0.53);
   background-color: #03DAC6;
+  animation: boxIn 400ms ease-in;
 }
 
-#game-box-level-2 {
+#game-box-level-1 {
   position: absolute;
   width: 300px;
   height: 300px;
@@ -1026,25 +993,31 @@ input:focus {
   border-radius: 14px;
   box-sizing: border-box;
   transition: background-color 300ms cubic-bezier(0.71, 0.07, 0.68, 0.53);
+  animation: boxIn 400ms ease-in;
+}
+
+#game-box-level-1:hover {
+  background-color: #03DAC6;
 }
 
 #box-start-2 {
   position: absolute;
   width: 300px;
   height: 300px;
-  right: 300px;
+  right: 0px;
   top: 40px;
   background-color: #BB86FC;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
+  animation: boxIn 400ms ease-in;
 }
 
 #box-start-3 {
   position: absolute;
   width: 300px;
   height: 300px;
-  right: 300px;
+  right: 0px;
   top: 40px;
   background-color: #03DAC6;
   opacity: 40%;
@@ -1052,6 +1025,7 @@ input:focus {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
+  animation: boxIn 400ms ease-in;
 }
 
 #box-start-4 {
@@ -1080,10 +1054,6 @@ input:focus {
   box-sizing: border-box;
 }
 
-#game-box-level-2:hover {
-  background-color: #03DAC6;
-}
-
 #game-box-level-6-circle {
   position: absolute;
   width: 300px;
@@ -1094,12 +1064,12 @@ input:focus {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  transform: scale(95%);
+  transform: scale(100%);
   transition: all 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 #game-box-level-6-circle:hover {
-  transform: scale(105%);
+  transform: scale(110%);
   background-color: #03DAC6;
 }
 
@@ -1236,7 +1206,19 @@ input:focus {
   transform: rotate(180deg) scale(40%);
 }
 
-.lesson-group-header {
+@keyframes boxIn {
+  from {
+    filter: blur(14px);
+    opacity: 0%;
+    transform: scale(110%);
+  }
+  to {
+    filter: blur(0px);
+    opacity: 100%;
+    transform: scale(100%);
+  }
+}
+#level-group-header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1252,7 +1234,7 @@ input:focus {
   color: #FFFFFF;
 }
 
-.lesson-number-large {
+#level-number-large {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1268,24 +1250,61 @@ input:focus {
   color: #FFFFFF;
 }
 
-.title-code {
+h3 > code {
   font-family: "Source Code Pro", monospace;
   color: #03DAC6;
   background-color: rgba(19, 18, 19, 0.7450980392);
   border-radius: 4px;
   margin: 4px 0 4px 0;
   padding: 4px 8px 4px 8px;
+  font-size: inherit;
 }
 
-.lesson-title {
+#level-title {
   text-align: right;
   line-break: strict;
   width: 60%;
   font-size: 30px;
 }
 
+#hero-content > .right-col {
+  position: relative;
+}
+
+#hero-content .right-col > h1 {
+  padding-top: 3rem;
+}
+
+.hero {
+  background-color: rgba(0, 0, 0, 0);
+  height: min-content;
+  padding-top: 3em;
+  padding-bottom: 4em;
+  background-image: url("../imgs/homeHero_optimized.jpg");
+  background-size: cover;
+  z-index: 200;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+}
+
+.hero::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.34);
+}
+
+#hero-content {
+  grid-column: 1/span 12;
+  z-index: 100;
+  position: absolute;
+  height: calc(72vh + 65px);
+  width: 100vw;
+  top: 0;
+  right: 0;
+  z-index: 250;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+}
+
 #hero-2 {
-  height: calc(65vh + 65px);
+  height: calc(72vh + 65px);
   top: 0;
   right: 0;
   width: 100vw;
