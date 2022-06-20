@@ -5,36 +5,39 @@ export const LEVELS = [
     promptTitle:
       "Warm-up with the basics",
     promptInstructions:
-      "Let's get our bearings by chaging the <code>background-color</code> of the box. New to CSS? Every level will have hints for you below these instructions.",
+      "Let's get our bearings by chaging the <code>background-color</code> of the box to <code>$blue</code>. New to CSS? Every level will have hints for you below these instructions. CSS syntax follows this pattern: <code>property-name: {value to change};</code>",
     syntaxHints: [
-      "Syntax hints:",
-      "General CSS pattern: <strong>property-name: {value to change};</strong>",
-      "For this level use: <strong>background-color:</strong>",
+      "Use the below in your CSS transition:",
+      "Property: <strong>background-color:</strong>",
       "And for the color use: <strong>$blue</strong>"
       ],
     boilerCode:
       [
         ".box {"
       ],
-    inputTemplateCode: "",
+    inputTemplateCode: [],
     endingBoilerCode:
       [
         "}"
       ],
     numInputLines: 1,
     totalLines: 2,
-    solution: ["(background-color)", "(blue)"],
+    solution:
+      [
+        /background\-color: blue;/
+      ],
     animationClass: "buttonHover",
     successMessage: "Light work 🥇 Nice job!"
   },
-  { lessonNumber: 1,
+  {
+    lessonNumber: 1,
     promptTitle:
-    "Now let's add a 1 second transition the <code>background-color</code> on <code>hover</code>",
+      "Now let's add a 1 second transition the <code>background-color</code> on <code>hover</code>",
     promptInstructions:
-      "Transitions in CSS allow you to change properties of an element smoothly over time. A transition requires two CSS selectors, one defining the initial state, and the other defining the new state. The initial state will specify the <code>transition-property</code>, which in this case is <code>background-color</code>, and the <code>transition-duration</code> which in our case is <strong>1 second<strong>. Let's transition this box from <code>$blue</code> to <code>$pink</code>.",
+      "Transitions in CSS allow you to change properties of an element smoothly over time. A transition requires two CSS selectors, one defining the initial state, and the other defining the new state. The initial state will specify the <code>transition-property</code>, which in this case is <code>background-color</code>, and the <code>transition-duration</code> which in our case is <code>1s</code>. Let's transition this box from <code>$blue</code> to <code>$pink</code>.",
     syntaxHints:
       [
-        "Use the properties below in your CSS transition:",
+        "Use the below properties in your CSS transition:",
         "<strong>transition-property:</strong> {property to change};",
         "Example: <strong>transition-property: font-size</strong>",
         "<strong>transition-duration:</strong> {amount of seconds/milliseconds}", "Example: <strong>transition-duration: 2s</strong>"
@@ -42,10 +45,9 @@ export const LEVELS = [
     boilerCode:
       [
         ".box {",
-          "background-color: $blue"
+        "  background-color: $blue"
       ],
-    inputTemplateCode: [
-    ],
+    inputTemplateCode: [],
     endingBoilerCode:
       [
         "}",
@@ -57,20 +59,22 @@ export const LEVELS = [
     totalLines: 8,
     solution:
       [
-        "(background-color)",
-        "(1s)"
+        /transition\-property: background\-color;/,
+        /transition\-duration: 1s;/
       ],
-    successMessage: "That's it! Hover over the box to experience your transition."
+    successMessage:
+        "That's it! Hover over the box to experience your transition."
   },
 
-  { lessonNumber: 2,
+  {
+    lessonNumber: 2,
     promptTitle:
-    "Use shorthand transition syntax to also grow the shape on hover",
+      "Use shorthand transition syntax to also grow the shape on hover",
     promptInstructions:
-    "Let's use the shorthand transition syntax to transition the <code>scale()</code> of the box to 110% over <strong>1 second</strong> when we hover. Pro-tip: you can transition <code>all</code> as a property, which will transition any properties that change.",
+      "The shorthand transition syntax saves us time by allowing us to write the transitino on one line. Write a shorthand transition to <code>scale()</code> the box to <code>110%</code> over <code>1s</code>. <strong>Pro-tip:</strong> you can transition <code>all</code> as a property, which will transition any properties that change.",
     syntaxHints:
       [
-        "Use the properties below in your CSS transition:",
+        "Use the below properties in your CSS transition:",
         "Shorthand: <strong>transition: (property) (time)</strong>",
         "Property to use: <strong>all</strong>",
         "Example: <strong>transition: font-size 0.5s</strong>",
@@ -91,98 +95,131 @@ export const LEVELS = [
     numInputLines: 1,
     totalLines: 9,
     solution:
-      ["(transition:)",
-        "(all)",
-        "(1s)"
+      [
+        /transition: all 1s;/
       ],
-    successMessage: "Hover over the box again to see the new transition!"
+    successMessage:
+      "Hover over the box again to see the new transition!"
   },
-
-  { lessonNumber: 3,
+  {
+    lessonNumber: 3,
     promptTitle:
-    "Animate the product elements so they move up when hovering",
+      "On click (or tap) transition the shape to a circle and shrink it down",
     promptInstructions:
-    "Transition the transform property, which will translate the Y cordinates of the element up 10px. The transition should be quick, let's use 125ms.",
+      "Since we are transitioning all properties, we only need to update the <code>active</code> state of the box. Change the <code>border-radius</code> to a value of <code>50%</code> to smooth the corners into a circle and bring the <code>scale()</code> down to <code>85%</code>.",
     syntaxHints:
-      [ "Hints and syntax:",
-        "translate sytanx: translateX or translateY(amount)", 
-        "ex. transform: translateX(5px)", 
-        "Negative values move upwards on the Y asis"
+      [
+        "Use the below properties in your CSS transition:",
+        "<strong>border-radius</strong> (value);",
+        "Example: <strong>border-radius: 10%</strong> ",
+        "<strong>transform:</strong> scale(value);",
+        "Example: <strong>transform: scale(95%)</strong> ",
       ],
     boilerCode:
-      [ ".rise-up-level:hover {" ],
-    inputTemplateCode: [
-      "  transition: ",
-      "  transform: "
-    ],
+      [ ".box:active {" ],
+    inputTemplateCode: [],
     endingBoilerCode:
-    [ "}", " ", ".rise-up-level {",
-      "  will-change: transform;",
-      "  transition: transform 450ms;", "}"
-    ],
-    numInputLines: 2,
-    totalLines: 8,
-    solution:
-      [ "(transition)", "(transform)", "(125ms)",
-        "(transform)", "(translateY)", "(-10px)"
-      ],
-    animationClass: "rise-up-level",
-    successMessage: "Sweet! Hover over the products now to see the animation."
-  },
-
-  { lessonNumber: 4,
-    promptTitle:
-    "Animation time! Animate the header to fade-in when the page is loaded",
-    promptInstructions:
-    "The boiler code already includes an animation called slideIn. Apply the slideIn animation, use 1.2s for your interval, and ease-out for your timing function.",
-    syntaxHints:
-    [ "Hints and syntax:",
-      "animation: @keyframes name | duration | easing-function", 
-      "ex. animation: slideIn 5s linear", 
-      "use a duration of 1.2s, and ease-out"],
-    boilerCode:
-    ["header {"],
-    inputTemplateCode: [" animation:"],
-    endingBoilerCode:
-      [ "}",
-        "@keyframes slideIn {",
-        "0% {",
-        "  margin-left: -50rem;",
-        "  opacity: 0%;",
-        "  filter: blur(1.5rem);",
-        "}",
-        "100% { ",
-        "  margin-left: 0rem;",
-        "  opacity: 100%;",
-        "  filter: blur(0);",
+      [
         "}"
-    ],
-    numInputLines: 1,
-    totalLines: 13,
+      ],
+    numInputLines: 2,
+    totalLines: 4,
     solution:
-      ["(animation)", "(slideIn)", "(2s)", "(ease-in)"],
-    animationClass: "slideIn",
-    successMessage: "Reload the page to see your new header animation."
+      [
+        /border-radius: 50%;/,
+        /transform: scale\(85%\);/
+      ],
+    successMessage:
+      "Now we have a fun animation, give it a click!"
   },
+  {
+    lessonNumber: 4,
+    promptTitle:
+      "Transition all properties on hover with a custom <strong>easing-function</strong>",
+    promptInstructions:
+      "Acording to MDN, smoothing easing functions allow you 'to smooth down the start and end of the interpolation', making a more fluid animation instead of a rigid linear animation from start to end. Use shorthand to <code>transition</code> all properties over <code>1s</code> using the <code>cubic-bezier</code> defined below.",
+    syntaxHints:
+      [
+        "Use the below properties in your CSS transition:",
+        "<strong>transition: (property) (time) (timing function)</strong>",
+        "Property to use: <strong>all</strong>",
+        "<strong>cubic-bezier(0.785, 0.135, 0.15, 0.86)</strong>",
+        "Example: ",
+      ],
+    boilerCode:
+      [ ".box {" ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+        "}",
+        ".box:hover"
+      ],
+    numInputLines: 2,
+    totalLines: 4,
+    solution:
+      [
+        /transition: all 1s cubic\-bezier\(0\.785, 0\.135, 0\.15, 0\.86\);/
+      ],
+    successMessage:
+      "Sweet! Hover over the products now to see the animation."
+  },
+  { lessonNumber: 5,
+    promptTitle:
+      "",
+    promptInstructions:
+      "",
+    syntaxHints:
+      [
+        "Use the below properties in your CSS transition:",
+        "<strong> </strong> {property to change};",
+        "Example: ",
+      ],
+    boilerCode:
+      [ ".box {" ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+        "}",
+        ".box:hover"
+      ],
+    numInputLines: 2,
+    totalLines: 4,
+    solution:
+      [
+        
+      ],
+    successMessage:
+      "Sweet! Hover over the products now to see the animation."
+  }
 ]
-// LEVEL TEMPLATE: 
-  // { lessonNumber: 4,
-  //   promptTitle:
-  //   "",
-  //   promptInstructions:
-  //   "",
-  //   cssProperties: [],
-  //   syntaxHints:
-  //   [],
-  //   boilerCode:
-  //   [],
-  //   inputTemplateCode: [],
-  //   endingBoilerCode:
-  //   [],
-  //   numInputLines: 0,
-  //   totalLines: 0,
-  //   solution:
-  //   [REGEX...],
-    // animationClass: "",
-    // successMessage: ""
-  // },
+// TEMPLATE
+
+// { 
+//   lessonNumber: 3,
+//   promptTitle:
+//     "",
+//   promptInstructions:
+//     "",
+//   syntaxHints:
+//     [
+//       "Use the below properties in your CSS transition:",
+//       "<strong> </strong> {property to change};",
+//       "Example: ",
+//     ],
+//   boilerCode:
+//     [ ".box {" ],
+//   inputTemplateCode: [],
+//   endingBoilerCode:
+//     [
+//       "}",
+//       ".box:hover"
+//     ],
+//   numInputLines: 2,
+//   totalLines: 4,
+//   solution:
+//     [
+//       
+//     ],
+//   successMessage:
+//     "Sweet! Hover over the products now to see the animation."
+// }

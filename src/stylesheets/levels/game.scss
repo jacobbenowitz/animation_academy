@@ -1,11 +1,11 @@
 
 .game-zone {
-  height: 100vh;
+  height: 120vh;
   width: 100%;
-  display: grid;
-  grid-column: 1 / span 12;
+  display: flex;
   background-color: #201F1E;
   position: absolute;
+  padding-right: 96px;
   top: 0;
   z-index: 100;
 }
@@ -20,6 +20,7 @@
   flex-wrap: wrap;
   position: relative;
   gap: 0.8rem;
+  width: 100%;
 }
 
 .level-header {
@@ -70,7 +71,7 @@
 
 #game-box-start.level-1 {
   background-color: $primary;
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #game-box-level-1 {
@@ -86,7 +87,7 @@
   border-radius: 14px;
   box-sizing: border-box;
   transition: background-color 300ms cubic-bezier( 0.71, 0.07, 0.68, 0.53 );
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #game-box-level-1:hover {
@@ -104,23 +105,22 @@
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #box-start-3 {
   position: absolute;
   width: 300px;
   height: 300px;
-  right: 0px;
-  top: 40px;
+  right: 30px;
+  top: 70px;
 
   background-color: $primary;
   opacity: 40%;
-  transform: translate3d(-35px, 35px, 0);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-    animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #box-start-4 {
@@ -128,13 +128,27 @@
   width: 300px;
   height: 300px;
   right: 0px;
-  top: 440px;
+  top: 40px;
   background-color: $primary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
   transform: scale(115%);
   opacity: 40%;
+  animation: box4In 1s ease-in;
+}
+
+@keyframes box4In {
+  from {
+    filter: blur(14px);
+    transform: scale(100%);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    transform: scale(115%);
+    opacity: 40%;
+  }
 }
 
 #box-start-5 {
@@ -142,37 +156,212 @@
   width: 300px;
   height: 300px;
   right: 0px;
-  top: 440px;
-
-  background-color: $secondary;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-}
-
-#game-box-level-6-circle {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  left: -200px;
   top: 40px;
 
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  transform: scale(100%);
+}
+
+#game-box-level-2,
+#game-box-level-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  animation: boxIn 250ms ease-in;
   transition: all 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-#game-box-level-6-circle:hover {
+#game-box-level-2:hover {
   transform: scale(110%);
   background-color: $primary;
 }
 
-#game-box-level-6-circle:active {
-  border-radius: 400px;
+#box-start-6 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  opacity: 20%;
+}
+
+#box-start-7 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
   transform: scale(85%);
+  border-radius: 65px;
+  opacity: 40%;
+}
+#box-start-8 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(65%);
+  border-radius: 80px;
+  opacity: 40%;
+}
+#box-start-9 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(45%);
+  border-radius: 50%;
+  opacity: 100%;
+}
+
+
+#game-box-level-3:hover {
+  transform: scale(110%);
+  background-color: $primary;
+}
+
+#game-box-level-3:active {
+  border-radius: 50%;
+  transform: scale(85%);
+}
+
+#box-start-10 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  opacity: 40%;
+  animation: boxIn40 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+#box-start-11 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(85%) rotate(60deg);
+  opacity: 40%;
+  animation: box11In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+@keyframes box11In {
+  from {
+    transform: scale(100%) rotate(0deg);
+    opacity: 0%;
+    filter: blur(14px);
+  }
+  to {
+    transform: scale(85%) rotate(60deg);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+
+#box-start-12 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(65%) rotate(200deg);
+  opacity: 40%;
+  animation: box12In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+@keyframes box12In {
+  from {
+    transform: scale(100%) rotate(0deg);
+    opacity: 0%;
+    filter: blur(14px);
+  }
+  to {
+    transform: scale(65%) rotate(200deg);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+
+#box-start-13 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(40%);
+  opacity: 40%;
+  animation: box13In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+@keyframes box13In {
+  from {
+    transform: scale(100%) rotate(0deg);
+    opacity: 0%;
+    filter: blur(14px);
+  }
+  to {
+    transform: scale(40%) rotate(360deg);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+
+#game-box-level-4 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 900px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+#game-box-level-4:hover {
+  transform: rotate(180deg) scale(40%);
 }
 
 
@@ -229,75 +418,6 @@
   transform: translateY(-155px);
 }
 
-#box-start-6 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: $secondary;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  opacity: 40%;
-}
-#box-start-7 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: $secondary;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transform: scale(85%) rotate(60deg);
-  opacity: 40%;
-}
-#box-start-8 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: $secondary;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transform: scale(65%) rotate(200deg);
-  opacity: 40%;
-}
-#box-start-9 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: $secondary;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transform: scale(40%);
-  opacity: 40%;
-}
-
-#game-box-level-4 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 0px;
-  top: 900px;
-  background-color: $secondary;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-}
-
-#game-box-level-4:hover {
-  transform: rotate(180deg) scale(40%);
-}
-
 
 // animation: smoothBounce 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate-reverse;
 // @keyframes smoothBounce {
@@ -329,6 +449,16 @@
   to {
     filter: blur(0px);
     opacity: 100%;
+  }
+}
+@keyframes boxIn40 {
+  from {
+    filter: blur(14px);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    opacity: 40%;
   }
 }
 
@@ -381,6 +511,6 @@ h3 > code {
 #level-title {
   text-align: right;
   line-break: strict;
-  width: 60%;
+  width: 85%;
   font-size: 30px;
 }

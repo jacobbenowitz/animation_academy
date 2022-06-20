@@ -4,17 +4,20 @@
   min-height: 100px;
   height: fit-content;
   border-radius: 8px;
-  background-color: $transparent-grey;
+  background-color: $transparent-dark-grey;
   backdrop-filter: blur(12px);
   margin: 5px;
   padding: 10px 20px 10px 20px;
+  box-sizing: border-box;
 }
 
 .prompt ul {
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.prompt li {
+.hint {
   width: max-content;
   font-family: $source-code;
   color: $primary;
@@ -23,6 +26,8 @@
   margin: 4px 0 4px 0;
   padding: 4px 8px 4px 8px;
   font-size: small;
+  max-width: 100%;
+  display: inline-flex;
 }
 
 .prompt ul li:first-child {

@@ -175,13 +175,13 @@ input:focus {
 
 @keyframes slideInInterface {
   0% {
-    margin-left: -50rem;
+    transform: translateX(-200px);
     opacity: 0%;
     filter: blur(20px);
     visibility: visible;
   }
   100% { 
-    margin-left: 0rem;
+    transform: translateX(0px);
     opacity: 100%;
     filter: blur(0);
     visibility: visible;
@@ -189,14 +189,14 @@ input:focus {
 }
 
 @keyframes slideOutInterface {
-  100% { 
-    margin-left: 0rem;
+  0% { 
+    transform: translateX(0px);
     opacity: 100%;
     filter: blur(0);
     visibility: visible;
   }
   100% {
-    margin-left: -50rem;
+    transform: translateX(-200px);
     opacity: 0%;
     filter: blur(20px);
     visibility: visible;

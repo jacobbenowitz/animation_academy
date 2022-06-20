@@ -35,7 +35,12 @@ export default class Hero {
 
     const button = document.createElement('a')
     button.classList.add('button', 'play-now', 'primary')
-    button.innerHTML = "Play now"
+    const lessonNumber = localStorage.getItem("lessonNumber")
+    if (lessonNumber == "0") {
+      button.innerHTML = "Play now"
+    } else {
+      button.innerHTML = "Resume level " + lessonNumber
+    }
     button.href = "#"
 
     rightCol.append(h1, heroText, button)

@@ -19,10 +19,10 @@ export default class Game {
       0: this.levelFunctionality.warm_up_animation,
       1: this.levelFunctionality.level_one_animation,
       2: this.levelFunctionality.level_two_animation,
-      // 3: this.levelFunctionality.level_three,
-      // 4: this.levelFunctionality.level_four,
-      // 5: this.levelFunctionality.level_five,
-      // 6: this.levelFunctionality.level_six,
+      3: this.levelFunctionality.level_three_animation,
+      4: this.levelFunctionality.level_four_animation,
+      5: this.levelFunctionality.level_five_animation,
+      6: this.levelFunctionality.level_six_animation,
       7: this.levelFunctionality.addButtonTransitions,
       8: this.levelFunctionality.addButtonGrow,
       9: this.levelFunctionality.addFieldTranstions,
@@ -33,6 +33,10 @@ export default class Game {
       0: this.levelFunctionality.warm_up_assets,
       1: this.levelFunctionality.level_one_assets,
       2: this.levelFunctionality.level_two_assets,
+      3: this.levelFunctionality.level_three_assets,
+      4: this.levelFunctionality.level_four_assets,
+      5: this.levelFunctionality.level_five_assets,
+      6: this.levelFunctionality.level_six_assets,
     }
   }
 
@@ -127,6 +131,10 @@ export default class Game {
     e.stopPropagation();
     // remove prompt and ide from DOM
     const interfaceContainer = document.getElementById('interface');
+    const hero = document.getElementById('hero-2')
+    const heroContent = document.getElementById('hero-content')
+    hero.classList.remove('hide-hero')
+    heroContent.classList.remove('hide-hero')
     interfaceContainer.classList.remove('slideIn')
     interfaceContainer.classList.add('slideOut')
     localStorage.setItem('gameState', 'paused')
@@ -141,6 +149,10 @@ export default class Game {
   showGame(e) {
     e.stopPropagation()
     const interfaceContainer = document.getElementById('interface');
+    const hero = document.getElementById('hero-2')
+    const heroContent = document.getElementById('hero-content')
+    hero.classList.add('hide-hero')
+    heroContent.classList.add('hide-hero')
     interfaceContainer.classList.remove('slideOut');
     interfaceContainer.classList.add('slideIn');
     localStorage.setItem('gameState', 'active');
@@ -186,7 +198,7 @@ export default class Game {
   }
 
   checkUserInput = this.throttle(userInput => {
-    const inputTextArr = userInput.split(' ');
+    const inputTextArr = userInput.split('\n');
     const solution = this.currentLevel.solution;
     if (this.regexCheck(inputTextArr, solution)) {
       this.levelSuccess();
@@ -198,18 +210,20 @@ export default class Game {
 
   // todo: add multiple solutions for different syntax (1s & 1000ms)
   regexCheck(inputTextArr, solution) {
-    const regexMatchers = [];
+    // const regexMatchers = solution.map(matcher => 
+    //   new RegExp(matcher)
+    // )
     // build regex array containing solutions
-    for (let i = 0; i < solution.length; i++) {
-      const regex = new RegExp(solution[i]);
-      regexMatchers.push(regex);
-    }
+    // for (let i = 0; i < solution.length; i++) {
+    //   const regex = new RegExp(solution[i]);
+    //   regexMatchers.push(regex);
+    // }
     let numMatches = 0;
     // match every input with regexMatchers
     for (let i = 0; i < inputTextArr.length; i++) {
       const input = inputTextArr[i];
-      for (let j = 0; j < regexMatchers.length; j++) {
-        const regex = regexMatchers[j];
+      for (let j = 0; j < solution.length; j++) {
+        const regex = solution[j];
         if (input.match(regex) !== null) {
           // increment numMatches if match found
           console.log(`Matched! input: ${input}, match: ${regex}`)
@@ -220,7 +234,7 @@ export default class Game {
       }
     }
     // check if all solutions are matched
-    if (numMatches >= solution.length) {
+    if (numMatches === solution.length) {
       return true
     } else return false
   }
@@ -248,6 +262,7 @@ export default class Game {
     // dynamically grab this level's animations to apply to DOM
     const levelUpdate =
       this.levelAnimations[this.currentLevel.lessonNumber]
+    debugger
     levelUpdate(); // invoke the animations
     // pull the correct success message for this level
     const successMessage = this.currentLevel.successMessage;
@@ -283,7 +298,6 @@ export default class Game {
   updateGameAssets() {
     const levelNumber = document.getElementById('level-number')
     const levelTitle = document.getElementById('level-title')
-    debugger
     levelTitle.innerHTML = this.currentLevel.promptTitle;
     levelNumber.textContent = this.currentLevel.lessonNumber;
     const levelUpdate =

@@ -93,10 +93,10 @@ export default class prompt {
     const hints = document.createElement('ul');
     hints.id = "prompt-hint-list"
     syntaxHints.forEach(hint => {
-      let li = document.createElement('li');
-      li.innerHTML = hint;
-      li.classList.add('hint')
-      hints.appendChild(li)
+      let span = document.createElement('span');
+      span.innerHTML = hint;
+      span.classList.add('hint')
+      hints.appendChild(span)
     })
     this.promptContainer.appendChild(hints)
   }

@@ -293,6 +293,12 @@ footer a:hover {
   cursor: pointer;
 }
 
+.button.next {
+  margin-top: 3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
 .personal-site {
   margin-top: 3.5em;
 }
@@ -312,7 +318,7 @@ footer a:hover {
   font-size: 18px;
   letter-spacing: 1pt;
   font-weight: 700;
-  background-color: gba(21, 20, 20, 0.5);
+  background-color: rgba(21, 20, 20, 0.5);
   margin-top: 2rem;
   position: absolute;
   width: fit-content;
@@ -334,6 +340,14 @@ footer a:hover {
   background-color: #BB86FC;
   color: #131213;
   transform: scale(92%);
+  box-shadow: 0px 0px 10px #BB86FC;
+}
+
+.button:active,
+.button:focus {
+  border: 1px solid transparent;
+  background-color: #BB86FC;
+  color: #131213;
   box-shadow: 0px 0px 10px #BB86FC;
 }
 
@@ -418,17 +432,20 @@ header img {
   min-height: 100px;
   height: fit-content;
   border-radius: 8px;
-  background-color: gba(21, 20, 20, 0.5);
+  background-color: rgba(21, 21, 21, 0.679);
   backdrop-filter: blur(12px);
   margin: 5px;
   padding: 10px 20px 10px 20px;
+  box-sizing: border-box;
 }
 
 .prompt ul {
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.prompt li {
+.hint {
   width: max-content;
   font-family: "Source Code Pro", monospace;
   color: #03DAC6;
@@ -437,6 +454,8 @@ header img {
   margin: 4px 0 4px 0;
   padding: 4px 8px 4px 8px;
   font-size: small;
+  max-width: 100%;
+  display: inline-flex;
 }
 
 .prompt ul li:first-child {
@@ -501,11 +520,12 @@ code {
   max-width: 450px;
   min-height: 100px;
   margin-bottom: 10px;
-  background-color: gba(21, 20, 20, 0.5);
+  background-color: rgba(21, 21, 21, 0.679);
   backdrop-filter: blur(12px);
   margin: 5px;
   border-radius: 8px;
   padding: 10px 20px 10px 20px;
+  box-sizing: border-box;
 }
 
 .right-col textarea {
@@ -538,15 +558,16 @@ textarea.code-input {
   width: 45ch;
 }
 
-.interface {
+#interface {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   width: fit-content;
   height: fit-content;
   top: 80px;
   left: 50px;
+  box-sizing: border-box;
 }
 
 #overlay {
@@ -557,6 +578,7 @@ textarea.code-input {
   height: 100%;
   padding-left: 3rem;
   padding-top: 11rem;
+  padding-right: 33rem;
   top: 0;
   left: 0;
   right: 0;
@@ -860,27 +882,27 @@ input:focus {
 }
 @keyframes slideInInterface {
   0% {
-    margin-left: -50rem;
+    transform: translateX(-200px);
     opacity: 0%;
     filter: blur(20px);
     visibility: visible;
   }
   100% {
-    margin-left: 0rem;
+    transform: translateX(0px);
     opacity: 100%;
     filter: blur(0);
     visibility: visible;
   }
 }
 @keyframes slideOutInterface {
-  100% {
-    margin-left: 0rem;
+  0% {
+    transform: translateX(0px);
     opacity: 100%;
     filter: blur(0);
     visibility: visible;
   }
   100% {
-    margin-left: -50rem;
+    transform: translateX(-200px);
     opacity: 0%;
     filter: blur(20px);
     visibility: visible;
@@ -915,12 +937,12 @@ input:focus {
 }
 
 .game-zone {
-  height: 100vh;
+  height: 120vh;
   width: 100%;
-  display: grid;
-  grid-column: 1/span 12;
+  display: flex;
   background-color: #201F1E;
   position: absolute;
+  padding-right: 96px;
   top: 0;
   z-index: 100;
 }
@@ -935,6 +957,7 @@ input:focus {
   flex-wrap: wrap;
   position: relative;
   gap: 0.8rem;
+  width: 100%;
 }
 
 .level-header {
@@ -983,7 +1006,7 @@ input:focus {
 
 #game-box-start.level-1 {
   background-color: #03DAC6;
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #game-box-level-1 {
@@ -998,7 +1021,7 @@ input:focus {
   border-radius: 14px;
   box-sizing: border-box;
   transition: background-color 300ms cubic-bezier(0.71, 0.07, 0.68, 0.53);
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #game-box-level-1:hover {
@@ -1015,22 +1038,21 @@ input:focus {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #box-start-3 {
   position: absolute;
   width: 300px;
   height: 300px;
-  right: 0px;
-  top: 40px;
+  right: 30px;
+  top: 70px;
   background-color: #03DAC6;
   opacity: 40%;
-  transform: translate3d(-35px, 35px, 0);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  animation: boxIn 400ms ease-in;
+  animation: boxIn 1s ease-in;
 }
 
 #box-start-4 {
@@ -1038,49 +1060,238 @@ input:focus {
   width: 300px;
   height: 300px;
   right: 0px;
-  top: 440px;
+  top: 40px;
   background-color: #03DAC6;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
   transform: scale(115%);
   opacity: 40%;
+  animation: box4In 1s ease-in;
 }
 
+@keyframes box4In {
+  from {
+    filter: blur(14px);
+    transform: scale(100%);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    transform: scale(115%);
+    opacity: 40%;
+  }
+}
 #box-start-5 {
   position: absolute;
   width: 300px;
   height: 300px;
   right: 0px;
-  top: 440px;
-  background-color: #BB86FC;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-}
-
-#game-box-level-6-circle {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  left: -200px;
   top: 40px;
   background-color: #BB86FC;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  transform: scale(100%);
+}
+
+#game-box-level-2,
+#game-box-level-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  animation: boxIn 250ms ease-in;
   transition: all 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-#game-box-level-6-circle:hover {
+#game-box-level-2:hover {
   transform: scale(110%);
   background-color: #03DAC6;
 }
 
-#game-box-level-6-circle:active {
-  border-radius: 400px;
+#box-start-6 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  opacity: 20%;
+}
+
+#box-start-7 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
   transform: scale(85%);
+  border-radius: 65px;
+  opacity: 40%;
+}
+
+#box-start-8 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(65%);
+  border-radius: 80px;
+  opacity: 40%;
+}
+
+#box-start-9 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(45%);
+  border-radius: 50%;
+  opacity: 100%;
+}
+
+#game-box-level-3:hover {
+  transform: scale(110%);
+  background-color: #03DAC6;
+}
+
+#game-box-level-3:active {
+  border-radius: 50%;
+  transform: scale(85%);
+}
+
+#box-start-10 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  opacity: 40%;
+  animation: boxIn40 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+#box-start-11 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(85%) rotate(60deg);
+  opacity: 40%;
+  animation: box11In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@keyframes box11In {
+  from {
+    transform: scale(100%) rotate(0deg);
+    opacity: 0%;
+    filter: blur(14px);
+  }
+  to {
+    transform: scale(85%) rotate(60deg);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+#box-start-12 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(65%) rotate(200deg);
+  opacity: 40%;
+  animation: box12In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@keyframes box12In {
+  from {
+    transform: scale(100%) rotate(0deg);
+    opacity: 0%;
+    filter: blur(14px);
+  }
+  to {
+    transform: scale(65%) rotate(200deg);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+#box-start-13 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: scale(40%);
+  opacity: 40%;
+  animation: box13In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@keyframes box13In {
+  from {
+    transform: scale(100%) rotate(0deg);
+    opacity: 0%;
+    filter: blur(14px);
+  }
+  to {
+    transform: scale(40%) rotate(360deg);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+#game-box-level-4 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 900px;
+  background-color: #BB86FC;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+#game-box-level-4:hover {
+  transform: rotate(180deg) scale(40%);
 }
 
 .circle-start-1 {
@@ -1139,78 +1350,6 @@ input:focus {
   transform: translateY(-155px);
 }
 
-#box-start-6 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: #BB86FC;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  opacity: 40%;
-}
-
-#box-start-7 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: #BB86FC;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transform: scale(85%) rotate(60deg);
-  opacity: 40%;
-}
-
-#box-start-8 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: #BB86FC;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transform: scale(65%) rotate(200deg);
-  opacity: 40%;
-}
-
-#box-start-9 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 450px;
-  top: 900px;
-  background-color: #BB86FC;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transform: scale(40%);
-  opacity: 40%;
-}
-
-#game-box-level-4 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: 0px;
-  top: 900px;
-  background-color: #BB86FC;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 14px;
-  box-sizing: border-box;
-  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-}
-
-#game-box-level-4:hover {
-  transform: rotate(180deg) scale(40%);
-}
-
 @keyframes boxIn {
   from {
     filter: blur(14px);
@@ -1219,6 +1358,16 @@ input:focus {
   to {
     filter: blur(0px);
     opacity: 100%;
+  }
+}
+@keyframes boxIn40 {
+  from {
+    filter: blur(14px);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    opacity: 40%;
   }
 }
 #level-group-header {
@@ -1266,7 +1415,7 @@ h3 > code {
 #level-title {
   text-align: right;
   line-break: strict;
-  width: 60%;
+  width: 85%;
   font-size: 30px;
 }
 
@@ -1275,7 +1424,7 @@ h3 > code {
 }
 
 #hero-content .right-col > h1 {
-  padding-top: 3rem;
+  padding-top: 14rem;
 }
 
 .hero {

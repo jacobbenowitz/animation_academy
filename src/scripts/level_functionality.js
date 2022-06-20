@@ -98,18 +98,120 @@ export default class LevelFunctionality {
     const box5 = document.createElement('div')
     box4.id = "box-start-4"
     box5.id = "box-start-5"
+    levelGameAssets.append(box4, box5)
   }
   level_two_animation() {
     const levelGameAssets = document.getElementById('level-game-assets')
     while (levelGameAssets.firstChild) {
       levelGameAssets.removeChild(levelGameAssets.firstChild);
     }
-    const box4 = document.createElement('div')
-    const box5 = document.createElement('div')
-    box4.id = "box-start-2"
-    box5.id = "box-start-3"
+    const level2Box = document.createElement('div')
+    level2Box.id = "game-box-level-2"
+    levelGameAssets.append(level2Box)
   }
 
+  level_three_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const box6 = document.createElement('div')
+    const box7 = document.createElement('div')
+    const box8 = document.createElement('div')
+    const box9 = document.createElement('div')
+    box6.id = "box-start-6"
+    box7.id = "box-start-7"
+    box8.id = "box-start-8"
+    box9.id = "box-start-9"
+    levelGameAssets.append(box6, box7, box8, box9)
+  }
+
+  level_three_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const level3Box = document.createElement('div')
+    level3Box.id = "game-box-level-3"
+    levelGameAssets.append(level3Box)
+  }
+  level_four_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const box10 = document.createElement('div')
+    const box11 = document.createElement('div')
+    const box12 = document.createElement('div')
+    const box13 = document.createElement('div')
+    box10.id = "box-start-10"
+    box11.id = "box-start-11"
+    box12.id = "box-start-12"
+    box13.id = "box-start-13"
+    levelGameAssets.append(box10, box11, box12, box13)
+  }
+
+  level_four_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const level4Box = document.createElement('div')
+    level4Box.id = "game-box-level-4"
+    levelGameAssets.append(level4Box)
+  }
+
+  level_five_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const box10 = document.createElement('div')
+    const box11 = document.createElement('div')
+    const box12 = document.createElement('div')
+    const box13 = document.createElement('div')
+    box10.id = "box-start-10"
+    box11.id = "box-start-11"
+    box12.id = "box-start-12"
+    box13.id = "box-start-13"
+    levelGameAssets.append(box10, box11, box12, box13)
+  }
+
+  level_five_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const level4Box = document.createElement('div')
+    level4Box.id = "game-box-level-4"
+    levelGameAssets.append(level4Box)
+  }
+
+  level_six_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const box10 = document.createElement('div')
+    const box11 = document.createElement('div')
+    const box12 = document.createElement('div')
+    const box13 = document.createElement('div')
+    box10.id = "box-start-10"
+    box11.id = "box-start-11"
+    box12.id = "box-start-12"
+    box13.id = "box-start-13"
+    levelGameAssets.append(box10, box11, box12, box13)
+  }
+
+  level_six_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const level4Box = document.createElement('div')
+    level4Box.id = "game-box-level-4"
+    levelGameAssets.append(level4Box)
+  }
 
   createRainbowBox(container) {
     const backgroundBox = document.createElement('div');
