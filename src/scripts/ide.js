@@ -43,7 +43,7 @@ export default class Ide {
     this.addBoilerCode(rightCol, currentLevel);
     this.buildInput(rightCol, currentLevel);
     this.addEndingBoiler(rightCol, currentLevel);
-    this.buildButton(rightCol);
+    // this.buildButton(rightCol);
   }
 
   updateIdeContent(currentLevel) {
@@ -59,8 +59,10 @@ export default class Ide {
   updateLineNums(currentLevel) {
     const leftCol = this.ideContainer.childNodes[0];
     const lineNums = leftCol.childNodes[0];
+    const levelLines = currentLevel.totalLines;
     const nums = this.buildNumsArray(
       currentLevel.totalLines).join('\n');
+      lineNums.rows = levelLines;
     lineNums.innerHTML = nums;
   }
 
@@ -174,13 +176,13 @@ export default class Ide {
     rightCol.append(endingEle)
   }
 
-  buildButton(rightCol) {
-    const button = document.createElement('a');
-    button.innerHTML = "Next";
-    button.href = "#";
-    button.classList.add('ide-button', 'button');
-    rightCol.append(button);
-  }
+  // buildButton(rightCol) {
+  //   const button = document.createElement('a');
+  //   button.innerHTML = "Next";
+  //   button.href = "#";
+  //   button.classList.add('ide-button', 'button');
+  //   rightCol.append(button);
+  // }
 
   attachIde(interfaceContainer) {
     interfaceContainer.classList.add('slideIn')

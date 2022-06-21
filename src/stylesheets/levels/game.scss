@@ -4,10 +4,11 @@
   width: 100%;
   display: flex;
   background-color: #201F1E;
-  position: absolute;
+  position: relative;
   padding-right: 96px;
   top: 0;
   z-index: 100;
+  grid-column: 1 /span 12;
 }
 
 .level-zone {
@@ -101,7 +102,7 @@
   right: 0px;
   top: 40px;
 
-  background-color: $secondary;
+  background-color: $primary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
@@ -113,14 +114,29 @@
   width: 300px;
   height: 300px;
   right: 30px;
-  top: 70px;
+  right: 0px;
+  top: 40px;
 
-  background-color: $primary;
-  opacity: 40%;
+  background-color: $secondary;
+  opacity: 60%;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
   box-sizing: border-box;
-  animation: boxIn 1s ease-in;
+  transform: translate(-30px, 30px);
+  animation: box3In 1s ease-in;
+}
+
+@keyframes box3In {
+  from {
+    filter: blur(14px);
+    transform: translate(0px, 0px);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    transform: translate(-30px, 30px);
+    opacity: 60%;
+  }
 }
 
 #box-start-4 {
@@ -513,4 +529,90 @@ h3 > code {
   line-break: strict;
   width: 85%;
   font-size: 30px;
+}
+
+#preview-levels {
+  min-height: 465px;
+  position: relative;
+  grid-column: 1 / span 12;
+  grid-template-rows: auto 1fr;
+  // background-color: #888888;
+}
+
+.preview-header {
+  grid-column: 4 / span 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.content-preview {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 12;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.preview-level-title {
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  grid-row: 2 / span 1;
+  gap: 0.75rem;
+}
+.preview-title {
+  font-size: $h5;
+}
+
+.col-1, .col-2, .col-3, .col-4 {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.box-start-2-preview {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  right: 20px;
+  top: 20px;
+
+  background-color: $primary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  animation: boxIn 1s ease-in;
+}
+
+.box-start-3-preview {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  right: 20px;
+  top: 20px;
+
+  background-color: $secondary;
+  opacity: 60%;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transform: translate(-30px, 30px);
+  animation: box3In 1s ease-in;
+}
+
+@keyframes box3In {
+  from {
+    filter: blur(14px);
+    transform: translate(0px, 0px);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    transform: translate(-30px, 30px);
+    opacity: 60%;
+  }
 }

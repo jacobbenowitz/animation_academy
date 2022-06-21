@@ -2,6 +2,7 @@
   background-color: $main-grey;
   padding-top: 4em;
   padding-bottom: 4em;
+  grid-column: 1 / span 12;
 }
 
 .product-box {
@@ -35,9 +36,9 @@
 .products h2 {
   display: block;
   height: max-content;
-  grid-column: 3 / span 8;
+  grid-column: 2 / span 10;
 }
 
 .products-grid {
-  grid-column: 3 / span 8;
+  grid-column: 2 / span 10;
 }

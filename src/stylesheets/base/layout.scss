@@ -7,6 +7,11 @@ body {
   box-sizing: border-box;
 }
 
+.pancake-stack {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 .center-simple {
   display: grid;
   place-items: center;
@@ -18,9 +23,19 @@ body {
   grid-template-columns: repeat(12, 1fr);
 }
 
+#main {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  // overflow-x: hidden;
+  // overflow-y: visible;
+  position: relative;
+}
+
 .center-span-5 {
   grid-column: 5 / span 4;
 }
+
 
 .grid-4-col {
   display: grid;

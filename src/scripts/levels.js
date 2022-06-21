@@ -24,7 +24,7 @@ export const LEVELS = [
     totalLines: 2,
     solution:
       [
-        /background\-color: blue;/
+        /background\-color: \$blue;/
       ],
     animationClass: "buttonHover",
     successMessage: "Light work 🥇 Nice job!"
@@ -40,7 +40,7 @@ export const LEVELS = [
         "Use the below properties in your CSS transition:",
         "<strong>transition-property:</strong> {property to change};",
         "Example: <strong>transition-property: font-size</strong>",
-        "<strong>transition-duration:</strong> {amount of seconds/milliseconds}", "Example: <strong>transition-duration: 2s</strong>"
+        "<strong>transition-duration:</strong> {seconds/milliseconds}", "Example: <strong>transition-duration: 2s</strong>"
       ],
     boilerCode:
       [

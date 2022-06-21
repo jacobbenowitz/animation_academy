@@ -4,7 +4,7 @@
 }
 
 #hero-content .right-col > h1 {
-  padding-top: 14rem;
+  padding-top: 8rem;
 }
 
 .hero {
@@ -26,10 +26,10 @@
 #hero-content {
   grid-column: 1 / span 12  ;
   z-index: 100;
-  position: absolute;
-  height: calc(72vh + 65px);
+  position: relative;
+  height: 72vh;
+  // height: calc(72vh + 65px);
   width: 100vw;
-  top: 0;
   right: 0;
   z-index: 250;
   transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
@@ -37,7 +37,7 @@
 
 #hero-2 {
   height: calc(72vh + 65px);
-  top: 0;
+  top: -65px;
   right: 0;
   width: 100vw;
   box-sizing: border-box;
@@ -95,6 +95,6 @@
 
 #hero-2.hide-hero, 
 #hero-content.hide-hero {
-  right: -100vw;
+  top: -100vw;
   transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
 }

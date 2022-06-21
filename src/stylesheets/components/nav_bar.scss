@@ -9,6 +9,7 @@ header {
 
 #top-nav {
   height: 65px;
+  z-index: 400;
 }
 
 header img {
@@ -31,6 +32,8 @@ header img {
   column-gap: 0px;
   align-items: center;
   z-index: 400;
+  padding: 1rem 3rem 0 3rem;
+
 }
 
 .header-list {
@@ -38,6 +41,7 @@ header img {
   display: flex;
   flex-direction: row;
   width: max-content;
+  gap: 2rem;
 }
 
 .header a {
