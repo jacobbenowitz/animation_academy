@@ -8,7 +8,7 @@ export const LEVELS = [
       "Let's get our bearings by chaging the <code>background-color</code> of the box to <code>$blue</code>. New to CSS? Every level will have hints for you below these instructions. CSS syntax follows this pattern: <code>property-name: {value to change};</code>",
     syntaxHints: [
       "Use the below in your CSS transition:",
-      "Property: <strong>background-color:</strong>",
+      "Property: <strong>background-color:</strong> {color}",
       "And for the color use: <strong>$blue</strong>"
       ],
     boilerCode:
@@ -71,7 +71,7 @@ export const LEVELS = [
     promptTitle:
       "Use shorthand transition syntax to also grow the shape on hover",
     promptInstructions:
-      "The shorthand transition syntax saves us time by allowing us to write the transitino on one line. Write a shorthand transition to <code>scale()</code> the box to <code>110%</code> over <code>1s</code>. <strong>Pro-tip:</strong> you can transition <code>all</code> as a property, which will transition any properties that change.",
+      "The shorthand transition syntax saves us time by allowing us to write the transition on one line. Write a shorthand transition to <code>scale()</code> the box to <code>110%</code> over <code>1s</code>. <strong>Pro-tip:</strong> you can transition <code>all</code> as a property, which will transition any properties that change.",
     syntaxHints:
       [
         "Use the below properties in your CSS transition:",
@@ -106,7 +106,7 @@ export const LEVELS = [
     promptTitle:
       "On click (or tap) transition the shape to a circle and shrink it down",
     promptInstructions:
-      "Since we are transitioning all properties, we only need to update the <code>active</code> state of the box. Change the <code>border-radius</code> to a value of <code>50%</code> to smooth the corners into a circle and bring the <code>scale()</code> down to <code>85%</code>.",
+      "Since we are transitioning all properties, we only need to update the <code>active</code> state of the box. Change the <code>border-radius</code> to a value of <code>50%</code> to smooth the corners into a circle. Also, bring the <code>scale()</code> down to <code>85%</code>.",
     syntaxHints:
       [
         "Use the below properties in your CSS transition:",
@@ -137,14 +137,14 @@ export const LEVELS = [
     promptTitle:
       "Transition all properties on hover with a custom <strong>easing-function</strong>",
     promptInstructions:
-      "Acording to MDN, smoothing easing functions allow you 'to smooth down the start and end of the interpolation', making a more fluid animation instead of a rigid linear animation from start to end. Use shorthand to <code>transition</code> all properties over <code>1s</code> using the <code>cubic-bezier</code> defined below.",
+      "Smoothing easing functions allow you to smooth down the start and end of the interpolation, making a more fluid animation instead of a rigid linear animation. Use shorthand to <code>transition</code> all properties over <code>1s</code> using the <code>cubic-bezier</code> defined below.",
     syntaxHints:
       [
         "Use the below properties in your CSS transition:",
         "<strong>transition: (property) (time) (timing function)</strong>",
         "Property to use: <strong>all</strong>",
+        "Use the timing function below: ",
         "<strong>cubic-bezier(0.785, 0.135, 0.15, 0.86)</strong>",
-        "Example: ",
       ],
     boilerCode:
       [ ".box {" ],
@@ -152,10 +152,12 @@ export const LEVELS = [
     endingBoilerCode:
       [
         "}",
-        ".box:hover"
+        ".box:hover {",
+        "  transform: rotate(180deg) scale(40%);",
+        "}"
       ],
-    numInputLines: 2,
-    totalLines: 4,
+    numInputLines: 1,
+    totalLines: 6,
     solution:
       [
         /transition: all 1s cubic\-bezier\(0\.785, 0\.135, 0\.15, 0\.86\);/
@@ -165,7 +167,7 @@ export const LEVELS = [
   },
   { lessonNumber: 5,
     promptTitle:
-      "Final Challange: Transition the position on hover",
+      "Solo Challange: Transition the position on hover",
     promptInstructions:
       "First we'll need to write the transition inside the initial state like we have before. After that, we'll need to define the <code>:hover</code> state by using a CSS selector followed by the new position properties. Using <code>transform: translateY()</code> move the circle up by <code>-150px</code> over <code>1s</code> and use the built-in <code>ease-in</code> timing function. See the hints below if you're unsure!",
     syntaxHints:
@@ -183,7 +185,6 @@ export const LEVELS = [
     boilerCode:
       [
         ".circle {",
-        "  position: absolute;",
         "  width: 240px;",
         "  height: 240px;"
       ],
@@ -192,7 +193,7 @@ export const LEVELS = [
       [
       ],
     numInputLines: 4,
-    totalLines: 9,
+    totalLines: 7,
     solution:
       [
         /transition: transform 1s ease\-in;/,

@@ -76,7 +76,6 @@ export default class Ide {
       currentLevel.endingBoilerCode.join('\n');
       topBoiler.rows = currentLevel.boilerCode.length;
       topBoiler.innerHTML = boilerTopText;
-      debugger
     if (currentLevel.endingBoilerCode.length > 0) {
       botBoiler.innerHTML = boilerBotText;
       botBoiler.rows = currentLevel.endingBoilerCode.length;

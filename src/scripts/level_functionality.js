@@ -42,18 +42,18 @@ export default class LevelFunctionality {
     }
   }
 
-  gameSuccess() {
+  sectionSuccess(currentLevel, renderNextLevel) {
     const overlay = this.createOverlay();
     const messageDiv = document.createElement('div');
     const nextDiv = document.createElement('div');
     const nextButton = document.createElement('span');
     const gameZone = document.getElementsByClassName('game-zone')[0]
     nextButton.classList.add('next', 'button')
-    nextButton.innerText = "Thank's for playing!"
-    nextButton.addEventListener('click', () => this.removeOverlay())
+    nextButton.innerText = "Next Section"
+    nextButton.addEventListener('click', () => renderNextLevel())
     nextDiv.append(nextButton)
     const message = document.createElement('h4')
-    message.innerHTML = "Great job, friend ✌️ That's it for now, check back soon for new levels!";
+    message.innerHTML = `Congrats 🎉 You've completed the ${currentLevel.sectionName} section like a pro 😎`;
     message.classList.add('overlay-text');
     messageDiv.classList.add('overlay-inner');
     messageDiv.append(message);
@@ -186,15 +186,13 @@ export default class LevelFunctionality {
     while (levelGameAssets.firstChild) {
       levelGameAssets.removeChild(levelGameAssets.firstChild);
     }
-    const box10 = document.createElement('div')
-    const box11 = document.createElement('div')
-    const box12 = document.createElement('div')
-    const box13 = document.createElement('div')
-    box10.id = "box-start-10"
-    box11.id = "box-start-11"
-    box12.id = "box-start-12"
-    box13.id = "box-start-13"
-    levelGameAssets.append(box10, box11, box12, box13)
+    const circle1 = document.createElement('div')
+    const circle2 = document.createElement('div')
+    const circle3 = document.createElement('div')
+    circle1.id = "circle-start-1"
+    circle2.id = "circle-start-2"
+    circle3.id = "circle-start-3"
+    levelGameAssets.append(circle1, circle2, circle3)
   }
 
   level_five_animation() {
@@ -202,9 +200,9 @@ export default class LevelFunctionality {
     while (levelGameAssets.firstChild) {
       levelGameAssets.removeChild(levelGameAssets.firstChild);
     }
-    const level4Box = document.createElement('div')
-    level4Box.id = "game-box-level-4"
-    levelGameAssets.append(level4Box)
+    const level5Box = document.createElement('div')
+    level5Box.id = "game-circle-level-5"
+    levelGameAssets.append(level5Box)
   }
 
   level_six_assets() {

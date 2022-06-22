@@ -220,12 +220,10 @@ export default class Game {
     for (let i = 0; i < inputTextArr.length; i++) {
       const input = inputTextArr[i];
       for (let j = 0; j < solution.length; j++) {
-        debugger
         const regex = solution[j];
         if (input.match(regex) !== null) {
           // increment numMatches if match found
           // console.log(`Matched! Total: ${numMatches += 1}, match: ${regex}`)
-          debugger
           numMatches += 1;
         }
       }
@@ -238,10 +236,11 @@ export default class Game {
 
   levelSuccess() {
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
-      this.levelFunctionality.gameSuccess(this.currentLevel)
+      this.sectionFinalAnimation(this.currentLevel)
     } else {
       this.levelAnimation(this.currentLevel);
     }
+    this.toggleInterface()
   }
 
   toggleInterface() {
@@ -264,7 +263,14 @@ export default class Game {
     const successMessage = this.currentLevel.successMessage;
     // show level success overlay with the message
     this.levelFunctionality.levelSuccessAnimation(successMessage, this.renderNextLevel)
-    this.toggleInterface()
+  }
+
+  sectionFinalAnimation() {
+    // dynamically grab this level's animations to apply to DOM
+    const levelUpdate =
+      this.levelAnimations[this.currentLevel.lessonNumber]
+    levelUpdate(); // invoke the animations
+    this.levelFunctionality.sectionSuccess(this.currentLevel, this.renderNextLevel)
   }
   
   renderNextLevel() {

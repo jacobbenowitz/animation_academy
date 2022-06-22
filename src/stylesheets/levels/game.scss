@@ -5,7 +5,7 @@
   display: flex;
   background-color: #201F1E;
   position: absolute;
-  // position: relative;
+  padding-bottom: 32px;
   padding-right: 96px;
   top: 0;
   z-index: 100;
@@ -372,7 +372,7 @@
   width: 300px;
   height: 300px;
   right: 0px;
-  top: 900px;
+  top: 40px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -385,56 +385,59 @@
 }
 
 
-.circle-start-1 {
+#circle-start-1 {
   box-sizing: border-box;
   border-radius: 150px;
   position: absolute;
   width: 240px;
   height: 240px;
-  left: -50px;
-  top: 350px;
+  right: 0px;
+  top: 200px;
   border: 39px solid #03DAC6;
   opacity: 40%;
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
+  animation: boxIn40 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-.circle-start-2 {
+#circle-start-2 {
   box-sizing: border-box;
   border-radius: 150px;
   position: absolute;
   width: 240px;
   height: 240px;
-  left: -50px;
-  top: 450px;
+  right: 0px;
+  top: 120px;
   border: 39px solid #03DAC6;
   opacity: 60%;
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
+  animation: boxIn60 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-.circle-start-3 {
+#circle-start-3 {
   box-sizing: border-box;
   border-radius: 150px;
   position: absolute;
   width: 240px;
   height: 240px;
-  left: -50px;
-  top: 550px;
-  opacity: 90%;
+  right: 0px;
+  top: 40px;
   border: 39px solid #03DAC6;
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
+  animation: boxIn 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-#game-circle-level-3 {
+#game-circle-level-5 {
   box-sizing: border-box;
   border-radius: 150px;
   position: absolute;
   width: 240px;
   height: 240px;
-  left: -200px;
-  top: 550px;
+  right: 0px;
+  top: 200px;
+  opacity: 100%;
   border: 39px solid #03DAC6;
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
   transition: transform 550ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-#game-circle-level-3:hover {
+#game-circle-level-5:hover {
   transform: translateY(-150px);
 }
 
@@ -481,6 +484,16 @@
     opacity: 40%;
   }
 }
+@keyframes boxIn20 {
+  from {
+    filter: blur(14px);
+    opacity: 0%;
+  }
+  to {
+    filter: blur(0px);
+    opacity: 20%;
+  }
+}
 @keyframes boxIn60 {
   from {
     filter: blur(14px);
@@ -491,14 +504,14 @@
     opacity: 60%;
   }
 }
-@keyframes boxIn20 {
+@keyframes boxIn80 {
   from {
     filter: blur(14px);
     opacity: 0%;
   }
   to {
     filter: blur(0px);
-    opacity: 20%;
+    opacity: 80%;
   }
 }
 
@@ -612,7 +625,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 20px;
-  top: 5px;
+  top: 45px;
 
   background-color: $primary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
@@ -627,7 +640,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 20px;
-  top: 5px;
+  top: 45px;
 
   background-color: $secondary;
   opacity: 60%;
@@ -644,7 +657,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $primary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -660,7 +673,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   opacity: 40%;
 
   background-color: $secondary;
@@ -675,7 +688,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
 
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
@@ -690,7 +703,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
 
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
@@ -706,7 +719,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -721,7 +734,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -738,7 +751,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -751,7 +764,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -766,7 +779,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;
@@ -781,7 +794,7 @@ h3 > code {
   width: 175px;
   height: 175px;
   right: 35px;
-  top: 20px;
+  top: 55px;
   background-color: $secondary;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
   border-radius: 14px;

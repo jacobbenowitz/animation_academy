@@ -24,6 +24,10 @@
   padding: 8px 13px 8px 13px;
 }
 
+#input-container {
+  display: flex;
+}
+
 // 02: transitions for input level
 .code-input.input-level ,#todo-input.input-level {
   background-color: #dadada54;
