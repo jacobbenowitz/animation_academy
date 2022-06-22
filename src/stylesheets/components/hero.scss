@@ -29,6 +29,7 @@
   position: relative;
   height: 72vh;
   // height: calc(72vh + 65px);
+  top: 0px;
   width: 100vw;
   right: 0;
   z-index: 250;
@@ -44,9 +45,9 @@
   overflow: hidden;
   position: absolute;
   z-index: 200;
-  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
   pointer-events: none;
   background-color: $background;
+  transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
 }
 
 .bubble-curve-shape {
@@ -95,6 +96,10 @@
 
 #hero-2.hide-hero, 
 #hero-content.hide-hero {
-  top: -100vw;
+  top: -125vw;
   transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+}
+
+#hero-content.height125vh {
+  height: 125vh;
 }

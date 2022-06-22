@@ -74,11 +74,16 @@ export default class Ide {
       currentLevel.boilerCode.join('\n');
     const boilerBotText =
       currentLevel.endingBoilerCode.join('\n');
-
-    topBoiler.rows = currentLevel.boilerCode.length;
-    topBoiler.innerHTML = boilerTopText;
-    botBoiler.innerHTML = boilerBotText;
-    botBoiler.rows = currentLevel.endingBoilerCode.length;
+      topBoiler.rows = currentLevel.boilerCode.length;
+      topBoiler.innerHTML = boilerTopText;
+      debugger
+    if (currentLevel.endingBoilerCode.length > 0) {
+      botBoiler.innerHTML = boilerBotText;
+      botBoiler.rows = currentLevel.endingBoilerCode.length;
+    } else {
+      botBoiler.innerHTML = "";
+      botBoiler.rows = 0;
+    }
   }
 
   updateInput(currentLevel) {

@@ -49,7 +49,7 @@ export default class Hero {
   toggleHero() {
     const heroBg = document.getElementById('hero-2')
     const heroContent = document.getElementById('hero-content')
-    heroContent.classList.add('hide-hero')
+    heroContent.classList.add('hide-hero', 'height125vh')
     heroBg.classList.add('hide-hero')
   }
 }

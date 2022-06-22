@@ -134,7 +134,7 @@ export default class Game {
     const hero = document.getElementById('hero-2')
     const heroContent = document.getElementById('hero-content')
     hero.classList.remove('hide-hero')
-    heroContent.classList.remove('hide-hero')
+    heroContent.classList.remove('hide-hero', 'height125vh')
     interfaceContainer.classList.remove('slideIn')
     interfaceContainer.classList.add('slideOut')
     localStorage.setItem('gameState', 'paused')
@@ -152,7 +152,7 @@ export default class Game {
     const hero = document.getElementById('hero-2')
     const heroContent = document.getElementById('hero-content')
     hero.classList.add('hide-hero')
-    heroContent.classList.add('hide-hero')
+    heroContent.classList.add('hide-hero', 'height125vh')
     interfaceContainer.classList.remove('slideOut');
     interfaceContainer.classList.add('slideIn');
     localStorage.setItem('gameState', 'active');
@@ -203,9 +203,6 @@ export default class Game {
     if (this.regexCheck(inputTextArr, solution)) {
       this.levelSuccess();
     }
-    else {
-      console.log(solution)
-    }
   })
 
   // todo: add multiple solutions for different syntax (1s & 1000ms)
@@ -223,25 +220,25 @@ export default class Game {
     for (let i = 0; i < inputTextArr.length; i++) {
       const input = inputTextArr[i];
       for (let j = 0; j < solution.length; j++) {
+        debugger
         const regex = solution[j];
         if (input.match(regex) !== null) {
           // increment numMatches if match found
-          console.log(`Matched! input: ${input}, match: ${regex}`)
+          // console.log(`Matched! Total: ${numMatches += 1}, match: ${regex}`)
+          debugger
           numMatches += 1;
-        } else {
-          console.log(`NOT Matched: input: ${input}, match: ${regex}`)
         }
       }
     }
     // check if all solutions are matched
-    if (numMatches === solution.length) {
+    if (numMatches >= solution.length) {
       return true
     } else return false
   }
 
   levelSuccess() {
     if (this.currentLevel.lessonNumber + 1 === LEVELS.length) {
-      return;
+      this.levelFunctionality.gameSuccess(this.currentLevel)
     } else {
       this.levelAnimation(this.currentLevel);
     }
@@ -262,7 +259,6 @@ export default class Game {
     // dynamically grab this level's animations to apply to DOM
     const levelUpdate =
       this.levelAnimations[this.currentLevel.lessonNumber]
-    debugger
     levelUpdate(); // invoke the animations
     // pull the correct success message for this level
     const successMessage = this.currentLevel.successMessage;
@@ -278,7 +274,6 @@ export default class Game {
     this.renderLevel();
     if (localStorage.getItem("overlay") == "active") {
       this.levelFunctionality.removeOverlay()
-      localStorage.setItem("overlay", "inactive")
     }
   }
 
@@ -302,7 +297,6 @@ export default class Game {
     levelNumber.textContent = this.currentLevel.lessonNumber;
     const levelUpdate =
       this.levelAssets[this.currentLevel.lessonNumber];
-    debugger
     levelUpdate();
   }
 

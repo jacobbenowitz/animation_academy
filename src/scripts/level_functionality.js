@@ -38,9 +38,29 @@ export default class LevelFunctionality {
     const overlay = document.querySelector('#overlay');
     if (overlay.parentNode) {
       overlay.parentNode.removeChild(overlay);
+      localStorage.setItem("overlay", "inactive")
     }
   }
 
+  gameSuccess() {
+    const overlay = this.createOverlay();
+    const messageDiv = document.createElement('div');
+    const nextDiv = document.createElement('div');
+    const nextButton = document.createElement('span');
+    const gameZone = document.getElementsByClassName('game-zone')[0]
+    nextButton.classList.add('next', 'button')
+    nextButton.innerText = "Thank's for playing!"
+    nextButton.addEventListener('click', () => this.removeOverlay())
+    nextDiv.append(nextButton)
+    const message = document.createElement('h4')
+    message.innerHTML = "Great job, friend ✌️ That's it for now, check back soon for new levels!";
+    message.classList.add('overlay-text');
+    messageDiv.classList.add('overlay-inner');
+    messageDiv.append(message);
+    overlay.append(message, nextDiv);
+    gameZone.append(overlay);
+    localStorage.setItem("overlay", "active")
+  }
 
   createSampleSection(body) {
     const section = document.createElement('section');

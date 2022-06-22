@@ -165,28 +165,42 @@ export const LEVELS = [
   },
   { lessonNumber: 5,
     promptTitle:
-      "",
+      "Final Challange: Transition the position on hover",
     promptInstructions:
-      "",
+      "First we'll need to write the transition inside the initial state like we have before. After that, we'll need to define the <code>:hover</code> state by using a CSS selector followed by the new position properties. Using <code>transform: translateY()</code> move the circle up by <code>-150px</code> over <code>1s</code> and use the built-in <code>ease-in</code> timing function. See the hints below if you're unsure!",
     syntaxHints:
       [
-        "Use the below properties in your CSS transition:",
-        "<strong> </strong> {property to change};",
-        "Example: ",
+        "Tranition and CSS Selector syntax hints:",
+        "<strong>transition: (property) (time) (timing function)</strong>",
+        "Don't forget your closing curly brace!",
+        "Property to use: <strong>transform</strong>",
+        "Selector: <strong>.circle</strong>",
+        "Hover state: <strong>:hover</strong>",
+        "Example: <strong>.box:hover {</strong>",
+        "Transform: <strong>transform: translateY(value)</strong>",
+        "Don't forget your second closing curly brace!",
       ],
     boilerCode:
-      [ ".box {" ],
+      [
+        ".circle {",
+        "  position: absolute;",
+        "  width: 240px;",
+        "  height: 240px;"
+      ],
     inputTemplateCode: [],
     endingBoilerCode:
       [
-        "}",
-        ".box:hover"
       ],
-    numInputLines: 2,
-    totalLines: 4,
+    numInputLines: 4,
+    totalLines: 9,
     solution:
       [
-        
+        /transition: transform 1s ease\-in;/,
+        /(transition: transform 1s ease\-in;)/,
+        /(\})/,
+        /\.circle:hover \{/,
+        /transform: translateY\(\-150px\);/,
+        /(\})/
       ],
     successMessage:
       "Sweet! Hover over the products now to see the animation."
