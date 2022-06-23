@@ -10,30 +10,17 @@ import { LEVELS } from "./scripts/levels"
 document.addEventListener("DOMContentLoaded", () => {
 
     // create the nav bar links
-    const headerList = document.querySelector('.header-list');
-    new NavLinkCreator(headerList);
+    new NavLinkCreator();
     // create the hero section
     const hero = new Hero();
     // create todo section and form
-    const todoSection = document.querySelector('.todo');
-    new TodoCreator(todoSection);
-    // add todo functionality
-    const todoForm = document.querySelector('.todo-form');
-    const todoList = document.querySelector('.todo-list');
-    const todoStorage = JSON.parse(localStorage.getItem('todo-items')) || [];
-    new TodoFunctionality(todoList, todoForm, todoStorage);
     // create products 
-    const productsContainer = document.querySelector('.products-grid')
-    new ProductsCreator(productsContainer);
-
+    new ProductsCreator();
     // create new game
     const game = new Game();
 
     const playButtons = document.querySelectorAll('.play-now')
     playButtons.forEach(button => button.addEventListener('click', startGame))
-
-    // const endGameButton = document.querySelector('.end-game')
-    // endGameButton.addEventListener('click', endGame)
 
     function startGame() {
         const currentLevel = localStorage.getItem('lessonNumber')
@@ -47,12 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         game.gameSetup();
         game.levelNavListeners();
         game.userInputListener();
-        
-    //     // else {
-    //         // interfaceContainer.classList.remove('slideOut')
-    //         // interfaceContainer.classList.add('slideIn')
-    //     // }
-    //     // addResetButtons(); // review
     }
 
     function togglePlayButtons() {
@@ -61,6 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
             button.removeEventListener('click', startGame)
             button.addEventListener('click', game.hideGame)
             button.innerHTML = 'Pause'
+            if (button.parentElement.className == "main-nav-link") {
+                let icon = button.parentElement.childNodes[0]
+                icon.classList.remove('fa-play')
+                icon.classList.add('fa-pause')
+            }
         })
     }
 

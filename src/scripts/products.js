@@ -2,28 +2,32 @@ document.querySelector('.products-grid');
 
 const PRODUCTS = {
   0: {
-    name: "Product 1",
-    price: '$100',
-    status: 'IN-STOCK'
+    name: "Ficus Bonsai",
+    price: '$140',
+    status: 'IN-STOCK',
+    src: 'https://animation-academy.s3.amazonaws.com/ficus-bonsai-opti.jpg'
   },
   1: {
-    name: "Product 2",
+    name: "Fresh Fruit",
     price: '$100',
-    status: 'NEW'
+    status: 'HOT',
+    src: 'https://animation-academy.s3.amazonaws.com/fruit-opti.jpg'
   },
   2: {
-    name: "Product 3",
-    price: '$100',
-    status: 'OUT OF STOCK'
+    name: "Gnocchi",
+    price: '$40',
+    status: 'OUT OF STOCK',
+    src: 'https://animation-academy.s3.amazonaws.com/gnocchi-opi.jpg'
   },
   3: {
-    name: "Product 4",
-    price: '$100',
-    status: 'SALE!'
+    name: "Peperomia",
+    price: '$80',
+    status: 'SALE!',
+    src: 'https://animation-academy.s3.amazonaws.com/peperomia-opti.jpg'
   }
 }
 export default class ProductsCreator {
-  constructor(productsContainer) {
+  constructor() {
     this.productsContainer = document.querySelector('.products-grid');
     this.products = [];
     this.buildProducts();
@@ -33,8 +37,10 @@ export default class ProductsCreator {
   buildProducts() {
     for (let i = 0; i < Object.keys(PRODUCTS).length; i++) {
       // create div
-      const div = document.createElement('div')
-      div.classList.add('product-box')
+      const box = document.createElement('div')
+      box.classList.add('product-box')
+      box.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(${PRODUCTS[i].src})`
+
       // build elements using product data from POJO
       const productPrice = document.createElement('p');
       productPrice.innerHTML = PRODUCTS[i].price;
@@ -48,8 +54,8 @@ export default class ProductsCreator {
       productTitle.innerHTML = PRODUCTS[i].name;
       productTitle.classList.add('title');
 
-      div.append(productPrice, productStatus, productTitle);
-      this.products.push(div);
+      box.append(productPrice, productStatus, productTitle);
+      this.products.push(box);
     }
   }
 

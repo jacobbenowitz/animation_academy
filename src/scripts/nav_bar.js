@@ -1,22 +1,20 @@
 export default class NavLinkCreator {
-    constructor(headerList) {
+    constructor() {
         this.headerList = document.querySelector('.header-list')
         this.navLinks = [];
         this.navLinksBase = {
-            'Home': '#',
             'Play': '#',
             'Contact': '#contact-info'
         }
         this.createNavLinks()
-        // TODO //
-        // this.mouseOver = this.mouseOver.bind(this)
-        // this.headerList.addEventListener("mouseover", this.mouseOver)
     }
 
     // create all of our nav links
     createNavLinks() {
         // extract nav link titles in an array
         const navLinkTitles = Object.keys(this.navLinksBase)
+        const playButton = document.createElement('i')
+        playButton.className = "fa-solid fa-play"
         // go through each link title 
         navLinkTitles.forEach(link => {
             // create li and a tags for each link
@@ -29,7 +27,8 @@ export default class NavLinkCreator {
 
             // add a class for styling and interactivity
             outerLi.classList.add('main-nav-link')
-            if (innerLink.innerHTML === 'Play') {
+            if (innerLink.textContent === 'Play') {
+                outerLi.appendChild(playButton)
                 innerLink.classList.add('play-now')
             }
             // put the 'a' tag inside of the 'li'

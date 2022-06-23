@@ -27,9 +27,9 @@ export default class prompt {
 
     const hintsList = document.querySelector('#prompt-hint-list');
     this.updateHints(hintsList, currentLevel);
+    this.updatePromptNav(currentLevel.lessonNumber)
   }
 
-  // TODO create dropdown lesson nav with forward/back buttons
   createPromptNav(lessonNumber) {
     const nav = document.createElement('div');
     const levelRow = document.createElement('div')
@@ -44,15 +44,35 @@ export default class prompt {
     const backwardsButton = this.createBackButton();
     const resetButton = this.createResetButton();
     const hideButton = this.createHideButton();
+    backwardsButton.classList.add('disabled')
+    resetButton.classList.add('disabled')
+
     levelRow.append(backwardsButton, lessonId,
       forwardsButton)
     nav.append(resetButton, levelRow, hideButton);
     this.promptContainer.appendChild(nav);
   }
 
+  updatePromptNav(lessonNumber) {
+    const backwardsButton = document.querySelector('.icon-button.back-level')
+    const forwardsButton = document.querySelector('.icon-button.next-level')
+    const resetButton = document.querySelector('.reset')
+
+    if (lessonNumber === 0) {
+      backwardsButton.classList.add('disabled')
+      resetButton.classList.add('disabled')
+    } else if (lessonNumber === 10) {
+      forwardsButton.classList.add('disabled')
+    } else {
+      backwardsButton.classList.remove('disabled')
+      forwardsButton.classList.remove('disabled')
+      resetButton.classList.remove('disabled')
+    }
+  }
+
   createBackButton() {
     const buttonWrapper = document.createElement('div');
-    buttonWrapper.className = 'icon-button'
+    buttonWrapper.className = 'icon-button back-level'
     const backwardsIcon = document.createElement('i');
     backwardsIcon.classList.add('fa-solid', 'fa-chevron-left', 'prev-lesson');
     buttonWrapper.append(backwardsIcon)
@@ -61,7 +81,7 @@ export default class prompt {
 
   createNextButton() {
     const buttonWrapper = document.createElement('div');
-    buttonWrapper.className = 'icon-button'
+    buttonWrapper.className = 'icon-button next-level'
     const forwardsIcon = document.createElement('i');
     forwardsIcon.classList.add('fa-solid', 'fa-chevron-right', 'next-lesson');
     buttonWrapper.append(forwardsIcon)

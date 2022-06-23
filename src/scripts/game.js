@@ -25,6 +25,7 @@ export default class Game {
       6: this.levelFunctionality.level_six_animation,
       7: this.levelFunctionality.level_seven_animation,
       9: this.levelFunctionality.level_nine_animation,
+      10: this.levelFunctionality.level_ten_animation,
       // 7: this.levelFunctionality.addButtonTransitions,
       // 8: this.levelFunctionality.addButtonGrow,
       // 9: this.levelFunctionality.addFieldTranstions,
@@ -42,6 +43,7 @@ export default class Game {
       7: this.levelFunctionality.level_seven_assets,
       8: this.levelFunctionality.level_eight_assets,
       9: this.levelFunctionality.level_nine_assets,
+      10: this.levelFunctionality.level_ten_assets,
     }
   }
 
@@ -147,7 +149,12 @@ export default class Game {
     playButtons.forEach(button => {
       button.removeEventListener('click', this.hideGame)
       button.addEventListener('click', this.showGame)
-      button.innerHTML = 'Resume'
+      button.innerHTML = "Resume level " + this.currentLevel.lessonNumber
+      if (button.parentElement.className == "main-nav-link") {
+        let icon = button.parentElement.childNodes[0]
+        icon.classList.remove('fa-pause')
+        icon.classList.add('fa-play')
+      }
     })
   }
 
@@ -275,7 +282,7 @@ export default class Game {
     const levelUpdate =
       this.levelAnimations[this.currentLevel.lessonNumber]
     levelUpdate(); // invoke the animations
-    this.levelFunctionality.sectionSuccess(this.currentLevel, this.renderNextLevel)
+    this.levelFunctionality.sectionSuccess(this.currentLevel, this.hideGame)
   }
   
   renderNextLevel() {

@@ -42,18 +42,21 @@ export default class LevelFunctionality {
     }
   }
 
-  sectionSuccess(currentLevel, renderNextLevel) {
+  sectionSuccess(currentLevel, hideGame) {
     const overlay = this.createOverlay();
     const messageDiv = document.createElement('div');
     const nextDiv = document.createElement('div');
-    const nextButton = document.createElement('span');
+    const exitButton = document.createElement('span');
     const gameZone = document.getElementsByClassName('game-zone')[0]
-    nextButton.classList.add('next', 'button')
-    nextButton.innerText = "Next Section"
-    nextButton.addEventListener('click', () => renderNextLevel())
-    nextDiv.append(nextButton)
+    exitButton.classList.add('next', 'button')
+    exitButton.innerText = "Exit 👋"
+    exitButton.addEventListener('click', (e) => {
+      this.removeOverlay()
+      hideGame(e)
+    })
+    nextDiv.append(exitButton)
     const message = document.createElement('h4')
-    message.innerHTML = `Congrats 🎉 You've completed the ${currentLevel.levelSection} section like a pro 😎`;
+    message.innerHTML = `Congrats 🎉 You've completed the ${currentLevel.levelSection} section like a pro. Thank you for playing!`;
     message.classList.add('overlay-text');
     messageDiv.classList.add('overlay-inner');
     messageDiv.append(message);
@@ -316,6 +319,48 @@ export default class LevelFunctionality {
     circleLevel9.id = "game-circle-level-9"
     levelWrapper.id = "level-9-wrapper"
     levelWrapper.append(circle4, circleLevel9)
+    levelGameAssets.append(levelWrapper)
+  }
+
+  level_ten_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const levelWrapper = document.createElement('div')
+    const circle9 = document.createElement('div')
+    const circle10 = document.createElement('div')
+    const circle11 = document.createElement('div')
+    const circle12 = document.createElement('div')
+
+    levelWrapper.id = "level-10-wrapper"
+    circle9.id = "circle-start-9"
+    circle10.id = "circle-start-10"
+    circle11.id = "circle-start-11"
+    circle12.id = "circle-start-12"
+    
+    levelWrapper.append(circle9, circle10, circle11, circle12)
+    levelGameAssets.append(levelWrapper)
+  }
+
+  level_ten_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const levelWrapper = document.createElement('div')
+    const circle9 = document.createElement('div')
+    const circle13 = document.createElement('div')
+    const circle14 = document.createElement('div')
+    const circle15 = document.createElement('div')
+    const circleLevel10 = document.createElement('div')
+    circle9.id = "circle-start-9"
+    circle13.id = "circle-start-13"
+    circle14.id = "circle-start-14"
+    circle15.id = "circle-start-15"
+    circleLevel10.id = "game-circle-level-10"
+    levelWrapper.id = "level-10-wrapper"
+    levelWrapper.append(circle9, circle13, circle14, circle15, circleLevel10)
     levelGameAssets.append(levelWrapper)
   }
 

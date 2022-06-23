@@ -385,12 +385,12 @@ export const LEVELS = [
     promptTitle:
       "Animate a pulsing circle that scales larger as it fades away",
     promptInstructions:
-      "For your final challange you'll be writing your own <code>@keyframes</code> animation to create a pulsing effect using the <code>to</code> <code>from</code< syntax. In the <code>from</code> state, start with a <strong>scale of 50%</strong> and an <strong>opacity of 50%</strong>. Then, in the <code>to</code> state change the <strong>scale to 250%</strong> and <strong>opacity to 0%</strong>",
+      "For your final challange you'll be writing your own <code>@keyframes</code> animation to create a pulsing effect using the <code>to</code> <code>from</code> syntax. In the <code>from</code> state, start with a <strong>scale of 50%</strong> and an <strong>opacity of 50%</strong>. Then, in the <code>to</code> state change the <strong>scale to 250%</strong> and <strong>opacity to 0%</strong>.",
     syntaxHints:
       [
-        "@keyframes syntax: <strong>@keyframes animationName {}</strong>",
-        "Animation name: Name your animation <strong>circlePulse</strong>",
-        "From / To: Inside the @keyframes define <strong>from {} and to {}</strong>",
+        "@keyframes syntax: <strong>@keyframes (animationName) {...}</strong>",
+        "Use the animation name: <strong>circlePulse</strong>",
+        "Inside @keyframes: define both <strong>from {...} and to {...}</strong>",
         "Scale syntax: <strong>transform: scale(percentage)</strong>",
         "Opacity syntax: <strong>opacity: (percentage)</strong>",
       ],
@@ -408,7 +408,16 @@ export const LEVELS = [
     totalLines: 15,
     solution:
       [
-        
+        /@keyframes circlePulse \{/,
+        /from \{/,
+        /transform: scale\(50%\);/,
+        /opacity: 50%;/,
+        /\}/,
+        /to \{/,
+        /transform: scale\(250%\);/,
+        /opacity: 0%;/,
+        /\}/,
+        /\}/,
       ],
     successMessage:
       ""

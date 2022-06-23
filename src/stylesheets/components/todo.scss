@@ -1,6 +1,7 @@
 .todo {
   padding: 50px 0 50px 0;
   grid-column: 1 / span 12;
+  background-color: #201F1E;
 }
 
 .todo-left {
@@ -16,7 +17,7 @@
 .todo-list-container {
   z-index: 50;
   padding: 40px 20px 20px 20px;
-  background-color: $main-grey;
+  background-color: $background;
 }
 
 .todo-list > .default {
