@@ -23,11 +23,13 @@ export default class Game {
       4: this.levelFunctionality.level_four_animation,
       5: this.levelFunctionality.level_five_animation,
       6: this.levelFunctionality.level_six_animation,
-      7: this.levelFunctionality.addButtonTransitions,
-      8: this.levelFunctionality.addButtonGrow,
-      9: this.levelFunctionality.addFieldTranstions,
-      10: this.levelFunctionality.addProductsHover,
-      11: this.levelFunctionality.addHeaderAnimation
+      7: this.levelFunctionality.level_seven_animation,
+      9: this.levelFunctionality.level_nine_animation,
+      // 7: this.levelFunctionality.addButtonTransitions,
+      // 8: this.levelFunctionality.addButtonGrow,
+      // 9: this.levelFunctionality.addFieldTranstions,
+      // 10: this.levelFunctionality.addProductsHover,
+      // 11: this.levelFunctionality.addHeaderAnimation
     }
     this.levelAssets = {
       0: this.levelFunctionality.warm_up_assets,
@@ -37,6 +39,9 @@ export default class Game {
       4: this.levelFunctionality.level_four_assets,
       5: this.levelFunctionality.level_five_assets,
       6: this.levelFunctionality.level_six_assets,
+      7: this.levelFunctionality.level_seven_assets,
+      8: this.levelFunctionality.level_eight_assets,
+      9: this.levelFunctionality.level_nine_assets,
     }
   }
 
@@ -299,6 +304,8 @@ export default class Game {
   updateGameAssets() {
     const levelNumber = document.getElementById('level-number')
     const levelTitle = document.getElementById('level-title')
+    const sectionChip = document.getElementById('level-group')
+    sectionChip.textContent = this.currentLevel.levelSection
     levelTitle.innerHTML = this.currentLevel.promptTitle;
     levelNumber.textContent = this.currentLevel.lessonNumber;
     const levelUpdate =

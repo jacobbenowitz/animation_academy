@@ -7,6 +7,7 @@
   position: absolute;
   padding-bottom: 32px;
   padding-right: 96px;
+  padding-top: 18px;
   top: 0;
   z-index: 100;
   grid-column: 1 /span 12;
@@ -216,6 +217,7 @@
   border-radius: 14px;
   box-sizing: border-box;
   opacity: 20%;
+  animation: boxIn40 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 #box-start-7 {
@@ -231,6 +233,7 @@
   transform: scale(85%);
   border-radius: 65px;
   opacity: 40%;
+  animation: boxLevel3In7 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 #box-start-8 {
   position: absolute;
@@ -243,8 +246,9 @@
   border-radius: 14px;
   box-sizing: border-box;
   transform: scale(65%);
-  border-radius: 80px;
+  border-radius: 85px;
   opacity: 40%;
+  animation: boxLevel3In8 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 #box-start-9 {
   position: absolute;
@@ -259,7 +263,44 @@
   transform: scale(45%);
   border-radius: 50%;
   opacity: 60%;
-  animation: boxIn60 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation: boxLevel3In9 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+@keyframes boxLevel3In7 {
+  from {
+    border-radius: 14px;
+    transform: scale(100%);
+    opacity: 0%;
+  }
+  to {
+    border-radius: 65px;
+    transform: scale(85%);
+    opacity: 40%;
+  }
+}
+@keyframes boxLevel3In8 {
+  from {
+    border-radius: 14px;
+    transform: scale(100%);
+    opacity: 0%;
+  }
+  to {
+    border-radius: 85px;
+    transform: scale(65%);
+    opacity: 60%;
+  }
+}
+@keyframes boxLevel3In9 {
+  from {
+    border-radius: 14px;
+    transform: scale(100%);
+    opacity: 0%;
+  }
+  to {
+    border-radius: 50%;
+    transform: scale(45%);
+    opacity: 60%;
+  }
 }
 
 
@@ -392,11 +433,12 @@
   width: 240px;
   height: 240px;
   right: 0px;
-  top: 200px;
+  top: 40px;
   border: 39px solid #03DAC6;
   opacity: 40%;
+  transform: translateY(160px);
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
-  animation: boxIn40 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation: circle1In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 #circle-start-2 {
   box-sizing: border-box;
@@ -405,11 +447,12 @@
   width: 240px;
   height: 240px;
   right: 0px;
-  top: 120px;
+  top: 40px;
+  transform: translateY(80px);
   border: 39px solid #03DAC6;
   opacity: 60%;
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
-  animation: boxIn60 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation: circle2In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 #circle-start-3 {
   box-sizing: border-box;
@@ -419,10 +462,46 @@
   height: 240px;
   right: 0px;
   top: 40px;
+  transform: translateY(0px);
   border: 39px solid #03DAC6;
   filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.4));
-  animation: boxIn 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation: circle3In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
+@keyframes circle1In {
+  from {
+    opacity: 100%;
+    filter: blur(14px);
+  }
+  to {
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+@keyframes circle2In {
+  from {
+    transform: translateY(160px);
+    opacity: 100%;
+    filter: blur(14px);
+  }
+  to {
+    transform: translateY(80px);
+    opacity: 40%;
+    filter: blur(0px);
+  }
+}
+@keyframes circle3In {
+  from {
+    transform: translateY(160px);
+    opacity: 100%;
+    filter: blur(14px);
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 100%;
+    filter: blur(0px);
+  }
+}
+
 #game-circle-level-5 {
   box-sizing: border-box;
   border-radius: 150px;
@@ -442,27 +521,233 @@
 }
 
 
-// animation: smoothBounce 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate-reverse;
-// @keyframes smoothBounce {
-//   0% {
-//     // transform: translate3d(0, 0 ,0);
-//     // transform: rotate(0deg);
-//     transform: rotate(0deg);
-//   }
-//   33%{
-//     transform: translate3d(0px, 0, 0);
-//     transform: rotate(0deg);
-//   }
+#button-start-1,
+#button-start-2,
+#button-start-3,
+#button-start-4,
+#button-level-6 {
+  font-size: $h4;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  z-index: 15;
+  display: inline-block;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  color: $background;
+  border: 2px solid $white;
+  border-radius: 4px;
+  background: $white;
+  font-weight: $semi-bold;
+  cursor: pointer;
+}
 
-//   66% {
+#button-start-2,
+#button-start-3 {
+  right: 200px;
+  border: 2px solid $secondary;
+  box-shadow: 0px 0px 26px $primary;
+}
 
-//     transform: rotate(180deg);
+#button-level-6,
+#button-level-7 {
+  transition: all 0.5s ease-in-out;
+}
+
+#button-level-6:hover {
+  border: 2px solid $secondary;
+  background-color: $white;
+  color: $background;
+  box-shadow: 0px 0px 26px $primary;
+}
+
+#button-start-4 {
+  border: 2px solid $secondary;
+  background-color: $secondary;
+  transform: scale(110%);
+  box-shadow: 0px 0px 26px $primary;
+}
+
+#button-level-7:hover {
+  border: 2px solid $secondary;
+  background-color: $secondary;
+  color: $background;
+  box-shadow: 0px 0px 26px $primary;
+  transform: scale(110%);
+}
+
+#box-start-15,
+#box-start-16,
+#box-start-17,
+#game-box-level-8 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  opacity: 60%;
+  animation: boxIn60 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+#box-start-16 {
+  background-color: $primary;
+  opacity: 80%;
+  transform: translate(-30px, 30px);
+  z-index: 500;
+  animation: boxIn80 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+#game-box-level-8 {
+  opacity: 100%;
+  animation: pinkToBlue 2s ease-in-out infinite alternate;
+}
+
+#box-start-17 {
+  transform: translate(-60px, 60px);
+}
+
+@keyframes pinkToBlue {
+  from {
+    background-color: $secondary;
+  }
+  to {
+    background-color: $primary;
+  }
+}
+
+#level-9-wrapper {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  box-sizing: border-box;
+  overflow: visible;
+  top: 0;
+  right: 0;
+  margin-top: 75px;
+}
+
+#circle-start-4 {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 10px solid $secondary;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 90%;
+}
+
+
+#circle-start-5 { 
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 12px solid $primary;
+  position: absolute;
+  top: 50px;
+  right: 25px;
+  opacity: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+#circle-start-6 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 12px solid $primary;
+  position: absolute;
+  top: 68px;
+  right: 12px;
+  opacity: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+#circle-start-7 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 12px solid $primary;
+  position: absolute;
+  top: 89px;
+  right: 0px;
+  opacity: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+#circle-start-8 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 12px solid $primary;
+  position: absolute;
+  top: 111px;
+  right: -10px;
+  opacity: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+#game-circle-level-9 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 12px solid $primary;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  opacity: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  animation: circleLoop 6s linear infinite;
+}
+
+@keyframes circleLoop {
+  from {
+    transform: rotate(0deg) translate(-195px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(-195px) rotate(-360deg);
+  }
+}
+
+// @keyframes box13In {
+//   from {
+//     transform: scale(100%) rotate(0deg);
+//     opacity: 0%;
+//     filter: blur(14px);
 //   }
-  
-//   100% {
-//     transform: translate3d(360px, 0, 0);
+//   to {
+//     transform: scale(40%) rotate(360deg);
+//     opacity: 40%;
+//     filter: blur(0px);
 //   }
 // }
+
+#game-box-level-4 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 0px;
+  top: 40px;
+  background-color: $secondary;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 14px;
+  box-sizing: border-box;
+  transition: all 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+#game-box-level-4:hover {
+  transform: rotate(180deg) scale(40%);
+}
+
+
+
+
+
 
 @keyframes boxIn {
   from {
@@ -516,13 +801,15 @@
 }
 
 
+
+
 #level-group-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 10px;
   gap: 10px;
-  height: 28px;
+  height: 38px;
   background: #181818;
   border-radius: 7px;
   font-weight: 300;
@@ -538,12 +825,9 @@
   align-items: center;
   padding: 10px;
   gap: 10px;
-
-  height: 28px;
-
+  height: 38px;
   background: #00605D;
   border-radius: 7px;
-
   font-weight: 500;
   font-size: 26px;
   text-align: center;
@@ -712,7 +996,7 @@ h3 > code {
   transform: scale(85%);
   border-radius: 65px;
   opacity: 40%;
-  animation: boxIn40 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation: boxLevel3In 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 .box-start-8-preview {
   position: absolute;
@@ -744,7 +1028,6 @@ h3 > code {
   opacity: 60%;
   animation: boxIn60 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-
 
 .box-start-10-preview {
   position: absolute;

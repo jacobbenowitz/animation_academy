@@ -2,6 +2,7 @@
 export const LEVELS = [
   {
     lessonNumber: 0,
+    levelSection: "Introduction",
     promptTitle:
       "Warm-up with the basics",
     promptInstructions:
@@ -31,6 +32,7 @@ export const LEVELS = [
   },
   {
     lessonNumber: 1,
+    levelSection: "Introduction",
     promptTitle:
       "Now let's add a 1 second transition the <code>background-color</code> on <code>hover</code>",
     promptInstructions:
@@ -68,6 +70,7 @@ export const LEVELS = [
 
   {
     lessonNumber: 2,
+    levelSection: "Introduction",
     promptTitle:
       "Use shorthand transition syntax to also grow the shape on hover",
     promptInstructions:
@@ -103,6 +106,7 @@ export const LEVELS = [
   },
   {
     lessonNumber: 3,
+    levelSection: "Introduction",
     promptTitle:
       "On click (or tap) transition the shape to a circle and shrink it down",
     promptInstructions:
@@ -134,6 +138,7 @@ export const LEVELS = [
   },
   {
     lessonNumber: 4,
+    levelSection: "Introduction",
     promptTitle:
       "Transition all properties on hover with a custom <strong>easing-function</strong>",
     promptInstructions:
@@ -165,7 +170,9 @@ export const LEVELS = [
     successMessage:
       "Sweet! Hover over the products now to see the animation."
   },
-  { lessonNumber: 5,
+  {
+    lessonNumber: 5,
+    levelSection: "Introduction",
     promptTitle:
       "Solo Challange: Transition the position on hover",
     promptInstructions:
@@ -174,13 +181,11 @@ export const LEVELS = [
       [
         "Tranition and CSS Selector syntax hints:",
         "<strong>transition: (property) (time) (timing function)</strong>",
-        "Don't forget your closing curly brace!",
         "Property to use: <strong>transform</strong>",
-        "Selector: <strong>.circle</strong>",
-        "Hover state: <strong>:hover</strong>",
-        "Example: <strong>.box:hover {</strong>",
+        "Selector: <strong>.circle</strong>, Hover state: <strong>:hover</strong>",
+        "Example selector: <strong>.box:hover {</strong>",
         "Transform: <strong>transform: translateY(value)</strong>",
-        "Don't forget your second closing curly brace!",
+        "Don't forget your closing curly braces!",
       ],
     boilerCode:
       [
@@ -205,12 +210,215 @@ export const LEVELS = [
       ],
     successMessage:
       "Sweet! Hover over the products now to see the animation."
+  },
+  { 
+    lessonNumber: 6,
+    levelSection: "Transitions",
+    promptTitle:
+      "Transition the <code>border</code> and <code>box-shadow</code> of the button on hover",
+    promptInstructions:
+      "Apply your CSS transition skills to make this button interactive. In the initial state, add a <code>0.5s</code> transition to <code>all</code> properties and use <code>ease-in-out</code> as your timing function. Then, define your <code>:hover</code> state with a <strong>solid 2px</strong> <code>border</code> and the <code>box-shadow</code> listed below.",
+    syntaxHints:
+      [
+        "<strong>transition: (property) (time) (timing function)</strong>",
+        "Selector: <strong>.button</strong>, Hover state: <strong>:hover</strong>",
+        "Border syntax: <strong>border: (weight) (style) (color)</strong>",
+        "Example: <strong>border: 2px solid $white</strong>",
+        "Box shadow syntax:",
+        "<strong> box-shadow: (offset-x) (offset-y) (blur-radius) (color)</strong> ",
+        "Use this box-shadow:",
+        "<strong>box-shadow: 0px 0px 14px $pink;</strong>"
+      ],
+    boilerCode:
+      [
+        ".button {",
+        "  border: 2px solid $transparent"
+      ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+      ],
+    numInputLines: 6,
+    totalLines: 8,
+    solution:
+      [
+        /transition: all 0.5s ease\-in\-out;/,
+        /\}/,
+        /\.button:hover \{/,
+        /border: solid 2px \$pink;/,
+        /box\-shadow: 0px 0px 14px \$pink;/,
+        /\}/
+      ],
+    successMessage:
+      "Solid work, give that button a hover to see your transition!"
+  },
+  { 
+    lessonNumber: 7,
+    levelSection: "Transitions",
+    promptTitle:
+      "Transition the <code>background-color</code> and <code>scale</code> of the button on hover",
+    promptInstructions:
+      "Now let's make this button satisfying to click. In the <code>active</code> state, add a <code>background-color</code> of <code>$pink</code> and use <code>transform</code> to scale the button up to <code>110%</code>.",
+    syntaxHints:
+      [
+        "<strong>transition: (property) (time) (timing function)</strong>",
+        "Selector: <strong>.button</strong>, Hover state: <strong>:hover</strong>",
+        "Border syntax: <strong>border: (weight) (style) (color)</strong>",
+        "Example: <strong>border: 2px solid $white;</strong>",
+        "Box shadow syntax:",
+        "<strong> box-shadow: (offset-x) (offset-y) (blur-radius) (color)</strong> ",
+        "Use this box-shadow:",
+        "<strong>box-shadow: 0px 0px 14px $pink;</strong>"
+      ],
+    boilerCode:
+      [
+        ".button {",
+        "  border: 2px solid $transparent"
+      ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+      ],
+    numInputLines: 6,
+    totalLines: 8,
+    solution:
+      [
+        /transition: all 1s ease\-in\-out;/,
+        /\}/,
+        /\.button:hover \{/,
+        /border: solid 2px \$pink;/,
+        /box\-shadow: 0px 0px 14px \$pink;/,
+        /\}/
+      ],
+    successMessage:
+      "There you go! 🎉"
+  },
+  { 
+    lessonNumber: 8,
+    levelSection: "Animations",
+    promptTitle:
+      "Animate the <code>background-color</code> of the shape infinately",
+    promptInstructions:
+      "Welcome to <code>@keyframes</code>! Keyframes animations are similar to transitions, but you can define many states by using percentages. To start off, we will only use 2 states with the simple <code>from</code> and <code>to</code> syntax. You're goal is to apply the animation using the syntax detailed below.",
+    syntaxHints:
+      [
+        "@keyframes name: <strong>pinkToBlue</strong>",
+        "Duration: <strong>2s</strong>",
+        "Easing function: <strong>ease-in-out</strong>",
+        "Iteration count: <strong>infinate alternate</strong>",
+        "animation: (@keyframes name) (duration) (easing-function) (iteration count)",
+        "Example: <strong>animation: fadeIn 1s ease-in 3;</strong>",
+      ],
+    boilerCode:
+      [
+        "@keyframes pinkToBlue {",
+        "  from {",
+        "    background-color: $blue",
+        "  }",
+        "  to {",
+        "    background-color: $pink",
+        "  }",
+        "  .box {"
+      ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+        "}"
+      ],
+    numInputLines: 1,
+    totalLines: 10,
+    solution:
+      [
+        /animation: pinkToBlue 2s ease\-in\-out infinite alternate;/
+      ],
+    successMessage:
+      "✅ Your first animation! Good work 👍"
+  },
+  { 
+    lessonNumber: 9,
+    levelSection: "Animations",
+    promptTitle:
+      "Animate the circle in a 360 degree loop",
+    promptInstructions:
+      "For this fun animation we'll be looping the circle around <code>infinite</code> times over <code>6s</code> using the <code>linear</code> timing function.",
+    syntaxHints:
+      [
+        "@keyframes name: <strong>circleLoop</strong>",
+        "Duration: <strong>6s</strong>",
+        "Easing function: <strong>linear</strong>",
+        "Iteration count: <strong>infinate</strong>",
+        "animation: (@keyframes name) (duration) (easing-function) (iteration count)",
+        "Example: <strong>animation: fadeIn 1s ease-in 3;</strong>",
+      ],
+    boilerCode:
+      [
+        "@keyframes circleLoop {",
+        "  from {",
+        "    transform: rotate(0deg)",
+        "               translate(-165px)",
+        "               rotate(0deg); ",
+        "  }",
+        "  to {",
+        "    transform: rotate(360deg)",
+        "               translate(-165px)",
+        "               rotate(360deg); ",
+        "  }",
+        "  .circle {"
+      ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+        "}"
+      ],
+    numInputLines: 1,
+    totalLines: 14,
+    solution:
+      [
+        /animation: circleLoop 6s linear infinite;/
+      ],
+    successMessage:
+      "Light work 👏"
+  },
+  { 
+    lessonNumber: 10,
+    levelSection: "Animations",
+    promptTitle:
+      "Animate a pulsing circle that scales larger as it fades away",
+    promptInstructions:
+      "For your final challange you'll be writing your own <code>@keyframes</code> animation to create a pulsing effect using the <code>to</code> <code>from</code< syntax. In the <code>from</code> state, start with a <strong>scale of 50%</strong> and an <strong>opacity of 50%</strong>. Then, in the <code>to</code> state change the <strong>scale to 250%</strong> and <strong>opacity to 0%</strong>",
+    syntaxHints:
+      [
+        "@keyframes syntax: <strong>@keyframes animationName {}</strong>",
+        "Animation name: Name your animation <strong>circlePulse</strong>",
+        "From / To: Inside the @keyframes define <strong>from {} and to {}</strong>",
+        "Scale syntax: <strong>transform: scale(percentage)</strong>",
+        "Opacity syntax: <strong>opacity: (percentage)</strong>",
+      ],
+    boilerCode:
+      [
+        ".circle {",
+        "  animation: circlePulse 4s infinate cubic-bezier(0.86, 0.12, 0.55, 0.96)",
+        "}"
+      ],
+    inputTemplateCode: [],
+    endingBoilerCode:
+      [
+      ],
+    numInputLines: 10,
+    totalLines: 15,
+    solution:
+      [
+        
+      ],
+    successMessage:
+      ""
   }
 ]
-// TEMPLATE
 
+// TEMPLATE
 // { 
 //   lessonNumber: 3,
+//   levelSection: "Introduction",
 //   promptTitle:
 //     "",
 //   promptInstructions:

@@ -53,7 +53,7 @@ export default class LevelFunctionality {
     nextButton.addEventListener('click', () => renderNextLevel())
     nextDiv.append(nextButton)
     const message = document.createElement('h4')
-    message.innerHTML = `Congrats 🎉 You've completed the ${currentLevel.sectionName} section like a pro 😎`;
+    message.innerHTML = `Congrats 🎉 You've completed the ${currentLevel.levelSection} section like a pro 😎`;
     message.classList.add('overlay-text');
     messageDiv.classList.add('overlay-inner');
     messageDiv.append(message);
@@ -98,7 +98,6 @@ export default class LevelFunctionality {
     }
     levelGameAssets.append(box2, box3)
   }
-
   level_one_animation() {
     const levelGameAssets = document.getElementById('level-game-assets')
     const levelOneBox = document.createElement('div')
@@ -145,7 +144,6 @@ export default class LevelFunctionality {
     box9.id = "box-start-9"
     levelGameAssets.append(box6, box7, box8, box9)
   }
-
   level_three_animation() {
     const levelGameAssets = document.getElementById('level-game-assets')
     while (levelGameAssets.firstChild) {
@@ -155,6 +153,7 @@ export default class LevelFunctionality {
     level3Box.id = "game-box-level-3"
     levelGameAssets.append(level3Box)
   }
+
   level_four_assets() {
     const levelGameAssets = document.getElementById('level-game-assets')
     while (levelGameAssets.firstChild) {
@@ -170,7 +169,6 @@ export default class LevelFunctionality {
     box13.id = "box-start-13"
     levelGameAssets.append(box10, box11, box12, box13)
   }
-
   level_four_animation() {
     const levelGameAssets = document.getElementById('level-game-assets')
     while (levelGameAssets.firstChild) {
@@ -194,7 +192,6 @@ export default class LevelFunctionality {
     circle3.id = "circle-start-3"
     levelGameAssets.append(circle1, circle2, circle3)
   }
-
   level_five_animation() {
     const levelGameAssets = document.getElementById('level-game-assets')
     while (levelGameAssets.firstChild) {
@@ -210,25 +207,116 @@ export default class LevelFunctionality {
     while (levelGameAssets.firstChild) {
       levelGameAssets.removeChild(levelGameAssets.firstChild);
     }
-    const box10 = document.createElement('div')
-    const box11 = document.createElement('div')
-    const box12 = document.createElement('div')
-    const box13 = document.createElement('div')
-    box10.id = "box-start-10"
-    box11.id = "box-start-11"
-    box12.id = "box-start-12"
-    box13.id = "box-start-13"
-    levelGameAssets.append(box10, box11, box12, box13)
+    const button1 = document.createElement('button')
+    const button2 = document.createElement('button')
+    button1.id = "button-start-1"
+    button1.href = "#"
+    button1.textContent = "Default"
+    button2.id = "button-start-2"
+    button2.href = "#"
+    button2.textContent = "Hover"
+    levelGameAssets.append(button1, button2)
   }
-
   level_six_animation() {
     const levelGameAssets = document.getElementById('level-game-assets')
     while (levelGameAssets.firstChild) {
       levelGameAssets.removeChild(levelGameAssets.firstChild);
     }
-    const level4Box = document.createElement('div')
-    level4Box.id = "game-box-level-4"
-    levelGameAssets.append(level4Box)
+    const buttonLevel6 = document.createElement('button')
+    buttonLevel6.id = "button-level-6"
+    buttonLevel6.href = "#"
+    buttonLevel6.textContent = "Success!"
+    levelGameAssets.append(buttonLevel6)
+  }
+
+  level_seven_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const button3 = document.createElement('button')
+    const button4 = document.createElement('button')
+    button3.id = "button-start-3"
+    button3.href = "#"
+    button3.textContent = "Hover"
+    button4.id = "button-start-4"
+    button4.href = "#"
+    button4.textContent = "Active"
+    levelGameAssets.append(button4, button3)
+  }
+  level_seven_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const buttonLevel7 = document.createElement('button')
+    buttonLevel7.id = "button-level-7"
+    buttonLevel7.href = "#"
+    buttonLevel7.textContent = "Success!"
+    levelGameAssets.append(buttonLevel7)
+  }
+
+  level_eight_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+
+    const box15 = document.createElement('div')
+    const box16 = document.createElement('div')
+    const box17 = document.createElement('div')
+    box15.id = "box-start-15"
+    box16.id = "box-start-16"
+    box17.id = "box-start-17"
+
+    levelGameAssets.append(box15, box16, box17)
+  }
+  level_eight_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const boxLevel8 = document.createElement('div')
+    boxLevel8.id = "game-box-level-8"
+
+    levelGameAssets.append(boxLevel8)
+  }
+
+  level_nine_assets() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const levelWrapper = document.createElement('div')
+    const circle4 = document.createElement('div')
+    const circle5 = document.createElement('div')
+    const circle6 = document.createElement('div')
+    const circle7 = document.createElement('div')
+    const circle8 = document.createElement('div')
+    levelWrapper.id = "level-9-wrapper"
+    circle4.id = "circle-start-4"
+    circle5.id = "circle-start-5"
+    circle6.id = "circle-start-6"
+    circle7.id = "circle-start-7"
+    circle8.id = "circle-start-8"
+    
+    levelWrapper.append(circle4, circle5, circle6, circle7, circle8)
+    levelGameAssets.append(levelWrapper)
+  }
+
+  level_nine_animation() {
+    const levelGameAssets = document.getElementById('level-game-assets')
+    while (levelGameAssets.firstChild) {
+      levelGameAssets.removeChild(levelGameAssets.firstChild);
+    }
+    const levelWrapper = document.createElement('div')
+    const circle4 = document.createElement('div')
+    const circleLevel9 = document.createElement('div')
+    circle4.id = "circle-start-4"
+    circleLevel9.id = "game-circle-level-9"
+    levelWrapper.id = "level-9-wrapper"
+    levelWrapper.append(circle4, circleLevel9)
+    levelGameAssets.append(levelWrapper)
   }
 
   createRainbowBox(container) {
