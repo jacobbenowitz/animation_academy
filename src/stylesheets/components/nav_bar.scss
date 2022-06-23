@@ -53,3 +53,11 @@ header img {
   text-decoration: none;
   color: white;
 }
+
+.footer-links li {
+  display: flex;
+  align-items: center;
+  place-content: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
