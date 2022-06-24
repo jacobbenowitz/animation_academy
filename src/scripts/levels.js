@@ -114,7 +114,7 @@ export const LEVELS = [
     syntaxHints:
       [
         "Use the below properties in your CSS transition:",
-        "<strong>border-radius</strong> (value);",
+        "<strong>border-radius:</strong> (value);",
         "Example: <strong>border-radius: 10%</strong> ",
         "<strong>transform:</strong> scale(value);",
         "Example: <strong>transform: scale(95%)</strong> ",

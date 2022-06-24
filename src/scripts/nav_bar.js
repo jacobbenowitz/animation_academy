@@ -4,7 +4,7 @@ export default class NavLinkCreator {
         this.navLinks = [];
         this.navLinksBase = {
             'Play': '#',
-            'Learn mroe': '#contact-info'
+            'Learn more': '#contact-info'
         }
         this.createNavLinks()
     }
