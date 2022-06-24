@@ -16,7 +16,8 @@ ___
 
 ## **Background**
 
-Welcome to Animation Academy! Learn how to make a webpage interactive using the `transition` and `animation` CSS properties. Your goal is to make this webpage interactive, just follow the prompts to polish this site up!
+Welcome to Animation Academy! Learn how to make a webpage interactive using the `transition` and `animation` CSS properties. By the time you get to level 10, you'll be able to write transitions, apply animations, and even write your own @keyframes animations!
+<!-- Your goal is to make this webpage interactive, just follow the prompts to polish this site up! -->
 
 CSS Animations make a web experiences engaging by selecting static HTML elements and changing their properties for a period of time. This can be in response to user actions, or an event such as a scroll or page load.
 

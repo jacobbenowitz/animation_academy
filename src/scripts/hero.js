@@ -36,7 +36,7 @@ export default class Hero {
     const button = document.createElement('a')
     button.classList.add('button', 'play-now', 'primary')
     const lessonNumber = localStorage.getItem("lessonNumber")
-    if (lessonNumber == "0") {
+    if (lessonNumber == "0" || lessonNumber === null) {
       button.innerHTML = "Play now"
     } else {
       button.innerHTML = "Resume level " + lessonNumber

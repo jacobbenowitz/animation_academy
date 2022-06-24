@@ -271,7 +271,8 @@ footer {
 .footer-logo {
   display: flex;
   max-width: 400px;
-  align-self: end;
+  align-self: baseline;
+  padding-bottom: 5em;
 }
 
 footer a {
@@ -1222,7 +1223,7 @@ input:focus {
   border-radius: 14px;
   box-sizing: border-box;
   opacity: 20%;
-  animation: boxIn40 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: boxIn20 650ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 #box-start-7 {
